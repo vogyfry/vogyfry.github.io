@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Deploy All Sites",
+      "type": "shell",
+      "command": "gh workflow run deploy-website.yml --repo vogyfry/tradesocial && gh workflow run deploy-website.yml --repo vogyfry/mylife && gh workflow run deploy-website.yml --repo vogyfry/private-network",
+      "problemMatcher": [],
+      "group": "build",
+      "detail": "Trigger GitHub Pages deploy for all app websites"
+    },
+    {
+      "label": "Deploy TradeSocial Site",
+      "type": "shell",
+      "command": "gh workflow run deploy-website.yml --repo vogyfry/tradesocial",
+      "problemMatcher": [],
+      "detail": "Deploy tradesocial.app"
+    },
+    {
+      "label": "Deploy Mavee Site",
+      "type": "shell",
+      "command": "gh workflow run deploy-website.yml --repo vogyfry/mylife",
+      "problemMatcher": [],
+      "detail": "Deploy ma-vee.app"
+    },
+    {
+      "label": "Deploy Pravida Site",
+      "type": "shell",
+      "command": "gh workflow run deploy-website.yml --repo vogyfry/private-network",
+      "problemMatcher": [],
+      "detail": "Deploy pravida.app"
+    },
+    {
+      "label": "Check Deploy Status",
+      "type": "shell",
+      "command": "echo '=== TradeSocial ===' && gh run list --repo vogyfry/tradesocial --workflow=deploy-website.yml --limit 1 && echo '=== Mavee ===' && gh run list --repo vogyfry/mylife --workflow=deploy-website.yml --limit 1 && echo '=== Pravida ===' && gh run list --repo vogyfry/private-network --workflow=deploy-website.yml --limit 1",
+      "problemMatcher": [],
+      "detail": "Show latest deploy status for all sites"
+    },
+    {
+      "label": "Sync Landing Page",
+      "type": "shell",
+      "command": "git add -A && git commit -m 'Update landing page' && git push origin main",
+      "problemMatcher": [],
+      "detail": "Commit and push vogyfry.github.io changes"
+    }
+  ]
+}
