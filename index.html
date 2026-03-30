@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apps by Jim Vogl</title>
-    <meta name="description" content="iOS apps built by Jim Vogl. TradeSocial — learn investing with your group. Mavee — your day, simplified with AI.">
+    <meta name="description" content="iOS apps built by Jim Vogl. TradeSocial — learn investing with your group. Mavee — your day, simplified with AI. Pravida — private, encrypted, yours.">
     <meta property="og:title" content="Apps by Jim Vogl">
-    <meta property="og:description" content="iOS apps built by Jim. TradeSocial and Mavee.">
+    <meta property="og:description" content="iOS apps built by Jim. TradeSocial, Mavee, and Pravida.">
     <link rel="icon" type="image/png" href="tradesocial-icon.png">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,6 +19,7 @@
             --muted: #86868b;
             --accent-ts: #00d4aa;
             --accent-mavee: #7c5cfc;
+            --accent-pravida: #1a8cff;
         }
 
         html { scroll-behavior: smooth; }
@@ -87,6 +88,7 @@
         .app-card:hover { transform: translateY(-6px); }
         .app-card.ts:hover { border-color: var(--accent-ts); }
         .app-card.mavee:hover { border-color: var(--accent-mavee); }
+        .app-card.pravida:hover { border-color: var(--accent-pravida); }
 
         .app-header { display: flex; align-items: center; gap: 16px; }
 
@@ -124,6 +126,7 @@
 
         .app-card.ts .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-ts); }
         .app-card.mavee .tag { border-color: rgba(124,92,252,0.3); color: var(--accent-mavee); }
+        .app-card.pravida .tag { border-color: rgba(26,140,255,0.3); color: var(--accent-pravida); }
 
         .app-cta {
             display: inline-flex;
@@ -136,6 +139,7 @@
 
         .app-card.ts .app-cta { color: var(--accent-ts); }
         .app-card.mavee .app-cta { color: var(--accent-mavee); }
+        .app-card.pravida .app-cta { color: var(--accent-pravida); }
 
         .app-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
         .app-card:hover .app-cta svg { transform: translateX(4px); }
@@ -218,10 +222,35 @@
             </span>
         </a>
 
+        <a class="app-card pravida" href="https://pravida.app">
+            <div class="app-header">
+                <img class="app-icon" src="pravida-icon.png" alt="Pravida icon">
+                <div>
+                    <div class="app-name">Pravida</div>
+                    <div class="app-platform">iPhone · iPad · Mac · Apple Watch · iOS 26+ · Coming Soon</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                Private, encrypted, yours. An invite-only network with E2E encrypted messaging, device-to-device mesh networking, and on-device AI — iMessage quality with Signal-level security.
+            </p>
+            <div class="app-tags">
+                <span class="tag">E2E Encryption</span>
+                <span class="tag">Mesh Networking</span>
+                <span class="tag">On-Device AI</span>
+                <span class="tag">Invite-Only</span>
+            </div>
+            <span class="app-cta">
+                Learn more
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
+
     </div>
 
     <footer>
-        <p>&copy; 2026 Jim Vogl &nbsp;·&nbsp; <a href="mavee/privacy.html">Privacy</a></p>
+        <p>&copy; 2026 Jim Vogl &nbsp;&middot;&nbsp; <a href="mavee/privacy.html">Privacy</a></p>
     </footer>
 
 </body>

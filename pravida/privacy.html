@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Pravida</title>
+    <meta name="description" content="Pravida Privacy Policy. Your data stays on your device.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .legal-page {
+            padding: 120px 24px 80px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .legal-page h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        .legal-page .last-updated {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 40px;
+        }
+        .legal-page h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        .legal-page p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .legal-page ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+        .legal-page li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 4px;
+        }
+        .legal-page strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .highlight-box {
+            background: var(--brand-light);
+            border-left: 3px solid var(--brand);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 20px 0;
+        }
+        .highlight-box p {
+            color: var(--text-primary) !important;
+            margin: 0 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">
+                <img src="images/favicon.png" alt="Pravida">
+                <span>Pravida</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="legal-page">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: March 30, 2026</p>
+
+        <div class="highlight-box">
+            <p>Pravida is built on a simple principle: <strong>your data is yours</strong>. We cannot read your messages, listen to your calls, or access your files. Ever.</p>
+        </div>
+
+        <h2>1. What We Don't Collect</h2>
+        <p>Pravida does not collect, store, or transmit:</p>
+        <ul>
+            <li>Message content (all messages are end-to-end encrypted)</li>
+            <li>Call audio or metadata</li>
+            <li>Contact lists or address books</li>
+            <li>Location data</li>
+            <li>Analytics or usage telemetry</li>
+            <li>Advertising identifiers</li>
+            <li>Device fingerprints</li>
+        </ul>
+
+        <h2>2. End-to-End Encryption</h2>
+        <p>All messages, voice calls, and file transfers are encrypted on your device before transmission using AES-256-GCM encryption with HKDF-derived session keys. Encryption keys are generated and stored exclusively on your device using Apple's Secure Enclave. Neither Pravida nor any third party can decrypt your communications.</p>
+
+        <h2>3. On-Device AI Processing</h2>
+        <p>AI features including smart replies, message summaries, and content moderation are powered by Apple Intelligence and Core ML. All AI processing occurs entirely on your device. No data is sent to external AI services or cloud processors.</p>
+
+        <h2>4. Relay Server</h2>
+        <p>When direct mesh networking is unavailable, messages are temporarily held on our relay server for delivery. The relay server handles only encrypted blobs — it cannot read, decrypt, or analyze message content. Messages are deleted from the relay immediately upon delivery.</p>
+
+        <h2>5. Mesh Networking</h2>
+        <p>Pravida supports direct device-to-device communication via Bluetooth and WiFi using Apple's MultipeerConnectivity framework. Mesh communications are encrypted end-to-end and do not pass through any server.</p>
+
+        <h2>6. Local Storage</h2>
+        <p>All data stored on your device is encrypted using SQLCipher. If you enable biometric lock (Face ID / Touch ID), the app requires authentication before displaying any content.</p>
+
+        <h2>7. Data Deletion</h2>
+        <p>You can delete your data at any time by removing the app from your device. Disappearing messages are cryptographically erased on timer expiry and cannot be recovered. Account deletion removes all data from our relay server.</p>
+
+        <h2>8. Third-Party Services</h2>
+        <p>Pravida does not integrate with any third-party analytics, advertising, or tracking services. We do not sell, share, or rent your data to anyone.</p>
+
+        <h2>9. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+
+        <h2>10. Contact</h2>
+        <p>Questions about this policy? Contact us at <a href="mailto:privacy@pravida.app" style="color: var(--brand);">privacy@pravida.app</a>.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                &copy; 2026 Pravida. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
