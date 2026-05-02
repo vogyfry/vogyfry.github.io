@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — SwiftMind</title>
+    <meta name="description" content="SwiftMind Support. Get help with the offline Swift coding agent for Xcode.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">
+                <img src="images/favicon.png" alt="SwiftMind">
+                <span>SwiftMind</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="legal-page">
+        <h1>Support</h1>
+        <p class="last-updated">Need help? We're here for you.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have questions, feedback, or need help with SwiftMind, reach out:</p>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+        </ul>
+        <p>We aim to respond within 48 hours.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What are the system requirements?</h3>
+        <p>SwiftMind requires macOS 26+ and Apple Silicon (M1 or later). 16 GB RAM is recommended for best performance. The app requires approximately 5 GB of disk space for the bundled Prava Swift-7B model.</p>
+
+        <h3>Does SwiftMind require an internet connection?</h3>
+        <p>No. SwiftMind is fully offline. After installing from the Mac App Store, everything runs on your Mac. No API key, no internet connection, no subscription fees after purchase.</p>
+
+        <h3>How do I add SwiftMind as a Chat Provider in Xcode?</h3>
+        <p>Open Xcode → Settings → Intelligence → Chat → click "Add a Chat Provider…" → select "Locally Hosted" → enter port <strong>1234</strong> → Save. Make sure SwiftMind is running in your menu bar first.</p>
+
+        <h3>How do I enable the Source Editor Extension?</h3>
+        <p>Go to System Settings → Privacy &amp; Security → Extensions → Xcode Source Editor. Enable SwiftMind. Then restart Xcode. Right-click commands (Explain, Fix, Tests, Refactor, Document) will appear in Xcode's Editor menu.</p>
+
+        <h3>SwiftMind doesn't appear in Xcode's Chat panel — what's wrong?</h3>
+        <ul>
+            <li>Make sure SwiftMind is running (check your menu bar)</li>
+            <li>Wait for the menu bar icon to show "Model Loaded" status</li>
+            <li>Confirm the port in Xcode Settings → Intelligence → Chat matches (default: 1234)</li>
+            <li>Try quitting and relaunching both SwiftMind and Xcode</li>
+        </ul>
+
+        <h3>How long does the model take to load?</h3>
+        <p>On M2 Pro and later, the Prava Swift-7B model typically loads in 10–20 seconds. The menu bar icon shows a loading state until inference is ready.</p>
+
+        <h3>Can I change the port from 1234?</h3>
+        <p>Yes. Open SwiftMind → Settings and set a custom port. Then update the matching port in Xcode → Settings → Intelligence → Chat.</p>
+
+        <h3>Is my code private?</h3>
+        <p>Yes. The HTTP server binds to <code>127.0.0.1</code> (loopback) only. Your code never leaves your Mac. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+
+        <h3>The app is crashing or slow — what should I do?</h3>
+        <ul>
+            <li>Make sure you're running the latest version from the Mac App Store</li>
+            <li>Quit and relaunch SwiftMind</li>
+            <li>Check available disk space and RAM</li>
+            <li>If issues persist, email <a href="mailto:support@pravalabs.app">support@pravalabs.app</a> with your Mac model, macOS version, and a description of the problem</li>
+        </ul>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+                &nbsp;|&nbsp; <a href="privacy.html" style="color: rgba(255,255,255,0.5);">Privacy</a>
+                &nbsp;|&nbsp; <a href="terms.html" style="color: rgba(255,255,255,0.5);">Terms</a>
+                &nbsp;|&nbsp; <a href="support.html" style="color: rgba(255,255,255,0.5);">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

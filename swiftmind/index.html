@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwiftMind — The Offline Swift Agent for Xcode</title>
+    <meta name="description" content="SwiftMind is a fully offline, on-device Swift coding agent for Xcode. Purpose-built for Apple platform development — zero API costs, zero internet, zero code leaving your Mac.">
+    <meta name="keywords" content="Swift, Xcode, AI coding assistant, on-device AI, MLX, offline AI, macOS, Apple developer tools, Source Editor Extension, MCP">
+    <meta property="og:title" content="SwiftMind — The Offline Swift Agent for Xcode">
+    <meta property="og:description" content="Fully offline Swift coding agent powered by Prava Swift-7B. Trained on Apple docs. Zero API costs, zero internet, zero code leaving your Mac.">
+    <meta property="og:image" content="images/favicon.png">
+    <meta property="og:url" content="https://pravalabs.app/swiftmind/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">
+                <img src="images/favicon.png" alt="SwiftMind">
+                <span>SwiftMind</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">Setup</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="app-icon-container">
+                <img src="images/favicon.png" alt="SwiftMind App Icon" class="app-icon">
+            </div>
+            <div class="hero-badge">⚡ 100% On-Device · Air-Gapped by Design</div>
+            <h1>The Offline Swift Agent<br><span class="highlight">for Xcode</span></h1>
+            <p class="subtitle">
+                Purpose-built for Apple platform development. On-device, always private — zero API costs, zero internet required, zero code leaving your Mac.
+            </p>
+            <span class="hero-cta">Coming Soon to Mac App Store</span>
+            <div class="platform-tags">
+                <span class="platform-tag">Mac</span>
+                <span class="platform-tag">macOS 26+</span>
+                <span class="platform-tag">Apple Silicon</span>
+                <span class="platform-tag">Xcode 26+</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="features-inner">
+            <h2>Built for Apple Developers</h2>
+            <p class="section-subtitle">Every feature designed for Swift and Xcode. Nothing generic.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Purpose-Built for Apple</h3>
+                    <p>Trained to deeply understand Swift, SwiftUI, UIKit, Combine, Swift Concurrency, and the full Apple SDK. Answers are grounded in Apple platform knowledge — not generic coding patterns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Xcode Chat Provider</h3>
+                    <p>Appears natively in Xcode's Intelligence Chat panel. Add it once via Xcode → Settings → Intelligence → Chat → Add a Chat Provider. Fully streaming, OpenAI-compatible.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖱️</div>
+                    <h3>Source Editor Extension</h3>
+                    <p>Right-click any Swift selection for Explain, Fix Error, Write Tests, Refactor, and Add Documentation. Works on all Xcode versions — no setup beyond enabling the extension.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✈️</div>
+                    <h3>Air-Gapped by Design</h3>
+                    <p>The server binds to 127.0.0.1 only. No outbound network entitlements. Works on a plane, in a SCIF, or on a locked-down enterprise machine. Your code never leaves your Mac.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Native MLX Inference</h3>
+                    <p>Runs in-process using mlx-swift on Apple Silicon. No Ollama, no Python, no daemons, no Docker. Pure Swift. The model is bundled inside the app — no separate download.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Xcode Agent Ready</h3>
+                    <p>SwiftMind includes a full MCP server, ready for Xcode's Agent integration. As Apple expands its Intelligence platform, SwiftMind is built to step in as a first-class agent — no update needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="how-it-works-inner">
+            <h2>Set Up in Minutes</h2>
+            <p class="section-subtitle">Install once. Works everywhere in Xcode.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Install SwiftMind</h3>
+                    <p>Download from the Mac App Store. SwiftMind lives in your menu bar and loads the Prava Swift-7B model into memory at launch.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Add as Chat Provider</h3>
+                    <p>Open Xcode → Settings → Intelligence → Chat → Add a Chat Provider → Locally Hosted → port 1234. Done. SwiftMind now powers Xcode's Chat panel.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Enable the Extension</h3>
+                    <p>Go to System Settings → Privacy &amp; Security → Extensions → Xcode Source Editor and enable SwiftMind. Right-click commands are now available everywhere in Xcode.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Code Privately</h3>
+                    <p>Ask questions in the Chat panel, highlight code and right-click for commands. Everything runs on your Mac — no API key, no internet, no subscription.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison" id="comparison">
+        <div class="comparison-inner">
+            <h2>SwiftMind vs. Generic AI Tools</h2>
+            <p class="section-subtitle">Purpose-built beats general-purpose for Apple development.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Generic AI Tools</th>
+                        <th class="col-swiftmind">SwiftMind</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-label">Runs offline</td>
+                        <td><span class="check-no">✗</span> Cloud-dependent</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> 100% on-device</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Apple docs training</td>
+                        <td><span class="check-no">✗</span> Generic coding knowledge</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> Trained only on Apple docs</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Cost after purchase</td>
+                        <td><span class="check-no">✗</span> Per-token API fees</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> One-time purchase, runs free</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Code privacy</td>
+                        <td><span class="check-no">✗</span> Code sent to cloud</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> Never leaves your Mac</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Internet required</td>
+                        <td><span class="check-no">✗</span> Always online</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> Works offline, anywhere</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Runtime dependencies</td>
+                        <td><span class="check-no">✗</span> Python / Ollama / Node</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> Pure Swift + Apple MLX</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Xcode integration</td>
+                        <td><span class="check-no">✗</span> Copy/paste workflows</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> Native Chat Provider + Extension</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="privacy-section" id="privacy">
+        <div class="privacy-inner">
+            <h2>Your Code Never Leaves Your Mac.</h2>
+            <p class="section-subtitle">Privacy isn't a feature — it's the architecture.</p>
+            <div class="privacy-badges">
+                <span class="privacy-badge"><span class="check">✓</span> No Cloud Processing</span>
+                <span class="privacy-badge"><span class="check">✓</span> No Outbound Network</span>
+                <span class="privacy-badge"><span class="check">✓</span> No API Keys</span>
+                <span class="privacy-badge"><span class="check">✓</span> No Telemetry</span>
+                <span class="privacy-badge"><span class="check">✓</span> No Tracking</span>
+                <span class="privacy-badge"><span class="check">✓</span> Loopback Only</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-section">
+        <div class="tech-inner">
+            <h2>Built With</h2>
+            <div class="tech-grid">
+                <span class="tech-tag">Swift 6</span>
+                <span class="tech-tag">SwiftUI</span>
+                <span class="tech-tag">mlx-swift</span>
+                <span class="tech-tag">Apple Silicon</span>
+                <span class="tech-tag">MCP</span>
+                <span class="tech-tag">Source Editor Extension</span>
+                <span class="tech-tag">OpenAI Chat API</span>
+                <span class="tech-tag">macOS Sandbox</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="images/favicon.png" alt="SwiftMind">
+                        <span>SwiftMind</span>
+                    </div>
+                    <p class="footer-description">The offline Swift coding agent for Xcode. Purpose-built for Apple platform development — on-device, private, and always free to run.</p>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+                        <li><a href="mailto:privacy@pravalabs.app">privacy@pravalabs.app</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

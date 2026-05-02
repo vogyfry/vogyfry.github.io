@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apps by Jim Vogl</title>
-    <meta name="description" content="iOS apps built by Jim Vogl. TradeSocial — learn investing with your group. Mavee — your day, simplified with AI. Pravida — private, encrypted, yours.">
+    <meta name="description" content="Apps built by Jim Vogl. TradeSocial — learn investing with your group. Mavee — your day, simplified with AI. Pravida — private, encrypted, yours. SwiftMind — offline Swift AI for Xcode.">
     <meta property="og:title" content="Apps by Jim Vogl">
     <meta property="og:description" content="iOS apps built by Jim. TradeSocial, Mavee, and Pravida.">
     <link rel="icon" type="image/png" href="tradesocial-icon.png">
@@ -20,6 +20,7 @@
             --accent-ts: #00d4aa;
             --accent-mavee: #7c5cfc;
             --accent-pravida: #1a8cff;
+            --accent-swiftmind: #F05138;
         }
 
         html { scroll-behavior: smooth; }
@@ -89,6 +90,7 @@
         .app-card.ts:hover { border-color: var(--accent-ts); }
         .app-card.mavee:hover { border-color: var(--accent-mavee); }
         .app-card.pravida:hover { border-color: var(--accent-pravida); }
+        .app-card.swiftmind:hover { border-color: var(--accent-swiftmind); }
 
         .app-header { display: flex; align-items: center; gap: 16px; }
 
@@ -127,6 +129,7 @@
         .app-card.ts .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-ts); }
         .app-card.mavee .tag { border-color: rgba(124,92,252,0.3); color: var(--accent-mavee); }
         .app-card.pravida .tag { border-color: rgba(26,140,255,0.3); color: var(--accent-pravida); }
+        .app-card.swiftmind .tag { border-color: rgba(240,81,56,0.3); color: var(--accent-swiftmind); }
 
         .app-cta {
             display: inline-flex;
@@ -140,6 +143,7 @@
         .app-card.ts .app-cta { color: var(--accent-ts); }
         .app-card.mavee .app-cta { color: var(--accent-mavee); }
         .app-card.pravida .app-cta { color: var(--accent-pravida); }
+        .app-card.swiftmind .app-cta { color: var(--accent-swiftmind); }
 
         .app-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
         .app-card:hover .app-cta svg { transform: translateX(4px); }
@@ -167,7 +171,7 @@
     <section class="hero">
         <p class="hero-eyebrow">Apps by Jim Vogl</p>
         <h1>Built for the way you live.</h1>
-        <p>iOS apps focused on collaboration, learning, and making everyday life a little smarter.</p>
+        <p>Apps focused on collaboration, learning, privacy, and developer productivity.</p>
     </section>
 
     <div class="apps">
@@ -238,6 +242,31 @@
                 <span class="tag">Mesh Networking</span>
                 <span class="tag">On-Device AI</span>
                 <span class="tag">Invite-Only</span>
+            </div>
+            <span class="app-cta">
+                Learn more
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
+
+        <a class="app-card swiftmind" href="https://pravalabs.app/swiftmind/">
+            <div class="app-header">
+                <img class="app-icon" src="swiftmind-icon.png" alt="SwiftMind icon">
+                <div>
+                    <div class="app-name">SwiftMind</div>
+                    <div class="app-platform">Mac · macOS 26+ · Coming Soon</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                The offline Swift coding agent for Xcode. Purpose-built for Apple platform development — zero API costs, zero internet required, zero code leaving your Mac.
+            </p>
+            <div class="app-tags">
+                <span class="tag">On-Device AI</span>
+                <span class="tag">Xcode Extension</span>
+                <span class="tag">MLX</span>
+                <span class="tag">Air-Gapped</span>
             </div>
             <span class="app-cta">
                 Learn more
