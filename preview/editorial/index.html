@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prava Labs — Option B · Editorial</title>
+<meta name="description" content="Apps by Prava Labs, LLC.">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f6f3ec; --panel:#fffdf8; --ink:#1b1a17; --muted:#6b675e; --line:#e4ded2;
+  --accent:#10715a; --accent-soft:#e7f0ec;
+  --ts:#0e8f74; --mavee:#6d4fe0; --pravida:#1772d6; --swiftmind:#d8451f; --agentcert:#0f9d63; --certnetwork:#c98a18;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.serif{font-family:ui-serif,'New York',Georgia,'Times New Roman',serif}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1060px;margin:0 auto;height:64px;padding:0 28px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:1.1rem;text-decoration:none;color:var(--ink)}
+.brand .mark{width:28px;height:28px;border-radius:7px;background:var(--accent)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+/* hero */
+.hero{max-width:1060px;margin:0 auto;padding:96px 28px 56px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.hero h1{font-size:clamp(2.8rem,6.5vw,4.6rem);font-weight:600;letter-spacing:-.02em;line-height:1.04;max-width:14ch;margin-bottom:26px}
+.hero p{font-size:1.22rem;color:var(--muted);max-width:54ch}
+/* section heading */
+.shead{max-width:1060px;margin:0 auto;padding:54px 28px 8px;display:flex;align-items:baseline;justify-content:space-between}
+.shead h2{font-size:1.1rem;font-weight:700;letter-spacing:-.01em}
+.shead span{font-size:.8rem;color:var(--muted)}
+/* grid */
+.apps{max-width:1060px;margin:0 auto;padding:18px 28px 110px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px 28px 28px;display:flex;flex-direction:column;gap:16px;text-decoration:none;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.03);transition:transform .25s,box-shadow .25s,border-color .25s;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--c)}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(27,26,23,.12);border-color:color-mix(in srgb,var(--c) 35%,var(--line))}
+.chead{display:flex;align-items:center;gap:14px;margin-top:4px}
+.icon{width:56px;height:56px;border-radius:13px;flex-shrink:0;object-fit:cover;background:#eee;border:1px solid var(--line)}
+.mono-icon{width:56px;height:56px;border-radius:13px;flex-shrink:0;display:grid;place-items:center;font-weight:800;font-size:1.25rem;color:#fff;background:var(--c)}
+.name{font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.plat{font-size:.76rem;color:var(--muted);margin-top:2px}
+.desc{font-size:.95rem;color:var(--muted);line-height:1.62}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{font-size:.7rem;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.cta{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:700;margin-top:auto;color:var(--c)}
+.cta svg{width:14px;height:14px;transition:transform .2s}
+.card:hover .cta svg{transform:translateX(4px)}
+.badge{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px;background:var(--accent-soft);color:var(--accent);align-self:flex-start}
+footer{border-top:1px solid var(--line);text-align:center;padding:34px 28px;color:var(--muted);font-size:.82rem}
+footer a{color:var(--muted);text-decoration:underline}footer a:hover{color:var(--ink)}
+@media(max-width:560px){.nav-links{display:none}.hero{padding-top:64px}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in">
+  <a class="brand" href="#"><span class="mark"></span>Prava Labs</a>
+  <ul class="nav-links"><li><a href="#apps">Products</a></li><li><a href="#">About</a></li><li><a href="#">Privacy</a></li></ul>
+</div></nav>
+
+<header class="hero">
+  <p class="eyebrow">Prava Labs, LLC</p>
+  <h1 class="serif">Thoughtful software for the way you live.</h1>
+  <p>An independent studio building private, intelligent apps for Apple platforms — across productivity, learning, communication, certification, and developer tools.</p>
+</header>
+
+<div class="shead"><h2>Our Products</h2><span>Six and counting</span></div>
+
+<main class="apps" id="apps">
+  <a class="card" style="--c:var(--ts)" href="tradesocial.html">
+    <div class="chead"><img class="icon" src="https://pravalabs.app/tradesocial-icon.png" alt="TradeSocial"><div><div class="name">TradeSocial</div><div class="plat">iPhone · iPad · iOS 18+</div></div></div>
+    <span class="badge">Coming Soon</span>
+    <p class="desc">Learn to invest together. Paper trade with friends on a $5,000 virtual budget with real market data — compare strategies, no real money at risk.</p>
+    <div class="tags"><span class="tag">Paper Trading</span><span class="tag">Group Portfolio</span><span class="tag">Market Data</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--mavee)" href="mavee.html">
+    <div class="chead"><img class="icon" src="https://pravalabs.app/mavee-icon.png" alt="Mavee"><div><div class="name">Mavee</div><div class="plat">iPhone · iOS 26</div></div></div>
+    <span class="badge">Coming Soon</span>
+    <p class="desc">Your day, simplified. Mavee uses Apple Intelligence to connect your calendar, contacts, and reminders — surfacing patterns so you spend less time organizing.</p>
+    <div class="tags"><span class="tag">Apple Intelligence</span><span class="tag">On-Device</span><span class="tag">Calendar</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--pravida)" href="pravida.html">
+    <div class="chead"><img class="icon" src="https://pravalabs.app/pravida-icon.png" alt="Pravida"><div><div class="name">Pravida</div><div class="plat">iPhone · iPad · Mac · Watch</div></div></div>
+    <span class="badge">Coming Soon</span>
+    <p class="desc">Private, encrypted, yours. An invite-only network with end-to-end encrypted messaging, device-to-device mesh networking, and on-device AI.</p>
+    <div class="tags"><span class="tag">E2E Encryption</span><span class="tag">Mesh</span><span class="tag">On-Device AI</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--swiftmind)" href="swiftmind.html">
+    <div class="chead"><img class="icon" src="https://pravalabs.app/swiftmind-icon.png" alt="SwiftMind"><div><div class="name">SwiftMind</div><div class="plat">Mac · macOS 26+</div></div></div>
+    <span class="badge">Coming Soon</span>
+    <p class="desc">The offline Swift coding agent for Xcode. Purpose-built for Apple development — zero API costs, zero internet required, zero code leaving your Mac.</p>
+    <div class="tags"><span class="tag">On-Device AI</span><span class="tag">Xcode</span><span class="tag">MLX</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--agentcert)" href="agentcert.html">
+    <div class="chead"><div class="mono-icon" style="--c:var(--agentcert)">AC</div><div><div class="name">AgentCert</div><div class="plat">Web · Platform</div></div></div>
+    <span class="badge" style="background:#fbeee0;color:#a9610f">Placeholder copy</span>
+    <p class="desc">[Placeholder] Certification and trust for AI agents — verify capability, safety, and provenance. <em>Send me the real description and I'll swap it in.</em></p>
+    <div class="tags"><span class="tag">AI Agents</span><span class="tag">Verification</span><span class="tag">Trust</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--certnetwork)" href="certnetwork.html">
+    <div class="chead"><div class="mono-icon" style="--c:var(--certnetwork)">CN</div><div><div class="name">CertNetwork</div><div class="plat">Web · Platform</div></div></div>
+    <span class="badge" style="background:#fbeee0;color:#a9610f">Placeholder copy</span>
+    <p class="desc">[Placeholder] A connected network for issuing, sharing, and verifying credentials. <em>Send me the real description and I'll swap it in.</em></p>
+    <div class="tags"><span class="tag">Credentials</span><span class="tag">Verification</span><span class="tag">Network</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+</main>
+
+<footer>&copy; 2026 Prava Labs, LLC &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Contact</a></footer>
+</body>
+</html>
