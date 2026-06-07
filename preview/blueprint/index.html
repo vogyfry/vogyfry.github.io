@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prava Labs — Blueprint</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08090a; --panel:#0d0f11; --panel-2:#111417; --line:rgba(255,255,255,.07); --line-2:rgba(255,255,255,.12);
+  --text:#ededf0; --muted:#7e848e; --accent:#7c87ff;
+  --ts:#22d3b0; --mavee:#9b85ff; --pravida:#4aa3ff; --swiftmind:#ff7a5c; --agentcert:#34e3a4; --certnetwork:#f7bd54;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+/* technical grid backdrop */
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:26px 26px;
+  mask:radial-gradient(80% 60% at 50% -5%,#000,transparent 70%)}
+.wrap{position:relative;z-index:1}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(8,9,10,.7);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:0 auto;height:58px;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);font-weight:650;letter-spacing:-.01em}
+.brand .mark{width:24px;height:24px;border-radius:7px;background:linear-gradient(140deg,var(--accent),#4aa3ff)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.86rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--text)}
+.btn{font-size:.82rem;font-weight:600;color:var(--bg);background:var(--text);padding:8px 15px;border-radius:8px;text-decoration:none}
+/* hero */
+.hero{max-width:1100px;margin:0 auto;padding:150px 24px 64px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;color:var(--muted);border:1px solid var(--line-2);border-radius:30px;padding:6px 14px;margin-bottom:26px}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.4rem);font-weight:700;letter-spacing:-.04em;line-height:1.04;max-width:17ch;margin:0 auto 22px}
+.hero h1 .g{background:linear-gradient(100deg,#9b85ff,#4aa3ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.16rem;color:var(--muted);max-width:52ch;margin:0 auto 30px}
+.hero .actions{display:flex;gap:12px;justify-content:center}
+.ghost{font-size:.9rem;font-weight:600;color:var(--text);border:1px solid var(--line-2);padding:11px 20px;border-radius:10px;text-decoration:none}
+.solid{font-size:.9rem;font-weight:600;color:var(--bg);background:var(--text);padding:11px 20px;border-radius:10px;text-decoration:none}
+/* section label */
+.slabel{max-width:1100px;margin:36px auto 0;padding:0 24px;display:flex;align-items:center;gap:14px;color:var(--muted)}
+.slabel .mono{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase}
+.slabel .rule{flex:1;height:1px;background:var(--line)}
+/* grid */
+.apps{max-width:1100px;margin:14px auto 0;padding:0 24px 110px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--text);overflow:hidden;transition:border-color .25s,background .25s,transform .25s}
+.card::before{content:"";position:absolute;inset:0;border-radius:16px;background:radial-gradient(280px 160px at 50% -10%,color-mix(in srgb,var(--c) 22%,transparent),transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{transform:translateY(-4px);background:var(--panel-2);border-color:color-mix(in srgb,var(--c) 40%,var(--line-2))}
+.card:hover::before{opacity:1}
+.ph{display:flex;align-items:center;gap:13px}
+.icon{width:50px;height:50px;border-radius:12px;object-fit:cover;background:#16191c;flex-shrink:0}
+.mono-icon{width:50px;height:50px;border-radius:12px;display:grid;place-items:center;font-weight:700;color:var(--bg);background:var(--c);flex-shrink:0}
+.name{font-size:1.16rem;font-weight:650;letter-spacing:-.02em}
+.plat{font-size:.72rem;color:var(--muted);margin-top:2px;font-family:ui-monospace,Menlo,monospace}
+.desc{font-size:.91rem;color:var(--muted);line-height:1.58}
+.meta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px;border-top:1px solid var(--line)}
+.tags{display:flex;gap:6px}
+.tag{font-size:.66rem;font-weight:600;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+.arrow{color:var(--c);display:flex}.arrow svg{width:16px;height:16px;transition:transform .2s}
+.card:hover .arrow svg{transform:translateX(4px)}
+.badge{position:absolute;top:18px;right:18px;font-size:.6rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--c);font-family:ui-monospace,Menlo,monospace}
+footer{position:relative;z-index:1;text-align:center;padding:34px 24px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+@media(max-width:560px){.nav-links{display:none}.hero{padding-top:120px}}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="wrap">
+<nav class="nav"><div class="nav-in">
+  <a class="brand" href="#"><span class="mark"></span>Prava Labs</a>
+  <ul class="nav-links"><li><a href="#apps">Products</a></li><li><a href="#">About</a></li><li><a href="#">Privacy</a></li></ul>
+  <a class="btn" href="#apps">Explore</a>
+</div></nav>
+
+<header class="hero">
+  <span class="pill"><span class="dot"></span>Six products · built on-device</span>
+  <h1>The studio for <span class="g">private, intelligent</span> software.</h1>
+  <p>Prava Labs builds apps and platforms for Apple ecosystems and AI trust infrastructure — productivity, communication, certification, and developer tools.</p>
+  <div class="actions"><a class="solid" href="#apps">See the products</a><a class="ghost" href="#">About the studio</a></div>
+</header>
+
+<div class="slabel"><span class="mono">Products</span><span class="rule"></span><span class="mono">06</span></div>
+
+<main class="apps" id="apps">
+  <a class="card" style="--c:var(--mavee)" href="mavee.html"><span class="badge">iOS 26</span>
+    <div class="ph"><img class="icon" src="https://pravalabs.app/mavee-icon.png" alt="Mavee"><div><div class="name">Mavee</div><div class="plat">iPhone</div></div></div>
+    <p class="desc">Your day, simplified. Apple Intelligence connects your calendar, contacts, and reminders to surface patterns — fully on-device.</p>
+    <div class="meta"><div class="tags"><span class="tag">on-device</span><span class="tag">calendar</span></div><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+  </a>
+  <a class="card" style="--c:var(--pravida)" href="pravida.html"><span class="badge">iOS · Mac</span>
+    <div class="ph"><img class="icon" src="https://pravalabs.app/pravida-icon.png" alt="Pravida"><div><div class="name">Pravida</div><div class="plat">iPhone · Mac · Watch</div></div></div>
+    <p class="desc">Private, encrypted, yours. Invite-only network with E2E encrypted messaging, device-to-device mesh, and on-device AI.</p>
+    <div class="meta"><div class="tags"><span class="tag">e2e</span><span class="tag">mesh</span></div><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+  </a>
+  <a class="card" style="--c:var(--ts)" href="tradesocial.html"><span class="badge">iOS 18+</span>
+    <div class="ph"><img class="icon" src="https://pravalabs.app/tradesocial-icon.png" alt="TradeSocial"><div><div class="name">TradeSocial</div><div class="plat">iPhone · iPad</div></div></div>
+    <p class="desc">Learn to invest together. Paper trade with friends on a $5,000 virtual budget with real market data — no real money at risk.</p>
+    <div class="meta"><div class="tags"><span class="tag">paper-trading</span><span class="tag">groups</span></div><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+  </a>
+  <a class="card" style="--c:var(--swiftmind)" href="swiftmind.html"><span class="badge">macOS 26+</span>
+    <div class="ph"><img class="icon" src="https://pravalabs.app/swiftmind-icon.png" alt="SwiftMind"><div><div class="name">SwiftMind</div><div class="plat">Mac · Xcode</div></div></div>
+    <p class="desc">The offline Swift coding agent for Xcode. Zero API costs, zero internet required, zero code leaving your Mac.</p>
+    <div class="meta"><div class="tags"><span class="tag">mlx</span><span class="tag">xcode</span></div><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+  </a>
+  <a class="card" style="--c:var(--agentcert)" href="agentcert.html"><span class="badge">placeholder</span>
+    <div class="ph"><div class="mono-icon" style="--c:var(--agentcert)">AC</div><div><div class="name">AgentCert</div><div class="plat">web · platform</div></div></div>
+    <p class="desc">[Placeholder] Certification and trust for AI agents — capability, safety, provenance. Real copy coming from the ai-trust source.</p>
+    <div class="meta"><div class="tags"><span class="tag">ai-agents</span><span class="tag">trust</span></div><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+  </a>
+  <a class="card" style="--c:var(--certnetwork)" href="certnetwork.html"><span class="badge">placeholder</span>
+    <div class="ph"><div class="mono-icon" style="--c:var(--certnetwork)">CN</div><div><div class="name">CertNetwork</div><div class="plat">web · platform</div></div></div>
+    <p class="desc">[Placeholder] A connected network for issuing, sharing, and verifying credentials. Real copy coming from the ai-trust source.</p>
+    <div class="meta"><div class="tags"><span class="tag">credentials</span><span class="tag">verify</span></div><span class="arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+  </a>
+</main>
+
+<footer>&copy; 2026 Prava Labs, LLC &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Contact</a></footer>
+</div>
+</body>
+</html>
