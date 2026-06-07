@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prava Labs — Brutalist</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f4efe2; --ink:#121212; --paper:#fffdf6; --accent:#3a2bff;
+  --ts:#00b894; --mavee:#7c5cfc; --pravida:#1a8cff; --swiftmind:#ff5a36; --agentcert:#16c47f; --certnetwork:#ffb43a;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+.mono{font-family:ui-monospace,'SF Mono',Menlo,monospace}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:3px solid var(--ink)}
+.nav-in{max-width:1120px;margin:0 auto;height:62px;padding:0 22px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900;letter-spacing:-.03em;font-size:1.15rem;text-transform:uppercase}
+.brand .mark{width:28px;height:28px;background:var(--accent);border:2px solid var(--ink)}
+.nav-links{display:flex;gap:6px;list-style:none}
+.nav-links a{color:var(--ink);text-decoration:none;font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:7px 12px;border:2px solid transparent;transition:.15s}
+.nav-links a:hover{border-color:var(--ink);background:var(--accent);color:#fff}
+/* hero */
+.hero{max-width:1120px;margin:0 auto;padding:64px 22px 40px}
+.tagstrip{display:inline-block;background:var(--ink);color:var(--bg);font-weight:800;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;margin-bottom:24px}
+.hero h1{font-size:clamp(2.8rem,9vw,6rem);font-weight:900;letter-spacing:-.05em;line-height:.95;text-transform:uppercase;margin-bottom:22px}
+.hero h1 .hl{background:var(--accent);color:#fff;padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero p{font-size:1.15rem;max-width:50ch;font-weight:500}
+/* section bar */
+.bar{max-width:1120px;margin:30px auto 0;padding:14px 22px;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);display:flex;justify-content:space-between;font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.82rem}
+/* grid */
+.apps{max-width:1120px;margin:0 auto;padding:34px 22px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
+.card{position:relative;background:var(--paper);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:var(--ink);transition:transform .12s ease,box-shadow .12s ease}
+.card:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--c)}
+.topbar{height:10px;margin:-24px -24px 4px;background:var(--c);border-bottom:3px solid var(--ink)}
+.ph{display:flex;align-items:center;gap:13px}
+.icon{width:56px;height:56px;border:2px solid var(--ink);object-fit:cover;background:#fff;flex-shrink:0}
+.mono-icon{width:56px;height:56px;border:2px solid var(--ink);display:grid;place-items:center;font-weight:900;font-size:1.3rem;color:var(--ink);background:var(--c);flex-shrink:0}
+.name{font-size:1.35rem;font-weight:900;letter-spacing:-.03em;text-transform:uppercase}
+.plat{font-size:.7rem;font-weight:700;color:#555;margin-top:2px;letter-spacing:.03em}
+.desc{font-size:.93rem;line-height:1.55;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
+.tag{font-size:.66rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:4px 8px;border:2px solid var(--ink);background:var(--bg)}
+.badge{align-self:flex-start;font-size:.64rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;background:var(--ink);color:var(--paper)}
+.cta{display:inline-flex;align-items:center;gap:7px;font-weight:900;text-transform:uppercase;font-size:.8rem;letter-spacing:.04em;margin-top:4px}
+.cta svg{width:16px;height:16px;transition:transform .15s}
+.card:hover .cta svg{transform:translateX(5px)}
+footer{border-top:3px solid var(--ink);text-align:center;padding:26px 22px;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em}
+footer a{color:var(--ink)}
+@media(max-width:560px){.nav-links{display:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-in">
+  <a class="brand" href="#"><span class="mark"></span>Prava Labs</a>
+  <ul class="nav-links"><li><a href="#apps">Products</a></li><li><a href="#">About</a></li><li><a href="#">Privacy</a></li></ul>
+</div></nav>
+
+<header class="hero">
+  <span class="tagstrip">Prava Labs, LLC — Est. 2026</span>
+  <h1>Software that <span class="hl">respects</span> the way you live.</h1>
+  <p>An independent studio shipping private, intelligent apps and platforms for Apple ecosystems and AI trust infrastructure.</p>
+</header>
+
+<div class="bar"><span>The Products</span><span class="mono">06 / SHIPPING SOON</span></div>
+
+<main class="apps" id="apps">
+  <a class="card" style="--c:var(--ts)" href="tradesocial.html">
+    <div class="topbar"></div><span class="badge">Coming Soon</span>
+    <div class="ph"><img class="icon" src="https://pravalabs.app/tradesocial-icon.png" alt="TradeSocial"><div><div class="name">TradeSocial</div><div class="plat">iPhone · iPad · iOS 18+</div></div></div>
+    <p class="desc">Learn to invest together. Paper trade with friends on a $5,000 virtual budget with real market data — no real money at risk.</p>
+    <div class="tags"><span class="tag">Paper Trading</span><span class="tag">Groups</span><span class="tag">Market Data</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--mavee)" href="mavee.html">
+    <div class="topbar"></div><span class="badge">Coming Soon</span>
+    <div class="ph"><img class="icon" src="https://pravalabs.app/mavee-icon.png" alt="Mavee"><div><div class="name">Mavee</div><div class="plat">iPhone · iOS 26</div></div></div>
+    <p class="desc">Your day, simplified. Apple Intelligence connects your calendar, contacts, and reminders to surface patterns — fully on-device.</p>
+    <div class="tags"><span class="tag">Apple Intelligence</span><span class="tag">On-Device</span><span class="tag">Calendar</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--pravida)" href="pravida.html">
+    <div class="topbar"></div><span class="badge">Coming Soon</span>
+    <div class="ph"><img class="icon" src="https://pravalabs.app/pravida-icon.png" alt="Pravida"><div><div class="name">Pravida</div><div class="plat">iPhone · Mac · Watch</div></div></div>
+    <p class="desc">Private, encrypted, yours. Invite-only network with E2E encrypted messaging, device-to-device mesh, and on-device AI.</p>
+    <div class="tags"><span class="tag">E2E Encryption</span><span class="tag">Mesh</span><span class="tag">On-Device AI</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--swiftmind)" href="swiftmind.html">
+    <div class="topbar"></div><span class="badge">Coming Soon</span>
+    <div class="ph"><img class="icon" src="https://pravalabs.app/swiftmind-icon.png" alt="SwiftMind"><div><div class="name">SwiftMind</div><div class="plat">Mac · macOS 26+</div></div></div>
+    <p class="desc">The offline Swift coding agent for Xcode. Zero API costs, zero internet required, zero code leaving your Mac.</p>
+    <div class="tags"><span class="tag">On-Device AI</span><span class="tag">Xcode</span><span class="tag">MLX</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--agentcert)" href="agentcert.html">
+    <div class="topbar"></div><span class="badge" style="background:var(--swiftmind)">Placeholder</span>
+    <div class="ph"><div class="mono-icon" style="--c:var(--agentcert)">AC</div><div><div class="name">AgentCert</div><div class="plat">Web · Platform</div></div></div>
+    <p class="desc">[Placeholder] Certification and trust for AI agents — capability, safety, provenance. Real copy coming from ai-trust.</p>
+    <div class="tags"><span class="tag">AI Agents</span><span class="tag">Verification</span><span class="tag">Trust</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+  <a class="card" style="--c:var(--certnetwork)" href="certnetwork.html">
+    <div class="topbar"></div><span class="badge" style="background:var(--swiftmind)">Placeholder</span>
+    <div class="ph"><div class="mono-icon" style="--c:var(--certnetwork)">CN</div><div><div class="name">CertNetwork</div><div class="plat">Web · Platform</div></div></div>
+    <p class="desc">[Placeholder] A connected network for issuing, sharing, and verifying credentials. Real copy coming from ai-trust.</p>
+    <div class="tags"><span class="tag">Credentials</span><span class="tag">Verification</span><span class="tag">Network</span></div>
+    <span class="cta">Learn more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+  </a>
+</main>
+
+<footer>&copy; 2026 Prava Labs, LLC &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Contact</a></footer>
+</body>
+</html>
