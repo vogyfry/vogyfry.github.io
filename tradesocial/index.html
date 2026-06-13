@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Social — Learn to Invest Together</title>
+    <meta name="description" content="Learn investing through collaborative group paper-trading. Practice with $5,000 virtual budget, real market data, and zero risk. Free for iOS.">
+    <meta name="keywords" content="trading education, stock market simulation, social investing, paper trading, finance learning, iOS app">
+    <meta property="og:title" content="Trade Social — Learn to Invest Together">
+    <meta property="og:description" content="Practice investing with friends using real market data and virtual money. 100% risk-free.">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://pravalabs.app/tradesocial/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="./" class="nav-brand">
+                <img src="images/favicon.png" alt="Trade Social">
+                <span>Trade Social</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="app-icon-container">
+                <img src="images/favicon.png" alt="Trade Social App Icon" class="app-icon">
+            </div>
+            <div class="hero-badge">📚 100% Educational Simulation</div>
+            <h1>Learn to Invest<br><span class="highlight">Together</span></h1>
+            <p class="subtitle">
+                Form a group with friends or family, practice trading with real market data. Solo mode is free forever. Groups unlock with premium ($7.99/month or $79.99/year).
+            </p>
+            <span class="hero-cta coming-soon">
+                🚀 Coming Soon
+            </span>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="screenshots" id="screenshots">
+        <div class="screenshots-inner">
+            <h2>See It in Action</h2>
+            <p class="section-subtitle">Available on iPhone and iPad. Your trading group, wherever you are.</p>
+
+            <!-- Device Tabs -->
+            <div class="device-tabs">
+                <button class="device-tab active" onclick="switchDevice('iphone', this)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    iPhone
+                </button>
+                <button class="device-tab" onclick="switchDevice('ipad', this)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.5 0h-14C3.12 0 2 1.12 2 2.5v19C2 22.88 3.12 24 4.5 24h14c1.38 0 2.5-1.12 2.5-2.5v-19C21 1.12 19.88 0 18.5 0zM12 23c-.83 0-1.5-.67-1.5-1.5S11.17 20 12 20s1.5.67 1.5 1.5S12.83 23 12 23zM19 19H5V2h14v17z"/></svg>
+                    iPad
+                </button>
+            </div>
+
+            <!-- iPhone Screenshots -->
+            <div id="screenshots-iphone" class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="images/screenshot-portfolio.png" alt="Solo Portfolio showing $5,005 value with real sparklines" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Your Portfolio</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/screenshot-group-portfolio.png" alt="Group Portfolio showing $15,008 with your and group positions" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Group Portfolio</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/screenshot-trading.png" alt="Stock detail for MSFT showing chart, fundamentals and Buy button" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Trade with Real Data</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/screenshot-groups.png" alt="YOLO Portfolio group with 3 members and Invite Members button" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Manage Your Group</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/screenshot-activity.png" alt="Activity feed showing group chat and trade history" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Group Chat & Trades</div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="images/screenshot-analytics.png" alt="Group Analytics showing top contributors and performance metrics" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Group Analytics</div>
+                </div>
+            </div>
+
+            <!-- iPad Screenshots -->
+            <div id="screenshots-ipad" class="screenshot-grid screenshot-grid-ipad" style="display:none;">
+                <div class="screenshot-item screenshot-item-ipad">
+                    <img src="images/ipad-screenshot-portfolio-solo.png" alt="iPad Solo Portfolio showing $5,001 value with position list" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Portfolio on iPad</div>
+                </div>
+                <div class="screenshot-item screenshot-item-ipad">
+                    <img src="images/ipad-screenshot-group-portfolio.png" alt="iPad Group Portfolio showing YOLO Portfolio with group positions" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Group Portfolio</div>
+                </div>
+                <div class="screenshot-item screenshot-item-ipad">
+                    <img src="images/ipad-screenshot-activity.png" alt="iPad Activity feed with group chat, trades, and members" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Group Chat & Activity</div>
+                </div>
+                <div class="screenshot-item screenshot-item-ipad">
+                    <img src="images/ipad-screenshot-trading.png" alt="iPad stock detail sheet showing Coca-Cola chart and fundamentals" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Stock Detail</div>
+                </div>
+                <div class="screenshot-item screenshot-item-ipad">
+                    <img src="images/ipad-screenshot-groups.png" alt="iPad Group management view with members list" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Group Management</div>
+                </div>
+                <div class="screenshot-item screenshot-item-ipad">
+                    <img src="images/ipad-screenshot-analytics.png" alt="iPad Group Analytics showing performance metrics and top contributors" onclick="openLightbox(this)">
+                    <div class="screenshot-caption">Group Analytics</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="features-inner">
+            <h2>Everything You Need to Learn</h2>
+            <p class="section-subtitle">Built for collaborative education, not speculation.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Risk-Free Paper Trading</h3>
+                    <p>Practice with $5,000 in virtual funds using real market data. Learn strategies without risking a single dollar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Social Learning Groups</h3>
+                    <p>Form groups with family, friends, or coworkers. Everyone gets their own budget and learns together.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Milestone Bonuses</h3>
+                    <p>Grow your group, earn rewards. Hit 4 members for +$2,500, 6 for another +$2,500, and 8 (full group) for +$5,000 — up to $15,000 total per member.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Dual Portfolio System</h3>
+                    <p>Solo mode for personal practice, Group mode for collaborative learning. Switch anytime.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Real Market Data</h3>
+                    <p>Trade stocks, ETFs, and crypto with live prices. Experience authentic market dynamics in a safe environment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Group Chat & Activity</h3>
+                    <p>Discuss trades in real-time, see what your group is buying, and learn from each other's strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="how-it-works-inner">
+            <h2>Get Started in Minutes</h2>
+            <p class="section-subtitle">No credit card required. No real money involved. Ever.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up Free</h3>
+                    <p>Create an account with email, Apple, or Google. Get your $5,000 virtual budget instantly.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Start Trading</h3>
+                    <p>Buy and sell stocks, ETFs, and crypto with real market data. All trades are simulated — zero risk.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Form a Group</h3>
+                    <p>Invite friends and family. Everyone gets their own budget. Discuss trades, share strategies, learn together.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Earn Milestones</h3>
+                    <p>As your group grows, unlock bonus virtual funds. More members = more learning capital for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="disclaimer">
+        <div class="disclaimer-inner">
+            <h3>📚 100% Educational Simulation</h3>
+            <p>Trade Social is an educational platform only. All trading is virtual paper-trading with simulated funds. No real money or actual financial accounts are involved. Trade Social does not provide investment advice. Past simulation performance does not guarantee real-world results. Consult a licensed financial advisor before making real investment decisions.</p>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="images/favicon.png" alt="Trade Social">
+                        <span>Trade Social</span>
+                    </div>
+                    <p class="footer-description">Learn investing through collaborative group paper-trading. Practice with real market data and zero risk.</p>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+                        <li><a href="mailto:privacy@pravalabs.app">privacy@pravalabs.app</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved. All trading is simulated.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openLightbox(img) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+        function switchDevice(device, btn) {
+            document.getElementById('screenshots-iphone').style.display = device === 'iphone' ? 'flex' : 'none';
+            document.getElementById('screenshots-ipad').style.display = device === 'ipad' ? 'flex' : 'none';
+            document.querySelectorAll('.device-tab').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
