@@ -74,6 +74,7 @@
         }
 
         .app-card {
+            position: relative;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 24px;
@@ -85,6 +86,9 @@
             text-decoration: none;
             color: var(--text);
         }
+
+        /* Stretched overlay link: whole TradeSocial card -> /tradesocial/ */
+        .card-link { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
 
         .app-card:hover { transform: translateY(-6px); }
         .app-card.ts:hover { border-color: var(--accent-ts); }
@@ -148,8 +152,11 @@
         .app-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
         .app-card:hover .app-cta svg { transform: translateX(4px); }
 
-        /* Official Apple App Store badge (unmodified artwork) */
-        .store-badge { margin-top: auto; height: 45px; width: auto; align-self: flex-start; }
+        /* Official Apple App Store badge (unmodified artwork) — only the badge
+           links to the App Store; it sits above the card's stretched link. */
+        .store-badge-link { position: relative; z-index: 2; margin-top: auto; align-self: flex-start; transition: transform 0.2s; }
+        .store-badge-link:hover { transform: scale(1.03); }
+        .store-badge { height: 45px; width: auto; display: block; }
 
         /* "Live Now" pill */
         .live-now {
@@ -202,7 +209,8 @@
 
     <div class="apps">
 
-        <a class="app-card ts" href="https://apps.apple.com/app/id6759305119" target="_blank" rel="noopener">
+        <div class="app-card ts">
+            <a class="card-link" href="/tradesocial/" aria-label="TradeSocial — learn more"></a>
             <div class="app-header">
                 <img class="app-icon" src="tradesocial-icon.png" alt="TradeSocial icon">
                 <div>
@@ -219,8 +227,10 @@
                 <span class="tag">Real Market Data</span>
                 <span class="tag">Stock · ETF · Crypto</span>
             </div>
-            <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the App Store" width="135" height="45">
-        </a>
+            <a class="store-badge-link" href="https://apps.apple.com/app/id6759305119" target="_blank" rel="noopener" aria-label="Download on the App Store">
+                <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the App Store" width="135" height="45">
+            </a>
+        </div>
 
         <a class="app-card mavee" href="/mavee/">
             <div class="app-header">
