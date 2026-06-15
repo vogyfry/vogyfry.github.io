@@ -93,6 +93,50 @@ body {
 }
 .hero-cta.coming-soon:hover { transform: none; box-shadow: none; }
 
+/* Official Apple "Download on the App Store" badge — artwork unmodified,
+   per developer.apple.com/app-store/marketing/guidelines. Min height 40px,
+   clear space >= 1/4 badge height all around. */
+.app-store-badge {
+    display: inline-block;
+    margin: 14px;
+    transition: transform 0.2s;
+}
+.app-store-badge:hover { transform: scale(1.03); }
+.app-store-badge img { height: 54px; width: auto; display: block; }
+
+/* Closing download CTA */
+.final-cta {
+    padding: 90px 24px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg-primary), rgba(0, 216, 81, 0.06));
+}
+.final-cta-inner { max-width: 640px; margin: 0 auto; }
+.final-cta h2 { font-size: clamp(26px, 4vw, 38px); margin-bottom: 14px; color: var(--text-primary); }
+.final-cta p { color: var(--text-secondary); margin-bottom: 24px; font-size: 17px; }
+
+/* "Live Now" status pill */
+.live-now {
+    display: inline-flex; align-items: center; gap: 7px;
+    margin-bottom: 18px;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--brand-green);
+    padding: 5px 14px 5px 12px; border-radius: 100px;
+    background: var(--brand-green-dim);
+    border: 1px solid var(--brand-green-border);
+}
+.live-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--brand-green);
+    box-shadow: 0 0 0 0 rgba(0, 216, 81, 0.6);
+    animation: livePulse 2s infinite;
+}
+@keyframes livePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(0, 216, 81, 0.5); }
+    70%  { box-shadow: 0 0 0 9px rgba(0, 216, 81, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 216, 81, 0); }
+}
+
 /* App Icon */
 .app-icon-container { margin-bottom: 32px; }
 .app-icon {
