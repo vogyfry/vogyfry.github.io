@@ -39,7 +39,7 @@
         <h2>Frequently Asked Questions</h2>
 
         <h3>What are the system requirements?</h3>
-        <p>SwiftMind requires macOS 26+ and Apple Silicon (M1 or later). 16 GB RAM is recommended for best performance. The app requires approximately 5 GB of disk space for the bundled on-device model.</p>
+        <p>SwiftMind requires macOS 26+ and Apple Silicon (M2 or later) with at least 24 GB of unified memory. The on-device model needs roughly 8 GB of free disk and is delivered with the App Store install.</p>
 
         <h3>Does SwiftMind require an internet connection?</h3>
         <p>No. SwiftMind is fully offline. After installing from the Mac App Store, everything runs on your Mac. No API key, no internet connection, no subscription fees after purchase.</p>
@@ -47,8 +47,8 @@
         <h3>How do I add SwiftMind as a Chat Provider in Xcode?</h3>
         <p>Open Xcode → Settings → Intelligence → Chat → click "Add a Chat Provider…" → select "Locally Hosted" → enter port <strong>1234</strong> → Save. Make sure SwiftMind is running in your menu bar first.</p>
 
-        <h3>How do I enable the Source Editor Extension?</h3>
-        <p>Go to System Settings → Privacy &amp; Security → Extensions → Xcode Source Editor. Enable SwiftMind. Then restart Xcode. Right-click commands (Explain, Fix, Tests, Refactor, Document) will appear in Xcode's Editor menu.</p>
+        <h3>How do I use Agent Mode?</h3>
+        <p>In Xcode → Settings → Intelligence → MCP, enable Xcode Tools and choose Allow. Then type <code>/build</code> followed by what you want in the Chat panel — SwiftMind writes the code, builds it through Xcode, reads the diagnostics, and fixes errors in a loop until it compiles.</p>
 
         <h3>SwiftMind doesn't appear in Xcode's Chat panel — what's wrong?</h3>
         <ul>
@@ -58,8 +58,8 @@
             <li>Try quitting and relaunching both SwiftMind and Xcode</li>
         </ul>
 
-        <h3>How long does the model take to load?</h3>
-        <p>On M2 Pro and later, the on-device model typically loads in 10–20 seconds. The menu bar icon shows a loading state until inference is ready.</p>
+        <h3>Do I have to wait for the model to load?</h3>
+        <p>Usually not. SwiftMind pre-loads the model as soon as it detects Xcode running, so it's typically ready before you send your first message. The first cold load reads the model into memory (a few seconds), then it stays resident while you work and is released automatically when Xcode quits. The menu bar icon shows a loading state until inference is ready.</p>
 
         <h3>Can I change the port from 1234?</h3>
         <p>Yes. Open SwiftMind → Settings and set a custom port. Then update the matching port in Xcode → Settings → Intelligence → Chat.</p>

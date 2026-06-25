@@ -47,7 +47,7 @@
         </ul>
 
         <h2>2. On-Device Processing</h2>
-        <p>All inference is performed locally on your Mac using mlx-swift and Apple Silicon. The on-device model is bundled inside the app — there is no model download, no remote API call, and no cloud backend. The HTTP server listens exclusively on <code>127.0.0.1:1234</code> (loopback interface) and is inaccessible from any other device on your network.</p>
+        <p>All inference is performed locally on your Mac using mlx-swift and Apple Silicon. The on-device model is delivered by Apple as part of the App Store installation; once installed, the app makes no remote API calls and uses no cloud backend. The HTTP server listens exclusively on <code>127.0.0.1:1234</code> (loopback interface) and is inaccessible from any other device on your network.</p>
 
         <h2>3. Network Entitlements</h2>
         <p>SwiftMind holds only the <code>com.apple.security.network.server</code> entitlement — which allows it to accept loopback connections from Xcode. It does <strong>not</strong> hold <code>com.apple.security.network.client</code>. The app is architecturally incapable of initiating any outbound network connection.</p>

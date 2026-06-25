@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwiftMind — The Offline Swift Agent for Xcode</title>
     <meta name="description" content="SwiftMind is a fully offline, on-device Swift coding agent for Xcode. Purpose-built for Apple platform development — zero API costs, zero internet, zero code leaving your Mac.">
-    <meta name="keywords" content="Swift, Xcode, AI coding assistant, on-device AI, MLX, offline AI, macOS, Apple developer tools, Source Editor Extension, MCP">
+    <meta name="keywords" content="Swift, Xcode, AI coding agent, on-device AI, MLX, offline AI, macOS, Apple developer tools, Agent Mode, MCP">
     <meta property="og:title" content="SwiftMind — The Offline Swift Agent for Xcode">
-    <meta property="og:description" content="Fully offline Swift coding agent powered by Prava Swift-7B. Trained on Apple docs. Zero API costs, zero internet, zero code leaving your Mac.">
+    <meta property="og:description" content="Fully offline Swift coding agent powered by Prava Swift, a Swift-specialist model. Zero API costs, zero internet, zero code leaving your Mac.">
     <meta property="og:image" content="images/favicon.png">
     <meta property="og:url" content="https://pravalabs.app/swiftmind/">
     <meta name="twitter:card" content="summary_large_image">
@@ -48,9 +48,9 @@
             </p>
             <span class="hero-cta">Coming Soon to Mac App Store</span>
             <div class="platform-tags">
-                <span class="platform-tag">Mac</span>
                 <span class="platform-tag">macOS 26+</span>
-                <span class="platform-tag">Apple Silicon</span>
+                <span class="platform-tag">Apple Silicon (M2+)</span>
+                <span class="platform-tag">24 GB RAM</span>
                 <span class="platform-tag">Xcode 26+</span>
             </div>
         </div>
@@ -65,7 +65,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">🧠</div>
                     <h3>Purpose-Built for Apple</h3>
-                    <p>Trained to deeply understand Swift, SwiftUI, UIKit, Combine, Swift Concurrency, and the full Apple SDK. Answers are grounded in Apple platform knowledge — not generic coding patterns.</p>
+                    <p>A Swift-specialist model tuned for SwiftUI, UIKit, Combine, Swift Concurrency, and the Apple SDK — with retrieval grounding against an on-device index of real Apple symbols, not generic coding patterns.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💬</div>
@@ -73,9 +73,9 @@
                     <p>Appears natively in Xcode's Intelligence Chat panel. Add it once via Xcode → Settings → Intelligence → Chat → Add a Chat Provider. Fully streaming, OpenAI-compatible.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🖱️</div>
-                    <h3>Source Editor Extension</h3>
-                    <p>Right-click any Swift selection for Explain, Fix Error, Write Tests, Refactor, and Add Documentation. Works on all Xcode versions — no setup beyond enabling the extension.</p>
+                    <div class="feature-icon">🤖</div>
+                    <h3>Agent Mode</h3>
+                    <p>Type <code>/build</code> in the chat and SwiftMind plans multi-file changes, then drives Xcode's own build tools in a write → build → read-diagnostics → fix loop until your code compiles — all on the local model.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">✈️</div>
@@ -85,12 +85,12 @@
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3>Native MLX Inference</h3>
-                    <p>Runs in-process using mlx-swift on Apple Silicon. No Ollama, no Python, no daemons, no Docker. Pure Swift. The model is bundled inside the app — no separate download.</p>
+                    <p>Runs in-process using mlx-swift on Apple Silicon. No Ollama, no Python, no daemons, no Docker. Pure Swift. The model is delivered with the app when you install from the App Store — no separate download, no account, no setup.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔌</div>
-                    <h3>Xcode Agent Ready</h3>
-                    <p>SwiftMind includes a full MCP server, ready for Xcode's Agent integration. As Apple expands its Intelligence platform, SwiftMind is built to step in as a first-class agent — no update needed.</p>
+                    <h3>Native MCP Foundation</h3>
+                    <p>Agent Mode works through Xcode's own MCP bridge and built-in tools — not a brittle add-on. As Apple expands its Intelligence platform, SwiftMind builds on the same first-party foundation.</p>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Install SwiftMind</h3>
-                    <p>Download from the Mac App Store. SwiftMind lives in your menu bar and loads the Prava Swift-7B model into memory at launch.</p>
+                    <p>Download from the Mac App Store — the Prava Swift model comes with the install. SwiftMind lives in your menu bar and loads it on demand.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
@@ -114,8 +114,8 @@
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Enable the Extension</h3>
-                    <p>Go to System Settings → Privacy &amp; Security → Extensions → Xcode Source Editor and enable SwiftMind. Right-click commands are now available everywhere in Xcode.</p>
+                    <h3>Turn On Agent Mode</h3>
+                    <p>In Xcode → Settings → Intelligence → MCP, enable Xcode Tools and Allow. Now type <code>/build</code> in the Chat panel to let SwiftMind write, build, and fix code for you.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
@@ -146,9 +146,9 @@
                         <td class="col-swiftmind"><span class="check-yes">✓</span> 100% on-device</td>
                     </tr>
                     <tr>
-                        <td class="col-label">Apple docs training</td>
+                        <td class="col-label">Swift specialization</td>
                         <td><span class="check-no">✗</span> Generic coding knowledge</td>
-                        <td class="col-swiftmind"><span class="check-yes">✓</span> Trained only on Apple docs</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> Swift-specialist model + Apple SDK grounding</td>
                     </tr>
                     <tr>
                         <td class="col-label">Cost after purchase</td>
@@ -173,7 +173,7 @@
                     <tr>
                         <td class="col-label">Xcode integration</td>
                         <td><span class="check-no">✗</span> Copy/paste workflows</td>
-                        <td class="col-swiftmind"><span class="check-yes">✓</span> Native Chat Provider + Extension</td>
+                        <td class="col-swiftmind"><span class="check-yes">✓</span> Native Chat Provider + Agent Mode</td>
                     </tr>
                 </tbody>
             </table>
@@ -206,7 +206,7 @@
                 <span class="tech-tag">mlx-swift</span>
                 <span class="tech-tag">Apple Silicon</span>
                 <span class="tech-tag">MCP</span>
-                <span class="tech-tag">Source Editor Extension</span>
+                <span class="tech-tag">Background Assets</span>
                 <span class="tech-tag">OpenAI Chat API</span>
                 <span class="tech-tag">macOS Sandbox</span>
             </div>
