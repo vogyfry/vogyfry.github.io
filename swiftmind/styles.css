@@ -181,21 +181,6 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-.hero-cta-note {
-    margin-top: 14px;
-    font-size: 14px;
-    color: var(--text-secondary);
-}
-
-.hero-cta-note a {
-    color: var(--brand);
-    text-decoration: none;
-}
-
-.hero-cta-note a:hover {
-    text-decoration: underline;
-}
-
 .platform-tags {
     display: flex;
     justify-content: center;
