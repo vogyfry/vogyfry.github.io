@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apps by Prava Labs</title>
-    <meta name="description" content="Apps by Prava Labs, LLC. TradeSocial — learn investing with your group. Mavee — your day, simplified with AI. Pravida — private, encrypted, yours. SwiftMind — offline Swift AI for Xcode.">
+    <meta name="description" content="Apps by Prava Labs, LLC. TradeSocial — learn investing with your group. Mavee — your day, simplified with AI. Pravida — private, encrypted, yours. SwiftMind — offline Swift AI for Xcode. Toolport — the semantic tool registry for AI agents.">
     <meta property="og:title" content="Apps by Prava Labs">
-    <meta property="og:description" content="iOS and Mac apps by Prava Labs, LLC. TradeSocial, Mavee, Pravida, and SwiftMind.">
+    <meta property="og:description" content="iOS and Mac apps by Prava Labs, LLC. TradeSocial, Mavee, Pravida, SwiftMind, and Toolport.">
     <link rel="icon" type="image/png" href="tradesocial-icon.png">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,6 +21,7 @@
             --accent-mavee: #7c5cfc;
             --accent-pravida: #1a8cff;
             --accent-swiftmind: #F05138;
+            --accent-toolport: #00b8ff;
         }
 
         html { scroll-behavior: smooth; }
@@ -95,6 +96,7 @@
         .app-card.mavee:hover { border-color: var(--accent-mavee); }
         .app-card.pravida:hover { border-color: var(--accent-pravida); }
         .app-card.swiftmind:hover { border-color: var(--accent-swiftmind); }
+        .app-card.toolport:hover { border-color: var(--accent-toolport); }
 
         .app-header { display: flex; align-items: center; gap: 16px; }
 
@@ -134,6 +136,7 @@
         .app-card.mavee .tag { border-color: rgba(124,92,252,0.3); color: var(--accent-mavee); }
         .app-card.pravida .tag { border-color: rgba(26,140,255,0.3); color: var(--accent-pravida); }
         .app-card.swiftmind .tag { border-color: rgba(240,81,56,0.3); color: var(--accent-swiftmind); }
+        .app-card.toolport .tag { border-color: rgba(0,184,255,0.3); color: var(--accent-toolport); }
 
         .app-cta {
             display: inline-flex;
@@ -148,6 +151,7 @@
         .app-card.mavee .app-cta { color: var(--accent-mavee); }
         .app-card.pravida .app-cta { color: var(--accent-pravida); }
         .app-card.swiftmind .app-cta { color: var(--accent-swiftmind); }
+        .app-card.toolport .app-cta { color: var(--accent-toolport); }
 
         .app-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
         .app-card:hover .app-cta svg { transform: translateX(4px); }
@@ -300,6 +304,31 @@
                 <span class="tag">Swift-Specialist</span>
                 <span class="tag">MLX</span>
                 <span class="tag">Air-Gapped</span>
+            </div>
+            <span class="app-cta">
+                Learn more
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
+
+        <a class="app-card toolport" href="/toolport/">
+            <div class="app-header">
+                <img class="app-icon" src="toolport-icon.png" alt="Prava Toolport icon">
+                <div>
+                    <div class="app-name">Toolport</div>
+                    <div class="app-platform">Mac · Menu Bar · Coming Soon</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                The semantic tool registry for AI agents. One local broker between any agent — Claude Code, Codex, Cursor — and all your MCP servers, handing it only the right tools per task, in any language. ~80% fewer tokens.
+            </p>
+            <div class="app-tags">
+                <span class="tag">MCP</span>
+                <span class="tag">Semantic Search</span>
+                <span class="tag">Any Agent</span>
+                <span class="tag">Multilingual</span>
             </div>
             <span class="app-cta">
                 Learn more

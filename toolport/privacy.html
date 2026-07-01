@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Prava Toolport</title>
+    <meta name="description" content="Prava Toolport Privacy Policy. Your tool index stays on your device, and Toolport talks only to the MCP servers you configure.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <img src="images/favicon.png" alt="Prava Toolport">
+                <span>Prava Toolport</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="legal-page">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated: July 1, 2026</p>
+
+        <div class="highlight-box">
+            <p>Prava Toolport is built on a simple principle: <strong>your tools are your business</strong>. The search index, embedding model, and tool catalog live on your machine, and Toolport connects only to the MCP servers you explicitly configure. There is no Toolport cloud backend, and no telemetry.</p>
+        </div>
+
+        <h2>1. What We Don't Collect</h2>
+        <p>Prava Toolport does not collect, store, or transmit to us:</p>
+        <ul>
+            <li>Your search queries or the tasks you describe to the registry</li>
+            <li>Tool names, schemas, or metadata from your MCP servers</li>
+            <li>Arguments or results of tool invocations</li>
+            <li>Analytics or usage telemetry</li>
+            <li>Crash reports sent to any server</li>
+            <li>Device identifiers or fingerprints</li>
+            <li>Advertising identifiers</li>
+            <li>Location data</li>
+        </ul>
+
+        <h2>2. On-Device Processing</h2>
+        <p>Semantic search runs locally. The multilingual embedding model executes on your Mac, and the tool index is stored in a local data directory under your user account. Searching for tools requires no network connection and sends nothing off your device.</p>
+
+        <h2>3. Connections Toolport Makes</h2>
+        <p>Toolport's job is to broker between your AI agent and the MCP servers you add. It therefore makes network connections <strong>only</strong> to:</p>
+        <ul>
+            <li><strong>The MCP servers you configure</strong> — to list their tools and to proxy tool invocations your agent requests. What those third-party servers do with requests is governed by their own privacy policies.</li>
+            <li><strong>OAuth sign-in endpoints for servers that require it</strong> (for example, Microsoft or GitHub hosted services) — authentication happens directly between your machine and the identity provider.</li>
+        </ul>
+        <p>Toolport never routes your traffic through Prava Labs servers.</p>
+
+        <h2>4. OAuth Tokens and Credentials</h2>
+        <p>When a remote MCP server requires sign-in, the resulting tokens are stored locally on your Mac in Toolport's data directory. Tokens are used solely to authenticate your requests to that server. We never see, receive, or store your credentials or tokens.</p>
+
+        <h2>5. Team and Enterprise Features</h2>
+        <p>Governance receipts, security pre-screen results, and cost metering data are generated and stored locally (or on a server your own organization operates in network mode). They are not transmitted to Prava Labs.</p>
+
+        <h2>6. Mac App Store Sandbox</h2>
+        <p>The Mac App Store edition of Toolport is fully sandboxed. It cannot access files outside its container without explicit user permission and holds only the entitlements needed to connect to the remote servers you configure.</p>
+
+        <h2>7. Third-Party Services</h2>
+        <p>Toolport does not integrate with any third-party analytics, advertising, crash reporting, or tracking services. There are no SDKs, no beacons, no pixel tracking.</p>
+
+        <h2>8. Purchase and Payment</h2>
+        <p>App Store purchases are processed entirely by Apple; we do not receive or store any payment card information. Licenses for the direct-download edition are validated offline using public-key cryptography — validation does not phone home.</p>
+
+        <h2>9. Support Communications</h2>
+        <p>If you contact us at <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>, we receive only the information you choose to include in your email. We use this solely to respond to your inquiry and do not share it with any third party.</p>
+
+        <h2>10. Children's Privacy</h2>
+        <p>Prava Toolport is a professional developer tool not directed at children under 13. We do not knowingly collect any information from children.</p>
+
+        <h2>11. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. Continued use of the app after changes constitutes acceptance.</p>
+
+        <h2>12. Contact</h2>
+        <p>Questions about this policy? Contact us at <a href="mailto:privacy@pravalabs.app">privacy@pravalabs.app</a>.</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+                &nbsp;|&nbsp; <a href="privacy.html" style="color: rgba(255,255,255,0.5);">Privacy</a>
+                &nbsp;|&nbsp; <a href="terms.html" style="color: rgba(255,255,255,0.5);">Terms</a>
+                &nbsp;|&nbsp; <a href="support.html" style="color: rgba(255,255,255,0.5);">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prava Toolport — The Semantic Tool Registry for AI Agents</title>
+    <meta name="description" content="Prava Toolport sits between any AI agent and all your MCP servers, handing the agent only the few right tools per task — in any language. Solves tool-context bloat with ~80% fewer tokens.">
+    <meta name="keywords" content="MCP, Model Context Protocol, AI agents, tool registry, semantic search, Claude Code, Codex, Cursor, context bloat, multilingual, macOS, menu bar app">
+    <meta property="og:title" content="Prava Toolport — The Semantic Tool Registry for AI Agents">
+    <meta property="og:description" content="One local broker between your AI agent and all your MCP servers. The agent gets just the right tools per task, in any language — instead of every tool definition at once.">
+    <meta property="og:image" content="images/favicon.png">
+    <meta property="og:url" content="https://pravalabs.app/toolport/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">
+                <img src="images/favicon.png" alt="Prava Toolport">
+                <span>Prava Toolport</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">Setup</a></li>
+                <li><a href="#plans">Plans</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="app-icon-container">
+                <img src="images/favicon.png" alt="Prava Toolport App Icon" class="app-icon">
+            </div>
+            <div class="hero-badge">🔍 One Broker · Every Tool, On Demand · Any Language</div>
+            <h1>Every tool your agent needs.<br><span class="highlight">None of the context bloat.</span></h1>
+            <p class="subtitle">
+                Prava Toolport is a local semantic tool registry that sits between any AI agent and all your MCP servers — handing the agent only the few right tools for each task, instead of every tool definition at once.
+            </p>
+            <span class="hero-cta">Coming Soon to Mac App Store</span>
+            <div class="platform-tags">
+                <span class="platform-tag">Mac · Menu Bar App</span>
+                <span class="platform-tag">Claude Code</span>
+                <span class="platform-tag">Codex</span>
+                <span class="platform-tag">Cursor</span>
+                <span class="platform-tag">Any MCP Agent</span>
+            </div>
+
+            <div class="loop" aria-label="The three-call workflow">
+                <div class="loop-step">
+                    <code>search_tools</code>
+                    <span>Describe the task in plain language — any language</span>
+                </div>
+                <div class="loop-arrow">→</div>
+                <div class="loop-step">
+                    <code>get_tool_schema</code>
+                    <span>Load full details for one tool, only when needed</span>
+                </div>
+                <div class="loop-arrow">→</div>
+                <div class="loop-step">
+                    <code>invoke_tool</code>
+                    <span>Run it, proxied to the right downstream server</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="features-inner">
+            <h2>Your Agent Is Drowning in Tool Definitions</h2>
+            <p class="section-subtitle">Every MCP server dumps its whole tool menu into the agent's context. A few servers together can eat 40–50% of the window before any work starts. Toolport fixes that with progressive disclosure.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Semantic Tool Search</h3>
+                    <p>The agent describes what it wants to do — "turn off the broken approval flow" — and Toolport returns the top matching tools from across all your servers. Three meta-tools replace hundreds of definitions, saving ~80% of the tokens.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Any Language In, Any Language Out</h3>
+                    <p>Cross-lingual embeddings mean a query in Japanese finds a tool described in English, and vice versa. Most tool layers are English-only; Toolport is multilingual by architecture.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Local-First</h3>
+                    <p>The search index and embedding model live on your machine. Discovery works offline, round trips stay on-device, and nothing about your tools is sent to a cloud service.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Agent-Agnostic</h3>
+                    <p>Works with any MCP-speaking client — Claude Code, Codex, Cursor, or your own agent. One registry entry replaces a page of server configs, and Toolport teaches connecting agents the workflow automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Hosted Servers, OAuth Built In</h3>
+                    <p>Connect remote MCP servers over HTTP with sign-in handled for you — including enterprise services like Microsoft Dataverse and GitHub. Tokens are stored locally, never proxied through us.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Menu-Bar Command Center</h3>
+                    <p>A native macOS menu-bar app supervises everything: add servers from a catalog or by hand, watch live metrics, re-index on demand, and run diagnostics — no terminal required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="how-it-works-inner">
+            <h2>Set Up in Minutes</h2>
+            <p class="section-subtitle">One install. One registry entry in your agent. Done.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Install Toolport</h3>
+                    <p>Toolport lives in your menu bar and runs the registry engine locally. New installs start a 14-day trial with every component enabled.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Add Your MCP Servers</h3>
+                    <p>Pick servers from the built-in catalog or add your own. Toolport connects to each one, asks for its tools, and files everything into a local searchable index.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Point Your Agent at Toolport</h3>
+                    <p>Register Toolport as a single MCP server in Claude Code, Codex, Cursor, or any MCP client. That one entry now fronts every server you added.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Work Normally</h3>
+                    <p>Your agent discovers tools on demand — search, load one schema, invoke. When a server's tools change, Toolport re-checks it automatically.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison" id="comparison">
+        <div class="comparison-inner">
+            <h2>Toolport vs. Connecting Servers Directly</h2>
+            <p class="section-subtitle">Progressive disclosure beats loading everything up front.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Direct MCP Connections</th>
+                        <th class="col-toolport">Prava Toolport</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-label">Context cost</td>
+                        <td><span class="check-no">✗</span> Every tool definition loaded up front</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> 3 meta-tools, ~80% fewer tokens</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Adding another server</td>
+                        <td><span class="check-no">✗</span> Context shrinks with each one</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Constant cost, any number of servers</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Finding the right tool</td>
+                        <td><span class="check-no">✗</span> Agent scans a wall of definitions</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Semantic search over intent</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Non-English queries</td>
+                        <td><span class="check-no">✗</span> English-only matching</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Cross-lingual by design</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Small / on-device models</td>
+                        <td><span class="check-no">✗</span> Choke first on tool bloat</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Tiny footprint fits any model</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Governance &amp; metering</td>
+                        <td><span class="check-no">✗</span> None</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Audit receipts, security pre-screen, cost tracking</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Plans -->
+    <section class="plans" id="plans">
+        <div class="plans-inner">
+            <h2>One App. Pick Your Tier.</h2>
+            <p class="section-subtitle">Everyone gets the same app — your plan simply unlocks components. Every install starts with a 14-day free trial with everything on.</p>
+            <div class="plan-grid">
+                <div class="plan-card">
+                    <div class="plan-name">Trial</div>
+                    <div class="plan-price">Free</div>
+                    <div class="plan-note">14 days · every component enabled</div>
+                    <ul class="plan-features">
+                        <li>Full product, no card required</li>
+                        <li>Evaluate before choosing a tier</li>
+                    </ul>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-name">Solo</div>
+                    <div class="plan-price">$7.99 <span>/ mo</span></div>
+                    <div class="plan-note">1 seat · annual saves ~2 months</div>
+                    <ul class="plan-features">
+                        <li>Semantic search meta-tools</li>
+                        <li>Connect your own MCP servers</li>
+                        <li>Local-first, on-device index</li>
+                    </ul>
+                </div>
+                <div class="plan-card featured">
+                    <div class="plan-name">Team</div>
+                    <div class="plan-price">$24.99 <span>/ mo</span></div>
+                    <div class="plan-note">5 seats · annual saves ~2 months</div>
+                    <ul class="plan-features">
+                        <li>Everything in Solo</li>
+                        <li>Network serving (multi-user)</li>
+                        <li>Governance &amp; audit receipts</li>
+                        <li>Security pre-screen of tools</li>
+                        <li>Token / cost metering</li>
+                        <li>Central management &amp; analytics</li>
+                    </ul>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-price">$59.99 <span>/ mo</span></div>
+                    <div class="plan-note">5 seats · annual saves ~2 months</div>
+                    <ul class="plan-features">
+                        <li>Everything in Team</li>
+                        <li>SSO</li>
+                        <li>Air-gapped / offline license</li>
+                        <li>Audit export</li>
+                        <li>Priority support</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="plans-footnote">Prices shown in USD and subject to change before launch. Billing is handled by the Mac App Store.</p>
+        </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="privacy-section" id="privacy">
+        <div class="privacy-inner">
+            <h2>Your Tools. Your Machine. Your Business.</h2>
+            <p class="section-subtitle">Toolport talks only to the MCP servers you configure — nothing else.</p>
+            <div class="privacy-badges">
+                <span class="privacy-badge"><span class="check">✓</span> Local Search Index</span>
+                <span class="privacy-badge"><span class="check">✓</span> On-Device Embeddings</span>
+                <span class="privacy-badge"><span class="check">✓</span> Your Servers Only</span>
+                <span class="privacy-badge"><span class="check">✓</span> OAuth Tokens Stay Local</span>
+                <span class="privacy-badge"><span class="check">✓</span> No Telemetry</span>
+                <span class="privacy-badge"><span class="check">✓</span> No Tracking</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-section">
+        <div class="tech-inner">
+            <h2>Built With</h2>
+            <div class="tech-grid">
+                <span class="tech-tag">Model Context Protocol</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Multilingual Embeddings</span>
+                <span class="tech-tag">SwiftUI</span>
+                <span class="tech-tag">stdio + HTTP Transports</span>
+                <span class="tech-tag">OAuth 2.0</span>
+                <span class="tech-tag">Ed25519 Licensing</span>
+                <span class="tech-tag">macOS Sandbox</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="images/favicon.png" alt="Prava Toolport">
+                        <span>Prava Toolport</span>
+                    </div>
+                    <p class="footer-description">The semantic tool registry for AI agents. One local broker between your agent and all your MCP servers — just the right tools per task, in any language.</p>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+                        <li><a href="mailto:privacy@pravalabs.app">privacy@pravalabs.app</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
