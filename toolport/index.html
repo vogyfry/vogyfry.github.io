@@ -245,7 +245,31 @@
                     </ul>
                 </div>
             </div>
-            <p class="plans-footnote">Prices shown in USD and subject to change before launch. Billing is handled by the Mac App Store.</p>
+            <div class="edition-grid">
+                <div class="edition-card">
+                    <h3>Mac App Store Edition</h3>
+                    <span class="edition-chip">Remote Servers</span>
+                    <p>The one-click install. Subscribe to a tier above; Apple handles billing and updates. Fully sandboxed and remote-only by design.</p>
+                    <ul>
+                        <li>Hosted (HTTP) MCP servers with OAuth sign-in</li>
+                        <li>All semantic search &amp; tier features above</li>
+                        <li>Automatic updates via the App Store</li>
+                        <li class="edition-no">Local (stdio) servers — not available in the sandbox</li>
+                    </ul>
+                </div>
+                <div class="edition-card">
+                    <h3>Developer ID Edition</h3>
+                    <span class="edition-chip">Remote + Local Servers</span>
+                    <p>The direct download for power users and teams — a notarized DMG from us, unlocked with a signed license key. Same tiers, same engine.</p>
+                    <ul>
+                        <li>Everything in the App Store edition</li>
+                        <li>Local (stdio) servers — spawn MCP servers on your machine</li>
+                        <li>Offline license validation (no phone-home)</li>
+                        <li>Air-gapped licensing for Enterprise</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="plans-footnote">Prices shown in USD and subject to change before launch. App Store billing is handled by Apple; Developer ID licenses are issued per tier and seats. Local (stdio) servers require the Developer ID edition — the App Store edition is sandboxed and fronts hosted servers only.</p>
         </div>
     </section>
 

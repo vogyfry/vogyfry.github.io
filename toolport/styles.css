@@ -520,6 +520,75 @@ body {
     color: var(--text-tertiary);
 }
 
+/* Editions */
+.edition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    text-align: left;
+    max-width: 860px;
+    margin: 56px auto 0;
+}
+
+.edition-card {
+    background: var(--bg-surface);
+    padding: 28px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+.edition-card h3 {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.edition-chip {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--brand);
+    background: var(--brand-light);
+    border: 1px solid rgba(0, 184, 255, 0.25);
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+}
+
+.edition-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+}
+
+.edition-card ul {
+    list-style: none;
+}
+
+.edition-card li {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    padding: 6px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.edition-card li::before {
+    content: "✓  ";
+    color: #30d158;
+    font-weight: 700;
+}
+
+.edition-card li.edition-no::before {
+    content: "—  ";
+    color: var(--text-tertiary);
+    font-weight: 700;
+}
+
 /* Privacy Section */
 .privacy-section {
     padding: 80px 24px;
