@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — Prava Toolport</title>
+    <meta name="description" content="Get help with Prava Toolport — setup, agents, MCP servers, and FAQs.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <img src="images/favicon.png" alt="Prava Toolport">
+                <span>Prava Toolport</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="legal-page">
+        <h1>Support</h1>
+        <p class="last-updated">Need help? We're here for you.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have questions, feedback, or need help with Prava Toolport, reach out:</p>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+        </ul>
+        <p>We aim to respond within 48 hours.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What exactly does Toolport do?</h3>
+        <p>Toolport sits between your AI agent and all your MCP servers. Instead of every server loading its full tool list into the agent's context, the agent gets three small meta-tools — <code>search_tools</code>, <code>get_tool_schema</code>, and <code>invoke_tool</code> — and discovers the right tools on demand. Same power, a fraction of the context.</p>
+
+        <h3>Which agents work with Toolport?</h3>
+        <p>Any MCP-speaking client: Claude Code, Codex, Cursor, or your own agent. You register Toolport as a single MCP server in your agent's configuration, and it fronts every server you've added.</p>
+
+        <h3>How do I add Toolport to Claude Code?</h3>
+        <p>Add Toolport as an MCP server in your Claude Code configuration (one entry). Toolport announces the search → schema → invoke workflow to the agent automatically when it connects — no system-prompt changes needed.</p>
+
+        <h3>Do my existing MCP servers need changes?</h3>
+        <p>No. Toolport speaks standard MCP to your servers. Point it at the same server definitions you use today; it connects, asks each server for its tools, and indexes them. When a server's tools change, Toolport re-checks it automatically.</p>
+
+        <h3>Does search work in languages other than English?</h3>
+        <p>Yes. Toolport uses cross-lingual embeddings, so a query in one language finds tools described in another — for example, a Japanese query can find an English-described tool.</p>
+
+        <h3>Does Toolport require an internet connection?</h3>
+        <p>Semantic search and the index are fully local. You need network access only to reach remote MCP servers you've configured; local (stdio) servers and search itself work offline.</p>
+
+        <h3>How does sign-in to hosted servers work?</h3>
+        <p>For remote servers that require OAuth (for example, Microsoft or GitHub hosted services), Toolport opens the provider's sign-in in your browser and stores the tokens locally on your Mac. Your credentials never pass through Prava Labs.</p>
+
+        <h3>What's included in the free trial?</h3>
+        <p>Every new install starts a 14-day trial with all components enabled — including the Team features (network serving, governance, security pre-screen, metering). After the trial, the app settles to your purchased tier.</p>
+
+        <h3>What's the difference between the tiers?</h3>
+        <p>The app is the same for everyone; your tier unlocks components. Solo covers the core registry with your own servers. Team adds multi-user network serving, governance receipts, security pre-screening, cost metering, and central management. Enterprise adds SSO, air-gapped licensing, and audit export. See the <a href="index.html#plans">plans overview</a>.</p>
+
+        <h3>The agent isn't finding my server's tools — what should I check?</h3>
+        <ul>
+            <li>Make sure Toolport is running (check your menu bar)</li>
+            <li>Open the Configure window and confirm the server shows as connected</li>
+            <li>Use Re-index to rebuild the search index after changing servers</li>
+            <li>Confirm your agent's config points at Toolport and was restarted after the change</li>
+        </ul>
+
+        <h3>The app is misbehaving — what should I do?</h3>
+        <ul>
+            <li>Make sure you're running the latest version</li>
+            <li>Quit and relaunch Toolport from the menu bar</li>
+            <li>Check the built-in diagnostics view for connection errors</li>
+            <li>If issues persist, email <a href="mailto:support@pravalabs.app">support@pravalabs.app</a> with your Mac model, macOS version, and a description of the problem</li>
+        </ul>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+                &nbsp;|&nbsp; <a href="privacy.html" style="color: rgba(255,255,255,0.5);">Privacy</a>
+                &nbsp;|&nbsp; <a href="terms.html" style="color: rgba(255,255,255,0.5);">Terms</a>
+                &nbsp;|&nbsp; <a href="support.html" style="color: rgba(255,255,255,0.5);">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
