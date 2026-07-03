@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apps by Prava Labs</title>
-    <meta name="description" content="Apps by Prava Labs, LLC. TradeSocial — learn investing with your group. Mavee — your day, simplified with AI. Pravida — private, encrypted, yours. SwiftMind — offline Swift AI for Xcode. Toolport — the semantic tool registry for AI agents.">
+    <meta name="description" content="Apps by Prava Labs, LLC. TradeSocial — learn investing with your group, live on the App Store. Toolport and SwiftMind — now in TestFlight beta. In the lab: Pravida and Mavee.">
     <meta property="og:title" content="Apps by Prava Labs">
-    <meta property="og:description" content="iOS and Mac apps by Prava Labs, LLC. TradeSocial, Mavee, Pravida, SwiftMind, and Toolport.">
+    <meta property="og:description" content="iOS and Mac apps by Prava Labs, LLC. TradeSocial live on the App Store. Toolport and SwiftMind in TestFlight beta. Pravida and Mavee in the lab.">
     <link rel="icon" type="image/png" href="tradesocial-icon.png">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -162,7 +162,7 @@
         .store-badge-link:hover { transform: scale(1.03); }
         .store-badge { height: 45px; width: auto; display: block; }
 
-        /* "Live Now" pill */
+        /* Status pills: "Live Now" (base), .beta and .dev modifiers */
         .live-now {
             display: inline-flex; align-items: center; gap: 5px;
             font-size: 0.62rem; font-weight: 700; letter-spacing: 0.05em;
@@ -172,6 +172,17 @@
             padding: 2px 8px 2px 7px; border-radius: 20px;
             background: rgba(0,212,170,0.12);
             border: 1px solid rgba(0,212,170,0.32);
+            white-space: nowrap;
+        }
+        .live-now.beta {
+            color: #ff9f0a;
+            background: rgba(255,159,10,0.12);
+            border-color: rgba(255,159,10,0.32);
+        }
+        .live-now.dev {
+            color: var(--muted);
+            background: rgba(255,255,255,0.06);
+            border-color: var(--border);
         }
         .live-dot {
             width: 6px; height: 6px; border-radius: 50%;
@@ -184,6 +195,32 @@
             70%  { box-shadow: 0 0 0 7px rgba(0,212,170,0); }
             100% { box-shadow: 0 0 0 0 rgba(0,212,170,0); }
         }
+
+        /* Labs section: quieter cards for products still in development */
+        .labs-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+        }
+        .labs-header .hero-eyebrow { margin-bottom: 12px; }
+        .labs-header h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+        .labs-header p.sub { color: var(--muted); font-size: 1rem; }
+
+        .apps.main { padding-bottom: 72px; }
+
+        .apps.labs .app-card {
+            padding: 28px 26px;
+            background: #0b0b0b;
+        }
+        .apps.labs .app-icon { width: 56px; height: 56px; border-radius: 13px; }
+        .apps.labs .app-name { font-size: 1.2rem; }
+        .apps.labs .app-desc { font-size: 0.9rem; }
 
         footer {
             text-align: center;
@@ -211,7 +248,7 @@
         <p>Apps focused on collaboration, learning, privacy, and developer productivity.</p>
     </section>
 
-    <div class="apps">
+    <div class="apps main">
 
         <div class="app-card ts">
             <a class="card-link" href="/tradesocial/" aria-label="TradeSocial — learn more"></a>
@@ -236,47 +273,22 @@
             </a>
         </div>
 
-        <a class="app-card mavee" href="/mavee/">
+        <a class="app-card toolport" href="/toolport/">
             <div class="app-header">
-                <img class="app-icon" src="mavee-icon.png" alt="Mavee icon">
+                <img class="app-icon" src="toolport-icon.png" alt="Prava Toolport icon">
                 <div>
-                    <div class="app-name">Mavee</div>
-                    <div class="app-platform">iPhone · iOS 26 · Coming Soon</div>
+                    <div class="app-name">Toolport <span class="live-now beta">TestFlight Beta</span></div>
+                    <div class="app-platform">Mac · Menu Bar</div>
                 </div>
             </div>
             <p class="app-desc">
-                Your day, simplified. Mavee uses Apple Intelligence to connect your calendar, contacts, and reminders — surfacing patterns and insights so you spend less time organizing and more time living.
+                The semantic tool registry for AI agents. One local broker between any agent — Claude Code, Codex, Cursor — and all your MCP servers, handing it only the right tools per task, in any language. ~80% fewer tokens.
             </p>
             <div class="app-tags">
-                <span class="tag">Apple Intelligence</span>
-                <span class="tag">Calendar</span>
-                <span class="tag">Contacts</span>
-                <span class="tag">iOS 26</span>
-            </div>
-            <span class="app-cta">
-                Learn more
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
-            </span>
-        </a>
-
-        <a class="app-card pravida" href="/pravida/">
-            <div class="app-header">
-                <img class="app-icon" src="pravida-icon.png" alt="Pravida icon">
-                <div>
-                    <div class="app-name">Pravida</div>
-                    <div class="app-platform">iPhone · iPad · Mac · Apple Watch · iOS 26+ · Coming Soon</div>
-                </div>
-            </div>
-            <p class="app-desc">
-                Private, encrypted, yours. An invite-only network with E2E encrypted messaging, device-to-device mesh networking, and on-device AI — iMessage quality with Signal-level security.
-            </p>
-            <div class="app-tags">
-                <span class="tag">E2E Encryption</span>
-                <span class="tag">Mesh Networking</span>
-                <span class="tag">On-Device AI</span>
-                <span class="tag">Invite-Only</span>
+                <span class="tag">MCP</span>
+                <span class="tag">Semantic Search</span>
+                <span class="tag">Any Agent</span>
+                <span class="tag">Multilingual</span>
             </div>
             <span class="app-cta">
                 Learn more
@@ -290,8 +302,8 @@
             <div class="app-header">
                 <img class="app-icon" src="swiftmind-icon.png" alt="SwiftMind icon">
                 <div>
-                    <div class="app-name">SwiftMind</div>
-                    <div class="app-platform">Mac · macOS 26+ · TestFlight Beta</div>
+                    <div class="app-name">SwiftMind <span class="live-now beta">TestFlight Beta</span></div>
+                    <div class="app-platform">Mac · macOS 26+</div>
                 </div>
             </div>
             <p class="app-desc">
@@ -313,22 +325,57 @@
             </span>
         </a>
 
-        <a class="app-card toolport" href="/toolport/">
+    </div>
+
+    <section class="labs-header">
+        <p class="hero-eyebrow">Labs</p>
+        <h2>What we're building next.</h2>
+        <p class="sub">In active development at Prava Labs — coming when they're ready.</p>
+    </section>
+
+    <div class="apps labs">
+
+        <a class="app-card pravida" href="/pravida/">
             <div class="app-header">
-                <img class="app-icon" src="toolport-icon.png" alt="Prava Toolport icon">
+                <img class="app-icon" src="pravida-icon.png" alt="Pravida icon">
                 <div>
-                    <div class="app-name">Toolport</div>
-                    <div class="app-platform">Mac · Menu Bar · Coming Soon</div>
+                    <div class="app-name">Pravida <span class="live-now dev">In Development</span></div>
+                    <div class="app-platform">iPhone · iPad · Mac · Apple Watch · iOS 26+</div>
                 </div>
             </div>
             <p class="app-desc">
-                The semantic tool registry for AI agents. One local broker between any agent — Claude Code, Codex, Cursor — and all your MCP servers, handing it only the right tools per task, in any language. ~80% fewer tokens.
+                Private, encrypted, yours. An invite-only network with E2E encrypted messaging, device-to-device mesh networking, and on-device AI — iMessage quality with Signal-level security.
             </p>
             <div class="app-tags">
-                <span class="tag">MCP</span>
-                <span class="tag">Semantic Search</span>
-                <span class="tag">Any Agent</span>
-                <span class="tag">Multilingual</span>
+                <span class="tag">E2E Encryption</span>
+                <span class="tag">Mesh Networking</span>
+                <span class="tag">On-Device AI</span>
+                <span class="tag">Invite-Only</span>
+            </div>
+            <span class="app-cta">
+                Learn more
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
+
+        <a class="app-card mavee" href="/mavee/">
+            <div class="app-header">
+                <img class="app-icon" src="mavee-icon.png" alt="Mavee icon">
+                <div>
+                    <div class="app-name">Mavee <span class="live-now dev">In Development</span></div>
+                    <div class="app-platform">iPhone · iOS 26</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                Your day, simplified. Mavee uses Apple Intelligence to connect your calendar, contacts, and reminders — surfacing patterns and insights so you spend less time organizing and more time living.
+            </p>
+            <div class="app-tags">
+                <span class="tag">Apple Intelligence</span>
+                <span class="tag">Calendar</span>
+                <span class="tag">Contacts</span>
+                <span class="tag">iOS 26</span>
             </div>
             <span class="app-cta">
                 Learn more
