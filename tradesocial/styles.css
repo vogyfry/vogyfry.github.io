@@ -97,8 +97,9 @@ body {
    per developer.apple.com/app-store/marketing/guidelines. Min height 40px,
    clear space >= 1/4 badge height all around. */
 .app-store-badge {
-    display: inline-block;
-    margin: 14px;
+    display: block;
+    width: fit-content;
+    margin: 14px auto 0;
     transition: transform 0.2s;
 }
 .app-store-badge:hover { transform: scale(1.03); }
