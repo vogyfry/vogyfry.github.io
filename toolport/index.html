@@ -51,7 +51,7 @@
             <span class="hero-cta">Coming Soon to Mac App Store</span>
             <div class="platform-tags">
                 <span class="platform-tag">Mac · Menu Bar App</span>
-                <span class="platform-tag">Windows · Microsoft Store, coming</span>
+                <span class="platform-tag">Windows · x64 &amp; ARM64</span>
                 <span class="platform-tag">Claude Code</span>
                 <span class="platform-tag">Codex</span>
                 <span class="platform-tag">Cursor</span>
@@ -176,7 +176,7 @@
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Install Toolport</h3>
-                    <p>Toolport lives in your menu bar and runs the registry engine locally. New installs start a 14-day trial with every component enabled.</p>
+                    <p>Toolport lives in your menu bar and runs the registry engine locally — a native app for Mac and Windows.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
@@ -265,37 +265,26 @@
     <section class="plans" id="plans">
         <div class="plans-inner">
             <h2>One App. Pick Your Tier.</h2>
-            <p class="section-subtitle">Everyone gets the same app — your plan simply unlocks components. Every install starts with a 14-day free trial with everything on.</p>
+            <p class="section-subtitle">Everyone gets the same app — your plan simply unlocks components. Every tier is available on <strong>Mac and Windows</strong>.</p>
             <div class="plan-grid">
-                <div class="plan-card">
-                    <div class="plan-name">Trial</div>
-                    <div class="plan-price">Free</div>
-                    <div class="plan-note">14 days · every component enabled</div>
-                    <ul class="plan-features">
-                        <li>Full product, no card required</li>
-                        <li>Evaluate before choosing a tier</li>
-                    </ul>
-                </div>
                 <div class="plan-card featured">
                     <div class="plan-name">Solo</div>
                     <div class="plan-price">$7.99 <span>/ mo</span></div>
-                    <div class="plan-note">Mac App Store · $79/yr (~2 months free) · 1 seat</div>
+                    <div class="plan-note">$79/yr (~2 months free) · 1 seat · Mac &amp; Windows</div>
                     <ul class="plan-features">
                         <li>Semantic search meta-tools</li>
                         <li>All platform modules — Trace, Policy, Results, Retrieve, Cache, Memory, Grounding</li>
                         <li>First-party "Prava for …" connectors</li>
                         <li>Connect your own MCP servers</li>
                         <li>Local-first, on-device index</li>
-                        <li>Monthly or annual, billed by Apple</li>
                     </ul>
                 </div>
                 <div class="plan-card">
                     <div class="plan-name">Team</div>
                     <div class="plan-price">Direct license</div>
-                    <div class="plan-note">Developer ID edition · from pravalabs.app · coming soon</div>
+                    <div class="plan-note">Mac &amp; Windows · license key · per seat</div>
                     <ul class="plan-features">
                         <li>Everything in Solo</li>
-                        <li>Local (stdio) servers</li>
                         <li>Network serving (multi-user)</li>
                         <li>Governance &amp; audit receipts</li>
                         <li>Security pre-screen of tools</li>
@@ -306,7 +295,7 @@
                 <div class="plan-card">
                     <div class="plan-name">Enterprise</div>
                     <div class="plan-price">Direct license</div>
-                    <div class="plan-note">Developer ID edition · from pravalabs.app · coming soon</div>
+                    <div class="plan-note">Mac &amp; Windows · license key</div>
                     <ul class="plan-features">
                         <li>Everything in Team</li>
                         <li>SSO</li>
@@ -316,43 +305,32 @@
                     </ul>
                 </div>
             </div>
+            <h3 class="platforms-heading">Every tier, on your platform</h3>
             <div class="edition-grid">
                 <div class="edition-card">
-                    <h3>Mac App Store Edition · Solo</h3>
-                    <span class="edition-chip">Remote Servers</span>
-                    <p>The one-click install for individual developers. Subscribe monthly or annually; Apple handles billing and updates. Fully sandboxed and remote-only by design.</p>
+                    <h3>Mac</h3>
+                    <span class="edition-chip">macOS 14+ · Apple Silicon &amp; Intel</span>
+                    <p>Two ways to get it — same native menu-bar app, same engine:</p>
                     <ul>
-                        <li>Hosted (HTTP) MCP servers with OAuth sign-in</li>
-                        <li>Full semantic search, any agent, any language</li>
-                        <li>Automatic updates via the App Store</li>
-                        <li class="edition-no">Local (stdio) servers — not available in the sandbox</li>
+                        <li><strong>Mac App Store</strong> — Solo, subscription billed by Apple. Sandboxed, so remote (HTTP/OAuth) servers only.</li>
+                        <li><strong>Direct download (Developer ID)</strong> — Solo, Team &amp; Enterprise via license key. Notarized DMG; adds <strong>local (stdio) servers</strong> on top of remote.</li>
+                        <li>All platform modules and first-party connectors on both</li>
                     </ul>
                 </div>
                 <div class="edition-card">
-                    <h3>Developer ID Edition · Solo, Team &amp; Enterprise</h3>
-                    <span class="edition-chip">Remote + Local Servers</span>
-                    <p>The direct download for power users and teams — a notarized DMG purchased from pravalabs.app and unlocked with a signed license key. One download; the key decides the tier. Same engine, more doors.</p>
+                    <h3>Windows</h3>
+                    <span class="edition-chip">Windows 10 &amp; 11 · Native x64 &amp; ARM64</span>
+                    <p>A native Windows tray app — Fluent Settings window, server catalog, per-connector Sign In/Out, and the live savings receipt. Same engine, built natively for both architectures.</p>
                     <ul>
-                        <li>Everything in the App Store edition</li>
-                        <li>Local (stdio) servers — spawn MCP servers on your machine</li>
-                        <li>Team network serving, governance, metering</li>
-                        <li>Offline license validation (no phone-home)</li>
-                        <li>Air-gapped licensing for Enterprise</li>
-                    </ul>
-                </div>
-                <div class="edition-card">
-                    <h3>Windows Edition · Coming Soon</h3>
-                    <span class="edition-chip">Microsoft Store</span>
-                    <p>The same engine in a native Windows tray app — Fluent Settings window, catalog, Sign In/Out, and the savings receipt. Ships through the Microsoft Store; one install, license key unlocks the tier.</p>
-                    <ul>
-                        <li>Same semantic engine, same modules, same connectors*</li>
-                        <li>Local and remote MCP servers</li>
-                        <li>Solo via Store purchase or license key; Team &amp; Enterprise via license key</li>
+                        <li>Solo, Team &amp; Enterprise — Store purchase or license key</li>
+                        <li><strong>Local and remote MCP servers</strong></li>
+                        <li>Same modules and first-party connectors*</li>
+                        <li>Delivered through the Microsoft Store</li>
                     </ul>
                     <p class="plans-footnote">*macOS-only connectors (e.g. Prava for Apple) remain Mac-exclusive.</p>
                 </div>
             </div>
-            <p class="plans-footnote">Prices shown in USD and subject to change before launch. Solo is billed by Apple through the Mac App Store. Team and Enterprise are sold directly from pravalabs.app as Developer ID licenses (per tier and seats) — pricing announced at launch. Local (stdio) servers and multi-user serving require the Developer ID edition.</p>
+            <p class="plans-footnote">Prices shown in USD and subject to change before launch. Solo on Mac is billed by Apple through the Mac App Store; Solo on Windows through the Microsoft Store. Team and Enterprise are unlocked with a signed license key on either platform — pricing announced at launch. Local (stdio) servers require the direct-download Mac edition or the Windows edition.</p>
         </div>
     </section>
 
