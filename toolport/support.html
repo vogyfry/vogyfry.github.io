@@ -57,16 +57,13 @@
         <p>Semantic search and the index are fully local. You need network access only to reach remote MCP servers you've configured; local (stdio) servers and search itself work offline.</p>
 
         <h3>How does sign-in to hosted servers work?</h3>
-        <p>For remote servers that require OAuth (for example, Microsoft or GitHub hosted services), Toolport opens the provider's sign-in in your browser and stores the tokens locally on your Mac. Your credentials never pass through Prava Labs.</p>
+        <p>For remote servers that require OAuth (for example, Microsoft or GitHub hosted services), Toolport opens the provider's sign-in in your browser and stores the tokens locally on your machine. Your credentials never pass through Prava Labs.</p>
 
-        <h3>What's included in the free trial?</h3>
-        <p>Every new install starts a 14-day trial with all components enabled — including the Team features (network serving, governance, security pre-screen, metering). After the trial, the app settles to your purchased tier.</p>
-
-        <h3>What's the difference between the App Store and Developer ID editions?</h3>
-        <p>Same engine, different install and capabilities. The <strong>Mac App Store edition</strong> sells the <strong>Solo</strong> tier as a monthly or annual subscription billed by Apple; it is sandboxed and remote-only — it fronts hosted (HTTP) MCP servers with OAuth sign-in. The <strong>Developer ID edition</strong> is a notarized direct download purchased from pravalabs.app and unlocked with a signed license key; it carries the <strong>Team</strong> and <strong>Enterprise</strong> tiers and does everything the App Store edition does <em>plus</em> local (stdio) servers and multi-user network serving. If your workflow depends on local servers (filesystem, local CLIs) or a shared team registry, you want Developer ID.</p>
+        <h3>Which platforms and installs are there?</h3>
+        <p>Same engine everywhere. On <strong>Mac</strong> (macOS 14+, Apple Silicon), the <strong>Mac App Store</strong> build sells the <strong>Solo</strong> tier billed by Apple — it is sandboxed, so it fronts remote (HTTP/OAuth) servers only; the <strong>direct download</strong> (notarized, unlocked with a license key) adds <strong>local (stdio) servers</strong> and carries Solo, Team, and Enterprise. On <strong>Windows</strong> (10 &amp; 11, native x64 &amp; ARM64), the Microsoft Store build runs <strong>both local and remote</strong> servers at every tier. So local servers are available on every install except the sandboxed Mac App Store build.</p>
 
         <h3>What's the difference between the tiers?</h3>
-        <p>Your tier unlocks components. <strong>Solo</strong> (Mac App Store) covers the core registry with your own remote servers. <strong>Team</strong> (Developer ID) adds local servers, multi-user network serving, governance receipts, security pre-screening, cost metering, and central management. <strong>Enterprise</strong> (Developer ID) adds SSO, air-gapped licensing, audit export, and priority support. See the <a href="index.html#plans">plans overview</a>.</p>
+        <p>Your tier unlocks components. <strong>Solo</strong> is the individual plan — semantic search, all platform modules, the first-party connectors, and your own MCP servers (local and remote, except on the sandboxed Mac App Store build). <strong>Team</strong> adds a shared team registry with governance and audit receipts, security pre-screening of tools, and token/cost metering. <strong>Enterprise</strong> adds offline license validation (with SSO and audit export on the roadmap). See the <a href="index.html#plans">plans overview</a>.</p>
 
         <h3>The agent isn't finding my server's tools — what should I check?</h3>
         <ul>
