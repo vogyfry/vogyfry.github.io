@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prava Toolport — The Semantic Tool Registry for AI Agents</title>
-    <meta name="description" content="Prava Toolport sits between any AI agent and all your MCP servers, handing the agent only the few right tools per task — in any language. Solves tool-context bloat with ~80% fewer tokens.">
-    <meta name="keywords" content="MCP, Model Context Protocol, AI agents, tool registry, semantic search, Claude Code, Codex, Cursor, context bloat, multilingual, macOS, menu bar app">
+    <meta name="description" content="Prava Toolport sits between any AI agent and all your MCP servers, handing the agent only the few right tools per task — in any language. Plus built-in modules: savings receipts, policy gates, output condensing, web retrieval, semantic cache, and durable memory.">
+    <meta name="keywords" content="MCP, Model Context Protocol, AI agents, tool registry, semantic search, Claude Code, Codex, Cursor, context bloat, multilingual, macOS, Windows, menu bar app, semantic cache, agent memory, policy gates">
     <meta property="og:title" content="Prava Toolport — The Semantic Tool Registry for AI Agents">
     <meta property="og:description" content="One local broker between your AI agent and all your MCP servers. The agent gets just the right tools per task, in any language — instead of every tool definition at once.">
     <meta property="og:image" content="images/favicon.png">
@@ -26,6 +26,7 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
+                <li><a href="#modules">Modules</a></li>
                 <li><a href="#how-it-works">Setup</a></li>
                 <li><a href="#plans">Plans</a></li>
                 <li><a href="#privacy">Privacy</a></li>
@@ -50,6 +51,7 @@
             <span class="hero-cta">Coming Soon to Mac App Store</span>
             <div class="platform-tags">
                 <span class="platform-tag">Mac · Menu Bar App</span>
+                <span class="platform-tag">Windows · Microsoft Store, coming</span>
                 <span class="platform-tag">Claude Code</span>
                 <span class="platform-tag">Codex</span>
                 <span class="platform-tag">Cursor</span>
@@ -104,12 +106,62 @@
                 <div class="feature-card">
                     <div class="feature-icon">🔐</div>
                     <h3>Hosted Servers, OAuth Built In</h3>
-                    <p>Connect remote MCP servers over HTTP with sign-in handled for you — including enterprise services like Microsoft Dataverse and GitHub. Tokens are stored locally, never proxied through us.</p>
+                    <p>Connect remote MCP servers over HTTP with sign-in handled for you — including enterprise services like Microsoft 365 and GitHub. One-click Sign In per connector; tokens are stored locally, never proxied through us.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>First-Party Connectors, Bundled</h3>
+                    <p>Seven "Prava for …" connectors ship inside the app — Power Platform, Microsoft 365, Apple, Apple Docs, Markets, Reddit, Google Workspace. Discrete tools, structured output, confirm-gated writes. Only available with Toolport.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Menu-Bar Command Center</h3>
-                    <p>A native macOS menu-bar app supervises everything: add servers from a catalog or by hand, watch live metrics, re-index on demand, and run diagnostics — no terminal required.</p>
+                    <p>A native macOS menu-bar app supervises everything: add servers from a catalog or by hand, watch the live savings receipt, edit policy gates, re-index on demand, and run diagnostics — no terminal required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules -->
+    <section class="features" id="modules">
+        <div class="features-inner">
+            <h2>More Than Routing: Built-In Modules</h2>
+            <p class="section-subtitle">Tool bloat is one firehose — Toolport's modules close the rest. All run inside the same local engine, on every plan, and each can be tuned or switched off in Settings.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧾</div>
+                    <h3>Trace — The Savings Receipt</h3>
+                    <p>Every search is metered: what loading your full catalog would have cost vs. what the agent actually received. The receipt lives in the menu bar and in a <code>get_savings</code> call — proof, not promises.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Policy — Gates Before Anything Runs</h3>
+                    <p>Read-only mode, dry-run, allow/deny lists, and confirm-to-send for outbound actions — one config protects every connector. A send that wasn't approved with its exact arguments doesn't run. Safety is never paywalled.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✂️</div>
+                    <h3>Results — Outputs, Condensed</h3>
+                    <p>Oversized tool outputs (logs, JSON dumps, tables) arrive condensed with nothing lost — the full payload stays retrievable page by page. Never silent truncation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Retrieve — Passages, Not Pages</h3>
+                    <p>Agents call <code>search_context</code> and the fetch-and-extract happens in the engine: web pages and your local docs come back as a few cited passages. The 40k-token page never enters the prompt. Bring-your-own search key optional.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Cache — Don't Pay Twice</h3>
+                    <p>A repeated read-safe call — even paraphrased, even in another language — serves the prior result and skips the downstream call. Only tools that declare themselves read-only are eligible; approved actions never cache.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Memory — Facts That Persist</h3>
+                    <p>Agents store durable facts explicitly (remember / recall / forget) with provenance and expiry. Recall is semantic and cross-lingual: a fact stored in English is found by a Japanese query. Everything stays on your machine, with a viewer in Settings.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Grounding — Trust the Right Sources</h3>
+                    <p>Retrieved passages carry trust tiers, cross-source corroboration counts, and duplicate collapse — so agents can tell documentation from SEO spam before quoting it.</p>
                 </div>
             </div>
         </div>
@@ -185,9 +237,24 @@
                         <td class="col-toolport"><span class="check-yes">✓</span> Tiny footprint fits any model</td>
                     </tr>
                     <tr>
-                        <td class="col-label">Governance &amp; metering</td>
+                        <td class="col-label">Oversized outputs</td>
+                        <td><span class="check-no">✗</span> Raw dumps flood the context</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Condensed, full payload retrievable</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Repeated calls</td>
+                        <td><span class="check-no">✗</span> Full cost, every turn, every subagent</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Semantic cache — cross-turn, cross-language</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Risky actions</td>
+                        <td><span class="check-no">✗</span> Whatever the tool allows</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Policy gates: read-only, dry-run, confirm-to-send</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Proof of savings</td>
                         <td><span class="check-no">✗</span> None</td>
-                        <td class="col-toolport"><span class="check-yes">✓</span> Audit receipts, security pre-screen, cost tracking</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> Trace receipt on every install; governance &amp; audit for teams</td>
                     </tr>
                 </tbody>
             </table>
@@ -215,6 +282,8 @@
                     <div class="plan-note">Mac App Store · $79/yr (~2 months free) · 1 seat</div>
                     <ul class="plan-features">
                         <li>Semantic search meta-tools</li>
+                        <li>All platform modules — Trace, Policy, Results, Retrieve, Cache, Memory, Grounding</li>
+                        <li>First-party "Prava for …" connectors</li>
                         <li>Connect your own MCP servers</li>
                         <li>Local-first, on-device index</li>
                         <li>Monthly or annual, billed by Apple</li>
@@ -260,9 +329,9 @@
                     </ul>
                 </div>
                 <div class="edition-card">
-                    <h3>Developer ID Edition · Team &amp; Enterprise</h3>
+                    <h3>Developer ID Edition · Solo, Team &amp; Enterprise</h3>
                     <span class="edition-chip">Remote + Local Servers</span>
-                    <p>The direct download for power users and teams — a notarized DMG purchased from pravalabs.app and unlocked with a signed license key. Same engine, more doors.</p>
+                    <p>The direct download for power users and teams — a notarized DMG purchased from pravalabs.app and unlocked with a signed license key. One download; the key decides the tier. Same engine, more doors.</p>
                     <ul>
                         <li>Everything in the App Store edition</li>
                         <li>Local (stdio) servers — spawn MCP servers on your machine</li>
@@ -270,6 +339,17 @@
                         <li>Offline license validation (no phone-home)</li>
                         <li>Air-gapped licensing for Enterprise</li>
                     </ul>
+                </div>
+                <div class="edition-card">
+                    <h3>Windows Edition · Coming Soon</h3>
+                    <span class="edition-chip">Microsoft Store</span>
+                    <p>The same engine in a native Windows tray app — Fluent Settings window, catalog, Sign In/Out, and the savings receipt. Ships through the Microsoft Store; one install, license key unlocks the tier.</p>
+                    <ul>
+                        <li>Same semantic engine, same modules, same connectors*</li>
+                        <li>Local and remote MCP servers</li>
+                        <li>Solo via Store purchase or license key; Team &amp; Enterprise via license key</li>
+                    </ul>
+                    <p class="plans-footnote">*macOS-only connectors (e.g. Prava for Apple) remain Mac-exclusive.</p>
                 </div>
             </div>
             <p class="plans-footnote">Prices shown in USD and subject to change before launch. Solo is billed by Apple through the Mac App Store. Team and Enterprise are sold directly from pravalabs.app as Developer ID licenses (per tier and seats) — pricing announced at launch. Local (stdio) servers and multi-user serving require the Developer ID edition.</p>
@@ -319,7 +399,7 @@
                         <img src="images/favicon.png" alt="Prava Toolport">
                         <span>Prava Toolport</span>
                     </div>
-                    <p class="footer-description">The semantic tool registry for AI agents. One local broker between your agent and all your MCP servers — just the right tools per task, in any language.</p>
+                    <p class="footer-description">The semantic tool registry for AI agents. One local broker between your agent and all your MCP servers — just the right tools per task, in any language — with built-in policy gates, output condensing, retrieval, cache, and memory.</p>
                 </div>
                 <div>
                     <h4>Legal</h4>
