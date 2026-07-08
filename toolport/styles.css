@@ -514,6 +514,21 @@ body {
     font-weight: 700;
 }
 
+/* "roadmap" marker — a muted pill so unbuilt items read as planned, not shipped */
+.roadmap {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 1px 7px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
 .plans-footnote {
     margin-top: 32px;
     font-size: 13px;
