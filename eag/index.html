@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAG — The API Gateway for AI Agents</title>
+    <meta name="description" content="Enterprise Agent Gateway (EAG) turns any enterprise API — ServiceNow, Workday, Salesforce, SAP — into governed, natural-language tools any AI agent can discover and call. One endpoint, every backend, every call made as the signed-in user and audited.">
+    <meta name="keywords" content="MCP, Model Context Protocol, AI agents, API gateway, enterprise service bus, agent gateway, ServiceNow, Workday, Salesforce, SAP, Entra SSO, OBO, Copilot Studio, Azure AI Foundry, governance, audit, self-hosted">
+    <meta property="og:title" content="EAG — The API Gateway for AI Agents">
+    <meta property="og:description" content="One governed endpoint between your AI agents and every enterprise system. Turns any API into the language of agents — natural-language, identity-scoped, audited.">
+    <meta property="og:image" content="images/icon.png">
+    <meta property="og:url" content="https://pravalabs.app/eag/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">
+                <img src="images/favicon.png" alt="EAG">
+                <span>EAG</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#capabilities">Capabilities</a></li>
+                <li><a href="#how-it-works">How it works</a></li>
+                <li><a href="#comparison">Why EAG</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="/">Prava Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="app-icon-container">
+                <img src="images/icon.png" alt="Enterprise Agent Gateway icon" class="app-icon">
+            </div>
+            <div class="hero-badge">🔐 One governed endpoint · Every system · As the signed-in user</div>
+            <h1>The API gateway for AI agents.<br><span class="highlight">Every system, in the language of agents.</span></h1>
+            <p class="subtitle">
+                The Enterprise Agent Gateway turns any enterprise API — ServiceNow, Workday, Salesforce, SAP, and more — into governed, natural-language tools any agent can discover and call. Think enterprise service bus, but for the agent era: one endpoint fronting every backend, every call made as the signed-in user and fully audited.
+            </p>
+            <span class="hero-cta">In vendor review · Self-hosted: Docker → Azure Container Apps · on-prem · air-gapped</span>
+            <div class="platform-tags">
+                <span class="platform-tag">Model Context Protocol</span>
+                <span class="platform-tag">Entra SSO · OIDC</span>
+                <span class="platform-tag">Per-User OBO</span>
+                <span class="platform-tag">Copilot Studio</span>
+                <span class="platform-tag">Azure AI Foundry</span>
+                <span class="platform-tag">Any MCP Agent</span>
+            </div>
+
+            <div class="loop" aria-label="Every governed call, in three steps">
+                <div class="loop-step">
+                    <code>discover</code>
+                    <span>The agent asks in plain language; each user sees only the tools their identity is scoped to</span>
+                </div>
+                <div class="loop-arrow">→</div>
+                <div class="loop-step">
+                    <code>govern</code>
+                    <span>Tier policy + per-user OBO — the call runs as the signed-in user, not a shared account</span>
+                </div>
+                <div class="loop-arrow">→</div>
+                <div class="loop-step">
+                    <code>invoke + audit</code>
+                    <span>Proxied to the right backend; every call logged with identity and outcome</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities -->
+    <section class="features" id="capabilities">
+        <div class="features-inner">
+            <h2>Any API, in the language of agents</h2>
+            <p class="section-subtitle">Enterprise systems speak REST, SOAP, OData. Agents speak natural language. EAG is the layer in between — one canonical, plain-language tool catalog fronting every backend, governed on every call.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗂️</div>
+                    <h3>One Canonical Tool Catalog</h3>
+                    <p>A single, stable, natural-language contract agents route on. EAG maps each canonical tool to the right backend call — and matching works across languages, so a query in German finds a tool described in English.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Identity-Aware, Per User</h3>
+                    <p>Entra SSO in, OAuth On-Behalf-Of downstream. Every call runs as the <em>signed-in user</em> — never a shared service account — so each backend's own row-level security still applies underneath.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Governed by Tier</h3>
+                    <p>Read / write / privileged tiers with policy gates: confirm-before-write, privileged actions blocked or approval-gated. The agent can't do more than the caller's role allows.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧾</div>
+                    <h3>Audited End to End</h3>
+                    <p>Every call recorded — user, tool, system, outcome, latency. A ready-made compliance trail and seat-metering feed, exportable to your SIEM. The audit is the proof, not a vibe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Manifest-Driven Backends</h3>
+                    <p>Add a system with a manifest and the console's Connect dialog — validate before you enable. Or federate any system that already speaks MCP, with zero driver code.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♻️</div>
+                    <h3>Migration Insurance</h3>
+                    <p>You license the catalog, not the backends. Swap ServiceNow → Jira or SAP ECC → S/4HANA one tool at a time, with a rollback toggle and an audit trail — and your agents never change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="how-it-works-inner">
+            <h2>Stand It Up in Your Own Tenant</h2>
+            <p class="section-subtitle">One image, config per customer. Single-tenant, self-hosted — your systems never leave your cloud.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Run the Container</h3>
+                    <p>Docker → Azure Container Apps, App Service, on-prem, or air-gapped. One governed image; the tier is unlocked by an offline license key.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Connect Your Identity</h3>
+                    <p>Point EAG at your Entra tenant. Admins sign in to the console over OIDC; agent callers present real tokens, exchanged per-user via OBO downstream.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Connect Your Systems</h3>
+                    <p>Wire each backend from the Connect dialog or a manifest — validate before enabling. Federate anything that already speaks MCP. Set gating and rate limits per system.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Point Your Agents at It</h3>
+                    <p>Register EAG as one MCP endpoint in Copilot Studio, Azure AI Foundry, Claude, or any MCP client. That single entry now fronts your whole governed fleet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison" id="comparison">
+        <div class="comparison-inner">
+            <h2>EAG vs. Wiring Agents to Systems Directly</h2>
+            <p class="section-subtitle">A governed layer beats point-to-point integrations that multiply with every agent.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Direct Integrations</th>
+                        <th class="col-eag">Enterprise Agent Gateway</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-label">Identity</td>
+                        <td><span class="check-no">✗</span> Shared service account — everyone is "the app"</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Per-user OBO — every call runs as the signed-in user</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Governance</td>
+                        <td><span class="check-no">✗</span> Whatever the raw API allows</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Tier gates, confirm-to-write, privileged blocked</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Audit</td>
+                        <td><span class="check-no">✗</span> None, or scattered per system</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Every call logged with identity + outcome, exportable</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Adding a backend</td>
+                        <td><span class="check-no">✗</span> A new integration for every agent</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> One manifest — every agent gets it at once</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Swapping a vendor</td>
+                        <td><span class="check-no">✗</span> Rebuild every agent that touched it</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Toggle it, one tool at a time — agents unchanged</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Tool discovery</td>
+                        <td><span class="check-no">✗</span> Static tool dumps, English-only</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Natural-language, identity-scoped, multilingual catalog</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Agent reach</td>
+                        <td><span class="check-no">✗</span> Tied to one agent platform</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Any MCP agent — Copilot Studio, Foundry, Claude</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Security -->
+    <section class="privacy-section" id="security">
+        <div class="privacy-inner">
+            <h2>Your Tenant. Your Systems. Your Rules.</h2>
+            <p class="section-subtitle">Single-tenant and self-hosted. EAG runs where your data already lives and talks only to the systems you connect.</p>
+            <div class="privacy-badges">
+                <span class="privacy-badge"><span class="check">✓</span> Runs in Your Tenant</span>
+                <span class="privacy-badge"><span class="check">✓</span> Per-User OBO</span>
+                <span class="privacy-badge"><span class="check">✓</span> Entra / OIDC SSO</span>
+                <span class="privacy-badge"><span class="check">✓</span> Air-Gap Friendly</span>
+                <span class="privacy-badge"><span class="check">✓</span> Full Audit Trail</span>
+                <span class="privacy-badge"><span class="check">✓</span> Secrets Never in the Image</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-section">
+        <div class="tech-inner">
+            <h2>Built With</h2>
+            <div class="tech-grid">
+                <span class="tech-tag">Model Context Protocol</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Microsoft Entra ID</span>
+                <span class="tech-tag">OAuth 2.0 On-Behalf-Of</span>
+                <span class="tech-tag">Azure Container Apps</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">OIDC</span>
+                <span class="tech-tag">Ed25519 Licensing</span>
+                <span class="tech-tag">Streamable HTTP + stdio</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="images/favicon.png" alt="EAG">
+                        <span>Enterprise Agent Gateway</span>
+                    </div>
+                    <p class="footer-description">The API gateway for AI agents. One governed endpoint between your agents and every enterprise system — each call made as the signed-in user, tier-gated, and audited. Turns any API into the language of agents.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#capabilities">Capabilities</a></li>
+                        <li><a href="#how-it-works">How it works</a></li>
+                        <li><a href="#security">Security</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@pravalabs.app">hello@pravalabs.app</a></li>
+                        <li><a href="/">Prava Labs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
