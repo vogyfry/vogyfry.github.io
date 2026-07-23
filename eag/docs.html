@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAG Documentation — Build & Govern Your Agent's Backend Estate</title>
+    <meta name="description" content="Enterprise Agent Gateway user guide: connect backends, create tools and scopes, map tools to live data, govern by tier, manage users, and install licenses.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .docs-wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 24px 80px; display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
+      .docs-toc { position: sticky; top: 90px; align-self: start; font-size: 14px; }
+      .docs-toc h4 { color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; margin: 0 0 12px; }
+      .docs-toc a { display: block; color: var(--text-secondary); text-decoration: none; padding: 5px 0; border-left: 2px solid transparent; padding-left: 12px; margin-left: -14px; }
+      .docs-toc a:hover { color: var(--text-primary); border-left-color: var(--brand); }
+      .docs-body { min-width: 0; }
+      .docs-body h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
+      .docs-lead { color: var(--text-secondary); font-size: 17px; line-height: 1.6; margin: 0 0 40px; max-width: 640px; }
+      .docs-body section { scroll-margin-top: 84px; margin-bottom: 44px; }
+      .docs-body h2 { font-size: 24px; margin: 0 0 14px; letter-spacing: -0.01em; }
+      .docs-body h3 { font-size: 16px; margin: 22px 0 8px; color: var(--text-primary); }
+      .docs-body p, .docs-body li { color: var(--text-secondary); line-height: 1.7; font-size: 15px; }
+      .docs-body ol, .docs-body ul { padding-left: 22px; }
+      .docs-body li { margin-bottom: 6px; }
+      .docs-body strong { color: var(--text-primary); }
+      .docs-body a { color: var(--brand); text-decoration: none; }
+      .docs-body a:hover { text-decoration: underline; }
+      .docs-body code { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 6px; padding: 1px 6px; font-size: 13px; font-family: 'SF Mono', ui-monospace, Menlo, monospace; color: #cfe3ff; }
+      .docs-body pre { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 14px 16px; overflow-x: auto; font-size: 13px; line-height: 1.6; }
+      .docs-body pre code { background: none; border: none; padding: 0; color: var(--text-secondary); }
+      .callout { background: var(--brand-light); border: 1px solid rgba(58,146,255,0.25); border-radius: var(--radius-sm); padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+      .callout strong { color: var(--brand); }
+      .step-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 18px; }
+      .step-pills span { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 999px; padding: 4px 12px; font-size: 12px; color: var(--text-secondary); font-family: 'SF Mono', ui-monospace, Menlo, monospace; }
+      @media (max-width: 820px) { .docs-wrap { grid-template-columns: 1fr; } .docs-toc { display: none; } }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/eag/" class="nav-brand">
+                <img src="images/favicon.png" alt="EAG">
+                <span>EAG</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/eag/#capabilities">Capabilities</a></li>
+                <li><a href="/eag/#how-it-works">How it works</a></li>
+                <li><a href="/eag/docs.html">Docs</a></li>
+                <li><a href="/eag/#security">Security</a></li>
+                <li><a href="/">Prava Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="docs-wrap">
+        <aside class="docs-toc">
+            <h4>Guide</h4>
+            <a href="#concepts">Core concepts</a>
+            <a href="#console">The console</a>
+            <a href="#add-system">Add a system</a>
+            <a href="#tools-scopes">Tools &amp; scopes</a>
+            <a href="#mappings">Map to live data</a>
+            <a href="#govern">Govern by tier</a>
+            <a href="#users">Users &amp; roles</a>
+            <a href="#licensing">Licensing</a>
+            <a href="#deploy">Deploy</a>
+            <a href="#help">Get help</a>
+        </aside>
+
+        <main class="docs-body">
+            <h1>Documentation</h1>
+            <p class="docs-lead">Everything you need to connect a backend, expose it as governed natural-language tools, and put your AI agents in front of it — safely.</p>
+
+            <section id="concepts">
+                <h2>Core concepts</h2>
+                <p>Five ideas run through the whole product:</p>
+                <ul>
+                    <li><strong>System</strong> — a connected backend (ServiceNow, Workday, SAP, a Dataverse table, or anything that speaks MCP). One image fronts many systems; you turn them on and off.</li>
+                    <li><strong>Tool</strong> — a canonical, plain-language capability an agent calls by intent (e.g. <code>case.create</code>, <code>hr.timeoff.balance.get</code>). The catalog is stable; the backend behind a tool can change without the agent noticing.</li>
+                    <li><strong>Scope</strong> — a permission string (e.g. <code>hr.read</code>, <code>case.write</code>) a tool requires. A caller only sees tools their scopes grant.</li>
+                    <li><strong>Mapping</strong> — how a tool actually runs on a live backend: which table answers it, whose rows, and how columns become fields. Mock systems serve samples with no mapping; a live system needs one.</li>
+                    <li><strong>Tier &amp; gating</strong> — every tool is <em>read</em>, <em>write</em>, or <em>privileged</em>. Policy gates decide confirm-before-write and block/approve for privileged actions.</li>
+                </ul>
+                <div class="callout"><strong>The golden rule:</strong> agents bind to the <em>canonical catalog</em>, never to a backend. That's what lets you swap or migrate backends in seconds without touching a single agent.</div>
+            </section>
+
+            <section id="console">
+                <h2>The console</h2>
+                <p>Everything below is done from the admin console (served at <code>/admin</code>), no YAML editing required. Eight tabs:</p>
+                <ul>
+                    <li><strong>Systems</strong> — the fleet: toggle systems on/off, expand a row for tools, gating, config, and Connect.</li>
+                    <li><strong>Tool catalog</strong> — the canonical contract; add custom tools here.</li>
+                    <li><strong>Mappings</strong> — bind a tool to a live table.</li>
+                    <li><strong>Identity probe</strong> — "what would this user see?" before they ask.</li>
+                    <li><strong>Live audit</strong> — every call, streaming, with identity + outcome.</li>
+                    <li><strong>Users</strong> — console roles and tool-scope grants.</li>
+                    <li><strong>Onboard a system</strong> — generate a new system's manifest.</li>
+                    <li><strong>Licensing</strong> — install a key, see seats and the expiry countdown.</li>
+                </ul>
+                <p>Use the ☀/◐ button in the header to switch light/dark.</p>
+            </section>
+
+            <section id="add-system">
+                <h2>Add a system (connect a backend)</h2>
+                <div class="step-pills"><span>Onboard a system</span><span>→ Systems</span><span>→ Connect…</span><span>→ toggle on</span></div>
+                <ol>
+                    <li>Open <strong>Onboard a system</strong>. Give it an id (e.g. <code>acme-crm</code>), pick the <strong>adapter</strong> (the driver for that vendor — ServiceNow, Salesforce, Workday, SAP, Snowflake, Dataverse, <code>mcp-proxy</code> to federate an existing MCP server, or <code>mock</code>), a display name, and (optionally) a base URL. Generate the manifest — it always starts <strong>disabled</strong> and references secrets by env-var name only.</li>
+                    <li>On the <strong>Systems</strong> tab the new system appears under its domain group. Click <strong>Connect…</strong> to open the credential dialog: choose an auth method, enter the connection parameters, <strong>Test</strong>, then <strong>Save &amp; connect</strong>. Secrets go to a gitignored store — never into config or the image.</li>
+                    <li>Flip the <strong>toggle switch</strong> on. Its tools appear to authorized agents on the next <code>tools/list</code>.</li>
+                </ol>
+                <div class="callout"><strong>No API yet?</strong> Model the target in Dataverse, serve it live through the same catalog to prove the agent experience, then repoint to the real backend later — all agent traffic switches in seconds. (The Dataverse staging capability is a Team-tier feature.)</div>
+            </section>
+
+            <section id="tools-scopes">
+                <h2>Create a tool &amp; its scope</h2>
+                <div class="step-pills"><span>Tool catalog</span><span>→ Add a custom tool</span></div>
+                <p>Custom tools extend the catalog without touching code. In <strong>Tool catalog → Add a custom tool</strong>, set:</p>
+                <ul>
+                    <li><strong>id</strong> — dotted, e.g. <code>crm.lead.get</code>.</li>
+                    <li><strong>tier</strong> — read / write / privileged (drives gating).</li>
+                    <li><strong>classification</strong> — internal / public / pii.</li>
+                    <li><strong>scopes</strong> — the permission(s) a caller needs, e.g. <code>crm.read</code>. <em>Define the scope here</em> — a tool and its scope must exist before you can map it to a system.</li>
+                    <li><strong>description</strong> — write it for the model; it drives routing.</li>
+                    <li><strong>input schema</strong> — optional JSON Schema for the tool's arguments.</li>
+                </ul>
+                <p>A custom tool overrides nothing in the base catalog; it's additive. Grant the scope to users on the <strong>Users</strong> tab.</p>
+            </section>
+
+            <section id="mappings">
+                <h2>Map a tool to live data</h2>
+                <div class="step-pills"><span>Mappings</span><span>→ pick system + tool</span><span>→ table + scope + columns</span></div>
+                <p>A tool's catalog entry says what it <em>is</em>; the mapping says what it <em>does</em> on a real backend. In <strong>Mappings</strong>:</p>
+                <ol>
+                    <li>Pick the <strong>system</strong> and the <strong>tool</strong>.</li>
+                    <li><strong>Which table answers it?</strong> — choose the binding mode (one record / a list / create / aggregate / hand-off) and the entity set.</li>
+                    <li><strong>Whose rows?</strong> — scope to the caller (by column), the caller's own identity row, or explicitly org-wide.</li>
+                    <li><strong>Draw the lines</strong> — map each output field to a table column (dropdowns are fed by live table metadata). Optionally filter by tool input, set an order/limit, and decode picklists.</li>
+                    <li><strong>Save mapping</strong> — validated server-side, applied on the next call.</li>
+                </ol>
+                <div class="callout"><strong>Prerequisite:</strong> the tool (and its scope) must already exist in the Tool catalog before it can be mapped. Custom tool first, mapping second.</div>
+            </section>
+
+            <section id="govern">
+                <h2>Govern by tier</h2>
+                <p>Open a system's row and set its <strong>gating</strong>: <em>write</em> = require-policy / require-approval / off; <em>privileged</em> = block / require-approval / off. Loosening gating prompts for an audited reason — security sign-off is an event, not a checkbox.</p>
+                <p>Before you hand tools to agents, use <strong>Identity probe</strong>: type any scope set (or pick a persona) and see the exact tools that identity would be served — allowed, gated, or hidden — with the reason. Governance you can demonstrate, not assert. Everything runs through <strong>Live audit</strong>: user, tool, system, outcome, latency.</p>
+            </section>
+
+            <section id="users">
+                <h2>Users &amp; roles</h2>
+                <p>Your identity provider (Entra) proves <em>who</em> a caller is; the <strong>Users</strong> tab decides <em>what they may do</em>: a console role (admin / read-only) and granted tool scopes. Add a user by email or Entra object id, pick a role, list their scopes, and save. Unlisted users fall back to the configured default (usually: nothing until granted).</p>
+            </section>
+
+            <section id="licensing">
+                <h2>Licensing</h2>
+                <p>Every install starts with a <strong>30-day trial</strong> — all features unlocked. A signed key then sets your tier, verified <strong>offline</strong> (air-gap friendly, no phone-home). In the <strong>Licensing</strong> tab (or click the plan badge in the header): paste the key, <strong>Verify &amp; install</strong>. It hot-applies and persists.</p>
+                <p>The header badge and Licensing tab show a <strong>days-remaining countdown</strong> (amber at 14 days, red at 5). Renew and install the new key before it lapses, or the gateway locks and tool calls refuse until a valid key is installed. Mock and demo systems are always free, so evaluation is never blocked.</p>
+            </section>
+
+            <section id="deploy">
+                <h2>Deploy</h2>
+                <p>EAG ships as one <strong>container image</strong>, config per customer. Run it on Docker, Azure Container Apps, App Service, on-prem, or fully air-gapped. Point it at your Entra tenant, mount a writable data volume, and connect your systems from the console. Your systems never leave your cloud.</p>
+                <pre><code>docker run -d -p 3000:3000 --env-file .env \
+  -v eag-data:/app/data  your-registry/eag-gateway:latest</code></pre>
+                <p>Console at <code>/admin</code>, MCP endpoint at <code>/mcp</code>. Register that one endpoint in Copilot Studio, Azure AI Foundry, Claude, or any MCP client, and it fronts your whole governed fleet.</p>
+            </section>
+
+            <section id="help">
+                <h2>Get help</h2>
+                <p>Questions, setup help, or a license request — email <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>. We read every message.</p>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved. · <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
