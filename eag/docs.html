@@ -102,42 +102,110 @@
 
             <section id="add-system">
                 <h2>Add a system (connect a backend)</h2>
-                <div class="step-pills"><span>Onboard a system</span><span>→ Systems</span><span>→ Connect…</span><span>→ toggle on</span></div>
+                <div class="step-pills"><span>Onboard a system</span><span>→ Systems</span><span>→ Connect…</span><span>→ verify</span><span>→ toggle on</span></div>
+                <p>Connecting a backend is config, not code — the whole flow lives in the console. It has two halves: <strong>generate the manifest</strong> (what the system is), then <strong>connect &amp; enable it</strong> (make it live).</p>
+
+                <h3>1 · Generate the manifest</h3>
+                <p>Open the <strong>Onboard a system</strong> tab and fill the form:</p>
+                <ul>
+                    <li><strong>Backend id</strong> — a short, stable, lowercase id, e.g. <code>acme-crm</code>. This is how the system is referenced everywhere (audit, mappings, URLs).</li>
+                    <li><strong>Adapter</strong> — the driver that speaks this vendor's protocol. Pick from the list: <code>servicenow</code>, <code>salesforce</code>, <code>workday</code>, <code>successfactors</code>, <code>ukg</code>, <code>sap</code>, <code>snowflake</code>, <code>dynamics365</code>, <code>dataverse</code>, <code>mcp-proxy</code> (to federate a backend that already speaks MCP — no driver code), or <code>mock</code> (canned sample data, no backend). If your backend has no adapter yet, one has to be built first — see the Adapter Development Guide.</li>
+                    <li><strong>Display name</strong> — the human label shown on the system card, e.g. "Acme CRM".</li>
+                    <li><strong>Base URL</strong> — optional; the backend's root URL if the adapter needs one.</li>
+                    <li><strong>Start in mock mode</strong> — leave checked to serve sample data immediately (great for wiring up agents before credentials exist); uncheck when you're ready to go live.</li>
+                </ul>
+                <p>Click <strong>Generate YAML</strong> to preview the manifest, then <strong>Save to manifests/</strong>. It always saves <strong>disabled</strong> and references secrets by env-var name only — nothing sensitive is written. The new system now appears on the <strong>Systems</strong> tab, off, under its business-domain group.</p>
+
+                <h3>2 · Connect credentials</h3>
+                <p>On the <strong>Systems</strong> tab, find the system and click <strong>Connect…</strong>. The credential dialog is tailored to the adapter and lists its auth methods, safest first (e.g. an integration/service user, OAuth client-credentials, or per-user OAuth On-Behalf-Of). Then:</p>
                 <ol>
-                    <li>Open <strong>Onboard a system</strong>. Give it an id (e.g. <code>acme-crm</code>), pick the <strong>adapter</strong> (the driver for that vendor — ServiceNow, Salesforce, Workday, SAP, Snowflake, Dataverse, <code>mcp-proxy</code> to federate an existing MCP server, or <code>mock</code>), a display name, and (optionally) a base URL. Generate the manifest — it always starts <strong>disabled</strong> and references secrets by env-var name only.</li>
-                    <li>On the <strong>Systems</strong> tab the new system appears under its domain group. Click <strong>Connect…</strong> to open the credential dialog: choose an auth method, enter the connection parameters, <strong>Test</strong>, then <strong>Save &amp; connect</strong>. Secrets go to a gitignored store — never into config or the image.</li>
-                    <li>Flip the <strong>toggle switch</strong> on. Its tools appear to authorized agents on the next <code>tools/list</code>.</li>
+                    <li>Choose the <strong>auth method</strong> from the dropdown.</li>
+                    <li>Fill the connection parameters it shows (host, username/password, client id/secret, token URL — whatever that method needs).</li>
+                    <li>Click <strong>Test connection</strong> — the gateway spins up a throwaway instance of the adapter and runs a real <code>health()</code> against the backend. Fix anything that fails here <em>before</em> going live.</li>
+                    <li>Click <strong>Save &amp; connect</strong>. Secret <em>values</em> go to a gitignored runtime store on the writable data volume (mode 0600); the manifest keeps only the secret <em>names</em>. Secrets never enter git, the image, or the browser.</li>
                 </ol>
-                <div class="callout"><strong>No API yet?</strong> Model the target in Dataverse, serve it live through the same catalog to prove the agent experience, then repoint to the real backend later — all agent traffic switches in seconds. (The Dataverse staging capability is a Team-tier feature.)</div>
+
+                <h3>3 · Verify &amp; enable</h3>
+                <ol>
+                    <li>Expand the system's row. Under <strong>Secrets (env vars)</strong> confirm each referenced secret shows a green ✓ (present), not ✗ (missing).</li>
+                    <li>Click <strong>Run conformance</strong> to execute the adapter's test kit against the system (identity isolation, error mapping, health) and read pass/fail inline.</li>
+                    <li>Flip the <strong>toggle switch</strong> on. Its tools appear to authorized agents on the next <code>tools/list</code>. (Reversible — toggling off shows a toast with Undo.)</li>
+                </ol>
+                <div class="callout"><strong>Mock first, then live:</strong> a mock system serves realistic sample data with no mapping, so you can prove the agent experience end-to-end, then switch <code>mock</code> off and add a mapping (next sections) when credentials land. And if the backend has <em>no</em> API yet, model it in Dataverse, serve it live through the same catalog, and repoint to the real backend later — all agent traffic switches in seconds (a Team-tier capability).</div>
             </section>
 
             <section id="tools-scopes">
                 <h2>Create a tool &amp; its scope</h2>
-                <div class="step-pills"><span>Tool catalog</span><span>→ Add a custom tool</span></div>
-                <p>Custom tools extend the catalog without touching code. In <strong>Tool catalog → Add a custom tool</strong>, set:</p>
+                <div class="step-pills"><span>Tool catalog</span><span>→ Add a custom tool</span><span>→ grant on Users</span></div>
+                <p>The <strong>base catalog</strong> ships a stable set of canonical tools (<code>case.*</code>, <code>hr.*</code>, <code>crm.*</code>, <code>erp.*</code>, <code>data.*</code>). When you need a verb the base doesn't cover — an engagement-specific capability — add a <strong>custom tool</strong>. It runs through the same policy, gating, and audit pipeline, and can never override a base id.</p>
+
+                <h3>1 · Add the tool</h3>
+                <p>In <strong>Tool catalog</strong>, open <strong>Add a custom tool</strong> and set each field:</p>
                 <ul>
-                    <li><strong>id</strong> — dotted, e.g. <code>crm.lead.get</code>.</li>
-                    <li><strong>tier</strong> — read / write / privileged (drives gating).</li>
-                    <li><strong>classification</strong> — internal / public / pii.</li>
-                    <li><strong>scopes</strong> — the permission(s) a caller needs, e.g. <code>crm.read</code>. <em>Define the scope here</em> — a tool and its scope must exist before you can map it to a system.</li>
-                    <li><strong>description</strong> — write it for the model; it drives routing.</li>
-                    <li><strong>input schema</strong> — optional JSON Schema for the tool's arguments.</li>
+                    <li><strong>id</strong> — dotted and namespaced by domain, e.g. <code>crm.lead.get</code>. Stable forever once used; agents call it by name. (On the wire, dots become underscores: <code>crm_lead_get</code>.)</li>
+                    <li><strong>tier</strong> — <code>read</code>, <code>write</code>, or <code>privileged</code>. This drives gating automatically: <em>write</em> tools require a policy/confirm; <em>privileged</em> tools ship blocked until a security sign-off. Choose the least privilege that fits.</li>
+                    <li><strong>classification</strong> — <code>internal</code>, <code>public</code>, or <code>pii</code>. Marks results for audit and redaction; use <code>pii</code> for anything personal.</li>
+                    <li><strong>scopes</strong> — the permission string(s) a caller must carry to see and call the tool, comma-separated, e.g. <code>crm.read</code>. <strong>This is where a scope is defined</strong> — you invent the scope name here, then grant it to users (step 3). A tool and its scope must exist before it can be mapped to a system.</li>
+                    <li><strong>description</strong> — <em>write it for the model.</em> The agent chooses tools by matching the user's words against this text, so state plainly what it does, what it returns, and any limits. This is the single highest-leverage field for good routing.</li>
+                    <li><strong>input schema</strong> — optional JSON Schema for the tool's arguments, e.g.
+<pre><code>{ "type": "object",
+  "properties": { "leadId": { "type": "string" } },
+  "required": ["leadId"] }</code></pre>
+                    The gateway validates every call's args against this and shows it to the agent.</li>
                 </ul>
-                <p>A custom tool overrides nothing in the base catalog; it's additive. Grant the scope to users on the <strong>Users</strong> tab.</p>
+                <p>Click <strong>Add tool</strong>. It appears in the catalog immediately (a <code>custom</code> badge distinguishes it) and is written to a git-trackable file — no code change.</p>
+
+                <h3>2 · Grant the scope</h3>
+                <p>A tool with a required scope is hidden from anyone who lacks it. On the <strong>Users</strong> tab, add the scope (e.g. <code>crm.read</code>) to the users or roles who should have it. Use <strong>Identity probe</strong> to confirm the right people now see the tool and others don't.</p>
+
+                <h3>3 · Make it do something</h3>
+                <p>A new tool has no backend behind it yet. A <strong>mock</strong> system will serve it sample data right away; a <strong>live</strong> system needs a mapping — that's the next section.</p>
             </section>
 
             <section id="mappings">
                 <h2>Map a tool to live data</h2>
-                <div class="step-pills"><span>Mappings</span><span>→ pick system + tool</span><span>→ table + scope + columns</span></div>
-                <p>A tool's catalog entry says what it <em>is</em>; the mapping says what it <em>does</em> on a real backend. In <strong>Mappings</strong>:</p>
-                <ol>
-                    <li>Pick the <strong>system</strong> and the <strong>tool</strong>.</li>
-                    <li><strong>Which table answers it?</strong> — choose the binding mode (one record / a list / create / aggregate / hand-off) and the entity set.</li>
-                    <li><strong>Whose rows?</strong> — scope to the caller (by column), the caller's own identity row, or explicitly org-wide.</li>
-                    <li><strong>Draw the lines</strong> — map each output field to a table column (dropdowns are fed by live table metadata). Optionally filter by tool input, set an order/limit, and decode picklists.</li>
-                    <li><strong>Save mapping</strong> — validated server-side, applied on the next call.</li>
-                </ol>
-                <div class="callout"><strong>Prerequisite:</strong> the tool (and its scope) must already exist in the Tool catalog before it can be mapped. Custom tool first, mapping second.</div>
+                <div class="step-pills"><span>Mappings</span><span>→ system + tool</span><span>→ table</span><span>→ whose rows</span><span>→ columns</span><span>→ save</span></div>
+                <p>A tool's catalog entry says what it <em>is</em>; the mapping says what it <em>does</em> on a real backend — which table answers it, whose rows it returns, and how columns become the tool's output fields. Mock systems serve samples with no mapping; a <strong>live system needs one per tool</strong>.</p>
+                <div class="callout"><strong>Prerequisite:</strong> the tool and its scope must already exist in the Tool catalog before you can map it. Create the custom tool first, then map it here.</div>
+
+                <h3>1 · Pick the target</h3>
+                <p>In <strong>Mappings</strong>, choose the <strong>system</strong> (the live backend) and the <strong>tool</strong> you're binding. The form below configures how that one tool runs on that one system.</p>
+
+                <h3>2 · Which table answers it?</h3>
+                <p>Pick the <strong>binding mode</strong>, then the <strong>entity set</strong> (the table/collection, e.g. <code>crm_cases</code>):</p>
+                <ul>
+                    <li><strong>one</strong> — return a single record (a get-by-id).</li>
+                    <li><strong>list</strong> — return several records (a search/list).</li>
+                    <li><strong>create</strong> — write a new record.</li>
+                    <li><strong>aggregate</strong> — group + sum (advanced; configured as JSON).</li>
+                    <li><strong>handoff</strong> — don't call the backend; send the user to a self-service URL instead.</li>
+                </ul>
+
+                <h3>3 · Whose rows?</h3>
+                <p>This is the identity boundary — it decides whether a caller can see only their own data or more:</p>
+                <ul>
+                    <li><strong>Only the caller's — scoped by column</strong> — rows are filtered by a lookup column that holds the owner, e.g. <code>_crm_owner_value</code>. The most common, safest choice.</li>
+                    <li><strong>The caller's own identity row (keyed)</strong> — the caller <em>is</em> the record (e.g. their own HR profile).</li>
+                    <li><strong>Org-wide (explicitly unscoped)</strong> — every row, no per-user filter. An opt-in you should choose deliberately (reference data, service-account reads).</li>
+                </ul>
+
+                <h3>4 · Draw the lines (columns → fields)</h3>
+                <p>Map each <strong>output field ← table column</strong>. The column boxes are dropdowns fed by the system's <em>live</em> table metadata, so you pick real columns, not guesses. Add a row per field. Then, as needed:</p>
+                <ul>
+                    <li><strong>Filter by tool input</strong> — an OData-style template using the tool's arguments, e.g. <code>sn_number eq '{caseId}'</code>. Substitutions are escaped for you.</li>
+                    <li><strong>Result key</strong> / <strong>order by</strong> / <strong>max rows</strong> — for list mode, name the array, sort it (e.g. <code>createdon desc</code>), and cap it.</li>
+                    <li><strong>Decode picklists</strong> — a choices map turns numeric codes into labels, e.g. <code>{ "crm_state": { "0": "Active", "1": "Resolved" } }</code>.</li>
+                </ul>
+
+                <h3>5 · Mode extras</h3>
+                <ul>
+                    <li><strong>create</strong> — set <em>attribute new rows to the caller</em> (a lookup property + its entity set) so records are owned by the signed-in user, plus any <strong>defaults</strong> JSON (e.g. <code>{ "crm_state": 0 }</code>).</li>
+                    <li><strong>handoff</strong> — set the message shown to the user and a link label (e.g. "Open CRM").</li>
+                    <li><strong>Advanced (JSON)</strong> — drop to raw binding JSON for anything the form doesn't cover (aggregate is configured here).</li>
+                </ul>
+
+                <h3>6 · Save</h3>
+                <p>Click <strong>Save mapping</strong>. It's validated server-side (missing columns, bad templates are caught), written to the manifest with a preserved-comment edit, and applied on the very next call — no restart. Test it with <strong>Identity probe</strong> and watch it run in <strong>Live audit</strong>.</p>
             </section>
 
             <section id="govern">
