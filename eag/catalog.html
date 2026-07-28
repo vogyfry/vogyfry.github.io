@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool catalog — Enterprise Agent Gateway</title>
+    <meta name="description" content="EAG's canonical contract: 48 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <link rel="canonical" href="https://pravalabs.app/eag/catalog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Enterprise Agent Gateway">
+    <meta property="og:title" content="Tool catalog — Enterprise Agent Gateway">
+    <meta property="og:description" content="EAG's canonical contract: 48 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <meta property="og:url" content="https://pravalabs.app/eag/catalog.html">
+    <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Tool catalog — Enterprise Agent Gateway">
+    <meta name="twitter:description" content="EAG's canonical contract: 48 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/eag/images/icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/eag/#app","name":"Enterprise Agent Gateway","applicationCategory":"BusinessApplication","operatingSystem":"Self-hosted (Docker, Azure Container Apps, on-prem)","url":"https://pravalabs.app/eag/","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/eag/catalog.html","url":"https://pravalabs.app/eag/catalog.html","name":"Tool catalog — Enterprise Agent Gateway","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Tool catalog","item":"https://pravalabs.app/eag/catalog.html"}]}}]}</script>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css?v=2c4abd04">
+    <style>
+      /* The site's section wrapper centers its text. The hero zone keeps that;
+         everything below is reading material and opts out — centred body copy
+         is ragged on both edges and reads badly on a phone. */
+      .conn-hero { text-align: center; padding-top: .5rem; }
+      .conn-hero h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.12; margin: 0 0 1.1rem; letter-spacing: -.02em; }
+      .conn-lede { max-width: 62ch; margin: 0 auto; font-size: clamp(1rem, 1.5vw, 1.14rem); line-height: 1.68; opacity: .78; }
+      .conn-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem 2.75rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+      .conn-stats li { font-size: .78rem; opacity: .6; letter-spacing: .05em; text-transform: uppercase; }
+      .conn-stats strong { display: block; font-size: 2.4rem; line-height: 1.15; opacity: 1; letter-spacing: -.02em; text-transform: none; }
+
+      .conn-body { text-align: left; margin-top: 3.5rem; }
+      .conn-legend, .conn-note { text-align: left; padding: .95rem 1.15rem; border-left: 3px solid rgba(127,127,127,.3); max-width: 78ch; line-height: 1.65; }
+      .conn-legend { margin: 0 0 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+      .conn-note { margin: 1.4rem 0 0; font-size: .9rem; color: var(--text-secondary); }
+
+      /* Collapsible groups, mirroring the console's Systems list so the site and
+         the product feel like one thing. Open by default — collapsing is for
+         narrowing, never for hiding the first read. */
+      .conn-group { margin-top: 2rem; border-left: 2px solid color-mix(in srgb, var(--dhue) 45%, transparent); padding-left: 1.1rem; }
+      .conn-group > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: .6rem; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; opacity: .75; padding: .35rem 0; }
+      .conn-group > summary::-webkit-details-marker { display: none; }
+      .conn-group > summary:hover { opacity: 1; }
+      .conn-group > summary::before { content: "\25BE"; font-size: .7rem; color: var(--dhue); transition: transform .12s ease; }
+      .conn-group:not([open]) > summary::before { transform: rotate(-90deg); }
+      .conn-group > summary:focus-visible { outline: 2px solid var(--dhue); outline-offset: 3px; }
+      .conn-count { display: inline-block; padding: .08rem .55rem; border-radius: 999px; font-size: .74rem; letter-spacing: 0; text-transform: none; color: var(--dhue); background: color-mix(in srgb, var(--dhue) 22%, transparent); }
+
+      .conn-scroll { overflow-x: auto; margin-top: .4rem; }
+
+      /* Connector disclosure rows. One shared grid-template keeps the columns
+         aligned across every group, the way the table did — but each row opens
+         to its actual verbs. */
+      /* fr, not %, or the 1rem gaps push the last column past 100% and clip it. */
+      .crow { display: grid; grid-template-columns: minmax(0,2fr) minmax(0,1.3fr) minmax(0,1.35fr) 4.5rem; gap: 0 1rem; align-items: start;
+              padding: .8rem 0; border-top: 1px solid rgba(127,127,127,.14); }
+      .chead { border-top: 0; padding: .35rem 0 .5rem; font-size: .72rem; letter-spacing: .08em;
+               text-transform: uppercase; opacity: .45; }
+      summary.crow { cursor: pointer; list-style: none; }
+      summary.crow::-webkit-details-marker { display: none; }
+      summary.crow:hover { background: rgba(127,127,127,.045); }
+      summary.crow:focus-visible { outline: 2px solid var(--dhue); outline-offset: -2px; }
+      .crow .num { text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .crow-wrap[open] > summary.crow { border-bottom: 0; }
+      .crow-wrap > summary.crow .num::after { content: " \25B8"; opacity: .45; font-size: .8em; }
+      .crow-wrap[open] > summary.crow .num::after { content: " \25BE"; }
+      .verbs { display: flex; flex-wrap: wrap; gap: .3rem; padding: 0 0 1rem 0; }
+      .v { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem;
+           font-weight: 500; padding: .15rem .55rem; border-radius: 4px; }
+      .t-read { color: #a5ddfd; background: rgba(125,211,252,.2); }
+      .t-write { color: #fcd170; background: rgba(251,191,36,.2); }
+      .t-privileged { color: #f8a1a1; background: rgba(248,113,113,.2); }
+      .conn-table { width: 100%; border-collapse: collapse; font-size: .93rem; table-layout: fixed; text-align: left; }
+      .conn-table th, .conn-table td { text-align: left; }
+      .conn-table col.c-name { width: 40%; }
+      .conn-table col.c-caps { width: 26%; }
+      .conn-table col.c-idm  { width: 26%; }
+      .conn-table col.c-num  { width: 8%; }
+      .conn-table th { font-weight: 500; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .45; padding: .35rem 1rem .5rem 0; white-space: nowrap; }
+      .conn-table td { padding: .8rem 1rem .8rem 0; border-top: 1px solid rgba(127,127,127,.14); vertical-align: top; }
+      .conn-table tr:hover td { background: rgba(127,127,127,.045); }
+      .conn-table .num, .conn-table th.num { text-align: center; font-variant-numeric: tabular-nums; padding-right: 0; white-space: nowrap; }
+      .conn-name { display: block; font-weight: 600; }
+      .conn-desc { display: block; margin-top: .22rem; font-size: .855rem; color: var(--text-tertiary); max-width: 46ch; line-height: 1.5; }
+      .cap { display: inline-block; margin: 0 .25rem .25rem 0; padding: .1rem .5rem; border-radius: 4px; font-size: .76rem; white-space: nowrap; color: var(--dhue); background: color-mix(in srgb, var(--dhue) 22%, transparent); }
+      .idm { font-size: .82rem; }
+      .idm-0 { color: var(--text-tertiary); font-style: italic; }
+      .idm-1 { color: #5ce695; }
+      .idm-2 { color: var(--text-secondary); }
+      .idm-3 { color: var(--text-tertiary); }
+      .tier { display: inline-block; padding: .08rem .5rem; border-radius: 4px; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
+      .tier-read { color: #7dd3fc; background: rgba(125,211,252,.13); }
+      .tier-write { color: #fbbf24; background: rgba(251,191,36,.13); }
+      .tier-privileged { color: #f87171; background: rgba(248,113,113,.13); }
+      .scopes { font-size: .84rem; opacity: .75; }
+      @media (max-width: 680px) {
+        .conn-table { table-layout: auto; min-width: 32rem; }
+        .crow { grid-template-columns: 1fr; gap: .4rem; }
+        .chead { display: none; }
+        .crow .num { text-align: left; }
+        /* A wrapping flex row centres each line on its OWN width, so the two
+           rows of stats didn't line up in columns. A real 2-column grid does. */
+        .conn-stats {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 1.5rem 1rem;
+          text-align: center;
+        }
+        /* An odd trailing stat (the catalog page has five) spans both columns
+           rather than hanging alone in column one. */
+        .conn-stats li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+        .conn-stats strong { font-size: 1.9rem; }
+      }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/eag/" class="nav-brand">
+                <img src="images/favicon.png" alt="EAG">
+                <span>EAG</span>
+            </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+            <ul class="nav-links">
+                <li><a href="/eag/#capabilities">Capabilities</a></li>
+                <li><a href="/eag/#how-it-works">How it works</a></li>
+                <li><a href="/eag/#connectors">Connectors</a></li>
+                <li><a href="/eag/#comparison">Why EAG</a></li>
+                <li><a href="/eag/#security">Security</a></li>
+                <li><a href="/eag/catalog.html" aria-current="page">Tool catalog</a></li>
+                <li><a href="/eag/docs.html" target="_blank" rel="noopener">Docs</a></li>
+                <li><a href="/">Prava Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="features">
+        <div class="features-inner">
+            <div class="conn-hero">
+              <h1>The canonical tool catalog</h1>
+              <p class="conn-lede">This is the contract. Agents route on these 48 tools, never on a vendor's API — so a backend can be swapped, added or retired underneath a tool without touching a single agent. Every tool carries a tier and a scope, and the gateway enforces both before the call leaves.</p>
+              <ul class="conn-stats">
+                <li><strong>48</strong>tools</li>
+                <li><strong>32</strong>read</li>
+                <li><strong>13</strong>write</li>
+                <li><strong>3</strong>privileged</li>
+                <li><strong>19</strong>scopes</li>
+              </ul>
+            </div>
+
+            <div class="conn-body">
+            <p class="conn-legend"><strong>Tier</strong> governs what a caller may do: <em>read</em> runs freely, <em>write</em> is policy-gated (confirm, or route to approval), <em>privileged</em> is blocked by default and refuses with a typed, audited reason (hand-off tools return a governed self-service link instead). <strong>Systems</strong> is how many shipped connectors bind that tool today; 1 tool is in the contract but not yet bound by a shipped connector. Adding a backend that serves a tool your agents already call needs no agent change. See the <a href="/eag/connectors.html">connectors</a>.</p>
+
+            <details class="conn-group" style="--dhue:#7dd3fc">
+              <summary>HR and human capital <span class="conn-count">4</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>hr.employee.get</code></span><span class="conn-desc">Basic HR profile of the signed-in employee (name, job title, department, manager).</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>hr.read</code></td>
+                    <td class="num" title="BambooHR, ServiceNow (HRSD), SAP SuccessFactors, UKG Pro, Workday">5</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>hr.pay.statement.get</code></span><span class="conn-desc">Latest pay statement metadata and a secure link for the signed-in employee.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>hr.read</code></td>
+                    <td class="num" title="UKG Pro">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>hr.timeoff.balance.get</code></span><span class="conn-desc">Time-off / PTO / leave balances for the signed-in employee, by accrual type.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>hr.read</code></td>
+                    <td class="num" title="BambooHR, SAP SuccessFactors, UKG Pro, Workday">4</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>hr.timeoff.request.create</code></span><span class="conn-desc">Submit a time-off request for the signed-in employee.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>hr.write</code></td>
+                    <td class="num" title="BambooHR, SAP SuccessFactors, Workday">3</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#fbbf24">
+              <summary>ITSM, cases and policy <span class="conn-count">6</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>case.comment.add</code></span><span class="conn-desc">Add a comment or update to one of the signed-in user's own cases — extra detail, a reply to the assignee, or a status nudge.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>case.write</code></td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), Zendesk">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>case.create</code></span><span class="conn-desc">Open an HR or IT case/ticket on behalf of the signed-in user.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>case.write</code></td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (native MCP Server), ServiceNow (ITSM knowledge), Zendesk">6</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>case.get</code></span><span class="conn-desc">Get the status of one of the signed-in user's own cases by case id or number.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>case.read</code></td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (ITSM knowledge), Zendesk">5</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>case.list</code></span><span class="conn-desc">List the signed-in user's own open (or all) cases.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>case.read</code></td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (ITSM knowledge), Zendesk">5</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>case.update</code></span><span class="conn-desc">Update fields on one of the signed-in user's own cases — reprioritise, add detail, or close it.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>case.write</code></td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), Zendesk">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>policy.lookup</code></span><span class="conn-desc">Return the authoritative company policy for a topic, with a link to the governed source document.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#a78bfa">
+              <summary>Knowledge and content <span class="conn-count">6</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>files.get</code></span><span class="conn-desc">Retrieve one document the signed-in user can access, by id or URL (usually from a files.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>files.read</code></td>
+                    <td class="num" title="Confluence, GitHub, Microsoft 365, Notion">4</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>files.recent</code></span><span class="conn-desc">List documents the signed-in user recently opened or edited — 'what was I working on?'.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>files.read</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>files.search</code></span><span class="conn-desc">Find documents and files the signed-in user can access, by name or content (e.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>files.read</code></td>
+                    <td class="num" title="Confluence, GitHub, Microsoft 365, Notion">4</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>knowledge.article.create</code></span><span class="conn-desc">Publish a new knowledge article — typically to write up a resolution so the next person finds it.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>knowledge.write</code></td>
+                    <td class="num" title="Confluence, Notion, Zendesk">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>knowledge.article.get</code></span><span class="conn-desc">Retrieve the full text of one knowledge article or page by its id, number or URL — typically an id returned by knowledge.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="Confluence, Notion, Zendesk">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>knowledge.search</code></span><span class="conn-desc">Search governed enterprise knowledge (KB articles, policies, how-tos).</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="Confluence, GitHub, Jira Service Management (service desk), Microsoft 365, Notion, ServiceNow (ITSM knowledge), Zendesk">7</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#4ade80">
+              <summary>Dev and delivery <span class="conn-count">12</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>work.backlog.list</code></span><span class="conn-desc">List a team's backlog or the contents of a sprint — what is planned, in priority order, with state and effort.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>work.read</code></td>
+                    <td class="num" title="Azure DevOps, Jira (work items)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.item.comment.add</code></span><span class="conn-desc">Add a comment to a work item's discussion, attributed to the signed-in user.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>work.write</code></td>
+                    <td class="num" title="Azure DevOps, Jira (work items)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.item.create</code></span><span class="conn-desc">Create a work item — an epic, feature, user story, task or bug.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>work.write</code></td>
+                    <td class="num" title="Azure DevOps, Jira (work items)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.item.get</code></span><span class="conn-desc">Get one work item in full, WITH its place in the hierarchy — parent epic/feature and any child items — plus state, assignee, effort and sprint.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>work.read</code></td>
+                    <td class="num" title="Azure DevOps, Jira (work items)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.item.search</code></span><span class="conn-desc">Find work items (epics, features, stories, tasks, bugs) — by assignee, state, sprint or free text.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>work.read</code></td>
+                    <td class="num" title="Azure DevOps, Jira (work items)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.item.update</code></span><span class="conn-desc">Update a work item — move its state, reassign it, set effort/story points, or move it to another sprint.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>work.write</code></td>
+                    <td class="num" title="Azure DevOps, Jira (work items)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.testcase.create</code></span><span class="conn-desc">Author a test case and add it to a suite — title, steps and expected results.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>work.write</code></td>
+                    <td class="num" title="Azure DevOps">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.testcase.list</code></span><span class="conn-desc">List the test cases in a suite — id, title, priority and automation status.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>work.read</code></td>
+                    <td class="num" title="Azure DevOps">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.testplan.list</code></span><span class="conn-desc">List test plans in the project — name, state, iteration and owner.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>work.read</code></td>
+                    <td class="num" title="Azure DevOps">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.testrun.get</code></span><span class="conn-desc">Get one test run with its outcome summary AND per-test results — total/passed/failed, and the failing tests with their error messages.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>work.read</code></td>
+                    <td class="num" title="Azure DevOps">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.testrun.list</code></span><span class="conn-desc">List recent test runs — when they ran, against which plan or build, and the pass/fail totals.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>work.read</code></td>
+                    <td class="num" title="Azure DevOps">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>work.testsuite.list</code></span><span class="conn-desc">List the test suites inside a test plan, including nesting, so an agent can drill from a plan to the suites that hold the cases.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>work.read</code></td>
+                    <td class="num" title="Azure DevOps">1</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#60a5fa">
+              <summary>Productivity and collaboration <span class="conn-count">5</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>calendar.availability.get</code></span><span class="conn-desc">Check when people are free or busy over a date range, for scheduling.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>calendar.read</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>calendar.event.create</code></span><span class="conn-desc">Schedule a meeting on the signed-in user's calendar and invite attendees.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>calendar.write</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>calendar.event.list</code></span><span class="conn-desc">List the signed-in user's own calendar events for a date range — what's on their agenda, with times, subjects and locations.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>calendar.read</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>comms.message.list</code></span><span class="conn-desc">List recent messages in the signed-in user's own inbox (sender, subject, received time, read state).</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>comms.read</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>comms.message.send</code></span><span class="conn-desc">Send a message from the signed-in user to a person or channel (e.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>comms.write</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#f472b6">
+              <summary>CRM and sales <span class="conn-count">4</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.account.get</code></span><span class="conn-desc">Get a CRM account/company overview: owner, segment, open opportunities count, health.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>crm.read</code></td>
+                    <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.activity.log</code></span><span class="conn-desc">Log a call, meeting or note against a CRM record on behalf of the signed-in user.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>crm.write</code></td>
+                    <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.contact.get</code></span><span class="conn-desc">Look up a CRM contact by name or email: role, company, owner, last activity.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>crm.read</code></td>
+                    <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.opportunity.list</code></span><span class="conn-desc">List the signed-in user's CRM opportunities/deals with stage, value and close date.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>crm.read</code></td>
+                    <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#fb923c">
+              <summary>ERP, finance and operations <span class="conn-count">4</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>erp.expense.report.get</code></span><span class="conn-desc">The signed-in employee's expense reports and their approval/payment state.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>erp.read</code></td>
+                    <td class="num" title="Dynamics 365 (Finance &amp; Operations), SAP S/4HANA (ERP)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>erp.invoice.status.get</code></span><span class="conn-desc">Status of an invoice: matched, approved, scheduled payment date.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>erp.read</code></td>
+                    <td class="num" title="Dynamics 365 (Finance &amp; Operations), SAP S/4HANA (ERP)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>erp.po.approve</code></span><span class="conn-desc">Approve a purchase order assigned to the signed-in approver.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>erp.approve</code></td>
+                    <td class="num" title="Dynamics 365 (Finance &amp; Operations), SAP S/4HANA (ERP)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>erp.po.status.get</code></span><span class="conn-desc">Status of a purchase order: approval state, expected delivery, receiving status.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>erp.read</code></td>
+                    <td class="num" title="Dynamics 365 (Finance &amp; Operations), SAP S/4HANA (ERP)">2</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#2dd4bf">
+              <summary>Data and analytics <span class="conn-count">4</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>data.catalog.search</code></span><span class="conn-desc">Search the data catalog for datasets, tables and metric definitions (names, owners, descriptions — not the data itself).</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>data.read</code></td>
+                    <td class="num" title="Databricks, Snowflake, SQL database">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>data.metric.get</code></span><span class="conn-desc">Fetch a named, curated business metric from the governed semantic layer (e.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>data.read</code></td>
+                    <td class="num" title="Databricks, Snowflake, SQL database">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>data.query.run</code></span><span class="conn-desc">Run freeform SQL against the data platform.</span></td>
+                    <td><span class="tier tier-privileged">privileged</span></td>
+                    <td class="scopes"><code>data.privileged</code></td>
+                    <td class="num" title="Snowflake, SQL database">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>data.report.run</code></span><span class="conn-desc">Run a saved, parameterized report by name.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>data.read</code></td>
+                    <td class="num" title="Snowflake, SQL database">2</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#c084fc">
+              <summary>Identity and access <span class="conn-count">3</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>directory.person.lookup</code></span><span class="conn-desc">Look up a person in the corporate directory (name, title, department, manager chain).</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>identity.mfa.action</code></span><span class="conn-desc">MFA enroll/reset for the signed-in user.</span></td>
+                    <td><span class="tier tier-privileged">privileged</span></td>
+                    <td class="scopes"><code>identity.privileged</code></td>
+                    <td class="num" title="Microsoft Entra">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>identity.password.reset</code></span><span class="conn-desc">Initiate self-service password reset for the signed-in user.</span></td>
+                    <td><span class="tier tier-privileged">privileged</span></td>
+                    <td class="scopes"><code>identity.privileged</code></td>
+                    <td class="num" title="Microsoft Entra">1</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+
+            <p class="conn-note">Need a tool that isn't here? The catalog is extensible — add a custom tool in the console, give it a scope, and map it to a backend table or endpoint. See <a href="/eag/docs.html" target="_blank" rel="noopener">the docs</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="images/favicon.png" alt="EAG">
+                        <span>Enterprise Agent Gateway</span>
+                    </div>
+                    <p class="footer-description">The API gateway for AI agents. One governed endpoint between your agents and every enterprise system — each call identity-scoped, tier-gated, and audited. Turns any API into the language of agents.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="/eag/#capabilities">Capabilities</a></li>
+                        <li><a href="/eag/connectors.html">Connectors</a></li>
+                        <li><a href="/eag/catalog.html">Tool catalog</a></li>
+                        <li><a href="/eag/#how-it-works">How it works</a></li>
+                        <li><a href="/eag/#security">Security</a></li>
+                        <li><a href="/eag/docs.html">Docs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+                        <li><a href="/">Prava Labs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

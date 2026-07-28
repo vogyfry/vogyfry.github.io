@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EAG Documentation — Build & Govern Your Agent's Backend Estate</title>
     <meta name="description" content="Enterprise Agent Gateway user guide: connect backends, create tools and scopes, map tools to live data, govern by tier, manage users, and install licenses.">
+    <link rel="canonical" href="https://pravalabs.app/eag/docs.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Enterprise Agent Gateway">
+    <meta property="og:title" content="EAG Documentation — Build &amp; Govern Your Agent's Backend Estate">
+    <meta property="og:description" content="Connect backends, create tools and scopes, map tools to live data, govern by tier, manage users, and install licenses.">
+    <meta property="og:url" content="https://pravalabs.app/eag/docs.html">
+    <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="EAG Documentation">
+    <meta name="twitter:description" content="Connect backends, create tools and scopes, map tools to live data, govern by tier, manage users, and install licenses.">
+    <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://pravalabs.app/eag/docs.html","url":"https://pravalabs.app/eag/docs.html","name":"EAG Documentation","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https://pravalabs.app/eag/docs.html"}]}}</script>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2c4abd04">
     <style>
       .docs-wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 24px 80px; display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
       .docs-toc { position: sticky; top: 90px; align-self: start; font-size: 14px; }
@@ -42,11 +54,16 @@
                 <img src="images/favicon.png" alt="EAG">
                 <span>EAG</span>
             </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
             <ul class="nav-links">
                 <li><a href="/eag/#capabilities">Capabilities</a></li>
                 <li><a href="/eag/#how-it-works">How it works</a></li>
-                <li><a href="/eag/docs.html" target="_blank" rel="noopener">Docs</a></li>
+                <li><a href="/eag/#connectors">Connectors</a></li>
+                <li><a href="/eag/#comparison">Why EAG</a></li>
                 <li><a href="/eag/#security">Security</a></li>
+                <li><a href="/eag/catalog.html">Tool catalog</a></li>
+                <li><a href="/eag/docs.html" target="_blank" rel="noopener">Docs</a></li>
                 <li><a href="/">Prava Labs</a></li>
             </ul>
         </div>
@@ -109,7 +126,7 @@
                 <p>Open the <strong>Onboard a system</strong> tab and fill the form:</p>
                 <ul>
                     <li><strong>Backend id</strong> — a short, stable, lowercase id, e.g. <code>acme-crm</code>. This is how the system is referenced everywhere (audit, mappings, URLs).</li>
-                    <li><strong>Adapter</strong> — the driver that speaks this vendor's protocol. Pick from the list: <code>servicenow</code>, <code>salesforce</code>, <code>workday</code>, <code>successfactors</code>, <code>ukg</code>, <code>sap</code>, <code>snowflake</code>, <code>dynamics365</code>, <code>dataverse</code>, <code>mcp-proxy</code> (to federate a backend that already speaks MCP — no driver code), or <code>mock</code> (canned sample data, no backend). If your backend has no adapter yet, one has to be built first — see the Adapter Development Guide.</li>
+                    <li><strong>Adapter</strong> — the driver that speaks this vendor's protocol. Pick from the list: <code>servicenow</code>, <code>salesforce</code>, <code>workday</code>, <code>successfactors</code>, <code>ukg</code>, <code>bamboohr</code>, <code>zendesk</code>, <code>sap</code>, <code>snowflake</code>, <code>sql</code>, <code>dynamics365</code>, <code>dataverse</code>, <code>graph</code> (Microsoft 365), <code>azuredevops</code>, <code>entra-identity</code>, <code>mcp-proxy</code> (federate a backend that already speaks MCP — no driver code), or <code>mock</code> (canned sample data, no backend). If your backend has no adapter yet, one has to be built first — see the Adapter Development Guide.</li>
                     <li><strong>Display name</strong> — the human label shown on the system card, e.g. "Acme CRM".</li>
                     <li><strong>Base URL</strong> — optional; the backend's root URL if the adapter needs one.</li>
                     <li><strong>Start in mock mode</strong> — leave checked to serve sample data immediately (great for wiring up agents before credentials exist); uncheck when you're ready to go live.</li>
@@ -131,7 +148,7 @@
                     <li>Click <strong>Run conformance</strong> to execute the adapter's test kit against the system (identity isolation, error mapping, health) and read pass/fail inline.</li>
                     <li>Flip the <strong>toggle switch</strong> on. Its tools appear to authorized agents on the next <code>tools/list</code>. (Reversible — toggling off shows a toast with Undo.)</li>
                 </ol>
-                <div class="callout"><strong>Mock first, then live:</strong> a mock system serves realistic sample data with no mapping, so you can prove the agent experience end-to-end, then switch <code>mock</code> off and add a mapping (next sections) when credentials land. And if the backend has <em>no</em> API yet, model it in Dataverse, serve it live through the same catalog, and repoint to the real backend later — all agent traffic switches in seconds (a Team-tier capability).</div>
+                <div class="callout"><strong>Mock first, then live:</strong> a mock system serves realistic sample data with no mapping, so you can prove the agent experience end-to-end, then switch <code>mock</code> off and add a mapping (next sections) when credentials land. And if the backend has <em>no</em> API yet, model it in Dataverse, serve it live through the same catalog, and repoint to the real backend later — all agent traffic switches in seconds .</div>
             </section>
 
             <section id="tools-scopes">
@@ -222,7 +239,7 @@
             <section id="licensing">
                 <h2>Licensing</h2>
                 <p>Every install starts with a <strong>30-day trial</strong> — all features unlocked. A signed key then sets your tier, verified <strong>offline</strong> (air-gap friendly, no phone-home). In the <strong>Licensing</strong> tab (or click the plan badge in the header): paste the key, <strong>Verify &amp; install</strong>. It hot-applies and persists.</p>
-                <p>The header badge and Licensing tab show a <strong>days-remaining countdown</strong> (amber at 14 days, red at 5). Renew and install the new key before it lapses, or the gateway locks and tool calls refuse until a valid key is installed. Mock and demo systems are always free, so evaluation is never blocked.</p>
+                <p>The header badge and Licensing tab show a <strong>days-remaining countdown</strong> (amber at 14 days, red at 5). Renew and install the new key before it lapses, or the gateway locks and tool calls refuse until a valid key is installed. Mock and demo systems never count against live-system caps or the adapter allowlist. (A locked gateway — trial over, no key — refuses all tool calls, mock included, until a key is installed.)</p>
             </section>
 
             <section id="deploy">
@@ -242,8 +259,35 @@
 
     <footer class="footer">
         <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="images/favicon.png" alt="EAG">
+                        <span>Enterprise Agent Gateway</span>
+                    </div>
+                    <p class="footer-description">The API gateway for AI agents. One governed endpoint between your agents and every enterprise system — each call identity-scoped, tier-gated, and audited. Turns any API into the language of agents.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="/eag/#capabilities">Capabilities</a></li>
+                        <li><a href="/eag/connectors.html">Connectors</a></li>
+                        <li><a href="/eag/catalog.html">Tool catalog</a></li>
+                        <li><a href="/eag/#how-it-works">How it works</a></li>
+                        <li><a href="/eag/#security">Security</a></li>
+                        <li><a href="/eag/docs.html">Docs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+                        <li><a href="/">Prava Labs</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="footer-bottom">
-                &copy; 2026 Prava Labs, LLC. All rights reserved. · <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
             </div>
         </div>
     </footer>

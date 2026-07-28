@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connectors — Enterprise Agent Gateway</title>
+    <meta name="description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 48 canonical tools behind one governed endpoint.">
+    <link rel="canonical" href="https://pravalabs.app/eag/connectors.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Enterprise Agent Gateway">
+    <meta property="og:title" content="Connectors — Enterprise Agent Gateway">
+    <meta property="og:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 48 canonical tools behind one governed endpoint.">
+    <meta property="og:url" content="https://pravalabs.app/eag/connectors.html">
+    <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Connectors — Enterprise Agent Gateway">
+    <meta name="twitter:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 48 canonical tools behind one governed endpoint.">
+    <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/eag/images/icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/eag/#app","name":"Enterprise Agent Gateway","applicationCategory":"BusinessApplication","operatingSystem":"Self-hosted (Docker, Azure Container Apps, on-prem)","url":"https://pravalabs.app/eag/","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/eag/connectors.html","url":"https://pravalabs.app/eag/connectors.html","name":"Connectors — Enterprise Agent Gateway","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Connectors","item":"https://pravalabs.app/eag/connectors.html"}]}}]}</script>
+    <link rel="icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles.css?v=2c4abd04">
+    <style>
+      /* The site's section wrapper centers its text. The hero zone keeps that;
+         everything below is reading material and opts out — centred body copy
+         is ragged on both edges and reads badly on a phone. */
+      .conn-hero { text-align: center; padding-top: .5rem; }
+      .conn-hero h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.12; margin: 0 0 1.1rem; letter-spacing: -.02em; }
+      .conn-lede { max-width: 62ch; margin: 0 auto; font-size: clamp(1rem, 1.5vw, 1.14rem); line-height: 1.68; opacity: .78; }
+      .conn-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem 2.75rem; margin: 2.5rem 0 0; padding: 0; list-style: none; }
+      .conn-stats li { font-size: .78rem; opacity: .6; letter-spacing: .05em; text-transform: uppercase; }
+      .conn-stats strong { display: block; font-size: 2.4rem; line-height: 1.15; opacity: 1; letter-spacing: -.02em; text-transform: none; }
+
+      .conn-body { text-align: left; margin-top: 3.5rem; }
+      .conn-legend, .conn-note { text-align: left; padding: .95rem 1.15rem; border-left: 3px solid rgba(127,127,127,.3); max-width: 78ch; line-height: 1.65; }
+      .conn-legend { margin: 0 0 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+      .conn-note { margin: 1.4rem 0 0; font-size: .9rem; color: var(--text-secondary); }
+
+      /* Collapsible groups, mirroring the console's Systems list so the site and
+         the product feel like one thing. Open by default — collapsing is for
+         narrowing, never for hiding the first read. */
+      .conn-group { margin-top: 2rem; border-left: 2px solid color-mix(in srgb, var(--dhue) 45%, transparent); padding-left: 1.1rem; }
+      .conn-group > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: .6rem; font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; font-weight: 600; opacity: .75; padding: .35rem 0; }
+      .conn-group > summary::-webkit-details-marker { display: none; }
+      .conn-group > summary:hover { opacity: 1; }
+      .conn-group > summary::before { content: "\25BE"; font-size: .7rem; color: var(--dhue); transition: transform .12s ease; }
+      .conn-group:not([open]) > summary::before { transform: rotate(-90deg); }
+      .conn-group > summary:focus-visible { outline: 2px solid var(--dhue); outline-offset: 3px; }
+      .conn-count { display: inline-block; padding: .08rem .55rem; border-radius: 999px; font-size: .74rem; letter-spacing: 0; text-transform: none; color: var(--dhue); background: color-mix(in srgb, var(--dhue) 22%, transparent); }
+
+      .conn-scroll { overflow-x: auto; margin-top: .4rem; }
+
+      /* Connector disclosure rows. One shared grid-template keeps the columns
+         aligned across every group, the way the table did — but each row opens
+         to its actual verbs. */
+      /* fr, not %, or the 1rem gaps push the last column past 100% and clip it. */
+      .crow { display: grid; grid-template-columns: minmax(0,2fr) minmax(0,1.3fr) minmax(0,1.35fr) 4.5rem; gap: 0 1rem; align-items: start;
+              padding: .8rem 0; border-top: 1px solid rgba(127,127,127,.14); }
+      .chead { border-top: 0; padding: .35rem 0 .5rem; font-size: .72rem; letter-spacing: .08em;
+               text-transform: uppercase; opacity: .45; }
+      summary.crow { cursor: pointer; list-style: none; }
+      summary.crow::-webkit-details-marker { display: none; }
+      summary.crow:hover { background: rgba(127,127,127,.045); }
+      summary.crow:focus-visible { outline: 2px solid var(--dhue); outline-offset: -2px; }
+      .crow .num { text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap; }
+      .crow-wrap[open] > summary.crow { border-bottom: 0; }
+      .crow-wrap > summary.crow .num::after { content: " \25B8"; opacity: .45; font-size: .8em; }
+      .crow-wrap[open] > summary.crow .num::after { content: " \25BE"; }
+      .verbs { display: flex; flex-wrap: wrap; gap: .3rem; padding: 0 0 1rem 0; }
+      .v { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem;
+           font-weight: 500; padding: .15rem .55rem; border-radius: 4px; }
+      .t-read { color: #a5ddfd; background: rgba(125,211,252,.2); }
+      .t-write { color: #fcd170; background: rgba(251,191,36,.2); }
+      .t-privileged { color: #f8a1a1; background: rgba(248,113,113,.2); }
+      .conn-table { width: 100%; border-collapse: collapse; font-size: .93rem; table-layout: fixed; text-align: left; }
+      .conn-table th, .conn-table td { text-align: left; }
+      .conn-table col.c-name { width: 40%; }
+      .conn-table col.c-caps { width: 26%; }
+      .conn-table col.c-idm  { width: 26%; }
+      .conn-table col.c-num  { width: 8%; }
+      .conn-table th { font-weight: 500; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; opacity: .45; padding: .35rem 1rem .5rem 0; white-space: nowrap; }
+      .conn-table td { padding: .8rem 1rem .8rem 0; border-top: 1px solid rgba(127,127,127,.14); vertical-align: top; }
+      .conn-table tr:hover td { background: rgba(127,127,127,.045); }
+      .conn-table .num, .conn-table th.num { text-align: center; font-variant-numeric: tabular-nums; padding-right: 0; white-space: nowrap; }
+      .conn-name { display: block; font-weight: 600; }
+      .conn-desc { display: block; margin-top: .22rem; font-size: .855rem; color: var(--text-tertiary); max-width: 46ch; line-height: 1.5; }
+      .cap { display: inline-block; margin: 0 .25rem .25rem 0; padding: .1rem .5rem; border-radius: 4px; font-size: .76rem; white-space: nowrap; color: var(--dhue); background: color-mix(in srgb, var(--dhue) 22%, transparent); }
+      .idm { font-size: .82rem; }
+      .idm-0 { color: var(--text-tertiary); font-style: italic; }
+      .idm-1 { color: #5ce695; }
+      .idm-2 { color: var(--text-secondary); }
+      .idm-3 { color: var(--text-tertiary); }
+      .tier { display: inline-block; padding: .08rem .5rem; border-radius: 4px; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
+      .tier-read { color: #7dd3fc; background: rgba(125,211,252,.13); }
+      .tier-write { color: #fbbf24; background: rgba(251,191,36,.13); }
+      .tier-privileged { color: #f87171; background: rgba(248,113,113,.13); }
+      .scopes { font-size: .84rem; opacity: .75; }
+      @media (max-width: 680px) {
+        .conn-table { table-layout: auto; min-width: 32rem; }
+        .crow { grid-template-columns: 1fr; gap: .4rem; }
+        .chead { display: none; }
+        .crow .num { text-align: left; }
+        /* A wrapping flex row centres each line on its OWN width, so the two
+           rows of stats didn't line up in columns. A real 2-column grid does. */
+        .conn-stats {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 1.5rem 1rem;
+          text-align: center;
+        }
+        /* An odd trailing stat (the catalog page has five) spans both columns
+           rather than hanging alone in column one. */
+        .conn-stats li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+        .conn-stats strong { font-size: 1.9rem; }
+      }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/eag/" class="nav-brand">
+                <img src="images/favicon.png" alt="EAG">
+                <span>EAG</span>
+            </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+            <ul class="nav-links">
+                <li><a href="/eag/#capabilities">Capabilities</a></li>
+                <li><a href="/eag/#how-it-works">How it works</a></li>
+                <li><a href="/eag/#connectors" aria-current="page">Connectors</a></li>
+                <li><a href="/eag/#comparison">Why EAG</a></li>
+                <li><a href="/eag/#security">Security</a></li>
+                <li><a href="/eag/catalog.html">Tool catalog</a></li>
+                <li><a href="/eag/docs.html" target="_blank" rel="noopener">Docs</a></li>
+                <li><a href="/">Prava Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="features">
+        <div class="features-inner">
+            <div class="conn-hero">
+              <h1>One catalog. Every backend.</h1>
+              <p class="conn-lede">An agent shouldn't have to learn 24 vendor APIs. EAG fronts them all with 48 plain-language tools, so the agent loads one small catalog instead of a sprawl of schemas — and spends its context on the work instead of the plumbing. Swap the system underneath a tool and not one agent changes. Every call is identity-scoped to the caller and audited — and where the backend supports OAuth 2.0 on-behalf-of, it runs as the signed-in user so the backend's own permissions apply underneath EAG's. The Identity column below tells you which is which, per connector.</p>
+              <ul class="conn-stats">
+                <li><strong>24</strong>systems</li>
+                <li><strong>14</strong>native drivers</li>
+                <li><strong>48</strong>canonical tools</li>
+                <li><strong>19</strong>permission scopes</li>
+              </ul>
+            </div>
+
+            <div class="conn-body">
+            <p class="conn-legend"><strong>Identity</strong> — <em>Per-user</em> means the caller's own token reaches the backend, so its permissions apply underneath EAG's. <em>Shared credential, per-user scoping</em> means EAG resolves the caller to a system principal and filters results to them, over one service connection. Click any connector to see the exact tools it binds, coloured by tier — <span class="v t-read">read</span> <span class="v t-write">write</span> <span class="v t-privileged">privileged</span>. Full definitions live in the <a href="/eag/catalog.html">tool catalog</a>.</p>
+
+            <details class="conn-group" style="--dhue:#7dd3fc">
+              <summary>HR and human capital <span class="conn-count">4</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">BambooHR</span><span class="conn-desc">Employee records, time-off balances and time-off requests.</span></span>
+                    <span><span class="cap">HR records</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">3</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">hr.employee.get</span><span class="v t-read">hr.timeoff.balance.get</span><span class="v t-write">hr.timeoff.request.create</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">SAP SuccessFactors</span><span class="conn-desc">Employee records, time-off balances and time-off requests.</span></span>
+                    <span><span class="cap">HR records</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">3</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">hr.employee.get</span><span class="v t-read">hr.timeoff.balance.get</span><span class="v t-write">hr.timeoff.request.create</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">UKG Pro</span><span class="conn-desc">Employee records, time-off balances and pay statements.</span></span>
+                    <span><span class="cap">HR records</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">3</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">hr.employee.get</span><span class="v t-read">hr.pay.statement.get</span><span class="v t-read">hr.timeoff.balance.get</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Workday</span><span class="conn-desc">Worker records, time-off balances and time-off requests.</span></span>
+                    <span><span class="cap">HR records</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">3</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">hr.employee.get</span><span class="v t-read">hr.timeoff.balance.get</span><span class="v t-write">hr.timeoff.request.create</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#fbbf24">
+              <summary>ITSM, cases and policy <span class="conn-count">3</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">ServiceNow (HRSD)</span><span class="conn-desc">HR Service Delivery — HR cases alongside employee records.</span></span>
+                    <span><span class="cap">Cases</span> <span class="cap">HR records</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-write">case.create</span><span class="v t-read">case.get</span><span class="v t-read">case.list</span><span class="v t-read">hr.employee.get</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">ServiceNow (ITSM knowledge)</span><span class="conn-desc">Incidents and requests, plus the ITSM knowledge base.</span></span>
+                    <span><span class="cap">Cases</span> <span class="cap">Knowledge</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-write">case.create</span><span class="v t-read">case.get</span><span class="v t-read">case.list</span><span class="v t-read">knowledge.search</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Zendesk</span><span class="conn-desc">Tickets and Help Center articles.</span></span>
+                    <span><span class="cap">Cases</span> <span class="cap">Knowledge</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">8</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-write">case.comment.add</span><span class="v t-write">case.create</span><span class="v t-read">case.get</span><span class="v t-read">case.list</span><span class="v t-write">case.update</span><span class="v t-write">knowledge.article.create</span><span class="v t-read">knowledge.article.get</span><span class="v t-read">knowledge.search</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#4ade80">
+              <summary>Dev and delivery <span class="conn-count">1</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Azure DevOps</span><span class="conn-desc">Boards and Test Plans — Epic-to-Task hierarchy, sprint backlogs, test plans, suites and runs.</span></span>
+                    <span><span class="cap">Work items</span></span>
+                    <span><span class="idm idm-1">Per-user (Entra OBO)</span></span>
+                    <span class="num">12</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">work.backlog.list</span><span class="v t-write">work.item.comment.add</span><span class="v t-write">work.item.create</span><span class="v t-read">work.item.get</span><span class="v t-read">work.item.search</span><span class="v t-write">work.item.update</span><span class="v t-write">work.testcase.create</span><span class="v t-read">work.testcase.list</span><span class="v t-read">work.testplan.list</span><span class="v t-read">work.testrun.get</span><span class="v t-read">work.testrun.list</span><span class="v t-read">work.testsuite.list</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#60a5fa">
+              <summary>Productivity and collaboration <span class="conn-count">1</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Microsoft 365</span><span class="conn-desc">SharePoint and OneDrive search, directory lookup, calendar, and Teams and Outlook messaging.</span></span>
+                    <span><span class="cap">Knowledge</span> <span class="cap">Files</span> <span class="cap">Directory</span> <span class="cap">Calendar</span> <span class="cap">Messaging</span></span>
+                    <span><span class="idm idm-1">Per-user (Entra OBO)</span></span>
+                    <span class="num">10</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">calendar.availability.get</span><span class="v t-write">calendar.event.create</span><span class="v t-read">calendar.event.list</span><span class="v t-read">comms.message.list</span><span class="v t-write">comms.message.send</span><span class="v t-read">directory.person.lookup</span><span class="v t-read">files.get</span><span class="v t-read">files.recent</span><span class="v t-read">files.search</span><span class="v t-read">knowledge.search</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#f472b6">
+              <summary>CRM and sales <span class="conn-count">2</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Dynamics 365 (CRM)</span><span class="conn-desc">Contacts, accounts, opportunities and activity logging.</span></span>
+                    <span><span class="cap">CRM</span></span>
+                    <span><span class="idm idm-1">Per-user (Entra OBO)</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">crm.account.get</span><span class="v t-write">crm.activity.log</span><span class="v t-read">crm.contact.get</span><span class="v t-read">crm.opportunity.list</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Salesforce (CRM)</span><span class="conn-desc">Contacts, accounts, opportunities and activity logging.</span></span>
+                    <span><span class="cap">CRM</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">crm.account.get</span><span class="v t-write">crm.activity.log</span><span class="v t-read">crm.contact.get</span><span class="v t-read">crm.opportunity.list</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#fb923c">
+              <summary>ERP, finance and operations <span class="conn-count">2</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Dynamics 365 (Finance &amp; Operations)</span><span class="conn-desc">Purchase orders, invoices and expense reports. PO approval is approval-gated.</span></span>
+                    <span><span class="cap">ERP</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">erp.expense.report.get</span><span class="v t-read">erp.invoice.status.get</span><span class="v t-write">erp.po.approve</span><span class="v t-read">erp.po.status.get</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">SAP S/4HANA (ERP)</span><span class="conn-desc">Purchase orders, invoices and expense reports. PO approval is approval-gated.</span></span>
+                    <span><span class="cap">ERP</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">erp.expense.report.get</span><span class="v t-read">erp.invoice.status.get</span><span class="v t-write">erp.po.approve</span><span class="v t-read">erp.po.status.get</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#2dd4bf">
+              <summary>Data and analytics <span class="conn-count">2</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Snowflake</span><span class="conn-desc">Governed queries, metrics, saved reports and catalog search.</span></span>
+                    <span><span class="cap">Data</span></span>
+                    <span><span class="idm idm-3">Shared credential</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">data.catalog.search</span><span class="v t-read">data.metric.get</span><span class="v t-privileged">data.query.run</span><span class="v t-read">data.report.run</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">SQL database</span><span class="conn-desc">Any SQL Server, Azure SQL, PostgreSQL or MySQL table, mapped by manifest.</span></span>
+                    <span><span class="cap">Data</span></span>
+                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">data.catalog.search</span><span class="v t-read">data.metric.get</span><span class="v t-privileged">data.query.run</span><span class="v t-read">data.report.run</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#c084fc">
+              <summary>Identity and access <span class="conn-count">1</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Microsoft Entra</span><span class="conn-desc">Self-service password reset and MFA actions.</span></span>
+                    <span><span class="cap">Identity</span></span>
+                    <span><span class="idm idm-0">Hand-off — no backend call</span></span>
+                    <span class="num">2</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-privileged">identity.mfa.action</span><span class="v t-privileged">identity.password.reset</span></div>
+                </details>
+
+              </div>
+            </details>
+
+            <h2 style="margin-top:3.5rem">Federated over MCP</h2>
+            <p class="section-subtitle">Backends that already speak MCP are fronted with configuration only — no driver code. EAG still applies your identity, policy, rate limits and audit on every call.</p>
+            <p class="conn-note">These ship as <strong>configuration templates, disabled by default</strong>. Vendors revise their MCP tool names, so you verify the downstream names against your server before enabling — the console names any tool it can't find at startup rather than failing silently.</p>
+
+            <details class="conn-group" style="--dhue:#fbbf24">
+              <summary>ITSM, cases and policy <span class="conn-count">2</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Jira Service Management (service desk)</span><span class="conn-desc">Service requests and incidents, with the linked knowledge base.</span></span>
+                    <span><span class="cap">Cases</span> <span class="cap">Knowledge</span></span>
+                    <span><span class="idm idm-1">Per-user (caller's token)</span></span>
+                    <span class="num">6</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-write">case.comment.add</span><span class="v t-write">case.create</span><span class="v t-read">case.get</span><span class="v t-read">case.list</span><span class="v t-write">case.update</span><span class="v t-read">knowledge.search</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">ServiceNow (native MCP Server)</span><span class="conn-desc">ServiceNow's own MCP server, fronted by EAG's identity, policy and audit.</span></span>
+                    <span><span class="cap">Cases</span></span>
+                    <span><span class="idm idm-1">Per-user (caller's token)</span></span>
+                    <span class="num">1</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-write">case.create</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#a78bfa">
+              <summary>Knowledge and content <span class="conn-count">2</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Confluence</span><span class="conn-desc">Spaces and pages — search, read and author articles, plus attachments.</span></span>
+                    <span><span class="cap">Knowledge</span> <span class="cap">Files</span></span>
+                    <span><span class="idm idm-1">Per-user (caller's token)</span></span>
+                    <span class="num">5</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">files.get</span><span class="v t-read">files.search</span><span class="v t-write">knowledge.article.create</span><span class="v t-read">knowledge.article.get</span><span class="v t-read">knowledge.search</span></div>
+                </details>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Notion</span><span class="conn-desc">Databases and pages — search, read and author.</span></span>
+                    <span><span class="cap">Knowledge</span> <span class="cap">Files</span></span>
+                    <span><span class="idm idm-1">Per-user (caller's token)</span></span>
+                    <span class="num">5</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">files.get</span><span class="v t-read">files.search</span><span class="v t-write">knowledge.article.create</span><span class="v t-read">knowledge.article.get</span><span class="v t-read">knowledge.search</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#4ade80">
+              <summary>Dev and delivery <span class="conn-count">1</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Jira (work items)</span><span class="conn-desc">Work items — Epic-to-Task hierarchy and sprint backlogs.</span></span>
+                    <span><span class="cap">Work items</span></span>
+                    <span><span class="idm idm-1">Per-user (caller's token)</span></span>
+                    <span class="num">6</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">work.backlog.list</span><span class="v t-write">work.item.comment.add</span><span class="v t-write">work.item.create</span><span class="v t-read">work.item.get</span><span class="v t-read">work.item.search</span><span class="v t-write">work.item.update</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#60a5fa">
+              <summary>Productivity and collaboration <span class="conn-count">1</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">GitHub</span><span class="conn-desc">Issues as cases, plus code and documentation search across repositories.</span></span>
+                    <span><span class="cap">Cases</span> <span class="cap">Knowledge</span> <span class="cap">Files</span></span>
+                    <span><span class="idm idm-1">Per-user (caller's token)</span></span>
+                    <span class="num">8</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-write">case.comment.add</span><span class="v t-write">case.create</span><span class="v t-read">case.get</span><span class="v t-read">case.list</span><span class="v t-write">case.update</span><span class="v t-read">files.get</span><span class="v t-read">files.search</span><span class="v t-read">knowledge.search</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#f472b6">
+              <summary>CRM and sales <span class="conn-count">1</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">HubSpot (CRM)</span><span class="conn-desc">Contacts, companies, deals and activity logging.</span></span>
+                    <span><span class="cap">CRM</span></span>
+                    <span><span class="idm idm-3">Shared credential</span></span>
+                    <span class="num">4</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">crm.account.get</span><span class="v t-write">crm.activity.log</span><span class="v t-read">crm.contact.get</span><span class="v t-read">crm.opportunity.list</span></div>
+                </details>
+
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#2dd4bf">
+              <summary>Data and analytics <span class="conn-count">1</span></summary>
+              <div class="conn-scroll">
+                <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
+                <details class="crow-wrap">
+                  <summary class="crow">
+                    <span><span class="conn-name">Databricks</span><span class="conn-desc">Unity Catalog search and governed metric reads.</span></span>
+                    <span><span class="cap">Data</span></span>
+                    <span><span class="idm idm-1">Per-user (caller's token)</span></span>
+                    <span class="num">2</span>
+                  </summary>
+                  <div class="verbs"><span class="v t-read">data.catalog.search</span><span class="v t-read">data.metric.get</span></div>
+                </details>
+
+              </div>
+            </details>
+
+            <p class="conn-note">Don't see your system? Anything with a REST, SOAP, OData or SQL interface is a manifest away — see <a href="/eag/docs.html" target="_blank" rel="noopener">the docs</a> for adding one, or <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="images/favicon.png" alt="EAG">
+                        <span>Enterprise Agent Gateway</span>
+                    </div>
+                    <p class="footer-description">The API gateway for AI agents. One governed endpoint between your agents and every enterprise system — each call identity-scoped, tier-gated, and audited. Turns any API into the language of agents.</p>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="/eag/#capabilities">Capabilities</a></li>
+                        <li><a href="/eag/connectors.html">Connectors</a></li>
+                        <li><a href="/eag/catalog.html">Tool catalog</a></li>
+                        <li><a href="/eag/#how-it-works">How it works</a></li>
+                        <li><a href="/eag/#security">Security</a></li>
+                        <li><a href="/eag/docs.html">Docs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+                        <li><a href="/">Prava Labs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
