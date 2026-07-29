@@ -8,11 +8,41 @@
     <meta name="keywords" content="MCP, Model Context Protocol, AI agents, tool registry, semantic search, Claude Code, Codex, Cursor, context bloat, multilingual, macOS, Windows, menu bar app, semantic cache, agent memory, policy gates">
     <meta property="og:title" content="Prava Toolport — The Semantic Tool Registry for AI Agents">
     <meta property="og:description" content="One local broker between your AI agent and all your MCP servers. The agent gets just the right tools per task, in any language — instead of every tool definition at once.">
-    <meta property="og:image" content="images/favicon.png">
+    <meta property="og:image" content="https://pravalabs.app/toolport/images/favicon.png">
     <meta property="og:url" content="https://pravalabs.app/toolport/">
+    <meta property="og:site_name" content="Prava Labs">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prava Toolport — The Semantic Tool Registry for AI Agents">
+    <meta name="twitter:description" content="One local broker between your AI agent and all your MCP servers. Just the right tools per task, in any language.">
+    <link rel="canonical" href="https://pravalabs.app/toolport/">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Prava Toolport",
+          "url": "https://pravalabs.app/toolport/",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "macOS 14+ (Apple Silicon)",
+          "description": "A local semantic tool registry that sits between any AI agent and all your MCP servers, handing the agent only the few right tools per task, in any language.",
+          "offers": [
+            { "@type": "Offer", "name": "Solo Monthly", "price": "9.99", "priceCurrency": "USD" },
+            { "@type": "Offer", "name": "Solo Annual", "price": "89.99", "priceCurrency": "USD" }
+          ],
+          "publisher": { "@type": "Organization", "name": "Prava Labs, LLC", "url": "https://pravalabs.app" }
+        },
+        {
+          "@type": "Organization",
+          "name": "Prava Labs, LLC",
+          "url": "https://pravalabs.app",
+          "logo": "https://pravalabs.app/toolport/images/favicon.png"
+        }
+      ]
+    }
+    </script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,7 +50,7 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
-            <a href="/" class="nav-brand">
+            <a href="index.html" class="nav-brand">
                 <img src="images/favicon.png" alt="Prava Toolport">
                 <span>Prava Toolport</span>
             </a>
@@ -29,7 +59,7 @@
                 <li><a href="#modules">Modules</a></li>
                 <li><a href="#how-it-works">Setup</a></li>
                 <li><a href="#plans">Plans</a></li>
-                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="download.html">Download</a></li>
                 <li><a href="privacy.html">Privacy Policy</a></li>
                 <li><a href="terms.html">Terms</a></li>
                 <li><a href="support.html">Support</a></li>
@@ -48,10 +78,10 @@
             <p class="subtitle">
                 Prava Toolport is a local semantic tool registry that sits between any AI agent and all your MCP servers — handing the agent only the few right tools for each task, instead of every tool definition at once.
             </p>
-            <span class="hero-cta">In Apple App Store review</span>
+            <a class="hero-cta" href="download.html">Get Toolport — free 3-day trial · Solo $9.99/mo or $89.99/yr</a>
             <div class="platform-tags">
                 <span class="platform-tag">Mac · Menu Bar App</span>
-                <span class="platform-tag">Windows · x64 &amp; ARM64</span>
+                <span class="platform-tag">Windows · x64 &amp; ARM64 (soon)</span>
                 <span class="platform-tag">Claude Code</span>
                 <span class="platform-tag">Codex</span>
                 <span class="platform-tag">Cursor</span>
@@ -81,12 +111,12 @@
     <section class="features" id="features">
         <div class="features-inner">
             <h2>Your Agent Is Drowning in Tool Definitions</h2>
-            <p class="section-subtitle">Every MCP server dumps its whole tool menu into the agent's context. A few servers together can eat 40–50% of the window before any work starts. Toolport fixes that with progressive disclosure.</p>
+            <p class="section-subtitle">Every MCP server dumps its whole tool menu into the agent's context. A few servers together can eat a large share of the window before any work starts. Toolport fixes that with progressive disclosure.</p>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🔍</div>
                     <h3>Semantic Tool Search</h3>
-                    <p>The agent describes what it wants to do — "turn off the broken approval flow" — and Toolport returns the top matching tools from across all your servers. Three meta-tools replace hundreds of definitions, saving ~80% of the tokens.</p>
+                    <p>The agent describes what it wants to do — "turn off the broken approval flow" — and Toolport returns the top matching tools from across all your servers. Three meta-tools stand in for your whole catalog, so the agent loads a handful of definitions instead of hundreds — and the built-in receipt shows exactly what that saved on <em>your</em> setup.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌍</div>
@@ -141,7 +171,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">✂️</div>
                     <h3>Results — Outputs, Condensed</h3>
-                    <p>Oversized tool outputs (logs, JSON dumps, tables) arrive condensed with nothing lost — the full payload stays retrievable page by page. Never silent truncation.</p>
+                    <p>Oversized tool outputs (logs, JSON dumps, tables) arrive condensed and clearly marked, with the recent full payload retrievable page by page — condensing never silently drops content.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📖</div>
@@ -176,7 +206,7 @@
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Install Toolport</h3>
-                    <p>Toolport lives in your menu bar and runs the registry engine locally — a native app for Mac and Windows.</p>
+                    <p>Toolport lives in your menu bar and runs the registry engine locally — a native app for Mac today, Windows coming soon.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
@@ -214,7 +244,7 @@
                     <tr>
                         <td class="col-label">Context cost</td>
                         <td><span class="check-no">✗</span> Every tool definition loaded up front</td>
-                        <td class="col-toolport"><span class="check-yes">✓</span> 3 meta-tools, ~80% fewer tokens</td>
+                        <td class="col-toolport"><span class="check-yes">✓</span> 3 meta-tools instead of every definition</td>
                     </tr>
                     <tr>
                         <td class="col-label">Adding another server</td>
@@ -265,12 +295,12 @@
     <section class="plans" id="plans">
         <div class="plans-inner">
             <h2>One App. Pick Your Tier.</h2>
-            <p class="section-subtitle">Everyone gets the same app — your plan simply unlocks components. Every tier is available on <strong>Mac and Windows</strong>.</p>
+            <p class="section-subtitle">Everyone gets the same app — your plan simply unlocks components. <strong>Solo is available today on Mac</strong>; <strong>Team &amp; Enterprise and Windows are coming soon</strong>.</p>
             <div class="plan-grid">
                 <div class="plan-card featured">
                     <div class="plan-name">Solo</div>
                     <div class="plan-price">$9.99 <span>/ mo</span></div>
-                    <div class="plan-note">$89.99/yr (3 months free) · 1 seat · Mac &amp; Windows</div>
+                    <div class="plan-note">$89.99/yr (3 months free) · 1 seat · Mac now, Windows coming soon</div>
                     <ul class="plan-features">
                         <li>Semantic search meta-tools</li>
                         <li>All platform modules — Trace, Policy, Results, Retrieve, Cache, Memory, Grounding</li>
@@ -278,10 +308,11 @@
                         <li>Connect your own MCP servers</li>
                         <li>Local-first, on-device index</li>
                     </ul>
+                    <p class="card-footer"><a class="btn-cta" href="download.html">Get Toolport &rarr;</a></p>
                 </div>
                 <div class="plan-card">
                     <div class="plan-name">Team</div>
-                    <div class="plan-price">Direct license</div>
+                    <div class="plan-price">Available soon</div>
                     <div class="plan-note">Mac &amp; Windows · license key · per seat</div>
                     <ul class="plan-features">
                         <li>Everything in Solo</li>
@@ -292,10 +323,11 @@
                         <li>Token / cost metering</li>
                         <li>Central management &amp; analytics</li>
                     </ul>
+                    <p class="card-footer"><a class="btn-cta secondary" href="mailto:support@pravalabs.app?subject=Toolport%20Team%20waitlist">Join the Waitlist</a></p>
                 </div>
                 <div class="plan-card">
                     <div class="plan-name">Enterprise</div>
-                    <div class="plan-price">Direct license</div>
+                    <div class="plan-price">Available soon</div>
                     <div class="plan-note">Mac &amp; Windows · license key · per seat</div>
                     <ul class="plan-features">
                         <li>Everything in Team</li>
@@ -304,6 +336,7 @@
                         <li>SSO (OIDC — Entra, Okta, Google)</li>
                         <li>Audit export to your SIEM</li>
                     </ul>
+                    <p class="card-footer"><a class="btn-cta secondary" href="mailto:support@pravalabs.app?subject=Toolport%20Enterprise%20waitlist">Join the Waitlist</a></p>
                 </div>
             </div>
             <h3 class="platforms-heading">Every tier, on your platform</h3>
@@ -313,25 +346,24 @@
                     <span class="edition-chip">macOS 14+ · Apple Silicon (M-series)</span>
                     <p>Two ways to get it — same native menu-bar app, same engine:</p>
                     <ul>
-                        <li><strong>Mac App Store</strong> — Solo, subscription billed by Apple. Sandboxed, so remote (HTTP/OAuth) servers only.</li>
-                        <li><strong>Direct download (Developer ID)</strong> — Solo, Team &amp; Enterprise via license key. Notarized DMG; adds <strong>local (stdio) servers</strong> on top of remote.</li>
+                        <li><strong><a href="https://apps.apple.com/app/id6786921834">Mac App Store</a></strong> — Solo, subscription billed by Apple. Sandboxed, so remote (HTTP/OAuth) servers only.</li>
+                        <li><strong>Direct download (Developer ID)</strong> — Solo today via license key (Team &amp; Enterprise soon). Notarized DMG; adds <strong>local (stdio) servers</strong> on top of remote.</li>
                         <li>All platform modules and first-party connectors on both</li>
                     </ul>
                 </div>
                 <div class="edition-card">
-                    <h3>Windows</h3>
+                    <h3>Windows <span class="roadmap">Coming Soon</span></h3>
                     <span class="edition-chip">Windows 10 &amp; 11 · Native x64 &amp; ARM64</span>
-                    <p>A native Windows tray app — Fluent Settings window, server catalog, per-connector Sign In/Out, and the live savings receipt. Same engine, built natively for both architectures.</p>
+                    <p>A native Windows tray app is built and in testing — Fluent Settings window, server catalog, per-connector Sign In/Out, and the live savings receipt. Same engine, built natively for both architectures.</p>
                     <ul>
-                        <li>Solo, Team &amp; Enterprise — unlocked with a license key</li>
+                        <li>Free download, 3-day trial — Solo unlocks with a license key</li>
                         <li><strong>Local and remote MCP servers</strong></li>
                         <li>Same modules and first-party connectors*</li>
-                        <li>Delivered as a direct download</li>
                     </ul>
-                    <p class="plans-footnote">*macOS-only connectors (e.g. Prava for Apple) remain Mac-exclusive.</p>
+                    <p class="plans-footnote">*macOS-only connectors (e.g. Prava for Apple) remain Mac-exclusive. <a href="mailto:support@pravalabs.app?subject=Toolport%20Windows%20waitlist">Join the waitlist</a> to hear the moment it's available.</p>
                 </div>
             </div>
-            <p class="plans-footnote">Prices shown in USD and subject to change before launch. Solo on Mac is billed by Apple through the Mac App Store. On Windows — and for Team and Enterprise on either platform — your tier is unlocked with a signed license key; pricing announced at launch. Local (stdio) servers require the direct-download Mac edition or the Windows edition. Team and Enterprise are licensed <strong>per seat</strong> (one seat = one user or agent); run the registry on as many servers as you need for load or redundancy — servers aren't a licensing unit.</p>
+            <p class="plans-footnote">Prices shown in USD. Solo on Mac is billed by Apple through the Mac App Store, or bought here and unlocked with a license key on the direct-download edition (see <a href="download.html">Download</a>). Windows is built and in testing — <strong>coming soon</strong> as a free download with a 3-day trial, unlocked the same way. Team and Enterprise launch soon on both platforms, unlocked with a signed license key. Local (stdio) servers require the Windows edition or the direct-download Mac edition. Team and Enterprise are licensed <strong>per seat</strong> (one seat = one user or agent); run the registry on as many servers as you need for load or redundancy — servers aren't a licensing unit.</p>
         </div>
     </section>
 
@@ -399,7 +431,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Prava Labs, LLC. All rights reserved.
+                <p style="margin-bottom:10px">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;margin-right:5px"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Payments processed by <strong>Stripe</strong> — we never see or store your card details.
+                    Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; American Express &nbsp;·&nbsp; Apple&nbsp;Pay &nbsp;·&nbsp; Google&nbsp;Pay &nbsp;·&nbsp; Link
+                </p>
+                &copy; 2026 Prava Labs, LLC &nbsp;·&nbsp; United States &nbsp;·&nbsp; <a href="mailto:support@pravalabs.app">support@pravalabs.app</a> &nbsp;·&nbsp; <a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; 14-day money-back guarantee on direct purchases
             </div>
         </div>
     </footer>

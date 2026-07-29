@@ -173,8 +173,14 @@ body {
     font-weight: 600;
     transition: transform 0.2s, box-shadow 0.2s;
     border: none;
-    cursor: default;
+    cursor: pointer;
     opacity: 0.9;
+}
+
+.hero-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+    opacity: 1;
 }
 
 .platform-tags {
@@ -445,6 +451,14 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 20px;
     text-align: left;
+}
+
+/* A section with a single card (e.g. the Team & Enterprise teaser): constrain
+   and center the card instead of stretching it across the row. */
+.plan-grid.single {
+    grid-template-columns: minmax(0, 440px);
+    justify-content: center;
+    text-align: center;
     margin-top: 56px;
 }
 
@@ -457,6 +471,15 @@ body {
     flex-direction: column;
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
+
+/* Bottom-anchored CTA block inside any card — buttons and their captions line
+   up across a row no matter how long each card's content runs (same pattern
+   as the company page's app-card footers). */
+.card-footer {
+    margin-top: auto;
+    padding-top: 16px;
+}
+.card-footer .plan-note { margin-top: 8px; }
 
 .plan-card:hover {
     transform: translateY(-3px);
@@ -498,7 +521,7 @@ body {
 
 .plan-features {
     list-style: none;
-    margin-top: auto;
+    margin-top: 10px;
 }
 
 .plan-features li {
@@ -773,9 +796,27 @@ body {
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 20px;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.3);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.55);
     text-align: center;
+}
+
+.footer-bottom strong {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+}
+
+.footer-bottom a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.footer-bottom a:hover {
+    color: white;
+    border-bottom-color: rgba(255, 255, 255, 0.6);
 }
 
 /* Legal Pages */
@@ -843,10 +884,50 @@ body {
 .legal-page a {
     color: var(--brand);
     text-decoration: none;
+    border-bottom: 1px solid rgba(0, 184, 255, 0.35);
+    transition: border-color 0.2s;
 }
 
 .legal-page a:hover {
-    text-decoration: underline;
+    border-bottom-color: var(--brand);
+}
+
+/* Content links inside cards, subtitles, and footnotes — same treatment as the footer:
+   no default underline, subtle bottom border that brightens on hover */
+.plan-note a,
+.section-subtitle a,
+.plans-footnote a,
+.hero-subtitle a,
+.edition-card a,
+.plan-features a,
+.steps-list a {
+    color: var(--brand);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 184, 255, 0.35);
+    transition: border-color 0.2s;
+}
+
+/* Numbered how-to steps inside FAQ cards and support answers — stacked list
+   with brand-colored markers instead of inline "1. … 2. …" prose, so the
+   numbers rag left instead of landing mid-sentence at line ends. */
+.steps-list {
+    margin: 10px 0 0;
+    padding-left: 22px;
+    display: grid;
+    gap: 8px;
+}
+.steps-list li { padding-left: 4px; }
+.steps-list li::marker { color: var(--brand); font-weight: 700; }
+.plan-card .steps-list li { font-size: 13.5px; color: var(--text-secondary); }
+
+.plan-note a:hover,
+.section-subtitle a:hover,
+.plans-footnote a:hover,
+.hero-subtitle a:hover,
+.edition-card a:hover,
+.plan-features a:hover,
+.steps-list a:hover {
+    border-bottom-color: var(--brand);
 }
 
 .highlight-box {
@@ -930,3 +1011,78 @@ body {
         display: none;
     }
 }
+
+/* Primary action buttons on the download/thanks pages (DMG download, Buy Solo) —
+   real buttons, not bare links, so the purchase path reads at a glance. */
+.btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 22px;
+    border-radius: 980px;
+    background: var(--brand);
+    color: #001018;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 18px var(--brand-glow);
+}
+.btn-cta:hover {
+    background: var(--brand-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 26px var(--brand-glow);
+}
+.btn-cta.secondary {
+    background: transparent;
+    color: var(--brand);
+    border: 1px solid var(--brand);
+    box-shadow: none;
+}
+.btn-cta.secondary:hover {
+    background: var(--brand-light);
+    transform: translateY(-1px);
+}
+
+/* DMG download button styled to the same visual weight as the official
+   App Store badge beside it (badge geometry, two-line label, download glyph).
+   Deliberately NO Apple logo — Apple licenses its badge/logo for App Store
+   links only; the "notarized" caption underneath carries the trust signal. */
+.dmg-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: #000;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 0 14px;
+    height: 50px;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+.dmg-badge:hover { transform: scale(1.03); }
+.dmg-badge svg { width: 22px; height: 22px; flex-shrink: 0; }
+.dmg-badge .dmg-badge-text { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+.dmg-badge .dmg-badge-text small { font-size: 9.5px; font-weight: 500; letter-spacing: 0.02em; }
+.dmg-badge .dmg-badge-text strong { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+
+/* Stripe-checkout-styled buy button: Stripe's blurple + lock glyph reads as
+   "this is a Stripe checkout" at a glance; the caption underneath names it. */
+.stripe-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #635bff;
+    color: #fff;
+    border-radius: 10px;
+    padding: 13px 22px;
+    height: 50px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: transform 0.2s, background 0.2s;
+}
+.stripe-btn:hover { transform: scale(1.03); background: #5851e6; }
+.stripe-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
