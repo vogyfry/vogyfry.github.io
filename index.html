@@ -3,11 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apps by Prava Labs</title>
-    <meta name="description" content="Apps by Prava Labs, LLC. TradeSocial — learn investing with your group, live on the App Store. Toolport — now in TestFlight beta. In the lab: Pravida and Mavee.">
-    <meta property="og:title" content="Apps by Prava Labs">
-    <meta property="og:description" content="iOS and Mac apps by Prava Labs, LLC. TradeSocial live on the App Store. Toolport in TestFlight beta. Pravida and Mavee in the lab.">
-    <link rel="icon" type="image/png" href="tradesocial-icon.png">
+    <title>Prava Labs — Local-First Apps &amp; On-Device AI Tools</title>
+    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), and EAG (the governed enterprise agent gateway).">
+    <meta property="og:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
+    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing, EAG for the enterprise.">
+    <meta property="og:url" content="https://pravalabs.app/">
+    <meta property="og:site_name" content="Prava Labs">
+    <meta property="og:image" content="https://pravalabs.app/prava-icon.png">
+    <link rel="canonical" href="https://pravalabs.app/">
+    <link rel="icon" type="image/svg+xml" href="prava-icon.svg">
+    <link rel="icon" type="image/png" sizes="256x256" href="brand/dist/prava/icon-256.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://pravalabs.app/#org",
+          "name": "Prava Labs, LLC",
+          "url": "https://pravalabs.app/",
+          "email": "support@pravalabs.app",
+          "description": "Independent software studio building local-first, private-by-design apps and on-device AI tools.",
+          "logo": "https://pravalabs.app/prava-icon.png"
+        },
+        {
+          "@type": "WebSite",
+          "url": "https://pravalabs.app/",
+          "name": "Prava Labs",
+          "publisher": { "@id": "https://pravalabs.app/#org" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Prava Toolport",
+          "operatingSystem": "macOS, Windows",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://pravalabs.app/toolport/",
+          "description": "The semantic tool registry for AI agents — one local broker between any MCP-compatible agent and all your MCP servers.",
+          "publisher": { "@id": "https://pravalabs.app/#org" },
+          "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/eag/#app",
+          "name": "Enterprise Agent Gateway",
+          "alternateName": "EAG",
+          "operatingSystem": "Self-hosted (Docker, Azure Container Apps, on-prem)",
+          "applicationCategory": "BusinessApplication",
+          "url": "https://pravalabs.app/eag/",
+          "description": "A governed MCP gateway: one endpoint fronting enterprise systems with identity-scoped, audited, natural-language tools for AI agents.",
+          "publisher": { "@id": "https://pravalabs.app/#org" }
+        }
+      ]
+    }
+    </script>
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -116,7 +164,11 @@
             background: #050505;
         }
 
-        .app-name { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em; }
+        /* Name + status pill on one flex row: identical placement on every
+           card, and a pill that can never wrap mid-header. */
+        .app-name { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em;
+                    display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; }
+        .app-name .live-now { margin-left: 0; white-space: nowrap; }
         .app-platform { font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-top: 2px; }
         .app-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
 
@@ -158,7 +210,7 @@
 
         /* Official Apple App Store badge (unmodified artwork) — only the badge
            links to the App Store; it sits above the card's stretched link. */
-        .store-badge-link { position: relative; z-index: 2; margin-top: auto; align-self: flex-start; transition: transform 0.2s; }
+        .store-badge-link { position: relative; z-index: 2; margin-top: auto; align-self: center; transition: transform 0.2s; }
         .store-badge-link:hover { transform: scale(1.03); }
         .store-badge { height: 45px; width: auto; display: block; }
 
@@ -248,9 +300,9 @@
 <body>
 
     <section class="hero">
-        <p class="hero-eyebrow">Apps by Prava Labs</p>
+        <p class="hero-eyebrow">Prava Labs</p>
         <h1>Built for the way you live.</h1>
-        <p>Apps focused on collaboration, learning, privacy, and developer productivity.</p>
+        <p>An independent software studio building local-first, private-by-design apps — from group investing to on-device AI for developers. Your data stays on your device. Always.</p>
     </section>
 
     <div class="apps main">
@@ -272,6 +324,7 @@
                 <span class="tag">Group Portfolio</span>
                 <span class="tag">Real Market Data</span>
                 <span class="tag">Stock · ETF · Crypto</span>
+                <span class="tag">Solo Mode Free</span>
             </div>
             <a class="store-badge-link" href="https://apps.apple.com/app/id6759305119" target="_blank" rel="noopener" aria-label="Download on the App Store">
                 <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the App Store" width="135" height="45">
@@ -282,12 +335,12 @@
             <div class="app-header">
                 <img class="app-icon" src="toolport-icon.png" alt="Prava Toolport icon">
                 <div>
-                    <div class="app-name">Toolport <span class="live-now beta">TestFlight Beta</span></div>
+                    <div class="app-name">Toolport <span class="live-now review">In Review</span></div>
                     <div class="app-platform">Mac · Windows (x64 &amp; ARM64)</div>
                 </div>
             </div>
             <p class="app-desc">
-                The semantic tool registry for AI agents. One local broker between any agent — Claude Code, Codex, Cursor — and all your MCP servers, handing it only the right tools per task, in any language, ~80% fewer tokens. Plus seven built-in modules: policy gates, output condensing, web retrieval, semantic cache, memory, source grounding, and a live savings receipt.
+                The semantic tool registry for AI agents. One local broker between any agent — Claude Code, Codex, Cursor — and all your MCP servers, handing it only the right tools per task, in any language. Plus seven built-in modules: policy gates, output condensing, web retrieval, semantic cache, memory, source grounding — and a live receipt that shows exactly what it saved on your setup.
             </p>
             <div class="app-tags">
                 <span class="tag">MCP</span>
@@ -295,6 +348,7 @@
                 <span class="tag">7 Modules</span>
                 <span class="tag">Any Agent</span>
                 <span class="tag">Multilingual</span>
+                <span class="tag">Local-First</span>
             </div>
             <span class="app-cta">
                 Learn more
@@ -308,12 +362,12 @@
             <div class="app-header">
                 <img class="app-icon" src="eag-icon.png" alt="Enterprise Agent Gateway icon">
                 <div>
-                    <div class="app-name">EAG <span class="live-now review">In Vendor Review</span></div>
+                    <div class="app-name">EAG <span class="live-now review">Coming Soon</span></div>
                     <div class="app-platform">Self-Hosted · Docker · Azure · on-prem</div>
                 </div>
             </div>
             <p class="app-desc">
-                The Enterprise Agent Gateway. One governed MCP endpoint between your AI agents and every enterprise system — ServiceNow, Workday, Salesforce, SAP, and more — each call made as the signed-in user, policy-gated by tier, and fully audited. Manifest-driven, identity-aware, one image per customer.
+                The Enterprise Agent Gateway. One governed MCP endpoint between your AI agents and every enterprise system — ServiceNow, Workday, Salesforce, SAP, and more — each call identity-scoped to the signed-in user, policy-gated by tier, and fully audited. Manifest-driven, identity-aware, one image per customer.
             </p>
             <div class="app-tags">
                 <span class="tag">MCP Gateway</span>
@@ -321,6 +375,7 @@
                 <span class="tag">Per-User OBO</span>
                 <span class="tag">Governed &amp; Audited</span>
                 <span class="tag">Self-Hosted</span>
+                <span class="tag">Air-Gap Ready</span>
             </div>
             <span class="app-cta">
                 Learn more
@@ -380,7 +435,7 @@
                 <span class="tag">Apple Intelligence</span>
                 <span class="tag">Calendar</span>
                 <span class="tag">Contacts</span>
-                <span class="tag">iOS 26</span>
+                <span class="tag">On-Device AI</span>
             </div>
             <span class="app-cta">
                 Learn more
@@ -392,8 +447,37 @@
 
     </div>
 
+    <section class="labs-header" id="about">
+        <p class="hero-eyebrow">Why Prava</p>
+        <h2>Local-first isn't a feature. It's the thesis.</h2>
+        <p class="sub">
+            Every Prava product runs on your device: the models, the data, the decisions.
+            TradeSocial keeps your group's portfolio between you and your friends. And Toolport is
+            the first module of the
+            <strong style="color: var(--text)">Prava Agent platform</strong> — the disclosure layer
+            between AI agents and everything that would otherwise flood their context: the right
+            tools, the right content, the right memory, in any language, with a receipt for every
+            token it saves. No accounts. No tracking. No phone-home.
+        </p>
+    </section>
+
+    <section class="labs-header" id="contact" style="padding-bottom: 72px;">
+        <p class="hero-eyebrow">Contact</p>
+        <h2>Talk to us.</h2>
+        <p class="sub">
+            Support &amp; sales: <a href="mailto:support@pravalabs.app" style="color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border);">support@pravalabs.app</a>
+            &nbsp;·&nbsp; Privacy: <a href="mailto:privacy@pravalabs.app" style="color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border);">privacy@pravalabs.app</a>
+        </p>
+    </section>
+
     <footer>
-        <p>&copy; 2026 Prava Labs, LLC &nbsp;&middot;&nbsp; <a href="https://pravalabs.app/mavee/privacy.html">Privacy</a></p>
+        <p>
+            &copy; 2026 Prava Labs, LLC
+            &nbsp;&middot;&nbsp; <a href="/toolport/">Toolport</a>
+            &nbsp;&middot;&nbsp; <a href="/toolport/privacy.html">Privacy</a>
+            &nbsp;&middot;&nbsp; <a href="/toolport/terms.html">Terms</a>
+            &nbsp;&middot;&nbsp; <a href="/toolport/support.html">Support</a>
+        </p>
     </footer>
 
 </body>
