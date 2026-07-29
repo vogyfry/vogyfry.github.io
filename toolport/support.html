@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support — Prava Toolport</title>
     <meta name="description" content="Get help with Prava Toolport — setup, agents, MCP servers, and FAQs.">
+    <meta property="og:title" content="Support — Prava Toolport">
+    <meta property="og:description" content="Get help with Prava Toolport — setup, agents, MCP servers, and FAQs.">
+    <meta property="og:image" content="https://pravalabs.app/toolport/images/favicon.png">
+    <meta property="og:url" content="https://pravalabs.app/toolport/support.html">
+    <meta property="og:site_name" content="Prava Labs">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Support — Prava Toolport">
+    <meta name="twitter:description" content="Get help with Prava Toolport — setup, agents, MCP servers, and FAQs.">
     <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="canonical" href="https://pravalabs.app/toolport/support.html">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,8 +27,12 @@
                 <span>Prava Toolport</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#modules">Modules</a></li>
+                <li><a href="index.html#how-it-works">Setup</a></li>
+                <li><a href="index.html#plans">Plans</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
                 <li><a href="terms.html">Terms</a></li>
                 <li><a href="support.html">Support</a></li>
             </ul>
@@ -47,9 +61,6 @@
         <h3>How do I add Toolport to Claude Code?</h3>
         <p>Add Toolport as an MCP server in your Claude Code configuration (one entry). Toolport announces the search → schema → invoke workflow to the agent automatically when it connects — no system-prompt changes needed.</p>
 
-        <h3>What do "local" and "remote" MCP servers mean?</h3>
-        <p>A <strong>local</strong> server is a program Toolport launches on your own machine and talks to over <strong>stdio</strong> (standard input/output) — filesystem access, dev tools, anything you install yourself. A <strong>remote</strong> server runs somewhere else and is reached over <strong>HTTP</strong>, usually with an OAuth sign-in — for example Microsoft 365's or GitHub's hosted MCP servers. The distinction matters when choosing an install: the sandboxed Mac App Store build can't launch local processes, so it fronts remote servers only.</p>
-
         <h3>Do my existing MCP servers need changes?</h3>
         <p>No. Toolport speaks standard MCP to your servers. Point it at the same server definitions you use today; it connects, asks each server for its tools, and indexes them. When a server's tools change, Toolport re-checks it automatically.</p>
 
@@ -63,7 +74,16 @@
         <p>For remote servers that require OAuth (for example, Microsoft or GitHub hosted services), Toolport opens the provider's sign-in in your browser and stores the tokens locally on your machine. Your credentials never pass through Prava Labs.</p>
 
         <h3>Which platforms and installs are there?</h3>
-        <p>Same engine everywhere. On <strong>Mac</strong> (macOS 14+, Apple Silicon), the <strong>Mac App Store</strong> build sells the <strong>Solo</strong> tier billed by Apple — it is sandboxed, so it fronts remote (HTTP/OAuth) servers only; the <strong>direct download</strong> (notarized, unlocked with a license key) adds <strong>local (stdio) servers</strong> and carries Solo, Team, and Enterprise. On <strong>Windows</strong> (10 &amp; 11, native x64 &amp; ARM64), the direct-download build runs <strong>both local and remote</strong> servers at every tier, unlocked with a license key. So local servers are available on every install except the sandboxed Mac App Store build.</p>
+        <p>Same engine everywhere. On <strong>Mac</strong> (macOS 14+, Apple Silicon), the <strong>Mac App Store</strong> build sells the <strong>Solo</strong> tier billed by Apple — it is sandboxed, so it fronts remote (HTTP/OAuth) servers only; the <strong>direct download</strong> (notarized, unlocked with a license key) adds <strong>local (stdio) servers</strong> and carries Solo today, with Team and Enterprise coming soon. On <strong>Windows</strong> (10 &amp; 11, native x64 &amp; ARM64 — coming soon), the app is a free direct download that runs <strong>both local and remote</strong> servers at every tier, unlocked with the same license key. So local servers are available on every install except the sandboxed Mac App Store build.</p>
+
+        <h3>I subscribed on the Mac App Store — can I switch to the direct download?</h3>
+        <p>Yes, without paying twice:</p>
+        <ol class="steps-list">
+            <li>Cancel the subscription in <strong>System Settings → Apple Account → Subscriptions</strong> — Apple keeps it active until your renewal date, and we can't cancel it for you.</li>
+            <li>Download the DMG edition whenever you like: it starts its own fresh 3-day trial, so you can set it up and confirm your local (stdio) servers work while your App Store subscription is still running.</li>
+            <li>The two editions keep <strong>separate settings</strong> — you'll re-add your servers and OAuth sign-ins in the DMG edition.</li>
+            <li><a href="mailto:support@pravalabs.app?subject=Switching%20from%20the%20Mac%20App%20Store">Email support</a> with your Apple renewal date and we'll issue your Solo license key timed to start the day Apple's billing stops — no overlap, no gap in coverage.</li>
+        </ol>
 
         <h3>What's the difference between the tiers?</h3>
         <p>Your tier unlocks components. <strong>Solo</strong> is the individual plan — semantic search, all platform modules, the first-party connectors, and your own MCP servers (local and remote, except on the sandboxed Mac App Store build). <strong>Team</strong> adds a shared team registry with governance and audit receipts, security pre-screening of tools, and token/cost metering. <strong>Enterprise</strong> adds air-gapped / on-prem deployment (offline license, no phone-home), SSO (OIDC), and audit export to your SIEM. See the <a href="index.html#plans">plans overview</a>.</p>
@@ -92,9 +112,9 @@
         <div class="footer-inner">
             <div class="footer-bottom">
                 &copy; 2026 Prava Labs, LLC. All rights reserved.
-                &nbsp;|&nbsp; <a href="privacy.html" style="color: rgba(255,255,255,0.5);">Privacy</a>
-                &nbsp;|&nbsp; <a href="terms.html" style="color: rgba(255,255,255,0.5);">Terms</a>
-                &nbsp;|&nbsp; <a href="support.html" style="color: rgba(255,255,255,0.5);">Support</a>
+                &nbsp;|&nbsp; <a href="privacy.html">Privacy</a>
+                &nbsp;|&nbsp; <a href="terms.html">Terms</a>
+                &nbsp;|&nbsp; <a href="support.html">Support</a>
             </div>
         </div>
     </footer>
