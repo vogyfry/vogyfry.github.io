@@ -92,7 +92,7 @@
                 <h2>Core concepts</h2>
                 <p>Five ideas run through the whole product:</p>
                 <ul>
-                    <li><strong>System</strong> — a connected backend (ServiceNow, Workday, SAP, a Dataverse table, or anything that speaks MCP). One image fronts many systems; you turn them on and off.</li>
+                    <li><strong>System</strong> — a connected backend (ServiceNow, Workday, SAP, a Dataverse table, or anything that speaks MCP). One image fronts many systems; you turn them on and off. In MCP terms, a <em>remote</em> server is reached over HTTP (how agents reach EAG, and how EAG federates MCP backends); a <em>local</em> server is a process spoken to over stdio (EAG supports it for desktop development).</li>
                     <li><strong>Tool</strong> — a canonical, plain-language capability an agent calls by intent (e.g. <code>case.create</code>, <code>hr.timeoff.balance.get</code>). The catalog is stable; the backend behind a tool can change without the agent noticing.</li>
                     <li><strong>Scope</strong> — a permission string (e.g. <code>hr.read</code>, <code>case.write</code>) a tool requires. A caller only sees tools their scopes grant.</li>
                     <li><strong>Mapping</strong> — how a tool actually runs on a live backend: which table answers it, whose rows, and how columns become fields. Mock systems serve samples with no mapping; a live system needs one.</li>
