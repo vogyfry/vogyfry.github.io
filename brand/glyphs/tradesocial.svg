@@ -1,0 +1,6 @@
+<!-- TradeSocial — rising line, core at the pivot -->
+<g fill="none" stroke="__INK__" stroke-width="19" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M54 174 L106 122 L140 156 L200 90"/>
+  <path d="M166 86 H204 V124"/>
+</g>
+<circle cx="106" cy="122" r="15" fill="__CORE__"/>
