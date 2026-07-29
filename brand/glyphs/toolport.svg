@@ -1,0 +1,8 @@
+<!-- Toolport — broker hub routing to servers, core at the junction -->
+<g fill="none" stroke="__INK__" stroke-width="18" stroke-linecap="round">
+  <path d="M128 106 V78"/><path d="M114 136 L76 170"/><path d="M142 136 L180 170"/>
+</g>
+<g fill="none" stroke="__INK__" stroke-width="17">
+  <circle cx="128" cy="62" r="19"/><circle cx="64" cy="182" r="19"/><circle cx="192" cy="182" r="19"/>
+</g>
+<circle cx="128" cy="124" r="17" fill="__CORE__"/>

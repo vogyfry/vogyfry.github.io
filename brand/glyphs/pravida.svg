@@ -1,0 +1,4 @@
+<!-- Pravida — shield, core protected inside -->
+<path d="M128 42 L200 72 V128 c0 46 -31 73 -72 90 c-41 -17 -72 -44 -72 -90 V72 Z"
+  fill="none" stroke="__INK__" stroke-width="19" stroke-linejoin="round"/>
+<circle cx="128" cy="126" r="17" fill="__CORE__"/>
