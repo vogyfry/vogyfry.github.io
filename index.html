@@ -35,12 +35,12 @@
         {
           "@type": "SoftwareApplication",
           "name": "Prava Toolport",
-          "operatingSystem": "macOS, Windows",
+          "operatingSystem": "macOS",
           "applicationCategory": "DeveloperApplication",
           "url": "https://pravalabs.app/toolport/",
           "description": "The semantic tool registry for AI agents — one local broker between any MCP-compatible agent and all your MCP servers.",
           "publisher": { "@id": "https://pravalabs.app/#org" },
-          "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/PreOrder" }
+          "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
         },
         {
           "@type": "SoftwareApplication",
@@ -210,9 +210,22 @@
 
         /* Official Apple App Store badge (unmodified artwork) — only the badge
            links to the App Store; it sits above the card's stretched link. */
-        .store-badge-link { position: relative; z-index: 2; margin-top: auto; align-self: center; transition: transform 0.2s; }
+        .store-badge-link { position: relative; z-index: 2; transition: transform 0.2s; }
         .store-badge-link:hover { transform: scale(1.03); }
         .store-badge { height: 45px; width: auto; display: block; }
+
+        /* Shared bottom row on every app card: badge left, Learn more right —
+           anchored to the card bottom so cards stay symmetrical regardless of
+           description length. Sits above the stretched card-link overlay. */
+        .app-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
 
         /* Status pills: "Live Now" (base), .beta and .dev modifiers */
         .live-now {
@@ -317,46 +330,61 @@
                 </div>
             </div>
             <p class="app-desc">
-                Learn to invest together. Paper trade with friends using a $5,000 virtual budget and real market data. Compare strategies, chat in real time, and build confidence — no real money at risk.
+                Learn to invest together. Paper trade stocks, ETFs, and crypto with live market data — everyone starts with a $5,000 virtual budget and not a dollar at risk. Form a group with friends, family, or coworkers, grow it to earn milestone bonuses of up to $15,000 per member, chat about trades in real time, and see what your group is buying. Solo mode is included for private practice — switch anytime.
             </p>
             <div class="app-tags">
-                <span class="tag">Paper Trading</span>
-                <span class="tag">Group Portfolio</span>
-                <span class="tag">Real Market Data</span>
+                <span class="tag">Risk-Free Paper Trading</span>
                 <span class="tag">Stock · ETF · Crypto</span>
-                <span class="tag">Solo Mode Free</span>
+                <span class="tag">Live Market Data</span>
+                <span class="tag">Group + Solo Modes</span>
+                <span class="tag">Milestone Bonuses</span>
+                <span class="tag">Real-Time Group Chat</span>
             </div>
-            <a class="store-badge-link" href="https://apps.apple.com/app/id6759305119" target="_blank" rel="noopener" aria-label="Download on the App Store">
-                <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the App Store" width="135" height="45">
-            </a>
+            <div class="app-footer">
+                <a class="store-badge-link" href="https://apps.apple.com/app/id6759305119" target="_blank" rel="noopener" aria-label="Download on the App Store">
+                    <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the App Store" width="135" height="45">
+                </a>
+                <a class="app-cta" href="/tradesocial/">
+                    Learn more
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 8h10M9 4l4 4-4 4"/>
+                    </svg>
+                </a>
+            </div>
         </div>
 
-        <a class="app-card toolport" href="/toolport/">
+        <div class="app-card toolport">
+            <a class="card-link" href="/toolport/" aria-label="Prava Toolport — learn more"></a>
             <div class="app-header">
                 <img class="app-icon" src="toolport-icon.png" alt="Prava Toolport icon">
                 <div>
-                    <div class="app-name">Toolport <span class="live-now review">In Review</span></div>
-                    <div class="app-platform">Mac · Windows (x64 &amp; ARM64)</div>
+                    <div class="app-name">Toolport <span class="live-now"><span class="live-dot"></span>Live Now</span></div>
+                    <div class="app-platform">Mac · Windows coming soon</div>
                 </div>
             </div>
             <p class="app-desc">
-                The semantic tool registry for AI agents. One local broker between any agent — Claude Code, Codex, Cursor — and all your MCP servers, handing it only the right tools per task, in any language. Plus seven built-in modules: policy gates, output condensing, web retrieval, semantic cache, memory, source grounding — and a live receipt that shows exactly what it saved on your setup.
+                The semantic tool registry for AI agents. One local broker between any agent — Claude Code, Codex, Cursor — and all your MCP servers, handing it only the right tools per task, in any language. Seven built-in modules — call tracing, policy gates, output condensing, web retrieval, semantic cache, memory, and source grounding — plus a live receipt that shows exactly what it saved on your setup.
             </p>
             <div class="app-tags">
-                <span class="tag">MCP</span>
-                <span class="tag">Semantic Search</span>
-                <span class="tag">7 Modules</span>
-                <span class="tag">Any Agent</span>
+                <span class="tag">Semantic Tool Search</span>
+                <span class="tag">Any MCP Agent</span>
+                <span class="tag">7 Built-In Modules</span>
                 <span class="tag">Multilingual</span>
-                <span class="tag">Local-First</span>
+                <span class="tag">On-Device · Local-First</span>
+                <span class="tag">Live Savings Receipt</span>
             </div>
-            <span class="app-cta">
-                Learn more
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
-            </span>
-        </a>
+            <div class="app-footer">
+                <a class="store-badge-link" href="https://apps.apple.com/app/id6786921834" target="_blank" rel="noopener" aria-label="Download Prava Toolport on the Mac App Store">
+                    <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the Mac App Store" width="135" height="45">
+                </a>
+                <a class="app-cta" href="/toolport/">
+                    Learn more
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 8h10M9 4l4 4-4 4"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
 
         <a class="app-card eag" href="/eag/">
             <div class="app-header">
@@ -367,14 +395,14 @@
                 </div>
             </div>
             <p class="app-desc">
-                The Enterprise Agent Gateway. One governed MCP endpoint between your AI agents and every enterprise system — ServiceNow, Workday, Salesforce, SAP, and more — each call identity-scoped to the signed-in user, policy-gated by tier, and fully audited. Manifest-driven, identity-aware, one image per customer.
+                The Enterprise Agent Gateway. One governed MCP endpoint between your AI agents and every enterprise system — ServiceNow, Workday, Salesforce, SAP, and any REST, SOAP, or OData backend, even legacy. Every call is identity-scoped to the signed-in user, policy-gated by tier (read / write / privileged), and audited end to end. Manifest-driven, one canonical tool catalog, one image per customer — in your own tenant.
             </p>
             <div class="app-tags">
                 <span class="tag">MCP Gateway</span>
                 <span class="tag">Entra SSO</span>
                 <span class="tag">Per-User OBO</span>
-                <span class="tag">Governed &amp; Audited</span>
-                <span class="tag">Self-Hosted</span>
+                <span class="tag">Policy Tiers + Full Audit</span>
+                <span class="tag">REST · SOAP · OData</span>
                 <span class="tag">Air-Gap Ready</span>
             </div>
             <span class="app-cta">
@@ -473,10 +501,14 @@
     <footer>
         <p>
             &copy; 2026 Prava Labs, LLC
+            &nbsp;&middot;&nbsp; <a href="/tradesocial/">TradeSocial</a>
             &nbsp;&middot;&nbsp; <a href="/toolport/">Toolport</a>
-            &nbsp;&middot;&nbsp; <a href="/toolport/privacy.html">Privacy</a>
-            &nbsp;&middot;&nbsp; <a href="/toolport/terms.html">Terms</a>
-            &nbsp;&middot;&nbsp; <a href="/toolport/support.html">Support</a>
+            &nbsp;&middot;&nbsp; <a href="/eag/">EAG</a>
+            &nbsp;&middot;&nbsp; <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
+        </p>
+        <p class="footer-legal-note" style="margin-top:6px; font-size:0.8em; opacity:0.7">
+            Privacy, terms, and support for each product live on its own pages:
+            <a href="/tradesocial/privacy.html">TradeSocial</a> &middot; <a href="/toolport/privacy.html">Toolport</a>
         </p>
     </footer>
 
