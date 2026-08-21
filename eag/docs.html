@@ -318,13 +318,13 @@
 
             <section id="licensing">
                 <h2>Licensing</h2>
-                <p>Every install starts with a <strong>14-day trial</strong> — all features unlocked. A signed key then sets your tier, verified <strong>offline</strong> (air-gap friendly, no phone-home). In the <strong>Licensing</strong> tab (or click the plan badge in the header): paste the key, <strong>Verify &amp; install</strong>. It hot-applies and persists.</p>
+                <p>When it ships, every install will start with a <strong>14-day trial</strong> &mdash; every feature unlocked. A signed key then sets your tier, verified <strong>offline</strong> (air-gap friendly, no phone-home). In the <strong>Licensing</strong> tab (or click the plan badge in the header): paste the key, <strong>Verify &amp; install</strong>. It hot-applies and persists.</p>
                 <p>The header badge and Licensing tab show a <strong>days-remaining countdown</strong> (amber at 14 days, red at 5). Renew and install the new key before it lapses, or the gateway locks and tool calls refuse until a valid key is installed. Mock and demo systems never count against live-system caps or the adapter allowlist. (A locked gateway — trial over, no key — refuses all tool calls, mock included, until a key is installed.)</p>
             </section>
 
             <section id="deploy">
                 <h2>Deploy</h2>
-                <p>EAG ships as one <strong>container image</strong>, config per customer. Run it on Docker, Azure Container Apps, App Service, on-prem, or fully air-gapped. Point it at your Entra tenant, mount a writable data volume, and connect your systems from the console. Your systems never leave your cloud.</p>
+                <p>EAG ships as one <strong>container image</strong>, config per customer. Run it on Docker, Azure Container Apps, App Service, on-prem, or fully air-gapped. Point it at your identity provider, mount a writable data volume, and connect your systems from the console. Your systems never leave your cloud.</p>
                 <pre><code>docker run -d -p 3000:3000 --env-file .env \
   -v eag-data:/app/data  your-registry/eag-gateway:latest</code></pre>
                 <p>Console at <code>/admin</code>, MCP endpoint at <code>/mcp</code>. Register that one endpoint in Copilot Studio, Azure AI Foundry, Amazon Bedrock, Claude, or any MCP client, and it fronts your whole governed fleet.</p>
