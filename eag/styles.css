@@ -1076,24 +1076,37 @@ body {
    ======================================================================== */
 :root { --signal: #34d399; --signal-dim: rgba(52,211,153,.14); }
 
-.arch-wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 24px 80px; }
-.arch-lead { color: var(--text-secondary); font-size: 17px; line-height: 1.6; margin: 0 0 40px; max-width: 640px; }
-.arch-h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: -0.02em; }
-.arch-sec { margin-top: 64px; }
+.arch-hero { text-align: center; padding-top: .5rem; }
+.arch-hero h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.12; margin: 0 0 1.1rem; letter-spacing: -.02em; }
+.arch-lead { max-width: 62ch; margin: 0 auto; font-size: clamp(1rem, 1.5vw, 1.14rem); line-height: 1.68; opacity: .78; }
+.arch-sec { margin-top: 72px; text-align: left; }
 .arch-sec > h2 { font-size: 24px; letter-spacing: -0.02em; margin: 0 0 8px; }
 .arch-sec > p.sub { color: var(--text-secondary); margin: 0 0 28px; max-width: 640px; line-height: 1.6; }
 
 /* three-panel diagram */
-.diagram { display: grid; grid-template-columns: 1fr auto 1.55fr auto 1fr; gap: 0 14px; align-items: stretch; }
-.dcol { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 20px 16px; }
-.dcol-head { margin-bottom: 16px; padding: 0 4px; }
+/* align-items: center, not stretch. Stretch forced all three panels to the
+   tallest one's height, so the shorter columns carried a block of dead space
+   under their last tile. Centering lets each panel be exactly as tall as its
+   content and sits them on a shared horizontal centreline, which is also where
+   the chevrons already point. */
+.diagram { display: grid; grid-template-columns: 1fr auto 1.55fr auto 1fr; gap: 0 14px; align-items: center; }
+.dcol { background: linear-gradient(180deg, #15181f 0%, #0d0f14 100%);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--radius); padding: 0 16px 20px; overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05); }
+.dcol-head { margin: 0 -16px 16px; padding: 14px 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
+  border-bottom: 1px solid rgba(255,255,255,.13); display: flex; align-items: center; gap: 9px; }
+.dcol-head::before { content: ""; width: 3px; height: 26px; border-radius: 2px;
+  background: var(--brand); opacity: .55; flex: 0 0 3px; }
 .dcol-head b { display: block; font-size: 13px; font-weight: 600; letter-spacing: -.01em; }
-.dcol-head span { font-size: 11px; color: var(--text-tertiary); }
+.dcol-head span { display: block; font-size: 11px; color: var(--text-tertiary); margin-top: 1px; }
+.dcol-head.systems::before { background: var(--signal); }
 .dtiles { display: flex; flex-direction: column; gap: 8px; }
-.dtile { display: flex; align-items: center; gap: 10px; background: var(--bg-surface);
-  border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 12px;
-  transition: border-color .2s, transform .2s; }
-.dtile:hover { border-color: rgba(255,255,255,.16); transform: translateY(-1px); }
+.dtile { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.11); border-radius: var(--radius-sm); padding: 10px 12px;
+  transition: border-color .2s, background .2s, transform .2s; }
+.dtile:hover { background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.2); transform: translateY(-1px); }
 .dtile img, .dtile .chip { width: 22px; height: 22px; flex: 0 0 22px; display: block; }
 .dtile .chip { border-radius: 5px; display: flex; align-items: center; justify-content: center;
   font-size: 8px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
@@ -1177,3 +1190,12 @@ body {
   .dchev { transform: rotate(90deg); padding: 2px 0; }
   .dtech { grid-template-columns: 1fr; }
 }
+/* Wordmark-shaped vendor logos (SAP) need a wide slot, not the square icon grid. */
+.dtile img.wordmark { width: auto; height: 13px; flex: 0 0 auto; max-width: 44px; }
+
+/* Domain glyphs, in the taxonomy the console and the connectors page group by. */
+.dtile .chip.dom { font-size: 8px; font-weight: 700; letter-spacing: 0; }
+.dmore { display: block; margin-top: 10px; padding: 9px 12px; text-align: center;
+  font-size: 11.5px; color: var(--text-tertiary); border: 1px dashed rgba(255,255,255,.14);
+  border-radius: var(--radius-sm); transition: color .2s, border-color .2s; }
+.dmore:hover { color: var(--text-primary); border-color: rgba(255,255,255,.3); text-decoration: none; }

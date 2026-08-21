@@ -20,7 +20,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/eag/#app","name":"Enterprise Agent Gateway","alternateName":"EAG","applicationCategory":"BusinessApplication","operatingSystem":"Self-hosted (Docker, Azure Container Apps, on-prem)","url":"https://pravalabs.app/eag/","description":"A governed MCP gateway: one endpoint fronting enterprise systems with identity-scoped, audited, natural-language tools for AI agents.","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/eag/","url":"https://pravalabs.app/eag/","name":"EAG — The API Gateway for AI Agents","isPartOf":{"@id":"https://pravalabs.app/eag/#app"}}]}</script>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css?v=73cc3e41">
+    <link rel="stylesheet" href="styles.css?v=73ebdec2">
 </head>
 <body>
 
@@ -65,6 +65,7 @@
                 <span class="platform-tag">Entra SSO · OIDC</span>
                 <span class="platform-tag">Per-User OBO</span>
                 <span class="platform-tag">Copilot Studio</span>
+                <span class="platform-tag">Amazon Bedrock</span>
                 <span class="platform-tag">Azure AI Foundry</span>
                 <span class="platform-tag">Any MCP Agent</span>
                 <span class="platform-tag">Signed Receipts</span>
@@ -80,12 +81,12 @@
                 <div class="loop-arrow">→</div>
                 <div class="loop-step">
                     <code>govern</code>
-                    <span>Tier policy + per-user identity — the caller is on every call, with OBO where the backend supports it</span>
+                    <span>Tier policy + per-user identity, and writes above the line park for a named human approver</span>
                 </div>
                 <div class="loop-arrow">→</div>
                 <div class="loop-step">
                     <code>invoke + audit</code>
-                    <span>Proxied to the right backend; every call logged with identity and outcome</span>
+                    <span>Proxied to the right backend as the real user; every call logged, and each outcome signed</span>
                 </div>
             </div>
         </div>
@@ -123,7 +124,7 @@
                     <p>Every outcome is signed with Ed25519 and written to a database you own &mdash; Dataverse, Azure SQL, Snowflake &mdash; carrying requester, approver, and a hash of the exact arguments. Alter a row and verification fails against the public key. Agents can certify their own decisions too, and the gateway stamps the requester from the verified token, so the &ldquo;who&rdquo; is never self-reported.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">&#129323;</div>
+                    <div class="feature-icon">&#129706;</div>
                     <h3>Know Which Agent Acted</h3>
                     <p>The agent's identity comes from the token's <code>azp</code> claim &mdash; asserted by your identity provider, not claimed by the caller. A registered agent gets a ceiling intersected with its user's scopes, so a read-only research agent cannot write <em>even when the person running it can</em>. Registration can only ever narrow access, never widen it. Disable an agent and it stops for everyone, at once.</p>
                 </div>
@@ -180,7 +181,7 @@
                 <div class="step">
                     <div class="step-number">2</div>
                     <h3>Connect Your Identity</h3>
-                    <p>Point EAG at your Entra tenant. Admins sign in to the console over OIDC; agent callers present real tokens, exchanged per-user via OBO where the backend supports it.</p>
+                    <p>Point EAG at Entra, Okta, Auth0, Keycloak &mdash; any OIDC provider; a first-boot wizard discovers it for you. Admins sign in to the console over OIDC; agent callers present real tokens, exchanged per-user via OBO where the backend supports it. Map your existing IdP groups to scopes and access is managed where your people already are.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
@@ -190,7 +191,7 @@
                 <div class="step">
                     <div class="step-number">4</div>
                     <h3>Point Your Agents at It</h3>
-                    <p>Register EAG as one MCP endpoint in Copilot Studio, Azure AI Foundry, Claude, or any MCP client. That single entry now fronts your whole governed fleet.</p>
+                    <p>Register EAG as one MCP endpoint. Copilot Studio is verified end to end with a step-by-step runbook; Azure AI Foundry, Amazon Bedrock, Claude and any other MCP client connect the same standard way. That single entry now fronts your whole governed fleet.</p>
                 </div>
             </div>
         </div>
@@ -202,7 +203,7 @@
     <section class="features" id="connectors">
         <div class="features-inner">
             <h2>24 systems, one catalog</h2>
-            <p class="section-subtitle">14 native drivers plus 8 federated MCP templates, fronted by 68 plain-language tools. Your agents route on the catalog, so a backend can be swapped, added or retired underneath a tool without touching a single agent.</p>
+            <p class="section-subtitle">16 native connectors built on 14 drivers, plus 8 federated MCP templates &mdash; fronted by 68 plain-language tools. Your agents route on the catalog, so a backend can be swapped, added or retired underneath a tool without touching a single agent.</p>
             <div class="feature-grid">
                 <div class="feature-card">
                     <h3>HR and human capital</h3>
@@ -293,7 +294,7 @@
                     <tr>
                         <td class="col-label">Agent reach</td>
                         <td><span class="check-no">✗</span> Tied to one agent platform</td>
-                        <td class="col-eag"><span class="check-yes">✓</span> Any MCP agent — Copilot Studio, Foundry, Claude</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Any MCP agent — Copilot Studio, Foundry, Bedrock, Claude</td>
                     </tr>
                 </tbody>
             </table>
