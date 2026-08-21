@@ -18,7 +18,7 @@
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://pravalabs.app/eag/docs.html","url":"https://pravalabs.app/eag/docs.html","name":"EAG Documentation","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https://pravalabs.app/eag/docs.html"}]}}</script>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css?v=73cc3e41">
+    <link rel="stylesheet" href="styles.css?v=73ebdec2">
     <style>
       .docs-wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 24px 80px; display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
       .docs-toc { position: sticky; top: 90px; align-self: start; font-size: 14px; }
@@ -79,6 +79,9 @@
             <a href="#tools-scopes">Tools &amp; scopes</a>
             <a href="#mappings">Map to live data</a>
             <a href="#govern">Govern by tier</a>
+            <a href="#approvals">Approve a write</a>
+            <a href="#receipts">Signed receipts</a>
+            <a href="#agents">The agent registry</a>
             <a href="#users">Users &amp; roles</a>
             <a href="#licensing">Licensing</a>
             <a href="#deploy">Deploy</a>
@@ -91,31 +94,37 @@
 
             <section id="concepts">
                 <h2>Core concepts</h2>
-                <p>Five ideas run through the whole product:</p>
+                <p>Seven ideas run through the whole product:</p>
                 <ul>
                     <li><strong>System</strong> — a connected backend (ServiceNow, Workday, SAP, a Dataverse table, or anything that speaks MCP). One image fronts many systems; you turn them on and off. In MCP terms, a <em>remote</em> server is reached over HTTP (how agents reach EAG, and how EAG federates MCP backends); a <em>local</em> server is a process spoken to over stdio (EAG supports it for desktop development).</li>
                     <li><strong>Tool</strong> — a canonical, plain-language capability an agent calls by intent (e.g. <code>case.create</code>, <code>hr.timeoff.balance.get</code>). The catalog is stable; the backend behind a tool can change without the agent noticing.</li>
                     <li><strong>Scope</strong> — a permission string (e.g. <code>hr.read</code>, <code>case.write</code>) a tool requires. A caller only sees tools their scopes grant.</li>
                     <li><strong>Mapping</strong> — how a tool actually runs on a live backend: which table answers it, whose rows, and how columns become fields. Mock systems serve samples with no mapping; a live system needs one.</li>
-                    <li><strong>Tier &amp; gating</strong> — every tool is <em>read</em>, <em>write</em>, or <em>privileged</em>. Policy gates decide confirm-before-write and block/approve for privileged actions.</li>
+                    <li><strong>Tier &amp; gating</strong> — every tool is <em>read</em>, <em>write</em>, or <em>privileged</em>. Policy gates decide confirm-before-write, and can park a write for a human approver instead of executing it.</li>
+                    <li><strong>Agent</strong> — the application acting for the user, identified by the <code>azp</code> claim your identity provider puts in the token. A registered agent carries its own ceiling, which can only ever <em>narrow</em> what its user could already do.</li>
+                    <li><strong>Receipt</strong> — a signed, tamper-evident record of an outcome, written to a database you own. Verifiable by anyone holding the public key.</li>
                 </ul>
                 <div class="callout"><strong>The golden rule:</strong> agents bind to the <em>canonical catalog</em>, never to a backend. That's what lets you swap or migrate backends in seconds without touching a single agent.</div>
             </section>
 
             <section id="console">
                 <h2>The console</h2>
-                <p>Everything below is done from the admin console (served at <code>/admin</code>), no YAML editing required. Eight tabs:</p>
+                <p>Everything below is done from the admin console (served at <code>/admin</code>), no YAML editing required. Eleven tabs:</p>
                 <ul>
                     <li><strong>Systems</strong> — the fleet: toggle systems on/off, expand a row for tools, gating, config, and Connect.</li>
                     <li><strong>Tool catalog</strong> — the canonical contract; add custom tools here.</li>
                     <li><strong>Mappings</strong> — bind a tool to a live table.</li>
                     <li><strong>Identity probe</strong> — "what would this user see?" before they ask.</li>
                     <li><strong>Live audit</strong> — every call, streaming, with identity + outcome.</li>
-                    <li><strong>Users</strong> — console roles and tool-scope grants.</li>
+                    <li><strong>Approvals</strong> — writes parked for a human decision; the tab badges the pending count.</li>
+                    <li><strong>Agents</strong> — the agent registry: which applications may call, and the ceiling each one gets.</li>
+                    <li><strong>Users</strong> — console roles, tool-scope grants, and IdP group mappings.</li>
                     <li><strong>Onboard a system</strong> — generate a new system's manifest.</li>
                     <li><strong>Licensing</strong> — install a key, see seats and the expiry countdown.</li>
+                    <li><strong>Settings</strong> — change the identity provider after setup, with discovery and validation.</li>
                 </ul>
                 <p>Use the ☀/◐ button in the header to switch light/dark.</p>
+                <div class="callout"><strong>First boot:</strong> a fresh install with no identity provider configured starts in <em>setup mode</em> — the console and API refuse until you complete a one-time wizard at <code>/admin/setup</code>, unlocked by a token printed to the container logs. Pick your provider (Entra, Okta, Auth0, Keycloak, or any OIDC issuer), let it read the discovery document, and the wizard writes the config file for you.</div>
             </section>
 
             <section id="add-system">
@@ -127,7 +136,7 @@
                 <p>Open the <strong>Onboard a system</strong> tab and fill the form:</p>
                 <ul>
                     <li><strong>Backend id</strong> — a short, stable, lowercase id, e.g. <code>acme-crm</code>. This is how the system is referenced everywhere (audit, mappings, URLs).</li>
-                    <li><strong>Adapter</strong> — the driver that speaks this vendor's protocol. Pick from the list: <code>servicenow</code>, <code>salesforce</code>, <code>workday</code>, <code>successfactors</code>, <code>ukg</code>, <code>bamboohr</code>, <code>zendesk</code>, <code>sap</code>, <code>snowflake</code>, <code>sql</code>, <code>dynamics365</code>, <code>dataverse</code>, <code>graph</code> (Microsoft 365), <code>azuredevops</code>, <code>entra-identity</code>, <code>mcp-proxy</code> (federate a backend that already speaks MCP — no driver code; ready-made templates ship for Jira, Jira Service Management, Confluence, GitHub, HubSpot, Notion and Databricks), or <code>mock</code> (canned sample data, no backend). If your backend has no adapter yet, one has to be built first — see the Adapter Development Guide.</li>
+                    <li><strong>Adapter</strong> — the driver that speaks this vendor's protocol. Pick from the list: <code>servicenow</code>, <code>salesforce</code>, <code>workday</code>, <code>successfactors</code>, <code>ukg</code>, <code>bamboohr</code>, <code>zendesk</code>, <code>sap</code>, <code>snowflake</code>, <code>sql</code>, <code>dynamics365</code>, <code>dataverse</code>, <code>graph</code> (Microsoft 365), <code>azuredevops</code>, <code>entra-identity</code>, <code>mcp-proxy</code> (federate a backend that already speaks MCP — no driver code; eight ready-made templates ship &mdash; Jira, Jira Service Management, Confluence, GitHub, HubSpot, Notion, Databricks and ServiceNow's own MCP Server &mdash; disabled by default, so you can verify the downstream tool names against the vendor's current server before enabling), or <code>mock</code> (canned sample data, no backend). If your backend has no adapter yet, one has to be built first — see the Adapter Development Guide.</li>
                     <li><strong>Display name</strong> — the human label shown on the system card, e.g. "Acme CRM".</li>
                     <li><strong>Base URL</strong> — optional; the backend's root URL if the adapter needs one.</li>
                     <li><strong>Start in mock mode</strong> — leave checked to serve sample data immediately (great for wiring up agents before credentials exist); uncheck when you're ready to go live.</li>
@@ -155,7 +164,7 @@
             <section id="tools-scopes">
                 <h2>Create a tool &amp; its scope</h2>
                 <div class="step-pills"><span>Tool catalog</span><span>→ Add a custom tool</span><span>→ grant on Users</span></div>
-                <p>The <strong>base catalog</strong> ships 48 canonical tools across thirteen families (<code>case.*</code>, <code>hr.*</code>, <code>crm.*</code>, <code>erp.*</code>, <code>work.*</code>, <code>files.*</code>, <code>calendar.*</code>, <code>comms.*</code>, <code>data.*</code>, <code>knowledge.*</code>, <code>identity.*</code>, <code>policy.*</code>, <code>directory.*</code> — the full list is on the <a href="/eag/catalog.html">Tool catalog</a> page). When you need a verb the base doesn't cover — an engagement-specific capability — add a <strong>custom tool</strong>. It runs through the same policy, gating, and audit pipeline, and can never override a base id.</p>
+                <p>The <strong>base catalog</strong> ships <strong>68 canonical tools across fifteen families</strong>, guarded by 19 permission scopes (<code>case.*</code>, <code>hr.*</code>, <code>crm.*</code>, <code>erp.*</code>, <code>work.*</code>, <code>files.*</code>, <code>calendar.*</code>, <code>comms.*</code>, <code>data.*</code>, <code>knowledge.*</code>, <code>identity.*</code>, <code>policy.*</code>, <code>directory.*</code>, <code>approval.*</code>, <code>receipt.*</code> — the full list is on the <a href="/eag/catalog.html">Tool catalog</a> page). When you need a verb the base doesn't cover — an engagement-specific capability — add a <strong>custom tool</strong>. It runs through the same policy, gating, and audit pipeline, and can never override a base id.</p>
 
                 <h3>1 · Add the tool</h3>
                 <p>In <strong>Tool catalog</strong>, open <strong>Add a custom tool</strong> and set each field:</p>
@@ -195,6 +204,7 @@
                     <li><strong>one</strong> — return a single record (a get-by-id).</li>
                     <li><strong>list</strong> — return several records (a search/list).</li>
                     <li><strong>create</strong> — write a new record.</li>
+                    <li><strong>update</strong> — change an existing record. The row is found by identity scope plus your filter, <em>never</em> addressed by an id the agent supplies, so an agent cannot reach a row it could not already read. No match refuses as <code>not_found</code>; more than one refuses as <code>invalid_args</code>.</li>
                     <li><strong>aggregate</strong> — group + sum (advanced; configured as JSON).</li>
                     <li><strong>handoff</strong> — don't call the backend; send the user to a self-service URL instead.</li>
                 </ul>
@@ -218,6 +228,7 @@
                 <h3>5 · Mode extras</h3>
                 <ul>
                     <li><strong>create</strong> — set <em>attribute new rows to the caller</em> (a lookup property + its entity set) so records are owned by the signed-in user, plus any <strong>defaults</strong> JSON (e.g. <code>{ "crm_state": 0 }</code>).</li>
+                    <li><strong>update</strong> — supply only the fields the tool may change; anything you omit is left untouched, so a partial write can never blank a real record.</li>
                     <li><strong>handoff</strong> — set the message shown to the user and a link label (e.g. "Open CRM").</li>
                     <li><strong>Advanced (JSON)</strong> — drop to raw binding JSON for anything the form doesn't cover (aggregate is configured here).</li>
                 </ul>
@@ -232,9 +243,77 @@
                 <p>Before you hand tools to agents, use <strong>Identity probe</strong>: type any scope set (or pick a persona) and see the exact tools that identity would be served — allowed, gated, or hidden — with the reason. Governance you can demonstrate, not assert. Everything runs through <strong>Live audit</strong>: user, tool, system, outcome, latency.</p>
             </section>
 
+
+            <section id="approvals">
+                <h2>Approve a write</h2>
+                <div class="step-pills"><span>Systems</span><span>→ gating: require-approval</span><span>→ agent calls</span><span>→ Approvals</span><span>→ agent retries</span></div>
+                <p>Set a system's <em>write</em> gating to <strong>require-approval</strong> and writes above the line stop being executed. The agent's call is <strong>parked</strong>: the gateway returns a typed <code>approval_pending</code> result carrying an approval id, and a named human decides.</p>
+
+                <h3>1 · Choose who approves</h3>
+                <p>Per system, name the approver as one of:</p>
+                <ul>
+                    <li><strong>A group</strong> — anyone holding that IdP group may decide.</li>
+                    <li><strong>A named person</strong> — one specific approver.</li>
+                    <li><strong>The requester's manager</strong> — read live from your directory at request time and then frozen, so a reorg mid-approval can't move the decision.</li>
+                </ul>
+                <p>Nobody can approve their own request, whichever rule you pick.</p>
+
+                <h3>2 · Decide in the console</h3>
+                <p>Pending items land on the <strong>Approvals</strong> tab, which badges the count. Each shows the requester, the agent, the tool, and the exact arguments. Approve it, or deny it with a comment — a denial comes back to the agent as a typed <code>gated</code> result carrying your reason, so the agent can tell the user <em>why</em> rather than retrying blindly.</p>
+
+                <h3>3 · The agent retries</h3>
+                <p>Approval unlocks a <strong>single-use grant</strong> bound to the tool, a hash of the exact arguments, and the requester. The agent re-runs the identical call under its own fresh token and the grant is consumed. Nothing is replayed on your behalf.</p>
+                <div class="callout"><strong>Why a grant and not an execution:</strong> EAG holds no credential that outlives a request. By the time a human approves, the caller's token is long expired — so executing "on approval" would mean either storing refresh tokens or writing as a service account, and both destroy per-user attribution. Instead the write lands as the requester, on a live token. Change one argument and the hash no longer matches: approve a $50k discount and $500k cannot follow, it starts a new approval.</div>
+                <p>Agents can also check on their own requests: <code>approval.status.get</code> polls one id, <code>approval.list</code> returns the caller's outstanding requests. If nobody ever decides, the grant expires and nothing happened.</p>
+            </section>
+
+            <section id="receipts">
+                <h2>Signed receipts</h2>
+                <p>An audit log proves what EAG recorded. A <strong>receipt</strong> proves what happened, to someone who doesn't trust EAG. Every governed outcome is signed with <strong>Ed25519</strong> and carries the requester, the agent, the approver where there was one, the tool, and a SHA-256 of the exact arguments.</p>
+                <p>Receipts are written to a store <em>you</em> own — a file store out of the box, and a database landing zone (Dataverse, Azure SQL, Snowflake) when you configure one. The write is queued and never blocks a tool call. Alter a row after the fact and verification fails against the public key, which is published at <code>/.well-known/signing-key</code> so anyone can check a receipt without asking you for access.</p>
+                <p>Two things get certified, and the difference is deliberate:</p>
+                <ul>
+                    <li><strong>Governed outcomes</strong> — a write that passed a human approver. The gateway saw every step, so these score highest on trust.</li>
+                    <li><strong>Agent decisions</strong> — any connected agent may call <code>receipt.certify</code> to record the decision it just made: its intent, the tools it used, the conclusion it reached. The <em>content</em> is self-reported, but the gateway stamps the requester from the verified token, so the <strong>who</strong> is never self-reported. These score lower, and visibly so.</li>
+                </ul>
+                <p>Agents with the right scope can read the ledger back through the same catalog — <code>receipt.list</code> and <code>receipt.get</code> — so "show me what this agent did last week" is a tool call, not a support ticket.</p>
+            </section>
+
+            <section id="agents">
+                <h2>The agent registry</h2>
+                <p>EAG knows <em>who the person is</em> with certainty. The registry adds <em>which agent acted for them</em> — and lets you give an agent <strong>less</strong> than its human, so a read-only research agent cannot write even when the person running it can.</p>
+
+                <h3>Where agent identity comes from</h3>
+                <p>Every OAuth token carries <code>azp</code>, the application that obtained it, <strong>asserted by your identity provider</strong>. Registration is mostly a mapping — <code>azp</code> → a named agent with a policy — so there is no new credential scheme to run. Each caller resolves to one of three trust levels:</p>
+                <ul>
+                    <li><strong>attested</strong> — the token's <code>azp</code> matched a registered agent. This is the only level that grants a ceiling.</li>
+                    <li><strong>declared</strong> — only the MCP handshake's self-reported client name matched. Recorded in the audit trail, grants nothing.</li>
+                    <li><strong>unregistered</strong> — neither matched.</li>
+                </ul>
+                <p>Because <code>azp</code> identifies an app <em>registration</em> rather than an instance, the recommended posture is one app registration per agent.</p>
+
+                <h3>The rule that makes this safe</h3>
+                <div class="callout"><strong>Effective access = user ∩ agent.</strong> An agent's scope list is a ceiling on what its user already has, never a grant of its own. An agent listed as <code>*</code> means "everything <em>its user</em> has", not "everything". Turning the registry on can therefore never widen anyone's access — only narrow it.</div>
+
+                <h3>What to do on the Agents tab</h3>
+                <ul>
+                    <li><strong>Register an agent</strong> — give it a name and the <code>azp</code> from your IdP, then a scope ceiling. Audit records and receipts start naming it.</li>
+                    <li><strong>Set the unregistered policy</strong> — <code>open</code> lets unknown callers through as before (the default, so enabling the registry changes nothing until you're ready), <code>restrict</code> lets reads flow but forces writes through approval, <code>deny</code> refuses them outright.</li>
+                    <li><strong>Pull the kill switch</strong> — disable an agent and it stops for <em>every</em> user, at once, without touching a system or a person.</li>
+                </ul>
+                <p>Like users and systems, the registry is a git-trackable YAML file (<code>agents.yaml</code>) that the console writes for you. A malformed registry falls back to today's behaviour and logs loudly — it never fails into a more permissive state.</p>
+            </section>
+
             <section id="users">
                 <h2>Users &amp; roles</h2>
-                <p>Your identity provider (Entra) proves <em>who</em> a caller is; the <strong>Users</strong> tab decides <em>what they may do</em>: a console role (admin / read-only) and granted tool scopes. Add a user by email or Entra object id, pick a role, list their scopes, and save. Unlisted users fall back to the configured default (usually: nothing until granted).</p>
+                <p>Your identity provider proves <em>who</em> a caller is — Entra, Okta, Auth0, Keycloak, or any OIDC issuer; the <strong>Users</strong> tab decides <em>what they may do</em>: a console role (admin / read-only) and granted tool scopes. Add a user by email or directory object id, pick a role, choose their scopes from the live catalog, and save. Unlisted users fall back to the configured default (usually: nothing until granted).</p>
+                <h3>At scale: map groups, not people</h3>
+                <p>Listing every employee doesn't scale, and it duplicates a directory you already maintain. Instead map <strong>IdP group claims to scope sets</strong> on the same tab: everyone in <code>EAG-Sales</code> gets the CRM scopes, everyone in <code>EAG-Finance</code> gets the ERP ones. Joiners, movers and leavers are then handled entirely in your IdP, and the Users list becomes a short file of deliberate exceptions.</p>
+                <ul>
+                    <li><strong>Entra</strong> — enable group claims on the app registration and match by group <strong>object id</strong>; the claim arrives as a bare GUID, so the name you type beside it is a label for humans.</li>
+                    <li><strong>Okta and Keycloak</strong> — send group <strong>names</strong>, matched case-insensitively.</li>
+                </ul>
+                <div class="callout"><strong>Check it before you ship it:</strong> claims are stamped when a token is issued, so a user who just changed groups keeps their old access until they get a fresh token. Use <strong>Refresh my access</strong> on the Users tab, and <strong>Identity probe</strong> to confirm the mapping serves what you intended.</div>
             </section>
 
             <section id="licensing">
@@ -248,7 +327,10 @@
                 <p>EAG ships as one <strong>container image</strong>, config per customer. Run it on Docker, Azure Container Apps, App Service, on-prem, or fully air-gapped. Point it at your Entra tenant, mount a writable data volume, and connect your systems from the console. Your systems never leave your cloud.</p>
                 <pre><code>docker run -d -p 3000:3000 --env-file .env \
   -v eag-data:/app/data  your-registry/eag-gateway:latest</code></pre>
-                <p>Console at <code>/admin</code>, MCP endpoint at <code>/mcp</code>. Register that one endpoint in Copilot Studio, Azure AI Foundry, Claude, or any MCP client, and it fronts your whole governed fleet.</p>
+                <p>Console at <code>/admin</code>, MCP endpoint at <code>/mcp</code>. Register that one endpoint in Copilot Studio, Azure AI Foundry, Amazon Bedrock, Claude, or any MCP client, and it fronts your whole governed fleet.</p>
+                <h3>Large catalogs: the compact surface</h3>
+                <p>By default <code>/mcp</code> lists the caller's concrete tools, which is the right shape for most clients and the recommendation up to roughly eighty tools. For hosts whose context a large catalog would swamp, add <code>?tools=compact</code> to the endpoint URL and the same catalog is served as three meta-tools instead — <code>search_tools</code>, <code>get_tool_schema</code>, <code>invoke_tool</code> — so the agent discovers what it needs and loads only those schemas.</p>
+                <div class="callout"><strong>Compact changes the shape, never the rules.</strong> <code>invoke_tool</code> funnels through the same gateway path as a direct call, so every gate — scopes, tier policy, approval, rate limits — applies identically, and the audit trail records the real tool id rather than the wrapper. Search can never surface a tool the caller's identity hides. It is opt-in per client, by URL, so one agent can use it without affecting any other.</div>
             </section>
 
             <section id="help">

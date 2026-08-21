@@ -18,7 +18,7 @@
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://pravalabs.app/eag/architecture.html","url":"https://pravalabs.app/eag/architecture.html","name":"EAG Architecture","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Architecture","item":"https://pravalabs.app/eag/architecture.html"}]}}</script>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css?v=73cc3e41">
+    <link rel="stylesheet" href="styles.css?v=73ebdec2">
 </head>
 <body>
 <nav class="nav">
@@ -43,25 +43,30 @@
         </div>
     </nav>
 
-<main class="arch-wrap">
-  <h1 class="arch-h1">How it works</h1>
-  <p class="arch-lead">One governed endpoint sits between any AI agent and the systems that run your
-    business. Identity comes from your directory, writes stop for a human, and what happened is
-    signed and stored in a database you own.</p>
+<main>
+<section class="features">
+  <div class="features-inner">
+  <div class="arch-hero">
+    <h1>How it works</h1>
+    <p class="arch-lead">One governed endpoint sits between any AI agent and the systems that run your
+      business. Identity comes from your directory, writes stop for a human, and what happened is
+      signed and stored in a database you own.</p>
+  </div>
 
-  <section class="arch-sec" style="margin-top:8px">
+  <section class="arch-sec">
     <h2>One endpoint. Your identity. Your systems.</h2>
     <p class="sub">Agents speak MCP to a single address. What they can see is decided per person and
       per agent; what they can do is decided by policy; what they did is written down and signed.</p>
 
     <div class="diagram">
       <div class="dcol">
-        <div class="dcol-head"><b>Agents</b><span>any MCP client</span></div>
+        <div class="dcol-head"><div><b>Agents</b><span>any MCP client</span></div></div>
         <div class="dtiles">
-          <div class="dtile own"><img src="images/favicon.png" alt=""><span><b>EAG Agent</b><i>ships with the gateway</i></span></div>
-          <div class="dtile"><img src="images/logos/copilot-studio.svg" alt=""><span><b>Copilot Studio</b><i>verified live</i></span></div>
-          <div class="dtile"><img src="images/logos/ai-foundry.svg" alt=""><span><b>Azure AI Foundry</b><i>MCP tool</i></span></div>
-          <div class="dtile"><span class="chip" style="background:#3a3a3c">MCP</span><span><b>Claude, and others</b><i>any MCP client</i></span></div>
+          <div class="dtile own"><img src="images/favicon.png" alt=""><span><b>EAG Agent</b><i>in development</i></span></div>
+          <div class="dtile"><img src="images/logos/copilot-studio.svg" alt=""><span><b>Copilot Studio</b><i>verified end to end</i></span></div>
+          <div class="dtile"><img src="images/logos/ai-foundry.svg" alt=""><span><b>Azure AI Foundry</b><i>MCP-compatible</i></span></div>
+          <div class="dtile"><img src="images/logos/bedrock.svg" alt=""><span><b>Amazon Bedrock</b><i>MCP-compatible</i></span></div>
+          <div class="dtile"><img src="images/logos/claude.svg" alt=""><span><b>Claude, and others</b><i>any MCP client</i></span></div>
         </div>
       </div>
 
@@ -82,13 +87,15 @@
       <div class="dchev">&rsaquo;</div>
 
       <div class="dcol">
-        <div class="dcol-head"><b>Your systems</b><span>17 drivers &middot; 24 systems</span></div>
+        <div class="dcol-head systems"><div><b>Your systems</b><span>24 systems &middot; 16 native &middot; 14 drivers</span></div></div>
         <div class="dtiles">
-          <div class="dtile"><img src="images/logos/dataverse.svg" alt=""><span><b>Microsoft 365</b><i>Graph &middot; Dataverse</i></span></div>
-          <div class="dtile"><img src="images/logos/dynamics365.svg" alt=""><span><b>Dynamics 365</b><i>CRM &middot; Finance &amp; Ops</i></span></div>
-          <div class="dtile"><span class="chip" style="background:#62d84e;color:#032d42">now</span><span><b>ServiceNow</b><i>ITSM &middot; HRSD &middot; native MCP</i></span></div>
-          <div class="dtile"><img src="images/logos/workday.png" alt=""><span><b>Workday</b><i>SuccessFactors &middot; UKG</i></span></div>
-          <div class="dtile"><img src="images/logos/snowflake.png" alt=""><span><b>Snowflake</b><i>SQL &middot; Databricks</i></span></div>
+          <div class="dtile"><span class="chip dom" style="background:#60a5fa;color:#06203f">365</span><span><b>Workplace</b><i>Microsoft 365 &mdash; SharePoint, Teams, Outlook, Entra</i></span></div>
+          <div class="dtile"><span class="chip dom" style="background:#7dd3fc;color:#04222e">HR</span><span><b>HR and people</b><i>Workday &middot; SuccessFactors &middot; UKG &middot; BambooHR</i></span></div>
+          <div class="dtile"><span class="chip dom" style="background:#fbbf24;color:#3a2600">ITSM</span><span><b>Service desk</b><i>ServiceNow &middot; Zendesk &middot; Jira Service Management</i></span></div>
+          <div class="dtile"><span class="chip dom" style="background:#f472b6;color:#3d0723">CRM</span><span><b>CRM and sales</b><i>Salesforce &middot; Dynamics 365 &middot; HubSpot</i></span></div>
+          <div class="dtile"><span class="chip dom" style="background:#fb923c;color:#3a1a00">ERP</span><span><b>ERP and finance</b><i>SAP S/4HANA &middot; Dynamics 365 Finance &amp; Ops</i></span></div>
+          <div class="dtile"><span class="chip dom" style="background:#2dd4bf;color:#032e28">SQL</span><span><b>Data and analytics</b><i>Snowflake &middot; Databricks &middot; SQL Server, Postgres, MySQL</i></span></div>
+          <a class="dmore" href="/eag/connectors.html">Knowledge, DevOps and identity too &mdash; all 24 connectors &rsaquo;</a>
         </div>
       </div>
     </div>
@@ -143,6 +150,8 @@
       </div>
     </div>
   </section>
+  </div>
+</section>
 </main>
 
 <footer class="footer">
