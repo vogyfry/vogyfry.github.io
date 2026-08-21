@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connectors — Enterprise Agent Gateway</title>
-    <meta name="description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 48 canonical tools behind one governed endpoint.">
+    <meta name="description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 68 canonical tools behind one governed endpoint.">
     <link rel="canonical" href="https://pravalabs.app/eag/connectors.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Enterprise Agent Gateway">
     <meta property="og:title" content="Connectors — Enterprise Agent Gateway">
-    <meta property="og:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 48 canonical tools behind one governed endpoint.">
+    <meta property="og:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 68 canonical tools behind one governed endpoint.">
     <meta property="og:url" content="https://pravalabs.app/eag/connectors.html">
     <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Connectors — Enterprise Agent Gateway">
-    <meta name="twitter:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 48 canonical tools behind one governed endpoint.">
+    <meta name="twitter:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 68 canonical tools behind one governed endpoint.">
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/eag/#app","name":"Enterprise Agent Gateway","applicationCategory":"BusinessApplication","operatingSystem":"Self-hosted (Docker, Azure Container Apps, on-prem)","url":"https://pravalabs.app/eag/","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/eag/connectors.html","url":"https://pravalabs.app/eag/connectors.html","name":"Connectors — Enterprise Agent Gateway","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Connectors","item":"https://pravalabs.app/eag/connectors.html"}]}}]}</script>
     <link rel="icon" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css?v=2c4abd04">
+    <link rel="stylesheet" href="styles.css?v=73cc3e41">
     <style>
       /* The site's section wrapper centers its text. The hero zone keeps that;
          everything below is reading material and opts out — centred body copy
@@ -140,11 +140,11 @@
         <div class="features-inner">
             <div class="conn-hero">
               <h1>One catalog. Every backend.</h1>
-              <p class="conn-lede">An agent shouldn't have to learn 24 vendor APIs. EAG fronts them all with 48 plain-language tools, so the agent loads one small catalog instead of a sprawl of schemas — and spends its context on the work instead of the plumbing. Swap the system underneath a tool and not one agent changes. Every call is identity-scoped to the caller and audited — and where the backend supports OAuth 2.0 on-behalf-of, it runs as the signed-in user so the backend's own permissions apply underneath EAG's. The Identity column below tells you which is which, per connector.</p>
+              <p class="conn-lede">An agent shouldn't have to learn 24 vendor APIs. EAG fronts them all with 68 plain-language tools, so the agent loads one small catalog instead of a sprawl of schemas — and spends its context on the work instead of the plumbing. Swap the system underneath a tool and not one agent changes. Every call is identity-scoped to the caller and audited — and where the backend supports OAuth 2.0 on-behalf-of, it runs as the signed-in user so the backend's own permissions apply underneath EAG's. The Identity column below tells you which is which, per connector.</p>
               <ul class="conn-stats">
                 <li><strong>24</strong>systems</li>
                 <li><strong>14</strong>native drivers</li>
-                <li><strong>48</strong>canonical tools</li>
+                <li><strong>68</strong>canonical tools</li>
                 <li><strong>19</strong>permission scopes</li>
               </ul>
             </div>
@@ -152,7 +152,7 @@
             <div class="conn-body">
             <p class="conn-legend"><strong>Identity</strong> — <em>Per-user</em> means the caller's own token reaches the backend, so its permissions apply underneath EAG's. <em>Shared credential, per-user scoping</em> means EAG resolves the caller to a system principal and filters results to them, over one service connection. Click any connector to see the exact tools it binds, coloured by tier — <span class="v t-read">read</span> <span class="v t-write">write</span> <span class="v t-privileged">privileged</span>. Full definitions live in the <a href="/eag/catalog.html">tool catalog</a>.</p>
 
-            <details class="conn-group" open style="--dhue:#7dd3fc">
+            <details class="conn-group" style="--dhue:#7dd3fc">
               <summary>HR and human capital <span class="conn-count">4</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -195,7 +195,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#fbbf24">
+            <details class="conn-group" style="--dhue:#fbbf24">
               <summary>ITSM, cases and policy <span class="conn-count">3</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -229,7 +229,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#4ade80">
+            <details class="conn-group" style="--dhue:#4ade80">
               <summary>Dev and delivery <span class="conn-count">1</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -245,7 +245,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#60a5fa">
+            <details class="conn-group" style="--dhue:#60a5fa">
               <summary>Productivity and collaboration <span class="conn-count">1</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -254,14 +254,14 @@
                     <span><span class="conn-name">Microsoft 365</span><span class="conn-desc">SharePoint and OneDrive search, directory lookup, calendar, and Teams and Outlook messaging.</span></span>
                     <span><span class="cap">Knowledge</span> <span class="cap">Files</span> <span class="cap">Directory</span> <span class="cap">Calendar</span> <span class="cap">Messaging</span></span>
                     <span><span class="idm idm-1">Per-user (Entra OBO)</span></span>
-                    <span class="num">10</span>
+                    <span class="num">14</span>
                   </summary>
-                  <div class="verbs"><span class="v t-read">calendar.availability.get</span><span class="v t-write">calendar.event.create</span><span class="v t-read">calendar.event.list</span><span class="v t-read">comms.message.list</span><span class="v t-write">comms.message.send</span><span class="v t-read">directory.person.lookup</span><span class="v t-read">files.get</span><span class="v t-read">files.recent</span><span class="v t-read">files.search</span><span class="v t-read">knowledge.search</span></div>
+                  <div class="verbs"><span class="v t-read">calendar.availability.get</span><span class="v t-write">calendar.event.cancel</span><span class="v t-write">calendar.event.create</span><span class="v t-read">calendar.event.list</span><span class="v t-write">calendar.event.update</span><span class="v t-read">comms.message.list</span><span class="v t-write">comms.message.reply</span><span class="v t-write">comms.message.send</span><span class="v t-read">directory.person.lookup</span><span class="v t-read">directory.team.list</span><span class="v t-read">files.get</span><span class="v t-read">files.recent</span><span class="v t-read">files.search</span><span class="v t-read">knowledge.search</span></div>
                 </details>
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#f472b6">
+            <details class="conn-group" style="--dhue:#f472b6">
               <summary>CRM and sales <span class="conn-count">2</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -286,7 +286,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#fb923c">
+            <details class="conn-group" style="--dhue:#fb923c">
               <summary>ERP, finance and operations <span class="conn-count">2</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -311,7 +311,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#2dd4bf">
+            <details class="conn-group" style="--dhue:#2dd4bf">
               <summary>Data and analytics <span class="conn-count">2</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -336,7 +336,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#c084fc">
+            <details class="conn-group" style="--dhue:#c084fc">
               <summary>Identity and access <span class="conn-count">1</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -344,10 +344,10 @@
                   <summary class="crow">
                     <span><span class="conn-name">Microsoft Entra</span><span class="conn-desc">Self-service password reset and MFA actions.</span></span>
                     <span><span class="cap">Identity</span></span>
-                    <span><span class="idm idm-0">Hand-off — no backend call</span></span>
-                    <span class="num">2</span>
+                    <span><span class="idm idm-3">—</span></span>
+                    <span class="num">3</span>
                   </summary>
-                  <div class="verbs"><span class="v t-privileged">identity.mfa.action</span><span class="v t-privileged">identity.password.reset</span></div>
+                  <div class="verbs"><span class="v t-read">identity.access.get</span><span class="v t-privileged">identity.mfa.action</span><span class="v t-privileged">identity.password.reset</span></div>
                 </details>
 
               </div>
@@ -357,7 +357,7 @@
             <p class="section-subtitle">Backends that already speak MCP are fronted with configuration only — no driver code. EAG still applies your identity, policy, rate limits and audit on every call.</p>
             <p class="conn-note">These ship as <strong>configuration templates, disabled by default</strong>. Vendors revise their MCP tool names, so you verify the downstream names against your server before enabling — the console names any tool it can't find at startup rather than failing silently.</p>
 
-            <details class="conn-group" open style="--dhue:#fbbf24">
+            <details class="conn-group" style="--dhue:#fbbf24">
               <summary>ITSM, cases and policy <span class="conn-count">2</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -382,7 +382,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#a78bfa">
+            <details class="conn-group" style="--dhue:#a78bfa">
               <summary>Knowledge and content <span class="conn-count">2</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -407,7 +407,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#4ade80">
+            <details class="conn-group" style="--dhue:#4ade80">
               <summary>Dev and delivery <span class="conn-count">1</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -423,7 +423,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#60a5fa">
+            <details class="conn-group" style="--dhue:#60a5fa">
               <summary>Productivity and collaboration <span class="conn-count">1</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -439,7 +439,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#f472b6">
+            <details class="conn-group" style="--dhue:#f472b6">
               <summary>CRM and sales <span class="conn-count">1</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>
@@ -455,7 +455,7 @@
 
               </div>
             </details>
-            <details class="conn-group" open style="--dhue:#2dd4bf">
+            <details class="conn-group" style="--dhue:#2dd4bf">
               <summary>Data and analytics <span class="conn-count">1</span></summary>
               <div class="conn-scroll">
                 <div class="crow chead"><span>Connector</span><span>Covers</span><span>Identity</span><span class="num">Tools</span></div>

@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tool catalog — Enterprise Agent Gateway</title>
-    <meta name="description" content="EAG's canonical contract: 48 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <meta name="description" content="EAG's canonical contract: 68 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
     <link rel="canonical" href="https://pravalabs.app/eag/catalog.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Enterprise Agent Gateway">
     <meta property="og:title" content="Tool catalog — Enterprise Agent Gateway">
-    <meta property="og:description" content="EAG's canonical contract: 48 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <meta property="og:description" content="EAG's canonical contract: 68 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
     <meta property="og:url" content="https://pravalabs.app/eag/catalog.html">
     <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Tool catalog — Enterprise Agent Gateway">
-    <meta name="twitter:description" content="EAG's canonical contract: 48 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <meta name="twitter:description" content="EAG's canonical contract: 68 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/eag/#app","name":"Enterprise Agent Gateway","applicationCategory":"BusinessApplication","operatingSystem":"Self-hosted (Docker, Azure Container Apps, on-prem)","url":"https://pravalabs.app/eag/","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/eag/catalog.html","url":"https://pravalabs.app/eag/catalog.html","name":"Tool catalog — Enterprise Agent Gateway","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Tool catalog","item":"https://pravalabs.app/eag/catalog.html"}]}}]}</script>
     <link rel="icon" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css?v=2c4abd04">
+    <link rel="stylesheet" href="styles.css?v=73cc3e41">
     <style>
       /* The site's section wrapper centers its text. The hero zone keeps that;
          everything below is reading material and opts out — centred body copy
@@ -140,21 +140,21 @@
         <div class="features-inner">
             <div class="conn-hero">
               <h1>The canonical tool catalog</h1>
-              <p class="conn-lede">This is the contract. Agents route on these 48 tools, never on a vendor's API — so a backend can be swapped, added or retired underneath a tool without touching a single agent. Every tool carries a tier and a scope, and the gateway enforces both before the call leaves.</p>
+              <p class="conn-lede">This is the contract. Agents route on these 68 tools, never on a vendor's API — so a backend can be swapped, added or retired underneath a tool without touching a single agent. Every tool carries a tier and a scope, and the gateway enforces both before the call leaves.</p>
               <ul class="conn-stats">
-                <li><strong>48</strong>tools</li>
-                <li><strong>32</strong>read</li>
-                <li><strong>13</strong>write</li>
+                <li><strong>68</strong>tools</li>
+                <li><strong>44</strong>read</li>
+                <li><strong>21</strong>write</li>
                 <li><strong>3</strong>privileged</li>
                 <li><strong>19</strong>scopes</li>
               </ul>
             </div>
 
             <div class="conn-body">
-            <p class="conn-legend"><strong>Tier</strong> governs what a caller may do: <em>read</em> runs freely, <em>write</em> is policy-gated (confirm, or route to approval), <em>privileged</em> is blocked by default and refuses with a typed, audited reason (hand-off tools return a governed self-service link instead). <strong>Systems</strong> is how many shipped connectors bind that tool today; 1 tool is in the contract but not yet bound by a shipped connector. Adding a backend that serves a tool your agents already call needs no agent change. See the <a href="/eag/connectors.html">connectors</a>.</p>
+            <p class="conn-legend"><strong>Tier</strong> governs what a caller may do: <em>read</em> runs freely, <em>write</em> is policy-gated (confirm, or route to approval), <em>privileged</em> is blocked by default and refuses with a typed, audited reason (hand-off tools return a governed self-service link instead). <strong>Systems</strong> is how many shipped connectors bind that tool today; 16 tools are in the contract but not yet bound by a shipped connector. Adding a backend that serves a tool your agents already call needs no agent change. See the <a href="/eag/connectors.html">connectors</a>.</p>
 
             <details class="conn-group" style="--dhue:#7dd3fc">
-              <summary>HR and human capital <span class="conn-count">4</span></summary>
+              <summary>HR and human capital <span class="conn-count">5</span></summary>
               <div class="conn-scroll">
               <table class="conn-table">
                 <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
@@ -183,6 +183,12 @@
                     <td><span class="tier tier-write">write</span></td>
                     <td class="scopes"><code>hr.write</code></td>
                     <td class="num" title="BambooHR, SAP SuccessFactors, Workday">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>hr.timeoff.request.list</code></span><span class="conn-desc">List the signed-in user's time-off requests with date, type, hours and status — the counterpart to hr.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>hr.read</code></td>
+                    <td class="num" title="">0</td>
                   </tr>
                 </tbody>
               </table>
@@ -366,7 +372,7 @@
               </div>
             </details>
             <details class="conn-group" style="--dhue:#60a5fa">
-              <summary>Productivity and collaboration <span class="conn-count">5</span></summary>
+              <summary>Productivity and collaboration <span class="conn-count">8</span></summary>
               <div class="conn-scroll">
               <table class="conn-table">
                 <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
@@ -379,21 +385,39 @@
                     <td class="num" title="Microsoft 365">1</td>
                   </tr>
                   <tr>
+                    <td><span class="conn-name"><code>calendar.event.cancel</code></span><span class="conn-desc">Cancel a meeting on the signed-in user's calendar and notify the attendees.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>calendar.write</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
                     <td><span class="conn-name"><code>calendar.event.create</code></span><span class="conn-desc">Schedule a meeting on the signed-in user's calendar and invite attendees.</span></td>
                     <td><span class="tier tier-write">write</span></td>
                     <td class="scopes"><code>calendar.write</code></td>
                     <td class="num" title="Microsoft 365">1</td>
                   </tr>
                   <tr>
-                    <td><span class="conn-name"><code>calendar.event.list</code></span><span class="conn-desc">List the signed-in user's own calendar events for a date range — what's on their agenda, with times, subjects and locations.</span></td>
+                    <td><span class="conn-name"><code>calendar.event.list</code></span><span class="conn-desc">List the signed-in user's own calendar events for a date range — what's on their agenda, with times, subjects, locations and the event id needed to change or cancel one.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>calendar.read</code></td>
                     <td class="num" title="Microsoft 365">1</td>
                   </tr>
                   <tr>
-                    <td><span class="conn-name"><code>comms.message.list</code></span><span class="conn-desc">List recent messages in the signed-in user's own inbox (sender, subject, received time, read state).</span></td>
+                    <td><span class="conn-name"><code>calendar.event.update</code></span><span class="conn-desc">Change an existing meeting on the signed-in user's calendar — move it, rename it, or edit its agenda.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>calendar.write</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>comms.message.list</code></span><span class="conn-desc">List recent messages in the signed-in user's own inbox (sender, subject, received time, read state, and the message id needed to reply).</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>comms.read</code></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>comms.message.reply</code></span><span class="conn-desc">Reply to a message in the signed-in user's own inbox.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>comms.write</code></td>
                     <td class="num" title="Microsoft 365">1</td>
                   </tr>
                   <tr>
@@ -407,17 +431,29 @@
               </div>
             </details>
             <details class="conn-group" style="--dhue:#f472b6">
-              <summary>CRM and sales <span class="conn-count">4</span></summary>
+              <summary>CRM and sales <span class="conn-count">11</span></summary>
               <div class="conn-scroll">
               <table class="conn-table">
                 <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
                 <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
                 <tbody>
                   <tr>
+                    <td><span class="conn-name"><code>crm.account.create</code></span><span class="conn-desc">Create a new CRM account/company record, owned by the signed-in user.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>crm.write</code></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
                     <td><span class="conn-name"><code>crm.account.get</code></span><span class="conn-desc">Get a CRM account/company overview: owner, segment, open opportunities count, health.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>crm.read</code></td>
                     <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.account.list</code></span><span class="conn-desc">List the CRM accounts/companies the signed-in user owns or works with.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>crm.read</code></td>
+                    <td class="num" title="">0</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>crm.activity.log</code></span><span class="conn-desc">Log a call, meeting or note against a CRM record on behalf of the signed-in user.</span></td>
@@ -426,10 +462,34 @@
                     <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
                   </tr>
                   <tr>
+                    <td><span class="conn-name"><code>crm.contact.create</code></span><span class="conn-desc">Create a new CRM contact record, owned by the signed-in user.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>crm.write</code></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
                     <td><span class="conn-name"><code>crm.contact.get</code></span><span class="conn-desc">Look up a CRM contact by name or email: role, company, owner, last activity.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>crm.read</code></td>
                     <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.contact.list</code></span><span class="conn-desc">List CRM contacts the signed-in user can see, optionally filtered by account or name.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>crm.read</code></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.opportunity.create</code></span><span class="conn-desc">Create a new CRM opportunity/deal owned by the signed-in user, with an estimated value and close date.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>crm.write</code></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.opportunity.get</code></span><span class="conn-desc">Get one CRM opportunity/deal by name: stage, value, probability, close date and account.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>crm.read</code></td>
+                    <td class="num" title="">0</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>crm.opportunity.list</code></span><span class="conn-desc">List the signed-in user's CRM opportunities/deals with stage, value and close date.</span></td>
@@ -437,12 +497,18 @@
                     <td class="scopes"><code>crm.read</code></td>
                     <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
                   </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>crm.opportunity.update</code></span><span class="conn-desc">Update one of the signed-in user's opportunities — move its stage, revise the value, probability or close date.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><code>crm.write</code></td>
+                    <td class="num" title="">0</td>
+                  </tr>
                 </tbody>
               </table>
               </div>
             </details>
             <details class="conn-group" style="--dhue:#fb923c">
-              <summary>ERP, finance and operations <span class="conn-count">4</span></summary>
+              <summary>ERP, finance and operations <span class="conn-count">6</span></summary>
               <div class="conn-scroll">
               <table class="conn-table">
                 <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
@@ -455,6 +521,12 @@
                     <td class="num" title="Dynamics 365 (Finance &amp; Operations), SAP S/4HANA (ERP)">2</td>
                   </tr>
                   <tr>
+                    <td><span class="conn-name"><code>erp.invoice.list</code></span><span class="conn-desc">List invoices, optionally filtered by status.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>erp.read</code></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
                     <td><span class="conn-name"><code>erp.invoice.status.get</code></span><span class="conn-desc">Status of an invoice: matched, approved, scheduled payment date.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>erp.read</code></td>
@@ -465,6 +537,12 @@
                     <td><span class="tier tier-write">write</span></td>
                     <td class="scopes"><code>erp.approve</code></td>
                     <td class="num" title="Dynamics 365 (Finance &amp; Operations), SAP S/4HANA (ERP)">2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>erp.po.list</code></span><span class="conn-desc">List purchase orders, optionally filtered by status.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>erp.read</code></td>
+                    <td class="num" title="">0</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>erp.po.status.get</code></span><span class="conn-desc">Status of a purchase order: approval state, expected delivery, receiving status.</span></td>
@@ -512,7 +590,7 @@
               </div>
             </details>
             <details class="conn-group" style="--dhue:#c084fc">
-              <summary>Identity and access <span class="conn-count">3</span></summary>
+              <summary>Identity and access <span class="conn-count">5</span></summary>
               <div class="conn-scroll">
               <table class="conn-table">
                 <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
@@ -525,6 +603,18 @@
                     <td class="num" title="Microsoft 365">1</td>
                   </tr>
                   <tr>
+                    <td><span class="conn-name"><code>directory.team.list</code></span><span class="conn-desc">List a person's manager and direct reports — who they report to and who reports to them.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="Microsoft 365">1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>identity.access.get</code></span><span class="conn-desc">Report what the signed-in user is allowed to do through this gateway: their granted scopes, the group memberships those came from, and which tools they can and cannot call (with the scope each blocked tool needs).</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="Microsoft Entra">1</td>
+                  </tr>
+                  <tr>
                     <td><span class="conn-name"><code>identity.mfa.action</code></span><span class="conn-desc">MFA enroll/reset for the signed-in user.</span></td>
                     <td><span class="tier tier-privileged">privileged</span></td>
                     <td class="scopes"><code>identity.privileged</code></td>
@@ -535,6 +625,47 @@
                     <td><span class="tier tier-privileged">privileged</span></td>
                     <td class="scopes"><code>identity.privileged</code></td>
                     <td class="num" title="Microsoft Entra">1</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            </details>
+            <details class="conn-group" style="--dhue:#94a3b8">
+              <summary>Other and multi-domain <span class="conn-count">5</span></summary>
+              <div class="conn-scroll">
+              <table class="conn-table">
+                <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
+                <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td><span class="conn-name"><code>approval.list</code></span><span class="conn-desc">List the signed-in user's own recent write-approval requests and their states.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>approval.status.get</code></span><span class="conn-desc">Check one of the signed-in user's own pending write-approvals by id — whether it is still pending, approved (retry the original call now), denied (do not retry), or expired.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>receipt.certify</code></span><span class="conn-desc">Certify the decision just completed for the user: what they asked, what was concluded or done, and which tools were used.</span></td>
+                    <td><span class="tier tier-write">write</span></td>
+                    <td class="scopes"><span style="opacity:.5">open</span></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>receipt.get</code></span><span class="conn-desc">Fetch one signed decision receipt by its id (rcpt_…) — the full record including the Ed25519 signature that makes it independently verifiable.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>data.read</code></td>
+                    <td class="num" title="">0</td>
+                  </tr>
+                  <tr>
+                    <td><span class="conn-name"><code>receipt.list</code></span><span class="conn-desc">List signed decision receipts — the tamper-evident records of approved or denied AI-agent actions: who requested, who approved, the outcome and trust score.</span></td>
+                    <td><span class="tier tier-read">read</span></td>
+                    <td class="scopes"><code>data.read</code></td>
+                    <td class="num" title="">0</td>
                   </tr>
                 </tbody>
               </table>
