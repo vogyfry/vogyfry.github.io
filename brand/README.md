@@ -42,5 +42,6 @@ Per product, `dist/<id>/` contains:
 3. `node brand/generate.mjs <id>`.
 
 Design intent per existing glyph: TradeSocial — rising line, core at the pivot ·
-Toolport — hub routing to servers, core at the junction · Pravida — shield, core protected inside · Mavee — the day as one
-loop, core on what matters.
+Toolport — hub routing to servers, core at the junction · Pravida — shield, core protected inside · Waypoint — the destination
+pin, core at the point you actually reach · Mavee — the day as one loop, core on what
+matters.
