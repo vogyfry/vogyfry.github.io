@@ -18,7 +18,7 @@
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://pravalabs.app/eag/architecture.html","url":"https://pravalabs.app/eag/architecture.html","name":"EAG Architecture","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Architecture","item":"https://pravalabs.app/eag/architecture.html"}]}}</script>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css?v=cef57583">
+    <link rel="stylesheet" href="styles.css?v=7511723a">
 </head>
 <body>
 <nav class="nav">
@@ -109,20 +109,26 @@
         <div class="dgcard"><b>Identity</b><p>Microsoft Entra, Okta, Auth0, Keycloak &mdash; any OIDC provider. Groups map to scopes, so people are managed where they already are.</p></div>
         <div class="dgcard"><b>Approvals</b><p>A gated write is parked, not executed. Approval unlocks a single-use grant bound to the exact arguments &mdash; approve $50k and $500k cannot follow.</p></div>
         <div class="dgcard sig"><b>Receipts</b><p>Every outcome is signed and lands in your own database &mdash; Dataverse, Azure SQL, Snowflake. Query it, report on it, keep it as long as you like.</p></div>
+        <div class="dgcard"><b>Where it runs</b><p>Single-tenant, in your cloud &mdash; one container, your network, your data. Nothing is routed through us, and no agent traffic leaves your boundary to reach a system inside it.</p></div>
       </div>
     </div>
   </section>
 
   <section class="arch-sec">
     <h2>What happens on one call</h2>
-    <p class="sub">An agent asks to update an opportunity. Here is every gate it passes, in order.</p>
+    <p class="sub">An agent asks to update an opportunity. Here is every gate it passes, in the order
+      it passes them &mdash; the order is part of the design, not an implementation detail.</p>
     <div class="dflow">
       <div class="dstep"><b>Who is the person?</b><p>The caller's token is validated against your identity provider. No token, no catalog.</p></div>
       <div class="dstep"><b>Which agent is this?</b><p>The token names the app that obtained it. A registered agent gets a ceiling &mdash; never more than its human.</p></div>
       <div class="dstep"><b>May they do it?</b><p>Scopes decide what is even visible. A tool the caller can't use is not in their list at all.</p></div>
+      <div class="dstep"><b>Are they within limits?</b><p>Per-user, per-system rate limits apply here &mdash; before anything downstream is created, looked up or emailed.</p></div>
       <div class="dstep"><b>Does a human agree?</b><p>Writes park for a named approver. They decide in the console; the agent retries and it lands as the requester.</p></div>
       <div class="dstep last"><b>Prove it happened</b><p>The outcome is signed and written to your ledger, with requester, approver and a hash of the exact arguments.</p></div>
     </div>
+    <p class="sub" style="margin-top:1.1rem">Every one of those exits is audited &mdash; the refusals as
+      well as the successes. There is no path through the gateway that reaches a system without a record,
+      and none that leaves without one.</p>
   </section>
 
   <section class="arch-sec">
@@ -144,8 +150,9 @@
       </div>
       <div class="dfacts">
         <div class="dfact"><b>Identity, not impersonation</b><p>Each call exchanges the caller's own token for a backend token. The system of record applies its own permissions underneath &mdash; a user can only ever reach what they could already open.</p></div>
-        <div class="dfact"><b>The agent is attested, not declared</b><p>Agent identity comes from the token's <code>azp</code> claim, asserted by your IdP. A self-reported name is recorded but never grants anything.</p></div>
+        <div class="dfact"><b>The agent is attested, not declared</b><p>Agent identity comes from the token's <code>azp</code> claim, asserted by your IdP. A self-reported name is recorded for the audit trail, but it never grants anything &mdash; and it never counts as being registered. Attestation is what satisfies a policy; nothing else does.</p></div>
         <div class="dfact"><b>Approval is a grant, not a replay</b><p>The gateway never executes on your behalf later. Approval unlocks a single-use grant bound to <code>(tool, args-hash, requester)</code> that the caller re-runs under a fresh token.</p></div>
+        <div class="dfact"><b>Two surfaces, one pipeline</b><p>Agents that pick tools by schema get the whole catalog. Hosts with tighter context can ask for a compact surface instead &mdash; search, fetch one schema, invoke &mdash; over the same per-identity catalog. Discovery can never surface a tool authorization hides, and both routes run the identical gates.</p></div>
         <div class="dfact"><b>Config as code</b><p>Systems, users, agents and policy are YAML you can git-track and review. The console writes the same files.</p></div>
       </div>
     </div>
