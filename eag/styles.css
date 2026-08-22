@@ -1158,6 +1158,10 @@ body {
 
 /* request lifecycle */
 .dflow { display: grid; grid-template-columns: repeat(auto-fit, minmax(178px, 1fr)); gap: 12px; counter-reset: s; }
+/* The lifecycle runs to six gates. auto-fit packs those into five columns at
+   desktop width, orphaning the last card on a row of its own — pin three per
+   row so both rows are full. Narrow widths keep the auto-fit behaviour. */
+@media (min-width: 860px) { .dflow { grid-template-columns: repeat(3, 1fr); } }
 .dstep { background: var(--bg-secondary); border: 1px solid var(--border-color);
   border-radius: var(--radius-sm); padding: 16px; }
 .dstep::before { counter-increment: s; content: counter(s, decimal-leading-zero);
