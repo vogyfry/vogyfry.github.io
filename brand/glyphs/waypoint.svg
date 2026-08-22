@@ -1,0 +1,4 @@
+<!-- Waypoint — the destination pin, core at the point you're actually going to reach -->
+<path d="M85 125.3 A48 48 0 1 1 171 125.3 L128 212 Z"
+  fill="none" stroke="__INK__" stroke-width="20" stroke-linejoin="round"/>
+<circle cx="128" cy="104" r="17" fill="__CORE__"/>
