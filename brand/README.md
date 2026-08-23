@@ -44,5 +44,5 @@ Per product, `dist/<id>/` contains:
 Design intent per existing glyph: TradeSocial — rising line, core at the pivot ·
 Toolport — hub routing to servers, core at the junction · EAG — gateway chevrons,
 core at the gate · Pravida — shield, core protected inside · Waypoint — the destination
-pin, core at the point you actually reach · Mavee — the day as one loop, core on what
-matters.
+pin, core at the point you actually reach · BoatNavi — the vessel underway over water,
+core at the boat · Mavee — the day as one loop, core on what matters.
