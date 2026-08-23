@@ -59,7 +59,7 @@ function glyphMarkup(file, ink, core, inset) {
   return `<g transform="translate(${off.toFixed(1)} ${off.toFixed(1)}) scale(${inset})">${raw}</g>`;
 }
 
-function icon({ p, variant, fullBleed = false }) {
+function icon({ p, variant, fullBleed = false, pad = 0 }) {
   const inset = p.glyphInset ?? T.glyphInset;
   const defs = [];
   let bg, stroke, ink, core;
@@ -89,10 +89,16 @@ function icon({ p, variant, fullBleed = false }) {
   const ring = fullBleed ? "" :
     `<rect x="1.5" y="1.5" width="${G - 3}" height="${G - 3}" rx="${RX - 1.5}" fill="none" stroke="${stroke.hex}" stroke-opacity="${stroke.op}" stroke-width="3"/>`;
 
+  const content = `${bg}${ring}\n${glyphMarkup(p.glyph, ink, core, inset)}`;
+  // macOS draws no mask of its own: the tile has to arrive already inset inside a
+  // transparent canvas, on Apple's 824-in-1024 grid, or the icon sits oversized
+  // next to every other app in the Dock.
+  const off = ((G * (1 - pad)) / 2).toFixed(1);
+  const body = pad ? `<g transform="translate(${off} ${off}) scale(${pad})">${content}</g>` : content;
+
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${G} ${G}">
 <defs>${defs.filter(Boolean).join("\n")}</defs>
-${bg}${ring}
-${glyphMarkup(p.glyph, ink, core, inset)}
+${body}
 </svg>`;
 }
 
@@ -130,11 +136,13 @@ for (const [id, p] of entries) {
     "appstore.svg": icon({ p, variant: "full", fullBleed: true }),
   };
   if (p.tint) files["icon-tint.svg"] = icon({ p, variant: "tint" });
+  if (p.macos) files["icon-macos.svg"] = icon({ p, variant: "full", pad: 824 / 1024 });
 
   for (const [name, svg] of Object.entries(files)) writeFileSync(join(dir, name), svg);
 
   for (const s of T.sizes) png(join(dir, "icon.svg"), join(dir, `icon-${s}.png`), s);
   png(join(dir, "appstore.svg"), join(dir, "appstore-1024.png"), 1024);
+  if (p.macos) for (const s of T.sizes) png(join(dir, "icon-macos.svg"), join(dir, `macos-${s}.png`), s);
 
   console.log(`✓ ${id} → dist/${id} (${Object.keys(files).length} SVG, ${RSVG ? T.sizes.length + 1 : 0} PNG)`);
 }

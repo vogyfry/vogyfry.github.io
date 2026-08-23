@@ -31,6 +31,7 @@ Per product, `dist/<id>/` contains:
 | `icon-light.svg` | navy ink on light tile — light backgrounds |
 | `icon-tint.svg` | product-hue tinted tile (iOS 18 tinted mode reference) |
 | `glyph.svg` / `glyph-dark.svg` | bare glyph, no tile — lockups, headers |
+| `icon-macos.svg` / `macos-{16…1024}.png` | Mac apps — the tile inset on Apple's 824-in-1024 grid, since macOS applies no mask of its own. Opt in with `"macos": true` |
 
 ## Adding a new product
 
@@ -45,4 +46,5 @@ Design intent per existing glyph: TradeSocial — rising line, core at the pivot
 Toolport — hub routing to servers, core at the junction · EAG — gateway chevrons,
 core at the gate · Pravida — shield, core protected inside · Waypoint — the destination
 pin, core at the point you actually reach · BoatNavi — the vessel underway over water,
-core at the boat · Mavee — the day as one loop, core on what matters.
+core at the boat · SwiftMind — the chip, core inside it, because the model never leaves
+your silicon · Mavee — the day as one loop, core on what matters.

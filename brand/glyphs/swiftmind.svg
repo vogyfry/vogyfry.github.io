@@ -1,0 +1,10 @@
+<!-- SwiftMind — the chip, core inside it: the model runs on your silicon and never leaves -->
+<rect x="70" y="70" width="116" height="116" rx="24"
+  fill="none" stroke="__INK__" stroke-width="20" stroke-linejoin="round"/>
+<g fill="none" stroke="__INK__" stroke-width="18" stroke-linecap="round">
+  <path d="M104 70 V44"/><path d="M152 70 V44"/>
+  <path d="M104 186 V212"/><path d="M152 186 V212"/>
+  <path d="M70 104 H44"/><path d="M70 152 H44"/>
+  <path d="M186 104 H212"/><path d="M186 152 H212"/>
+</g>
+<circle cx="128" cy="128" r="17" fill="__CORE__"/>
