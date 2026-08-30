@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prava Labs — Local-First Apps &amp; On-Device AI Tools</title>
-    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), and EAG (the governed enterprise agent gateway).">
+    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Agent Cert (certified decision receipts for AI agents), Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), and EAG (the governed enterprise agent gateway).">
     <meta property="og:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
-    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing, EAG for the enterprise.">
+    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Agent Cert for AI accountability, Toolport for AI agents, TradeSocial for group investing, EAG for the enterprise.">
     <meta property="og:url" content="https://pravalabs.app/">
     <meta property="og:site_name" content="Prava Labs">
     <meta property="og:image" content="https://pravalabs.app/prava-icon.png">
@@ -53,6 +53,15 @@
           "url": "https://pravalabs.app/eag/",
           "description": "A governed MCP gateway: one endpoint fronting enterprise systems with identity-scoped, audited, natural-language tools for AI agents.",
           "publisher": { "@id": "https://pravalabs.app/#org" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Agent Cert",
+          "operatingSystem": "Web",
+          "applicationCategory": "BusinessApplication",
+          "url": "https://agentcert.net",
+          "description": "Certification network for AI agent decisions: policy-evaluated, risk-scored, Ed25519-signed Decision Receipts anchored to Solana, built for EU AI Act Article 12 record-keeping.",
+          "publisher": { "@id": "https://pravalabs.app/#org" }
         }
       ]
     }
@@ -71,6 +80,7 @@
             --accent-pravida: #1a8cff;
             --accent-toolport: #00b8ff;
             --accent-eag: #3a92ff;
+            --accent-agentcert: #10b981;
         }
 
         html { scroll-behavior: smooth; }
@@ -146,6 +156,7 @@
         .app-card.pravida:hover { border-color: var(--accent-pravida); }
         .app-card.toolport:hover { border-color: var(--accent-toolport); }
         .app-card.eag:hover { border-color: var(--accent-eag); }
+        .app-card.agentcert:hover { border-color: var(--accent-agentcert); }
 
         .app-header { display: flex; align-items: center; gap: 16px; }
 
@@ -190,6 +201,7 @@
         .app-card.pravida .tag { border-color: rgba(26,140,255,0.3); color: var(--accent-pravida); }
         .app-card.toolport .tag { border-color: rgba(0,184,255,0.3); color: var(--accent-toolport); }
         .app-card.eag .tag { border-color: rgba(58,146,255,0.3); color: var(--accent-eag); }
+        .app-card.agentcert .tag { border-color: rgba(16,185,129,0.3); color: var(--accent-agentcert); }
 
         .app-cta {
             display: inline-flex;
@@ -205,6 +217,7 @@
         .app-card.pravida .app-cta { color: var(--accent-pravida); }
         .app-card.toolport .app-cta { color: var(--accent-toolport); }
         .app-card.eag .app-cta { color: var(--accent-eag); }
+        .app-card.agentcert .app-cta { color: var(--accent-agentcert); }
 
         .app-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
         .app-card:hover .app-cta svg { transform: translateX(4px); }
@@ -424,6 +437,32 @@
     </section>
 
     <div class="apps labs">
+
+        <a class="app-card agentcert" href="https://agentcert.net" target="_blank" rel="noopener">
+            <div class="app-header">
+                <img class="app-icon" src="agentcert-icon.png" alt="Agent Cert icon">
+                <div>
+                    <div class="app-name">Agent Cert <span class="live-now"><span class="live-dot"></span>Live Now</span></div>
+                    <div class="app-platform">Web · REST API · MCP</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                The certification network for AI agent decisions. Every decision is policy-evaluated, risk-scored 0–100, Ed25519-signed, and hash-anchored to Solana — a Decision Receipt anyone can verify without trusting you. Built for EU AI Act Article 12 record-keeping and ISO 42001 audit trails.
+            </p>
+            <div class="app-tags">
+                <span class="tag">Decision Receipts</span>
+                <span class="tag">EU AI Act Art. 12</span>
+                <span class="tag">Ed25519 Signed</span>
+                <span class="tag">Solana Anchored</span>
+                <span class="tag">MCP + REST</span>
+            </div>
+            <span class="app-cta">
+                agentcert.net
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
 
         <a class="app-card pravida" href="/pravida/">
             <div class="app-header">
