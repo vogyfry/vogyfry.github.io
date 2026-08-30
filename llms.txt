@@ -1,11 +1,9 @@
 # Prava Labs
 
-> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products span AI accountability (Agent Cert), agent tooling (Toolport, EAG), consumer iOS apps (TradeSocial, Mavee, Pravida), and developer tools (SwiftMind).
+> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products span agent tooling (Toolport, EAG), consumer iOS apps (TradeSocial, Mavee, Pravida), and developer tools (SwiftMind).
 
 ## Products
 
-- [Agent Cert](https://agentcert.net): certification network for AI agent decisions — policy-evaluated, risk-scored, Ed25519-signed Decision Receipts anchored to Solana; built for EU AI Act Article 12 record-keeping. Docs at https://agentcert.net/docs, llms.txt at https://agentcert.net/llms.txt
-- [CERT token](https://certnetwork.net): the Solana utility token that funds the Agent Cert network (1 CERT = 100 Decision Credits)
 - [Toolport](https://pravalabs.app/toolport/): the semantic MCP tool registry — one local broker between any AI agent and all your MCP servers
 - [EAG — Enterprise Agent Gateway](https://pravalabs.app/eag/): governed MCP gateway with identity-scoped, audited tools for enterprise systems
 - [TradeSocial](https://pravalabs.app/tradesocial/): group paper trading with real market data (iOS)
