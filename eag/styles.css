@@ -1209,3 +1209,110 @@ body {
   font-size: 11.5px; color: var(--text-tertiary); border: 1px dashed rgba(255,255,255,.14);
   border-radius: var(--radius-sm); transition: color .2s, border-color .2s; }
 .dmore:hover { color: var(--text-primary); border-color: rgba(255,255,255,.3); text-decoration: none; }
+
+
+/* ---------------------------------------------------------------------------
+   Architecture diagram (eag/architecture.html).
+   A real drawing rather than three columns of cards: a trust boundary, legs
+   annotated with what each call actually carries, and numbered steps that tie
+   the picture to the walk-through below it.
+   --------------------------------------------------------------------------- */
+.archfig { margin: 0; }
+.archsvg { width: 100%; height: auto; display: block; }
+/* Hidden on desktop, where the whole diagram is already visible. */
+.archhint { display: none; align-items: center; gap: 7px; margin-top: 10px;
+            font-size: 12px; color: var(--text-tertiary); }
+.archhint svg { flex: none; }
+
+/* Below ~760px an architecture drawing stops being readable when squeezed, so
+   it scrolls in its own track rather than shrinking into illegibility.
+   Measured at 375px: 29% of the diagram visible at a time.
+   The scrolling was never the problem — NOTHING SAID IT SCROLLED. A fade at
+   the trailing edge plus an explicit hint is the standard fix; forcing
+   landscape is not available on the web (orientation.lock needs fullscreen and
+   iOS Safari does not support it at all, and CSS-rotating content breaks
+   scrolling, tap targets and screen readers). */
+@media (max-width: 760px) {
+  .archwrap { position: relative; }
+  .archfig {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    /* the fade is painted by the wrapper, so it can't scroll away with content */
+  }
+  .archsvg { min-width: 1170px; }
+
+  /* trailing-edge fade: the affordance that says "there is more this way" */
+  .archwrap::after {
+    content: "";
+    position: absolute; top: 0; right: 0; bottom: 34px; width: 46px;
+    background: linear-gradient(to right, transparent, var(--bg-primary) 85%);
+    pointer-events: none;
+  }
+  .archhint { display: flex; }
+}
+
+
+/* zones + boundary */
+.a-boundary { fill: rgba(58,146,255,.05); stroke: var(--brand); stroke-width: 2;
+              stroke-dasharray: 8 6; opacity: 1; }
+.a-zone { fill: var(--brand); font: 600 11px/1 ui-sans-serif, -apple-system, sans-serif;
+          letter-spacing: .09em; }
+.a-zone.dim { fill: #9fa8b4; }
+
+/* boxes */
+/* Solid values, not alpha: #161a21 measured 1.20:1 against the black page —
+   the boxes did not separate from the background at all, and an rgba stroke
+   at .26 composites to roughly 4:1, which reads as a smudge rather than an
+   edge. These are ~2.9:1 fill and ~7:1 edge. */
+.a-tile rect, .a-sys rect { fill: #272f3d; stroke: #616e85; stroke-width: 1.25; }
+.a-gate { fill: rgba(58,146,255,.10); stroke: var(--brand); stroke-width: 2; }
+.a-layer rect { fill: #253044; stroke: #5b6c8a; }
+.a-layer.proof rect { fill: rgba(52,211,153,.16); stroke: rgba(52,211,153,.6); }
+.a-eviq { fill: rgba(52,211,153,.10); stroke: rgba(52,211,153,.5); stroke-width: 1.5; }
+.a-legend rect { fill: #1c222c; stroke: #4a5568; }
+
+/* type */
+.a-h  { fill: var(--text-primary); font: 600 15px/1 ui-sans-serif, -apple-system, sans-serif; }
+.a-h.sig { fill: #c7f5e2; }
+.a-t  { fill: var(--text-primary); font: 600 13px/1 ui-sans-serif, -apple-system, sans-serif; }
+.a-s  { fill: #b3bccb; font: 400 11.5px/1 ui-sans-serif, -apple-system, sans-serif; }
+.a-lt { fill: #eaf2ff; font: 600 12px/1 ui-sans-serif, -apple-system, sans-serif; }
+.a-lt.sig { fill: #c7f5e2; }
+.a-ls { fill: #a8c6ef; font: 400 11.5px/1 ui-sans-serif, -apple-system, sans-serif; }
+.a-ls.dim { fill: #9fa8b4; }
+/* Annotation pills. Each leg of the diagram carries three different KINDS of
+   guarantee, and three lines of identical grey text made them look like one
+   run-on sentence. Colour separates them: blue = who, violet = what they may
+   reach, green = what is written down. */
+.a-pill rect { stroke-width: 1.25; }
+.a-pill text { font: 500 11.5px/1 ui-sans-serif, -apple-system, sans-serif; }
+.a-pill.ident rect { fill: rgba(58,146,255,.16);  stroke: #4f9dff; }
+.a-pill.ident text { fill: #bcd9ff; } .a-pill.ident circle { fill: #4f9dff; }
+.a-pill.scope rect { fill: rgba(167,139,250,.16); stroke: #a78bfa; }
+.a-pill.scope text { fill: #ddd2ff; } .a-pill.scope circle { fill: #a78bfa; }
+.a-pill.proof rect { fill: rgba(52,211,153,.16);  stroke: #34d399; }
+.a-pill.proof text { fill: #bff0dc; } .a-pill.proof circle { fill: #34d399; }
+.a-more { fill: var(--brand); font: 500 11px/1 ui-sans-serif, -apple-system, sans-serif; }
+.a-chip { fill: #08131f; font: 800 10px/1 ui-sans-serif, -apple-system, sans-serif; text-anchor: middle; letter-spacing: .02em; }
+
+/* annotated legs */
+.a-flow  { stroke: var(--brand);  stroke-width: 2.2; fill: none; }
+.a-flowg { stroke: var(--signal); stroke-width: 2.2; fill: none; }
+.a-ann text { fill: #cbd5e1; font: 400 11.5px/1 ui-sans-serif, -apple-system, sans-serif; }
+.a-num  { fill: var(--brand); }
+.a-numg { fill: var(--signal); }
+.a-numt { fill: #06203f; font: 700 11px/1 ui-sans-serif, -apple-system, sans-serif; text-anchor: middle; }
+
+/* domain chips */
+/* Scoped to beat `.a-sys rect` (0,1,1) — a bare `.c1` (0,1,0) loses to it and
+   every chip silently inherited the box fill, leaving dark text on a dark chip. */
+.a-sys rect.c1 { fill: #60a5fa } .a-sys rect.c2 { fill: #7dd3fc } .a-sys rect.c3 { fill: #fbbf24 }
+.a-sys rect.c4 { fill: #f472b6 } .a-sys rect.c5 { fill: #fb923c } .a-sys rect.c6 { fill: #2dd4bf }
+.a-sys rect[class^="c"] { stroke: none; }
+
+/* caption */
+.archcap { display: flex; flex-wrap: wrap; gap: 18px; align-items: center;
+           margin-top: 14px; font-size: 12px; color: var(--text-tertiary); }
+.archcap b { color: var(--text-primary); font-size: 13px; }
+.archcap a { margin-left: auto; color: var(--brand); text-decoration: none; }
