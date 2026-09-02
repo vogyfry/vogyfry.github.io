@@ -99,6 +99,11 @@
             <p class="section-subtitle">Enterprise systems speak REST, SOAP, OData. Agents speak natural language. EAG is the layer in between — one canonical, plain-language tool catalog fronting every backend, governed on every call.</p>
             <div class="feature-grid">
                 <div class="feature-card">
+                    <div class="feature-icon">🧵</div>
+                    <h3>Build · Watch · Heal</h3>
+                    <p>Describe a system in plain language and EAG builds the connector itself — it probes the API, proposes the tools, tests them, and writes the manifest once a human approves. Then it watches every connection and repairs them when a backend shifts underneath you. The engine is <a href="/eag/architecture.html">Prava Loom</a>, and it is governed by the same gateway it builds for: its own writes are attested in your audit trail as an agent, under the same ceiling as anything else.</p>
+                </div>
+                <div class="feature-card">
                     <div class="feature-icon">🗂️</div>
                     <h3>One Canonical Tool Catalog</h3>
                     <p>A single, stable, natural-language contract agents route on. EAG maps each canonical tool to the right backend call. Descriptions are written for the model, so the agent's LLM matches them from any language. EAG itself never sees the user's language — only the resulting tool call — so execution and governance are language-independent by construction. Eval-verified: a Spanish request routes to the same tool, byte-identical, and returns the caller's own data.</p>
