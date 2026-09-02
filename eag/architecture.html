@@ -18,7 +18,7 @@
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://pravalabs.app/eag/architecture.html","url":"https://pravalabs.app/eag/architecture.html","name":"Prava EAG Architecture","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Architecture","item":"https://pravalabs.app/eag/architecture.html"}]}}</script>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="styles.css?v=348d8249">
+    <link rel="stylesheet" href="styles.css?v=db817592">
 </head>
 <body>
 <nav class="nav">
@@ -60,108 +60,127 @@
 
     <div class="archwrap">
     <figure class="archfig">
-      <svg class="archsvg" viewBox="0 0 1330 660" role="img"
+      <svg class="archsvg" viewBox="0 0 1330 778" role="img"
            aria-label="Any MCP client connects to one governed Prava EAG endpoint inside your tenant, which enforces identity, policy and approval before reaching your systems, and signs a receipt for every outcome.">
         <defs>
           <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="var(--brand)"/></marker>
           <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill="var(--signal)"/></marker>
+          <marker id="ahc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#a78bfa"/></marker>
         </defs>
 
-        <rect x="250" y="16" width="1060" height="628" rx="16" class="a-boundary"/>
+        <rect x="250" y="16" width="1060" height="746" rx="16" class="a-boundary"/>
         <text x="268" y="44" class="a-zone">YOUR TENANT — your cloud, your data, your identity provider</text>
 
+        <!-- ===== control plane: ships with EAG, never in the request path =====
+             Loom authors and heals connectors. It is deliberately drawn OUTSIDE
+             the agent→gateway→systems path: separate process, separate blast
+             radius, and its own writes come back through the gateway as an
+             attested agent like anyone else. -->
+        <g class="a-ctrl"><rect x="360" y="62" width="930" height="86" rx="12"/>
+          <text x="380" y="88" class="a-h ctrl">Prava Loom — control plane</text>
+          <text x="380" y="108" class="a-ls">Build · Watch · Heal. Describes a system in plain language, probes it,</text>
+          <text x="380" y="126" class="a-ls">proposes a connector, and — on human approval — writes the manifest.</text>
+          <g class="a-pill ctrl"><rect x="836" y="76" width="200" height="22" rx="11"/>
+            <circle cx="849" cy="87" r="3.5"/><text x="860" y="91">Attested as agent “loom”</text></g>
+          <text x="836" y="118" class="a-ls dim">Governed by the gateway it builds for.</text>
+          <text x="836" y="136" class="a-ls dim">Also drives other gateways, standalone.</text>
+        </g>
+        <path d="M525 148 V182" class="a-flowc" marker-end="url(#ahc)"/>
+        <text x="537" y="170" class="a-note dim">authors manifests</text>
+
         <!-- ===== agents, outside the boundary ===== -->
-        <text x="10" y="44" class="a-zone dim">ANY MCP CLIENT</text>
-        <g class="a-tile"><rect x="10" y="64" width="200" height="48" rx="9"/>
-          <text x="26" y="85" class="a-t">Prava EAG Agent</text><text x="26" y="102" class="a-s">self-hosted · in development</text></g>
-        <g class="a-tile"><rect x="10" y="122" width="200" height="48" rx="9"/>
-          <text x="26" y="143" class="a-t">Copilot Studio</text><text x="26" y="160" class="a-s">verified end to end</text></g>
-        <g class="a-tile"><rect x="10" y="180" width="200" height="48" rx="9"/>
-          <text x="26" y="201" class="a-t">Azure AI Foundry</text><text x="26" y="218" class="a-s">MCP-compatible</text></g>
-        <g class="a-tile"><rect x="10" y="238" width="200" height="48" rx="9"/>
-          <text x="26" y="259" class="a-t">Amazon Bedrock</text><text x="26" y="276" class="a-s">MCP-compatible</text></g>
-        <g class="a-tile"><rect x="10" y="296" width="200" height="48" rx="9"/>
-          <text x="26" y="317" class="a-t">Claude, and others</text><text x="26" y="334" class="a-s">any MCP client</text></g>
+        <text x="10" y="162" class="a-zone dim">ANY MCP CLIENT</text>
+        <g class="a-tile"><rect x="10" y="182" width="200" height="48" rx="9"/>
+          <text x="26" y="203" class="a-t">EAG Local Agent</text><text x="26" y="220" class="a-s">our reference client · self-hosted</text></g>
+        <g class="a-tile"><rect x="10" y="240" width="200" height="48" rx="9"/>
+          <text x="26" y="261" class="a-t">Copilot Studio</text><text x="26" y="278" class="a-s">verified end to end</text></g>
+        <g class="a-tile"><rect x="10" y="298" width="200" height="48" rx="9"/>
+          <text x="26" y="319" class="a-t">Azure AI Foundry</text><text x="26" y="336" class="a-s">MCP-compatible</text></g>
+        <g class="a-tile"><rect x="10" y="356" width="200" height="48" rx="9"/>
+          <text x="26" y="377" class="a-t">Amazon Bedrock</text><text x="26" y="394" class="a-s">MCP-compatible</text></g>
+        <g class="a-tile"><rect x="10" y="414" width="200" height="48" rx="9"/>
+          <text x="26" y="435" class="a-t">Claude, and others</text><text x="26" y="452" class="a-s">any MCP client</text></g>
 
         <!-- leg 1 — pills sit clear above the arrow and its step marker -->
-        <g class="a-pill ident"><rect x="218" y="152" width="134" height="22" rx="11"/>
-          <circle cx="231" cy="163" r="3.5"/><text x="242" y="167">one endpoint · /mcp</text></g>
-        <g class="a-pill ident"><rect x="218" y="180" width="134" height="22" rx="11"/>
-          <circle cx="231" cy="191" r="3.5"/><text x="242" y="195">the caller’s token</text></g>
-        <path d="M210 226 H360" class="a-flow" marker-end="url(#ah)"/>
-        <circle cx="285" cy="226" r="12" class="a-num"/><text x="285" y="230.5" class="a-numt">1</text>
+        <g class="a-pill ident"><rect x="218" y="270" width="134" height="22" rx="11"/>
+          <circle cx="231" cy="281" r="3.5"/><text x="242" y="285">one endpoint · /mcp</text></g>
+        <g class="a-pill ident"><rect x="218" y="298" width="134" height="22" rx="11"/>
+          <circle cx="231" cy="309" r="3.5"/><text x="242" y="313">the caller’s token</text></g>
+        <path d="M210 344 H360" class="a-flow" marker-end="url(#ah)"/>
+        <circle cx="285" cy="344" r="12" class="a-num"/><text x="285" y="348.5" class="a-numt">1</text>
 
         <!-- ===== the gateway ===== -->
-        <rect x="360" y="64" width="330" height="368" rx="14" class="a-gate"/>
-        <text x="380" y="94" class="a-h">Prava EAG</text>
-        <text x="380" y="113" class="a-s">one governed MCP endpoint</text>
+        <rect x="360" y="182" width="330" height="368" rx="14" class="a-gate"/>
+        <text x="380" y="212" class="a-h">Prava EAG</text>
+        <text x="380" y="231" class="a-s">one governed MCP endpoint</text>
 
-        <g class="a-layer"><rect x="378" y="130" width="294" height="50" rx="8"/>
-          <text x="394" y="150" class="a-lt">Canonical tool catalog</text>
-          <text x="394" y="168" class="a-ls">68 verbs. Swap the backend, agents never change.</text></g>
-        <g class="a-layer"><rect x="378" y="188" width="294" height="50" rx="8"/>
-          <text x="394" y="208" class="a-lt">Per-user identity</text>
-          <text x="394" y="226" class="a-ls">On-behalf-of — the backend sees the person.</text></g>
-        <g class="a-layer"><rect x="378" y="246" width="294" height="50" rx="8"/>
-          <text x="394" y="266" class="a-lt">Agent registry</text>
-          <text x="394" y="284" class="a-ls">An agent holds less than its user, never more.</text></g>
-        <g class="a-layer"><rect x="378" y="304" width="294" height="50" rx="8"/>
-          <text x="394" y="324" class="a-lt">Policy &amp; approval</text>
-          <text x="394" y="342" class="a-ls">Writes park until a named human signs off.</text></g>
-        <g class="a-layer proof"><rect x="378" y="362" width="294" height="50" rx="8"/>
-          <text x="394" y="382" class="a-lt sig">Decision receipts</text>
-          <text x="394" y="400" class="a-ls">Signed, tamper-evident, publicly verifiable.</text></g>
+        <g class="a-layer"><rect x="378" y="248" width="294" height="50" rx="8"/>
+          <text x="394" y="268" class="a-lt">Canonical tool catalog</text>
+          <text x="394" y="286" class="a-ls">68 verbs. Swap the backend, agents never change.</text></g>
+        <g class="a-layer"><rect x="378" y="306" width="294" height="50" rx="8"/>
+          <text x="394" y="326" class="a-lt">Per-user identity</text>
+          <text x="394" y="344" class="a-ls">On-behalf-of — the backend sees the person.</text></g>
+        <g class="a-layer"><rect x="378" y="364" width="294" height="50" rx="8"/>
+          <text x="394" y="384" class="a-lt">Agent registry</text>
+          <text x="394" y="402" class="a-ls">An agent holds less than its user, never more.</text></g>
+        <g class="a-layer"><rect x="378" y="422" width="294" height="50" rx="8"/>
+          <text x="394" y="442" class="a-lt">Policy &amp; approval</text>
+          <text x="394" y="460" class="a-ls">Writes park until a named human signs off.</text></g>
+        <g class="a-layer proof"><rect x="378" y="480" width="294" height="50" rx="8"/>
+          <text x="394" y="500" class="a-lt sig">Decision receipts</text>
+          <text x="394" y="518" class="a-ls">Signed, tamper-evident, publicly verifiable.</text></g>
 
         <!-- leg 2 — what every call to a backend carries -->
-        <path d="M690 226 H870" class="a-flow" marker-end="url(#ah)"/>
-        <circle cx="716" cy="226" r="12" class="a-num"/><text x="716" y="230.5" class="a-numt">2</text>
-        <g class="a-pill ident"><rect x="704" y="124" width="152" height="22" rx="11"/>
-          <circle cx="717" cy="135" r="3.5"/><text x="728" y="139">As the signed-in user</text></g>
-        <g class="a-pill scope"><rect x="704" y="152" width="152" height="22" rx="11"/>
-          <circle cx="717" cy="163" r="3.5"/><text x="728" y="167">Only tools in scope</text></g>
-        <g class="a-pill proof"><rect x="704" y="180" width="152" height="22" rx="11"/>
-          <circle cx="717" cy="191" r="3.5"/><text x="728" y="195">Audited · writes gated</text></g>
+        <path d="M690 344 H870" class="a-flow" marker-end="url(#ah)"/>
+        <circle cx="716" cy="344" r="12" class="a-num"/><text x="716" y="348.5" class="a-numt">2</text>
+        <g class="a-pill ident"><rect x="704" y="242" width="152" height="22" rx="11"/>
+          <circle cx="717" cy="253" r="3.5"/><text x="728" y="257">As the signed-in user</text></g>
+        <g class="a-pill scope"><rect x="704" y="270" width="152" height="22" rx="11"/>
+          <circle cx="717" cy="281" r="3.5"/><text x="728" y="285">Only tools in scope</text></g>
+        <g class="a-pill proof"><rect x="704" y="298" width="152" height="22" rx="11"/>
+          <circle cx="717" cy="309" r="3.5"/><text x="728" y="313">Audited · writes gated</text></g>
 
         <!-- ===== systems of record ===== -->
-        <text x="870" y="44" class="a-zone dim">YOUR SYSTEMS OF RECORD</text>
-        <g class="a-sys"><rect x="870" y="64" width="396" height="44" rx="9"/>
-          <rect x="884" y="78" width="38" height="17" rx="4" class="c1"/><text x="903" y="90.5" class="a-chip">365</text>
-          <text x="934" y="82" class="a-t">Workplace</text><text x="934" y="98" class="a-s">SharePoint · Teams · Outlook · Entra</text></g>
-        <g class="a-sys"><rect x="870" y="116" width="396" height="44" rx="9"/>
-          <rect x="884" y="130" width="38" height="17" rx="4" class="c2"/><text x="903" y="142.5" class="a-chip">HR</text>
-          <text x="934" y="134" class="a-t">HR and people</text><text x="934" y="150" class="a-s">Workday · SuccessFactors · UKG · BambooHR</text></g>
-        <g class="a-sys"><rect x="870" y="168" width="396" height="44" rx="9"/>
-          <rect x="884" y="182" width="38" height="17" rx="4" class="c3"/><text x="903" y="194.5" class="a-chip">ITSM</text>
-          <text x="934" y="186" class="a-t">Service desk</text><text x="934" y="202" class="a-s">ServiceNow · Zendesk · Jira Service Management</text></g>
-        <g class="a-sys"><rect x="870" y="220" width="396" height="44" rx="9"/>
-          <rect x="884" y="234" width="38" height="17" rx="4" class="c4"/><text x="903" y="246.5" class="a-chip">CRM</text>
-          <text x="934" y="238" class="a-t">CRM and sales</text><text x="934" y="254" class="a-s">Salesforce · Dynamics 365 · HubSpot</text></g>
-        <g class="a-sys"><rect x="870" y="272" width="396" height="44" rx="9"/>
-          <rect x="884" y="286" width="38" height="17" rx="4" class="c5"/><text x="903" y="298.5" class="a-chip">ERP</text>
-          <text x="934" y="290" class="a-t">ERP and finance</text><text x="934" y="306" class="a-s">SAP S/4HANA · Dynamics 365 F&amp;O</text></g>
-        <g class="a-sys"><rect x="870" y="324" width="396" height="44" rx="9"/>
-          <rect x="884" y="338" width="38" height="17" rx="4" class="c6"/><text x="903" y="350.5" class="a-chip">SQL</text>
-          <text x="934" y="342" class="a-t">Data and analytics</text><text x="934" y="358" class="a-s">Snowflake · Databricks · SQL Server · Postgres</text></g>
-        <text x="870" y="388" class="a-more">Knowledge, DevOps and identity too — 24 connectors in all</text>
+        <text x="870" y="162" class="a-zone dim">YOUR SYSTEMS OF RECORD</text>
+        <g class="a-sys"><rect x="870" y="182" width="396" height="44" rx="9"/>
+          <rect x="884" y="196" width="38" height="17" rx="4" class="c1"/><text x="903" y="208.5" class="a-chip">365</text>
+          <text x="934" y="200" class="a-t">Workplace</text><text x="934" y="216" class="a-s">SharePoint · Teams · Outlook · Entra</text></g>
+        <g class="a-sys"><rect x="870" y="234" width="396" height="44" rx="9"/>
+          <rect x="884" y="248" width="38" height="17" rx="4" class="c2"/><text x="903" y="260.5" class="a-chip">HR</text>
+          <text x="934" y="252" class="a-t">HR and people</text><text x="934" y="268" class="a-s">Workday · SuccessFactors · UKG · BambooHR</text></g>
+        <g class="a-sys"><rect x="870" y="286" width="396" height="44" rx="9"/>
+          <rect x="884" y="300" width="38" height="17" rx="4" class="c3"/><text x="903" y="312.5" class="a-chip">ITSM</text>
+          <text x="934" y="304" class="a-t">Service desk</text><text x="934" y="320" class="a-s">ServiceNow · Zendesk · Jira Service Management</text></g>
+        <g class="a-sys"><rect x="870" y="338" width="396" height="44" rx="9"/>
+          <rect x="884" y="352" width="38" height="17" rx="4" class="c4"/><text x="903" y="364.5" class="a-chip">CRM</text>
+          <text x="934" y="356" class="a-t">CRM and sales</text><text x="934" y="372" class="a-s">Salesforce · Dynamics 365 · HubSpot</text></g>
+        <g class="a-sys"><rect x="870" y="390" width="396" height="44" rx="9"/>
+          <rect x="884" y="404" width="38" height="17" rx="4" class="c5"/><text x="903" y="416.5" class="a-chip">ERP</text>
+          <text x="934" y="408" class="a-t">ERP and finance</text><text x="934" y="424" class="a-s">SAP S/4HANA · Dynamics 365 F&amp;O</text></g>
+        <g class="a-sys"><rect x="870" y="442" width="396" height="44" rx="9"/>
+          <rect x="884" y="456" width="38" height="17" rx="4" class="c6"/><text x="903" y="468.5" class="a-chip">SQL</text>
+          <text x="934" y="460" class="a-t">Data and analytics</text><text x="934" y="476" class="a-s">Snowflake · Databricks · SQL Server · Postgres</text></g>
+        <text x="870" y="506" class="a-more">Knowledge, DevOps and identity too — 24 connectors in all</text>
 
         <!-- ===== evidence plane ===== -->
-        <path d="M525 432 V462" class="a-flowg" marker-end="url(#ahg)"/>
-        <circle cx="525" cy="447" r="12" class="a-numg"/><text x="525" y="451.5" class="a-numt">3</text>
-        <rect x="360" y="462" width="930" height="92" rx="12" class="a-eviq"/>
-        <text x="380" y="490" class="a-h sig">Evidence, on the way out</text>
-        <text x="380" y="514" class="a-ls">Audit record per call — who, which agent, which tool, what policy decided.</text>
-        <text x="380" y="534" class="a-ls">Ed25519-signed receipt per outcome, into a database you own.</text>
-        <text x="890" y="514" class="a-ls">Dataverse · Azure SQL · Snowflake</text>
-        <text x="890" y="534" class="a-ls dim">Verifiable by anyone holding the public key.</text>
+        <path d="M525 550 V580" class="a-flowg" marker-end="url(#ahg)"/>
+        <circle cx="525" cy="565" r="12" class="a-numg"/><text x="525" y="569.5" class="a-numt">3</text>
+        <rect x="360" y="580" width="930" height="92" rx="12" class="a-eviq"/>
+        <text x="380" y="608" class="a-h sig">Evidence, on the way out</text>
+        <text x="380" y="632" class="a-ls">Audit record per call — who, which agent, which tool, what policy decided.</text>
+        <text x="380" y="652" class="a-ls">Ed25519-signed receipt per outcome, into a database you own.</text>
+        <text x="890" y="632" class="a-ls">Dataverse · Azure SQL · Snowflake</text>
+        <text x="890" y="652" class="a-ls dim">Verifiable by anyone holding the public key.</text>
 
         <!-- ===== what the picture claims ===== -->
         <g class="a-legend">
-          <rect x="360" y="570" width="930" height="62" rx="12"/>
-          <text x="380" y="594" class="a-zone dim">WHAT THE PICTURE CLAIMS</text>
-          <text x="380" y="616" class="a-ls">The dashed boundary is yours — EAG runs single-tenant in your cloud.</text>
-          <text x="850" y="616" class="a-ls">Nothing here trusts the agent: identity and policy are enforced server-side.</text>
+          <rect x="360" y="688" width="930" height="62" rx="12"/>
+          <text x="380" y="712" class="a-zone dim">WHAT THE PICTURE CLAIMS</text>
+          <text x="380" y="734" class="a-ls">The dashed boundary is yours — EAG runs single-tenant in your cloud.</text>
+          <text x="850" y="734" class="a-ls">Nothing here trusts the agent: identity and policy are enforced server-side.</text>
         </g>
       </svg>
       <figcaption class="archcap">

@@ -1316,3 +1316,13 @@ body {
            margin-top: 14px; font-size: 12px; color: var(--text-tertiary); }
 .archcap b { color: var(--text-primary); font-size: 13px; }
 .archcap a { margin-left: auto; color: var(--brand); text-decoration: none; }
+
+/* Control plane (Prava Loom). Drawn OUTSIDE the request path on purpose: it
+   authors and heals connectors, it does not carry traffic. Violet rather than
+   the data-plane blue so the two planes read as different things at a glance. */
+.a-ctrl rect { fill: rgba(167,139,250,.10); stroke: #a78bfa; stroke-width: 1.5; }
+.a-h.ctrl { fill: #ddd2ff; }
+.a-pill.ctrl rect { fill: rgba(167,139,250,.18); stroke: #a78bfa; }
+.a-pill.ctrl text { fill: #e4dbff; } .a-pill.ctrl circle { fill: #a78bfa; }
+/* dashed: authoring is an out-of-band act, not a request */
+.a-flowc { stroke: #a78bfa; stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
