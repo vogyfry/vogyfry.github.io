@@ -53,6 +53,18 @@
           "url": "https://pravalabs.app/eag/",
           "description": "A governed MCP gateway: one endpoint fronting enterprise systems with identity-scoped, audited, natural-language tools for AI agents.",
           "publisher": { "@id": "https://pravalabs.app/#org" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/loom/#app",
+          "name": "Prava Loom",
+          "alternateName": "Loom",
+          "operatingSystem": "Self-hosted (Docker, on-prem, air-gapped)",
+          "applicationCategory": "DeveloperApplication",
+          "url": "https://pravalabs.app/loom/",
+          "description": "The self-writing, self-healing integration agent: authors the connection your AI agents need from a plain-language ask, custodies its secrets by reference, and heals it for life — inside your tenant, with a human on every grant.",
+          "publisher": { "@id": "https://pravalabs.app/#org" },
+          "isRelatedTo": { "@id": "https://pravalabs.app/eag/#app" }
         }
       ]
     }
@@ -71,6 +83,7 @@
             --accent-pravida: #1a8cff;
             --accent-toolport: #00b8ff;
             --accent-eag: #3a92ff;
+            --accent-loom: #a78bfa;
         }
 
         html { scroll-behavior: smooth; }
@@ -146,6 +159,7 @@
         .app-card.pravida:hover { border-color: var(--accent-pravida); }
         .app-card.toolport:hover { border-color: var(--accent-toolport); }
         .app-card.eag:hover { border-color: var(--accent-eag); }
+        .app-card.loom:hover { border-color: var(--accent-loom); }
 
         .app-header { display: flex; align-items: center; gap: 16px; }
 
@@ -190,6 +204,7 @@
         .app-card.pravida .tag { border-color: rgba(26,140,255,0.3); color: var(--accent-pravida); }
         .app-card.toolport .tag { border-color: rgba(0,184,255,0.3); color: var(--accent-toolport); }
         .app-card.eag .tag { border-color: rgba(58,146,255,0.3); color: var(--accent-eag); }
+        .app-card.loom .tag { border-color: rgba(167,139,250,0.3); color: var(--accent-loom); }
 
         .app-cta {
             display: inline-flex;
@@ -205,6 +220,7 @@
         .app-card.pravida .app-cta { color: var(--accent-pravida); }
         .app-card.toolport .app-cta { color: var(--accent-toolport); }
         .app-card.eag .app-cta { color: var(--accent-eag); }
+        .app-card.loom .app-cta { color: var(--accent-loom); }
 
         .app-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
         .app-card:hover .app-cta svg { transform: translateX(4px); }
@@ -415,6 +431,33 @@
             </span>
         </a>
 
+        <a class="app-card loom" href="/loom/">
+            <div class="app-header">
+                <img class="app-icon" src="loom-icon.png" alt="Prava Loom icon">
+                <div>
+                    <div class="app-name">Loom <span class="live-now review">Coming Soon</span></div>
+                    <div class="app-platform">Self-Hosted · One container beside your gateway · air-gapped</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                The self-writing, self-healing integration agent. Describe the system your AI agents need in plain language; Loom probes it, works out the auth, test-connects and writes the connector — a human deposits the secret and approves go-live, and Loom keeps the connection alive from then on. The model never sees a secret.
+            </p>
+            <div class="app-tags">
+                <span class="tag">Author · Custody · Heal</span>
+                <span class="tag">Local Model</span>
+                <span class="tag">Secrets by Reference</span>
+                <span class="tag">Human-Approved Grants</span>
+                <span class="tag">Self-Healing</span>
+                <span class="tag">Powers Prava EAG</span>
+            </div>
+            <span class="app-cta">
+                Learn more
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
+
     </div>
 
     <section class="labs-header">
@@ -506,6 +549,7 @@
             &nbsp;&middot;&nbsp; <a href="/tradesocial/">TradeSocial</a>
             &nbsp;&middot;&nbsp; <a href="/toolport/">Toolport</a>
             &nbsp;&middot;&nbsp; <a href="/eag/">EAG</a>
+            &nbsp;&middot;&nbsp; <a href="/loom/">Loom</a>
             &nbsp;&middot;&nbsp; <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
         </p>
         <p class="footer-legal-note" style="margin-top:6px; font-size:0.8em; opacity:0.7">

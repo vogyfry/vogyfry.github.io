@@ -77,7 +77,10 @@ function icon({ p, variant, fullBleed = false, pad = 0 }) {
     ink = p.tintInk;
     core = typeof p.core === "string" && !p.core.startsWith("gradient:") ? p.core : p.tintInk;
   } else {
-    defs.push(darkTileDef("bg", T.tile.dark));
+    // Opt-in per-product tile (tokens "tile": [top, mid, bottom]) for a product
+    // whose hue fights the shared navy — Loom's violet core read as "dark blue"
+    // on it. Everything else keeps the family tile.
+    defs.push(darkTileDef("bg", p.tile ?? T.tile.dark));
     bg = `<rect width="${G}" height="${G}" rx="${fullBleed ? 0 : RX}" fill="url(#bg)"/>`;
     if (p.parent) { defs.push(washDef("wash", T.spectrum)); bg += `<rect width="${G}" height="${G}" rx="${fullBleed ? 0 : RX}" fill="url(#wash)"/>`; }
     stroke = rgba(T.tile.innerStroke);

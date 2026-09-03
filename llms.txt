@@ -6,6 +6,7 @@
 
 - [Toolport](https://pravalabs.app/toolport/): the semantic MCP tool registry — one local broker between any AI agent and all your MCP servers
 - [EAG — Enterprise Agent Gateway](https://pravalabs.app/eag/): governed MCP gateway with identity-scoped, audited tools for enterprise systems
+- [Prava Loom](https://pravalabs.app/loom/): the self-writing, self-healing integration agent — authors, custodies and heals the connections AI agents need, inside your tenant
 - [TradeSocial](https://pravalabs.app/tradesocial/): group paper trading with real market data (iOS)
 - [Mavee](https://pravalabs.app/mavee/): Apple Intelligence day planner (iOS)
 - [Pravida](https://pravalabs.app/pravida/): E2E-encrypted, invite-only private network (iOS)

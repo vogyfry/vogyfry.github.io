@@ -1,0 +1,7 @@
+<!-- Loom — warp and weft, the core where the threads cross: the connection woven, watched, mended -->
+<g fill="none" stroke="__INK__" stroke-width="19" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M84 52 V204"/><path d="M172 52 V204"/>
+  <path d="M52 84 H204"/><path d="M52 172 H204"/>
+  <path d="M52 128 H100"/><path d="M156 128 H204"/>
+</g>
+<circle cx="128" cy="128" r="17" fill="__CORE__"/>
