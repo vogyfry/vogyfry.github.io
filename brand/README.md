@@ -10,7 +10,7 @@ product; everything else — tiles, variants, every size — is produced by the 
 - **Palette (the Prava Spectrum):** teal `#00D4AA` → cyan `#00B8FF` → blue `#3A92FF`
   → violet `#7C5CFC`. Each product owns exactly one hue — the colour of its core dot.
 - **Icon rules:** deep-navy squircle, white line-work on a shared 256 grid
-  (stroke ≈ 17–20, round caps), one core dot per glyph.
+  (stroke ≈ 17–20, round caps), one core dot per glyph. A product whose hue fights the
 
 ## Generate
 
@@ -46,4 +46,4 @@ Design intent per existing glyph: TradeSocial — rising line, core at the pivot
 Toolport — hub routing to servers, core at the junction · Pravida — shield, core protected inside · Waypoint — the destination
 pin, core at the point you actually reach · BoatNavi — the vessel underway over water,
 core at the boat · SwiftMind — the chip, core inside it, because the model never leaves
-your silicon · Mavee — the day as one loop, core on what matters.
+your silicon · Mavee — the day as one loop, core on what matters..
