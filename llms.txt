@@ -1,16 +1,15 @@
 # Prava Labs
 
-> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products span agent tooling (Toolport, EAG), consumer iOS apps (TradeSocial, Mavee, Pravida), and developer tools (SwiftMind).
+> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products span agent infrastructure (Toolport, EAG, Loom) and consumer iOS apps (TradeSocial, Mavee, Pravida).
 
 ## Products
 
-- [Toolport](https://pravalabs.app/toolport/): the semantic MCP tool registry — one local broker between any AI agent and all your MCP servers
-- [EAG — Enterprise Agent Gateway](https://pravalabs.app/eag/): governed MCP gateway with identity-scoped, audited tools for enterprise systems
-- [Prava Loom](https://pravalabs.app/loom/): the self-writing, self-healing integration agent — authors, custodies and heals the connections AI agents need, inside your tenant
-- [TradeSocial](https://pravalabs.app/tradesocial/): group paper trading with real market data (iOS)
-- [Mavee](https://pravalabs.app/mavee/): Apple Intelligence day planner (iOS)
-- [Pravida](https://pravalabs.app/pravida/): E2E-encrypted, invite-only private network (iOS)
-- [SwiftMind](https://pravalabs.app/swiftmind/): offline Swift coding agent for Xcode (macOS)
+- [Toolport](https://pravalabs.app/toolport/) — live: the semantic MCP tool registry — one local broker between any AI agent and all your MCP servers
+- [TradeSocial](https://pravalabs.app/tradesocial/) — live: group paper trading with real market data (iOS)
+- [EAG — Enterprise Agent Gateway](https://pravalabs.app/eag/) — coming soon: governed MCP gateway with identity-scoped, audited tools for enterprise systems
+- [Prava Loom](https://pravalabs.app/loom/) — coming soon: the self-writing, self-healing integration agent — authors, custodies and heals the connections AI agents need, inside your tenant
+- [Mavee](https://pravalabs.app/mavee/) — in development: Apple Intelligence day planner (iOS)
+- [Pravida](https://pravalabs.app/pravida/) — in development: E2E-encrypted, invite-only private network (iOS)
 
 ## Company
 
