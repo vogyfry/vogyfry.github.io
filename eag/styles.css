@@ -1271,6 +1271,11 @@ body {
 .a-layer.proof rect { fill: rgba(52,211,153,.16); stroke: rgba(52,211,153,.6); }
 .a-eviq { fill: rgba(52,211,153,.10); stroke: rgba(52,211,153,.5); stroke-width: 1.5; }
 .a-legend rect { fill: #1c222c; stroke: #4a5568; }
+/* Group containers around the client tiles and the systems chips. Neutral
+   slate on purpose: the brand-blue box is EAG itself, and these two are the
+   caller and the backends. Their job is to give each leg something to point
+   at — an arrow landing on one chip claims the call goes to that chip. */
+.a-group { fill: rgba(255,255,255,.03); stroke: #5a6780; stroke-width: 1.5; }
 
 /* type */
 .a-h  { fill: var(--text-primary); font: 600 15px/1 ui-sans-serif, -apple-system, sans-serif; }
