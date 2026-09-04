@@ -3,11 +3,10 @@
 
 ## Products
 
-- [Toolport](https://pravalabs.app/toolport/): the semantic MCP tool registry — one local broker between any AI agent and all your MCP servers
-- [TradeSocial](https://pravalabs.app/tradesocial/): group paper trading with real market data (iOS)
-- [Mavee](https://pravalabs.app/mavee/): Apple Intelligence day planner (iOS)
-- [Pravida](https://pravalabs.app/pravida/): E2E-encrypted, invite-only private network (iOS)
-- [SwiftMind](https://pravalabs.app/swiftmind/): offline Swift coding agent for Xcode (macOS)
+- [Toolport](https://pravalabs.app/toolport/) — live: the semantic MCP tool registry — one local broker between any AI agent and all your MCP servers
+- [TradeSocial](https://pravalabs.app/tradesocial/) — live: group paper trading with real market data (iOS)
+- [Mavee](https://pravalabs.app/mavee/) — in development: Apple Intelligence day planner (iOS)
+- [Pravida](https://pravalabs.app/pravida/) — in development: E2E-encrypted, invite-only private network (iOS)
 
 ## Company
 
