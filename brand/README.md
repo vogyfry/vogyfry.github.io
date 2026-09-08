@@ -8,10 +8,24 @@ product; everything else — tiles, variants, every size — is produced by the 
 - **Mark:** the "Core P" — a geometric P holding a solid core dot (your data, inside,
   never leaving). Only the studio mark carries the full spectrum.
 - **Palette (the Prava Spectrum):** teal `#00D4AA` → cyan `#00B8FF` → blue `#3A92FF`
-  → violet `#7C5CFC`. Each product owns exactly one hue — the colour of its core dot.
+  → violet `#7C5CFC`.
+- **The dot names the kind, not the product.** Every product declares a `kind` in
+  `tokens.json`, and the kind supplies the core dot's colour:
+
+  | Kind | Core | Products |
+  |---|---|---|
+  | `app` — consumer app | teal `#00D4AA` | TradeSocial · BoatNavi · Waypoint · Mavee · Pravida |
+  | `tool` — developer tool | cyan `#00B8FF` | Toolport · SwiftMind |
+  | `enterprise` — enterprise platform | blue `#3A92FF` | EAG · Prava Loom |
+
+  A reader can tell what a product *is* before reading its name. Products are told
+  apart by their glyph, which is the part actually drawn for them. Violet is
+  unassigned and held for a fourth kind. The studio mark is the exception: it carries
+  the full spectrum gradient, and no kind.
 - **Icon rules:** deep-navy squircle, white line-work on a shared 256 grid
-  (stroke ≈ 17–20, round caps), one core dot per glyph. A product whose hue fights the
-  navy may opt into its own tile gradient (`"tile": [top, mid, bottom]` in tokens) — Loom does.
+  (stroke ≈ 17–20, round caps), one core dot per glyph. **Every product shares the same
+  navy tile** — a product that paints its own background stops reading as one of the
+  family, which is why Loom's violet tile was removed.
 
 ## Generate
 
@@ -36,8 +50,9 @@ Per product, `dist/<id>/` contains:
 
 ## Adding a new product
 
-1. Add an entry to `tokens.json` — pick its spectrum hue (`core`), a darker
-   `coreLight` for light backgrounds, and `tint`/`tintInk` shades.
+1. Add an entry to `tokens.json` — `name`, `glyph`, and its `kind`
+   (`app` / `tool` / `enterprise`), which is where every colour comes from. Naming a
+   `core` on the product itself overrides the kind, so do it only with a reason.
 2. Draw `glyphs/<id>.svg`: a 256-viewBox fragment, stroke `__INK__` at weight
    17–20 with round caps, plus **exactly one** `<circle r="17" fill="__CORE__">` —
    the core dot is the family signature, placed where the product's meaning lives.
