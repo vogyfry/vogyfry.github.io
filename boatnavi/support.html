@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — BoatNavi</title>
+    <meta name="description" content="BoatNavi support: how the clearance is computed, chart regions, the boat's instruments, the anchor watch, and how to reach us.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="canonical" href="https://pravalabs.app/boatnavi/support.html">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand">
+                <img src="images/favicon.png" alt="BoatNavi">
+                <span>BoatNavi</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="/">Prava Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="legal-page">
+        <h1>Support</h1>
+        <p class="last-updated">Need help? We're here for you.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have questions, feedback, or need help with BoatNavi, reach out:</p>
+        <ul>
+            <li><strong>Email:</strong> <a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+        </ul>
+        <p>We aim to respond within 48 hours.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>What is the number under the keel?</h3>
+        <p>Charted depth + water level − your draft − your safety margin, for the point under the crosshair or under your boat, at the time on the scrubber. The chart's colours are the same number everywhere: green is clear, amber is marginal, red is aground. The margin is taken out of every number you see; the default is 2 ft and the app will not encourage less.</p>
+
+        <h3>Is BoatNavi a navigation system?</h3>
+        <p>No. It is a planning aid. It tells you which windows are worth attempting from the chart and the tide; your eyes and your depth sounder tell you what is actually under the keel. Public bathymetry outside dredged channels can be years old, and Delta shoals move. The survey year is on every callout and old surveys are hatched on the chart.</p>
+
+        <h3>Which waters are covered?</h3>
+        <p>San Francisco Bay and the Delta, in seven regions: South Bay, Central Bay &amp; Golden Gate, San Pablo Bay &amp; Napa River, Carquinez Strait &amp; Suisun Bay, West Delta, North Delta, and the Sacramento River to West Sacramento. Download the regions you sail from <strong>Menu › Chart packs</strong> over Wi-Fi before you go; the chart continues from one region into the next as you sail.</p>
+
+        <h3>Does it work with no signal?</h3>
+        <p>Everything that decides whether you go aground works offline: the charted depth is in the downloaded region, the tide is computed on the device, and your position is GPS. The only part that needs a network is the live tide correction from NOAA's gauges; without it the chart uses the prediction and says so with a chip.</p>
+
+        <h3>How do I connect my boat's instruments?</h3>
+        <p><strong>Menu › Boat connections.</strong> Your phone's GPS is the default. If your boat runs a Signal K server (a Raspberry Pi, OpenPlotter or a Victron GX) or an NMEA 0183 Wi-Fi gateway, join the boat's Wi-Fi and the server is offered by name; or type its address. Typing a host or IP uses http on the port shown; a full URL (https://…) is used as written. The Boat screen then shows the battery, charger, engine, tanks, cabin and autopilot, each with how fresh the reading is.</p>
+
+        <h3>How does the anchor watch work?</h3>
+        <p>Tap the anchor chip, set the rode, check the depth, and tap <strong>Drop the anchor</strong> as it goes down. The circle is the rode's reach along the bottom plus your boat's length plus GPS scatter; set your length and bow height under <strong>Menu › Vessel</strong>. Dragging outside the circle, losing the fix, or a fix too poor to trust takes the screen and sounds until you acknowledge it — through the silent switch and with the screen off. Keep the phone plugged in for the night. Acknowledging quiets the alarm for five minutes; only <strong>Raise the anchor</strong> stops the watch.</p>
+
+        <h3>The alarm did not sound</h3>
+        <ul>
+            <li>Check the watch's own health list on the anchor screen: volume off, notifications refused, and a low battery are each listed there with a remedy.</li>
+            <li>Allow notifications for BoatNavi in Settings, so an alarm reaches a locked phone.</li>
+            <li>Keep the app running; force-quitting it ends the watch.</li>
+        </ul>
+
+        <h3>The chart is blank or says "No chart pack"</h3>
+        <p>Open <strong>Menu › Chart packs</strong> and download the region for where you are; the card at the top names it. A region that failed its survey check will not open, and says so.</p>
+
+        <h3>The app is misbehaving — what should I do?</h3>
+        <ul>
+            <li>Make sure you're running the latest version (Menu › Settings shows the build)</li>
+            <li>Quit and relaunch BoatNavi</li>
+            <li>If issues persist, email <a href="mailto:support@pravalabs.app">support@pravalabs.app</a> with your device, iOS version, the build shown in Settings, and a description of the problem</li>
+        </ul>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC. All rights reserved.
+                &nbsp;|&nbsp; <a href="privacy.html">Privacy</a>
+                &nbsp;|&nbsp; <a href="support.html">Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
