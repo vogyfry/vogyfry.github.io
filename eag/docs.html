@@ -277,7 +277,7 @@
             <section id="receipts">
                 <h2>Signed receipts</h2>
                 <p>An audit log proves what EAG recorded. A <strong>receipt</strong> proves what happened, to someone who doesn't trust EAG. Every governed outcome is signed with <strong>Ed25519</strong> and carries the requester, the agent, the approver where there was one, the tool, and a SHA-256 of the exact arguments.</p>
-                <p>Receipts are written to a store <em>you</em> own — a file store out of the box, and a database landing zone when you configure one — Dataverse today, with Azure SQL and Snowflake to follow. The write is queued and never blocks a tool call. Alter a row after the fact and verification fails against the public key, which is published at <code>/.well-known/signing-key</code> so anyone can check a receipt without asking you for access.</p>
+                <p>Receipts are written to a store <em>you</em> own — a file store out of the box, and a database landing zone when you configure one — Dataverse, or Azure SQL, SQL Server, PostgreSQL or MySQL through a dedicated insert-only login (Azure SQL as an append-only ledger table). The write is queued and never blocks a tool call. Alter a row after the fact and verification fails against the public key, which is published at <code>/.well-known/signing-key</code> so anyone can check a receipt without asking you for access.</p>
                 <p>Two things get certified, and the difference is deliberate:</p>
                 <ul>
                     <li><strong>Governed outcomes</strong> — a write that passed a human approver. The gateway saw every step, so these score highest on trust.</li>

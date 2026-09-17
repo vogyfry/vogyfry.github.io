@@ -181,7 +181,7 @@
         <text x="380" y="608" class="a-h sig">Evidence, on the way out</text>
         <text x="380" y="632" class="a-ls">Audit record per call — who, which agent, which tool, what policy decided.</text>
         <text x="380" y="652" class="a-ls">Ed25519-signed receipt per outcome, into a database you own.</text>
-        <text x="890" y="632" class="a-ls">Dataverse today; more stores to follow</text>
+        <text x="890" y="632" class="a-ls">Dataverse · Azure SQL · Postgres · MySQL</text>
         <text x="890" y="652" class="a-ls dim">Verifiable by anyone holding the public key.</text>
 
         <!-- ===== what the picture claims ===== -->
@@ -213,7 +213,7 @@
       <div class="dband-grid">
         <div class="dgcard"><b>Identity</b><p>Microsoft Entra, Okta, Auth0, Keycloak &mdash; any OIDC provider. Groups map to scopes, so people are managed where they already are.</p></div>
         <div class="dgcard"><b>Approvals</b><p>A gated write is parked, not executed. Approval unlocks a single-use grant bound to the exact arguments &mdash; approve $50k and $500k cannot follow.</p></div>
-        <div class="dgcard sig"><b>Receipts</b><p>Every outcome is signed and lands in a ledger you own &mdash; a file store out of the box, Dataverse as the database landing zone today, Azure SQL and Snowflake to follow. Query it, report on it, keep it as long as you like.</p></div>
+        <div class="dgcard sig"><b>Receipts</b><p>Every outcome is signed and lands in a ledger you own &mdash; a file store out of the box, or Dataverse, Azure SQL (as an append-only ledger table), SQL Server, PostgreSQL or MySQL. Query it, report on it, keep it as long as you like.</p></div>
         <div class="dgcard"><b>Where it runs</b><p>Single-tenant, in your cloud &mdash; one container, your network, your data. Nothing is routed through us, and no agent traffic leaves your boundary to reach a system inside it.</p></div>
       </div>
     </div>
