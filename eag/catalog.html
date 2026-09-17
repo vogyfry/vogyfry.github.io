@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tool catalog — Prava EAG</title>
-    <meta name="description" content="EAG's canonical contract: 68 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <meta name="description" content="EAG's canonical contract: 67 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
     <link rel="canonical" href="https://pravalabs.app/eag/catalog.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Prava EAG">
     <meta property="og:title" content="Tool catalog — Prava EAG">
-    <meta property="og:description" content="EAG's canonical contract: 68 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <meta property="og:description" content="EAG's canonical contract: 67 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
     <meta property="og:url" content="https://pravalabs.app/eag/catalog.html">
     <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Tool catalog — Prava EAG">
-    <meta name="twitter:description" content="EAG's canonical contract: 68 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
+    <meta name="twitter:description" content="EAG's canonical contract: 67 plain-language tools across 19 permission scopes, tiered read/write/privileged. Agents route on the catalog, never on vendor APIs.">
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/eag/#app","name":"Prava EAG","applicationCategory":"BusinessApplication","operatingSystem":"Self-hosted (Docker, Azure Container Apps, on-prem)","url":"https://pravalabs.app/eag/","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/eag/catalog.html","url":"https://pravalabs.app/eag/catalog.html","name":"Tool catalog — Prava EAG","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Tool catalog","item":"https://pravalabs.app/eag/catalog.html"}]}}]}</script>
     <link rel="icon" href="images/favicon.png">
@@ -141,10 +141,10 @@
         <div class="features-inner">
             <div class="conn-hero">
               <h1>The canonical tool catalog</h1>
-              <p class="conn-lede">This is the contract. Agents route on these 68 tools, never on a vendor's API — so a backend can be swapped, added or retired underneath a tool without touching a single agent. Every tool carries a tier and a scope, and the gateway enforces both before the call leaves.</p>
+              <p class="conn-lede">This is the contract. Agents route on these 67 tools, never on a vendor's API — so a backend can be swapped, added or retired underneath a tool without touching a single agent. Every tool carries a tier and a scope, and the gateway enforces both before the call leaves.</p>
               <ul class="conn-stats">
-                <li><strong>68</strong>tools</li>
-                <li><strong>44</strong>read</li>
+                <li><strong>67</strong>tools</li>
+                <li><strong>43</strong>read</li>
                 <li><strong>21</strong>write</li>
                 <li><strong>3</strong>privileged</li>
                 <li><strong>19</strong>scopes</li>
@@ -152,7 +152,7 @@
             </div>
 
             <div class="conn-body">
-            <p class="conn-legend"><strong>Tier</strong> governs what a caller may do: <em>read</em> runs freely, <em>write</em> is policy-gated (confirm, or route to approval), <em>privileged</em> is blocked by default and refuses with a typed, audited reason (hand-off tools return a governed self-service link instead). <strong>Systems</strong> is how many shipped connectors bind that tool today; 16 tools are in the contract but not yet bound by a shipped connector. Adding a backend that serves a tool your agents already call needs no agent change. See the <a href="/eag/connectors.html">connectors</a>.</p>
+            <p class="conn-legend"><strong>Tier</strong> governs what a caller may do: <em>read</em> runs freely, <em>write</em> is policy-gated (confirm, or route to approval), <em>privileged</em> is blocked by default and refuses with a typed, audited reason (hand-off tools return a governed self-service link instead). <strong>Systems</strong> is how many shipped connectors bind that tool today; 13 tools are in the contract but not yet bound by a shipped connector. Adding a backend that serves a tool your agents already call needs no agent change. See the <a href="/eag/connectors.html">connectors</a>.</p>
 
             <details class="conn-group" style="--dhue:#7dd3fc">
               <summary>HR and human capital <span class="conn-count">5</span></summary>
@@ -196,7 +196,7 @@
               </div>
             </details>
             <details class="conn-group" style="--dhue:#fbbf24">
-              <summary>ITSM, cases and policy <span class="conn-count">6</span></summary>
+              <summary>ITSM, cases and policy <span class="conn-count">5</span></summary>
               <div class="conn-scroll">
               <table class="conn-table">
                 <colgroup><col class="c-name"><col class="c-caps"><col class="c-idm"><col class="c-num"></colgroup>
@@ -206,37 +206,31 @@
                     <td><span class="conn-name"><code>case.comment.add</code></span><span class="conn-desc">Add a comment or update to one of the signed-in user's own cases — extra detail, a reply to the assignee, or a status nudge.</span></td>
                     <td><span class="tier tier-write">write</span></td>
                     <td class="scopes"><code>case.write</code></td>
-                    <td class="num" title="GitHub, Jira Service Management (service desk), Zendesk">3</td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (ITSM), Zendesk">4</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>case.create</code></span><span class="conn-desc">Open an HR or IT case/ticket on behalf of the signed-in user.</span></td>
                     <td><span class="tier tier-write">write</span></td>
                     <td class="scopes"><code>case.write</code></td>
-                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (native MCP Server), ServiceNow (ITSM knowledge), Zendesk">6</td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (native MCP Server), ServiceNow (ITSM), Zendesk">6</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>case.get</code></span><span class="conn-desc">Get the status of one of the signed-in user's own cases by case id or number.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>case.read</code></td>
-                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (ITSM knowledge), Zendesk">5</td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (ITSM), Zendesk">5</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>case.list</code></span><span class="conn-desc">List the signed-in user's own open (or all) cases.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>case.read</code></td>
-                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (ITSM knowledge), Zendesk">5</td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (HRSD), ServiceNow (ITSM), Zendesk">5</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>case.update</code></span><span class="conn-desc">Update fields on one of the signed-in user's own cases — reprioritise, add detail, or close it.</span></td>
                     <td><span class="tier tier-write">write</span></td>
                     <td class="scopes"><code>case.write</code></td>
-                    <td class="num" title="GitHub, Jira Service Management (service desk), Zendesk">3</td>
-                  </tr>
-                  <tr>
-                    <td><span class="conn-name"><code>policy.lookup</code></span><span class="conn-desc">Return the authoritative company policy for a topic, with a link to the governed source document.</span></td>
-                    <td><span class="tier tier-read">read</span></td>
-                    <td class="scopes"><span style="opacity:.5">open</span></td>
-                    <td class="num" title="">0</td>
+                    <td class="num" title="GitHub, Jira Service Management (service desk), ServiceNow (ITSM), Zendesk">4</td>
                   </tr>
                 </tbody>
               </table>
@@ -280,10 +274,10 @@
                     <td class="num" title="Confluence, Notion, Zendesk">3</td>
                   </tr>
                   <tr>
-                    <td><span class="conn-name"><code>knowledge.search</code></span><span class="conn-desc">Search governed enterprise knowledge (KB articles, policies, how-tos).</span></td>
+                    <td><span class="conn-name"><code>knowledge.search</code></span><span class="conn-desc">Search governed enterprise knowledge (KB articles, policies, how-tos, company documentation) and return ranked summaries with links to the authoritative source.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><span style="opacity:.5">open</span></td>
-                    <td class="num" title="Confluence, GitHub, Jira Service Management (service desk), Microsoft 365, Notion, ServiceNow (ITSM knowledge), Zendesk">7</td>
+                    <td class="num" title="Confluence, GitHub, Jira Service Management (service desk), Microsoft 365, Notion, ServiceNow (ITSM), Zendesk">7</td>
                   </tr>
                 </tbody>
               </table>
@@ -499,7 +493,7 @@
                     <td class="num" title="Dynamics 365 (CRM), HubSpot (CRM), Salesforce (CRM)">3</td>
                   </tr>
                   <tr>
-                    <td><span class="conn-name"><code>crm.opportunity.update</code></span><span class="conn-desc">Update one of the signed-in user's opportunities — move its stage, revise the value, probability or close date.</span></td>
+                    <td><span class="conn-name"><code>crm.opportunity.update</code></span><span class="conn-desc">Update one of the signed-in user's opportunities — move it along the pipeline, revise the value, probability or close date.</span></td>
                     <td><span class="tier tier-write">write</span></td>
                     <td class="scopes"><code>crm.write</code></td>
                     <td class="num" title="">0</td>
@@ -525,7 +519,7 @@
                     <td><span class="conn-name"><code>erp.invoice.list</code></span><span class="conn-desc">List invoices, optionally filtered by status.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>erp.read</code></td>
-                    <td class="num" title="">0</td>
+                    <td class="num" title="Dynamics 365 (Finance &amp; Operations), SAP S/4HANA (ERP)">2</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>erp.invoice.status.get</code></span><span class="conn-desc">Status of an invoice: matched, approved, scheduled payment date.</span></td>
@@ -543,7 +537,7 @@
                     <td><span class="conn-name"><code>erp.po.list</code></span><span class="conn-desc">List purchase orders, optionally filtered by status.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>erp.read</code></td>
-                    <td class="num" title="">0</td>
+                    <td class="num" title="Dynamics 365 (Finance &amp; Operations), SAP S/4HANA (ERP)">2</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>erp.po.status.get</code></span><span class="conn-desc">Status of a purchase order: approval state, expected delivery, receiving status.</span></td>
@@ -566,7 +560,7 @@
                     <td><span class="conn-name"><code>data.catalog.search</code></span><span class="conn-desc">Search the data catalog for datasets, tables and metric definitions (names, owners, descriptions — not the data itself).</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><code>data.read</code></td>
-                    <td class="num" title="Databricks, Snowflake, SQL database">3</td>
+                    <td class="num" title="Snowflake, SQL database">2</td>
                   </tr>
                   <tr>
                     <td><span class="conn-name"><code>data.metric.get</code></span><span class="conn-desc">Fetch a named, curated business metric from the governed semantic layer (e.</span></td>
@@ -598,7 +592,7 @@
                 <thead><tr><th>Tool</th><th>Tier</th><th>Scope</th><th class="num">Systems</th></tr></thead>
                 <tbody>
                   <tr>
-                    <td><span class="conn-name"><code>directory.person.lookup</code></span><span class="conn-desc">Look up a person in the corporate directory (name, title, department, manager chain).</span></td>
+                    <td><span class="conn-name"><code>directory.person.lookup</code></span><span class="conn-desc">Look up a person in the corporate directory by name, email, job title or department — returns name, title, department, email and office.</span></td>
                     <td><span class="tier tier-read">read</span></td>
                     <td class="scopes"><span style="opacity:.5">open</span></td>
                     <td class="num" title="Microsoft 365">1</td>

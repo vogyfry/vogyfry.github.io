@@ -84,7 +84,7 @@
           <text x="380" y="108" class="a-ls">Build · Watch · Heal. Describes a system in plain language, probes it,</text>
           <text x="380" y="126" class="a-ls">proposes a connector, and — on human approval — writes the manifest.</text>
           <g class="a-pill ctrl"><rect x="836" y="76" width="200" height="22" rx="11"/>
-            <circle cx="849" cy="87" r="3.5"/><text x="860" y="91">Attested as agent “loom”</text></g>
+            <circle cx="849" cy="87" r="3.5"/><text x="860" y="91">Audited as identity “loom”</text></g>
           <text x="836" y="118" class="a-ls dim">Governed by the gateway it builds for.</text>
           <text x="836" y="136" class="a-ls dim">Also drives other gateways, standalone.</text>
         </g>
@@ -127,7 +127,7 @@
 
         <g class="a-layer"><rect x="378" y="248" width="294" height="50" rx="8"/>
           <text x="394" y="268" class="a-lt">Canonical tool catalog</text>
-          <text x="394" y="286" class="a-ls">68 verbs. Swap the backend, agents never change.</text></g>
+          <text x="394" y="286" class="a-ls">67 verbs. Swap the backend, agents never change.</text></g>
         <g class="a-layer"><rect x="378" y="306" width="294" height="50" rx="8"/>
           <text x="394" y="326" class="a-lt">Per-user identity</text>
           <text x="394" y="344" class="a-ls">On-behalf-of — the backend sees the person.</text></g>
@@ -181,7 +181,7 @@
         <text x="380" y="608" class="a-h sig">Evidence, on the way out</text>
         <text x="380" y="632" class="a-ls">Audit record per call — who, which agent, which tool, what policy decided.</text>
         <text x="380" y="652" class="a-ls">Ed25519-signed receipt per outcome, into a database you own.</text>
-        <text x="890" y="632" class="a-ls">Dataverse · Azure SQL · Snowflake</text>
+        <text x="890" y="632" class="a-ls">Dataverse today; more stores to follow</text>
         <text x="890" y="652" class="a-ls dim">Verifiable by anyone holding the public key.</text>
 
         <!-- ===== what the picture claims ===== -->
@@ -194,7 +194,7 @@
       </svg>
       <figcaption class="archcap">
         <span><b>24</b> systems</span><span><b>16</b> native connectors</span>
-        <span><b>14</b> drivers</span><span><b>68</b> canonical tools</span>
+        <span><b>14</b> drivers</span><span><b>67</b> canonical tools</span>
         <a href="/eag/connectors.html">See every connector &rsaquo;</a>
       </figcaption>
     </figure>
@@ -213,7 +213,7 @@
       <div class="dband-grid">
         <div class="dgcard"><b>Identity</b><p>Microsoft Entra, Okta, Auth0, Keycloak &mdash; any OIDC provider. Groups map to scopes, so people are managed where they already are.</p></div>
         <div class="dgcard"><b>Approvals</b><p>A gated write is parked, not executed. Approval unlocks a single-use grant bound to the exact arguments &mdash; approve $50k and $500k cannot follow.</p></div>
-        <div class="dgcard sig"><b>Receipts</b><p>Every outcome is signed and lands in your own database &mdash; Dataverse, Azure SQL, Snowflake. Query it, report on it, keep it as long as you like.</p></div>
+        <div class="dgcard sig"><b>Receipts</b><p>Every outcome is signed and lands in a ledger you own &mdash; a file store out of the box, Dataverse as the database landing zone today, Azure SQL and Snowflake to follow. Query it, report on it, keep it as long as you like.</p></div>
         <div class="dgcard"><b>Where it runs</b><p>Single-tenant, in your cloud &mdash; one container, your network, your data. Nothing is routed through us, and no agent traffic leaves your boundary to reach a system inside it.</p></div>
       </div>
     </div>

@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connectors — Prava EAG</title>
-    <meta name="description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 68 canonical tools behind one governed endpoint.">
+    <meta name="description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 67 canonical tools behind one governed endpoint.">
     <link rel="canonical" href="https://pravalabs.app/eag/connectors.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Prava EAG">
     <meta property="og:title" content="Connectors — Prava EAG">
-    <meta property="og:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 68 canonical tools behind one governed endpoint.">
+    <meta property="og:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 67 canonical tools behind one governed endpoint.">
     <meta property="og:url" content="https://pravalabs.app/eag/connectors.html">
     <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Connectors — Prava EAG">
-    <meta name="twitter:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 68 canonical tools behind one governed endpoint.">
+    <meta name="twitter:description" content="Every system EAG connects: 16 native connectors across HR, ITSM, CRM, ERP and data, plus 8 federated MCP templates — 67 canonical tools behind one governed endpoint.">
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/eag/#app","name":"Prava EAG","applicationCategory":"BusinessApplication","operatingSystem":"Self-hosted (Docker, Azure Container Apps, on-prem)","url":"https://pravalabs.app/eag/","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/eag/connectors.html","url":"https://pravalabs.app/eag/connectors.html","name":"Connectors — Prava EAG","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Connectors","item":"https://pravalabs.app/eag/connectors.html"}]}}]}</script>
     <link rel="icon" href="images/favicon.png">
@@ -141,11 +141,11 @@
         <div class="features-inner">
             <div class="conn-hero">
               <h1>One catalog. Every backend.</h1>
-              <p class="conn-lede">An agent shouldn't have to learn 24 vendor APIs. EAG fronts them all with 68 plain-language tools, so the agent loads one small catalog instead of a sprawl of schemas — and spends its context on the work instead of the plumbing. Swap the system underneath a tool and not one agent changes. Every call is identity-scoped to the caller and audited — and where the backend supports OAuth 2.0 on-behalf-of, it runs as the signed-in user so the backend's own permissions apply underneath EAG's. The Identity column below tells you which is which, per connector.</p>
+              <p class="conn-lede">An agent shouldn't have to learn 24 vendor APIs. EAG fronts them all with 67 plain-language tools, so the agent loads one small catalog instead of a sprawl of schemas — and spends its context on the work instead of the plumbing. Swap the system underneath a tool and not one agent changes. Every call is identity-scoped to the caller and audited — and where the backend supports OAuth 2.0 on-behalf-of, it runs as the signed-in user so the backend's own permissions apply underneath EAG's. The Identity column below tells you which is which, per connector.</p>
               <ul class="conn-stats">
                 <li><strong>24</strong>systems</li>
                 <li><strong>14</strong>native drivers</li>
-                <li><strong>68</strong>canonical tools</li>
+                <li><strong>67</strong>canonical tools</li>
                 <li><strong>19</strong>permission scopes</li>
               </ul>
             </div>
@@ -211,12 +211,12 @@
                 </details>
                 <details class="crow-wrap">
                   <summary class="crow">
-                    <span><span class="conn-name">ServiceNow (ITSM knowledge)</span><span class="conn-desc">Incidents and requests, plus the ITSM knowledge base.</span></span>
+                    <span><span class="conn-name">ServiceNow (ITSM)</span><span class="conn-desc">Incidents and requests, plus the ITSM knowledge base.</span></span>
                     <span><span class="cap">Cases</span> <span class="cap">Knowledge</span></span>
                     <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
-                    <span class="num">4</span>
+                    <span class="num">6</span>
                   </summary>
-                  <div class="verbs"><span class="v t-write">case.create</span><span class="v t-read">case.get</span><span class="v t-read">case.list</span><span class="v t-read">knowledge.search</span></div>
+                  <div class="verbs"><span class="v t-write">case.comment.add</span><span class="v t-write">case.create</span><span class="v t-read">case.get</span><span class="v t-read">case.list</span><span class="v t-write">case.update</span><span class="v t-read">knowledge.search</span></div>
                 </details>
                 <details class="crow-wrap">
                   <summary class="crow">
@@ -238,7 +238,7 @@
                   <summary class="crow">
                     <span><span class="conn-name">Azure DevOps</span><span class="conn-desc">Boards and Test Plans — Epic-to-Task hierarchy, sprint backlogs, test plans, suites and runs.</span></span>
                     <span><span class="cap">Work items</span></span>
-                    <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
+                    <span><span class="idm idm-1">Per-user (Entra OBO)</span></span>
                     <span class="num">12</span>
                   </summary>
                   <div class="verbs"><span class="v t-read">work.backlog.list</span><span class="v t-write">work.item.comment.add</span><span class="v t-write">work.item.create</span><span class="v t-read">work.item.get</span><span class="v t-read">work.item.search</span><span class="v t-write">work.item.update</span><span class="v t-write">work.testcase.create</span><span class="v t-read">work.testcase.list</span><span class="v t-read">work.testplan.list</span><span class="v t-read">work.testrun.get</span><span class="v t-read">work.testrun.list</span><span class="v t-read">work.testsuite.list</span></div>
@@ -296,18 +296,18 @@
                     <span><span class="conn-name">Dynamics 365 (Finance &amp; Operations)</span><span class="conn-desc">Purchase orders, invoices and expense reports. PO approval is approval-gated.</span></span>
                     <span><span class="cap">ERP</span></span>
                     <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
-                    <span class="num">4</span>
+                    <span class="num">6</span>
                   </summary>
-                  <div class="verbs"><span class="v t-read">erp.expense.report.get</span><span class="v t-read">erp.invoice.status.get</span><span class="v t-write">erp.po.approve</span><span class="v t-read">erp.po.status.get</span></div>
+                  <div class="verbs"><span class="v t-read">erp.expense.report.get</span><span class="v t-read">erp.invoice.list</span><span class="v t-read">erp.invoice.status.get</span><span class="v t-write">erp.po.approve</span><span class="v t-read">erp.po.list</span><span class="v t-read">erp.po.status.get</span></div>
                 </details>
                 <details class="crow-wrap">
                   <summary class="crow">
                     <span><span class="conn-name">SAP S/4HANA (ERP)</span><span class="conn-desc">Purchase orders, invoices and expense reports. PO approval is approval-gated.</span></span>
                     <span><span class="cap">ERP</span></span>
                     <span><span class="idm idm-2">Shared credential, per-user scoping</span></span>
-                    <span class="num">4</span>
+                    <span class="num">6</span>
                   </summary>
-                  <div class="verbs"><span class="v t-read">erp.expense.report.get</span><span class="v t-read">erp.invoice.status.get</span><span class="v t-write">erp.po.approve</span><span class="v t-read">erp.po.status.get</span></div>
+                  <div class="verbs"><span class="v t-read">erp.expense.report.get</span><span class="v t-read">erp.invoice.list</span><span class="v t-read">erp.invoice.status.get</span><span class="v t-write">erp.po.approve</span><span class="v t-read">erp.po.list</span><span class="v t-read">erp.po.status.get</span></div>
                 </details>
 
               </div>
@@ -465,9 +465,9 @@
                     <span><span class="conn-name">Databricks</span><span class="conn-desc">Unity Catalog search and governed metric reads.</span></span>
                     <span><span class="cap">Data</span></span>
                     <span><span class="idm idm-1">Per-user (caller's token)</span></span>
-                    <span class="num">2</span>
+                    <span class="num">1</span>
                   </summary>
-                  <div class="verbs"><span class="v t-read">data.catalog.search</span><span class="v t-read">data.metric.get</span></div>
+                  <div class="verbs"><span class="v t-read">data.metric.get</span></div>
                 </details>
 
               </div>

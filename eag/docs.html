@@ -100,7 +100,7 @@
                     <li><strong>Tool</strong> — a canonical, plain-language capability an agent calls by intent (e.g. <code>case.create</code>, <code>hr.timeoff.balance.get</code>). The catalog is stable; the backend behind a tool can change without the agent noticing.</li>
                     <li><strong>Scope</strong> — a permission string (e.g. <code>hr.read</code>, <code>case.write</code>) a tool requires. A caller only sees tools their scopes grant.</li>
                     <li><strong>Mapping</strong> — how a tool actually runs on a live backend: which table answers it, whose rows, and how columns become fields. Mock systems serve samples with no mapping; a live system needs one.</li>
-                    <li><strong>Tier &amp; gating</strong> — every tool is <em>read</em>, <em>write</em>, or <em>privileged</em>. Policy gates decide confirm-before-write, and can park a write for a human approver instead of executing it.</li>
+                    <li><strong>Tier &amp; gating</strong> — every tool is <em>read</em>, <em>write</em>, or <em>privileged</em>. Policy gates decide whether a write executes or parks for a human approver, and whether privileged actions are blocked outright.</li>
                     <li><strong>Agent</strong> — the application acting for the user, identified by the <code>azp</code> claim your identity provider puts in the token. A registered agent carries its own ceiling, which can only ever <em>narrow</em> what its user could already do.</li>
                     <li><strong>Receipt</strong> — a signed, tamper-evident record of an outcome, written to a database you own. Verifiable by anyone holding the public key.</li>
                 </ul>
@@ -109,17 +109,24 @@
 
             <section id="console">
                 <h2>The console</h2>
-                <p>Everything below is done from the admin console (served at <code>/admin</code>), no YAML editing required. Eleven tabs:</p>
+                <p>Everything below is done from the admin console (served at <code>/admin</code>), no YAML editing required. Eleven tabs, in three groups:</p>
+                <p><strong>Operate</strong> — what is happening now.</p>
                 <ul>
-                    <li><strong>Systems</strong> — the fleet: toggle systems on/off, expand a row for tools, gating, config, and Connect.</li>
+                    <li><strong>Systems</strong> — the fleet: toggle systems on/off, expand a row for tools, gating, config, and Connect; the Operate card on top.</li>
+                    <li><strong>Approvals</strong> — writes parked for a human decision; the tab badges the pending count.</li>
+                    <li><strong>Live audit</strong> — every call, streaming, with identity + outcome.</li>
+                    <li><strong>Receipts</strong> — the signed ledger: integrity, recent receipts, verify any one, and the service switch.</li>
+                </ul>
+                <p><strong>Configure</strong> — set up once, revisit rarely.</p>
+                <ul>
                     <li><strong>Tool catalog</strong> — the canonical contract; add custom tools here.</li>
                     <li><strong>Mappings</strong> — bind a tool to a live table.</li>
-                    <li><strong>Identity probe</strong> — "what would this user see?" before they ask.</li>
-                    <li><strong>Live audit</strong> — every call, streaming, with identity + outcome.</li>
-                    <li><strong>Approvals</strong> — writes parked for a human decision; the tab badges the pending count.</li>
                     <li><strong>Agents</strong> — the agent registry: which applications may call, and the ceiling each one gets.</li>
-                    <li><strong>Users</strong> — console roles, tool-scope grants, and IdP group mappings.</li>
-                    <li><strong>Onboard a system</strong> — generate a new system's manifest.</li>
+                    <li><strong>Users</strong> — console roles, tool-scope grants, IdP group mappings, and <strong>Preview as…</strong> ("what would this user see?").</li>
+                    <li><strong>Onboarding</strong> — tell Prava Loom what you need, or author a manifest by hand.</li>
+                </ul>
+                <p><strong>Admin</strong> — the instance itself.</p>
+                <ul>
                     <li><strong>Licensing</strong> — install a key, see seats and the expiry countdown.</li>
                     <li><strong>Settings</strong> — change the identity provider after setup, with discovery and validation.</li>
                 </ul>
@@ -129,13 +136,13 @@
 
             <section id="add-system">
                 <h2>Add a system (connect a backend)</h2>
-                <div class="step-pills"><span>Onboard a system</span><span>→ Systems</span><span>→ Connect…</span><span>→ verify</span><span>→ toggle on</span></div>
+                <div class="step-pills"><span>Onboarding</span><span>→ Systems</span><span>→ Connect…</span><span>→ verify</span><span>→ toggle on</span></div>
                 <p>Connecting a backend is config, not code — the whole flow lives in the console. It has two halves: <strong>generate the manifest</strong> (what the system is), then <strong>connect &amp; enable it</strong> (make it live).</p>
 
                 <h3>1 · Generate the manifest</h3>
-                <p>Open the <strong>Onboard a system</strong> tab and fill the form:</p>
+                <p>Open the <strong>Onboarding</strong> tab. The primary path is conversational — tell <strong>Prava Loom</strong> what you need and it probes the API, proposes the tools, test-connects, and writes the manifest once you approve. To author by hand instead, open <strong>Manual authoring</strong> and fill the form:</p>
                 <ul>
-                    <li><strong>Backend id</strong> — a short, stable, lowercase id, e.g. <code>acme-crm</code>. This is how the system is referenced everywhere (audit, mappings, URLs).</li>
+                    <li><strong>System id</strong> — a short, stable, lowercase id, e.g. <code>acme-crm</code>. This is how the system is referenced everywhere (audit, mappings, URLs).</li>
                     <li><strong>Adapter</strong> — the driver that speaks this vendor's protocol. Pick from the list: <code>servicenow</code>, <code>salesforce</code>, <code>workday</code>, <code>successfactors</code>, <code>ukg</code>, <code>bamboohr</code>, <code>zendesk</code>, <code>sap</code>, <code>snowflake</code>, <code>sql</code>, <code>dynamics365</code>, <code>dataverse</code>, <code>graph</code> (Microsoft 365), <code>azuredevops</code>, <code>entra-identity</code>, <code>mcp-proxy</code> (federate a backend that already speaks MCP — no driver code; eight ready-made templates ship &mdash; Jira, Jira Service Management, Confluence, GitHub, HubSpot, Notion, Databricks and ServiceNow's own MCP Server &mdash; disabled by default, so you can verify the downstream tool names against the vendor's current server before enabling), or <code>mock</code> (canned sample data, no backend). If your backend has no adapter yet, one has to be built first — see the Adapter Development Guide.</li>
                     <li><strong>Display name</strong> — the human label shown on the system card, e.g. "Acme CRM".</li>
                     <li><strong>Base URL</strong> — optional; the backend's root URL if the adapter needs one.</li>
@@ -164,13 +171,13 @@
             <section id="tools-scopes">
                 <h2>Create a tool &amp; its scope</h2>
                 <div class="step-pills"><span>Tool catalog</span><span>→ Add a custom tool</span><span>→ grant on Users</span></div>
-                <p>The <strong>base catalog</strong> ships <strong>68 canonical tools across fifteen families</strong>, guarded by 19 permission scopes (<code>case.*</code>, <code>hr.*</code>, <code>crm.*</code>, <code>erp.*</code>, <code>work.*</code>, <code>files.*</code>, <code>calendar.*</code>, <code>comms.*</code>, <code>data.*</code>, <code>knowledge.*</code>, <code>identity.*</code>, <code>policy.*</code>, <code>directory.*</code>, <code>approval.*</code>, <code>receipt.*</code> — the full list is on the <a href="/eag/catalog.html">Tool catalog</a> page). When you need a verb the base doesn't cover — an engagement-specific capability — add a <strong>custom tool</strong>. It runs through the same policy, gating, and audit pipeline, and can never override a base id.</p>
+                <p>The <strong>base catalog</strong> ships <strong>67 canonical tools across fourteen families</strong>, guarded by 19 permission scopes (<code>case.*</code>, <code>hr.*</code>, <code>crm.*</code>, <code>erp.*</code>, <code>work.*</code>, <code>files.*</code>, <code>calendar.*</code>, <code>comms.*</code>, <code>data.*</code>, <code>knowledge.*</code>, <code>identity.*</code>, <code>directory.*</code>, <code>approval.*</code>, <code>receipt.*</code> — the full list is on the <a href="/eag/catalog.html">Tool catalog</a> page). When you need a verb the base doesn't cover — an engagement-specific capability — add a <strong>custom tool</strong>. It runs through the same policy, gating, and audit pipeline, and can never override a base id.</p>
 
                 <h3>1 · Add the tool</h3>
                 <p>In <strong>Tool catalog</strong>, open <strong>Add a custom tool</strong> and set each field:</p>
                 <ul>
                     <li><strong>id</strong> — dotted and namespaced by domain, e.g. <code>crm.lead.get</code>. Stable forever once used; agents call it by name. (On the wire, dots become underscores: <code>crm_lead_get</code>.)</li>
-                    <li><strong>tier</strong> — <code>read</code>, <code>write</code>, or <code>privileged</code>. This drives gating automatically: <em>write</em> tools require a policy/confirm; <em>privileged</em> tools ship blocked until a security sign-off. Choose the least privilege that fits.</li>
+                    <li><strong>tier</strong> — <code>read</code>, <code>write</code>, or <code>privileged</code>. This drives gating automatically: <em>write</em> tools can be routed to a human approver per system; <em>privileged</em> tools ship blocked until a security sign-off. Choose the least privilege that fits.</li>
                     <li><strong>classification</strong> — <code>internal</code>, <code>public</code>, or <code>pii</code>. Marks results for audit and redaction; use <code>pii</code> for anything personal.</li>
                     <li><strong>scopes</strong> — the permission string(s) a caller must carry to see and call the tool, comma-separated, e.g. <code>crm.read</code>. <strong>This is where a scope is defined</strong> — you invent the scope name here, then grant it to users (step 3). A tool and its scope must exist before it can be mapped to a system.</li>
                     <li><strong>description</strong> — <em>write it for the model.</em> The agent chooses tools by matching the user's words against this text, so state plainly what it does, what it returns, and any limits. This is the single highest-leverage field for good routing.</li>
@@ -183,7 +190,7 @@
                 <p>Click <strong>Add tool</strong>. It appears in the catalog immediately (a <code>custom</code> badge distinguishes it) and is written to a git-trackable file — no code change.</p>
 
                 <h3>2 · Grant the scope</h3>
-                <p>A tool with a required scope is hidden from anyone who lacks it. On the <strong>Users</strong> tab, add the scope (e.g. <code>crm.read</code>) to the users or roles who should have it. Use <strong>Identity probe</strong> to confirm the right people now see the tool and others don't.</p>
+                <p>A tool with a required scope is hidden from anyone who lacks it. On the <strong>Users</strong> tab, add the scope (e.g. <code>crm.read</code>) to the users or roles who should have it. Use <strong>Preview as…</strong> to confirm the right people now see the tool and others don't.</p>
 
                 <h3>3 · Make it do something</h3>
                 <p>A new tool has no backend behind it yet. A <strong>mock</strong> system will serve it sample data right away; a <strong>live</strong> system needs a mapping — that's the next section.</p>
@@ -234,13 +241,13 @@
                 </ul>
 
                 <h3>6 · Save</h3>
-                <p>Click <strong>Save mapping</strong>. It's validated server-side (missing columns, bad templates are caught), written to the manifest with a preserved-comment edit, and applied on the very next call — no restart. Test it with <strong>Identity probe</strong> and watch it run in <strong>Live audit</strong>.</p>
+                <p>Click <strong>Save mapping</strong>. It's validated server-side (missing columns, bad templates are caught), written to the manifest with a preserved-comment edit, and applied on the very next call — no restart. Test it with <strong>Preview as…</strong> and watch it run in <strong>Live audit</strong>.</p>
             </section>
 
             <section id="govern">
                 <h2>Govern by tier</h2>
-                <p>Open a system's row and set its <strong>gating</strong>: <em>write</em> = require-policy / require-approval / off; <em>privileged</em> = block / require-approval / off. Loosening gating prompts for an audited reason — security sign-off is an event, not a checkbox.</p>
-                <p>Before you hand tools to agents, use <strong>Identity probe</strong>: type any scope set (or pick a persona) and see the exact tools that identity would be served — allowed, gated, or hidden — with the reason. Governance you can demonstrate, not assert. Everything runs through <strong>Live audit</strong>: user, tool, system, outcome, latency.</p>
+                <p>Open a system's row and set its <strong>gating</strong>: <em>write</em> = off / require-approval; <em>privileged</em> = block / require-approval / off. Loosening gating prompts for an audited reason — security sign-off is an event, not a checkbox.</p>
+                <p>Before you hand tools to agents, use <strong>Preview as…</strong> on the Users tab: pick a persona (or type any scope set) and see the exact tools that identity would be served — allowed, gated, or hidden — with the reason. Governance you can demonstrate, not assert. Everything runs through <strong>Live audit</strong>: user, tool, system, outcome, latency.</p>
             </section>
 
 
@@ -270,7 +277,7 @@
             <section id="receipts">
                 <h2>Signed receipts</h2>
                 <p>An audit log proves what EAG recorded. A <strong>receipt</strong> proves what happened, to someone who doesn't trust EAG. Every governed outcome is signed with <strong>Ed25519</strong> and carries the requester, the agent, the approver where there was one, the tool, and a SHA-256 of the exact arguments.</p>
-                <p>Receipts are written to a store <em>you</em> own — a file store out of the box, and a database landing zone (Dataverse, Azure SQL, Snowflake) when you configure one. The write is queued and never blocks a tool call. Alter a row after the fact and verification fails against the public key, which is published at <code>/.well-known/signing-key</code> so anyone can check a receipt without asking you for access.</p>
+                <p>Receipts are written to a store <em>you</em> own — a file store out of the box, and a database landing zone when you configure one — Dataverse today, with Azure SQL and Snowflake to follow. The write is queued and never blocks a tool call. Alter a row after the fact and verification fails against the public key, which is published at <code>/.well-known/signing-key</code> so anyone can check a receipt without asking you for access.</p>
                 <p>Two things get certified, and the difference is deliberate:</p>
                 <ul>
                     <li><strong>Governed outcomes</strong> — a write that passed a human approver. The gateway saw every step, so these score highest on trust.</li>
@@ -313,7 +320,7 @@
                     <li><strong>Entra</strong> — enable group claims on the app registration and match by group <strong>object id</strong>; the claim arrives as a bare GUID, so the name you type beside it is a label for humans.</li>
                     <li><strong>Okta and Keycloak</strong> — send group <strong>names</strong>, matched case-insensitively.</li>
                 </ul>
-                <div class="callout"><strong>Check it before you ship it:</strong> claims are stamped when a token is issued, so a user who just changed groups keeps their old access until they get a fresh token. Use <strong>Refresh my access</strong> on the Users tab, and <strong>Identity probe</strong> to confirm the mapping serves what you intended.</div>
+                <div class="callout"><strong>Check it before you ship it:</strong> claims are stamped when a token is issued, so a user who just changed groups keeps their old access until they get a fresh token. Use <strong>Refresh my access</strong> on the Users tab, and <strong>Preview as…</strong> to confirm the mapping serves what you intended.</div>
             </section>
 
             <section id="licensing">
