@@ -10,7 +10,7 @@
 - [Prava Loom](https://pravalabs.app/loom/) — coming soon: the self-writing, self-healing integration agent — authors, custodies and heals the connections AI agents need, inside your tenant
 - [Mavee](https://pravalabs.app/mavee/) — in development: Apple Intelligence day planner (iOS)
 - [Pravida](https://pravalabs.app/pravida/) — in development: E2E-encrypted, invite-only private network (iOS)
-- [BoatNavi](https://pravalabs.app/boatnavi/) — in development: clearance charts for your boat — charted depth plus tide, minus your draft and margin — offline-first for San Francisco Bay and the Delta (iOS, iPadOS)
+- [BoatNavi](https://pravalabs.app/boatnavi/) — in development: water under the keel, offline — clearance for your boat across San Francisco Bay and the Delta, plus the boat's own instruments over Signal K or NMEA 0183, batteries, tanks, autopilot, and an anchor watch (iOS, iPadOS)
 
 ## Company
 
