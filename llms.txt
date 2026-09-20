@@ -7,6 +7,7 @@
 - [TradeSocial](https://pravalabs.app/tradesocial/) — live: group paper trading with real market data (iOS)
 - [Mavee](https://pravalabs.app/mavee/) — in development: Apple Intelligence day planner (iOS)
 - [Pravida](https://pravalabs.app/pravida/) — in development: E2E-encrypted, invite-only private network (iOS)
+- [BoatNavi](https://pravalabs.app/boatnavi/) — in development: clearance charts for your boat — charted depth plus tide, minus your draft and margin — offline-first for San Francisco Bay and the Delta (iOS, iPadOS)
 
 ## Company
 
