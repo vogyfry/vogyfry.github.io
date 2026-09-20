@@ -324,17 +324,10 @@
         .runs-chip[aria-pressed="true"] { color: var(--text); border-color: var(--runs-c); box-shadow: inset 0 0 0 1px var(--runs-c); }
         .runs-chip:focus-visible { outline: 2px solid var(--runs-c); outline-offset: 2px; }
         .runs-chip.all    { --runs-c: var(--muted); }
-        .runs-chip.phone,  .runs.phone  { --runs-c: var(--accent-ts); }
-        .runs-chip.mac,    .runs.mac    { --runs-c: var(--accent-toolport); }
-        .runs-chip.tenant, .runs.tenant { --runs-c: var(--accent-eag); }
+        .runs-chip.phone  { --runs-c: var(--accent-ts); }
+        .runs-chip.mac    { --runs-c: var(--accent-toolport); }
+        .runs-chip.tenant { --runs-c: var(--accent-eag); }
 
-        .runs {
-            order: 3; margin-left: auto; align-self: flex-start;
-            display: inline-flex; align-items: center; gap: 6px;
-            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap;
-            color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 9px;
-        }
-        .runs i { width: 7px; height: 7px; border-radius: 50%; background: var(--runs-c); }
 
         .app-card { transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.25s ease, filter 0.25s ease; }
         .app-card.dim { opacity: 0.32; filter: saturate(0.4); }
@@ -356,7 +349,6 @@
             .apps { padding: 0 16px 60px; }
             .products { padding: 0 16px 56px; }
             .products .apps { padding: 0; }
-            .runs { display: none; }   /* the chip row above the grid carries the grouping on narrow screens */
             .app-card { padding: 28px 24px; }
         }
     </style>
@@ -374,20 +366,19 @@
          sees where a product sits without losing sight of the others. Without
          JavaScript the chips are hidden and the grid is simply the grid. -->
     <section class="products" id="products">
-        <div class="runs-chips" role="group" aria-label="Highlight products by where they run">
+        <div class="runs-chips" role="group" aria-label="Highlight products by device">
             <button class="runs-chip all"    data-runs="all"    aria-pressed="true">All Products</button>
-            <button class="runs-chip phone"  data-runs="phone"  aria-pressed="false"><i></i>On Your Phone</button>
-            <button class="runs-chip mac"    data-runs="mac"    aria-pressed="false"><i></i>On Your Mac</button>
-            <button class="runs-chip tenant" data-runs="tenant" aria-pressed="false"><i></i>In Your Tenant</button>
+            <button class="runs-chip phone"  data-runs="ios"        aria-pressed="false"><i></i>iPhone, iPad &amp; Watch</button>
+            <button class="runs-chip mac"    data-runs="mac"        aria-pressed="false"><i></i>Mac &amp; PC</button>
+            <button class="runs-chip tenant" data-runs="selfhosted" aria-pressed="false"><i></i>Self-Hosted</button>
         </div>
 
         <div class="apps">
 
-        <div data-runs="phone" class="app-card ts">
+        <div data-runs="ios" class="app-card ts">
             <a class="card-link" href="/tradesocial/" aria-label="TradeSocial — learn more"></a>
             <div class="app-header">
                 <img class="app-icon" src="tradesocial-icon.png" alt="TradeSocial icon">
-                <span class="runs phone"><i></i>On Your Phone</span>
                 <div>
                     <div class="app-name">TradeSocial <span class="live-now"><span class="live-dot"></span>Live Now</span></div>
                     <div class="app-platform">iPhone · iPad · iOS 18+</div>
@@ -421,7 +412,6 @@
             <a class="card-link" href="/toolport/" aria-label="Prava Toolport — learn more"></a>
             <div class="app-header">
                 <img class="app-icon" src="toolport-icon.png" alt="Prava Toolport icon">
-                <span class="runs mac"><i></i>On Your Mac</span>
                 <div>
                     <div class="app-name">Toolport <span class="live-now"><span class="live-dot"></span>Live Now</span></div>
                     <div class="app-platform">Mac · Windows coming soon</div>
@@ -451,10 +441,9 @@
             </div>
         </div>
 
-        <a data-runs="tenant" class="app-card eag" href="/eag/">
+        <a data-runs="selfhosted" class="app-card eag" href="/eag/">
             <div class="app-header">
                 <img class="app-icon" src="eag-icon.png" alt="Enterprise Agent Gateway icon">
-                <span class="runs tenant"><i></i>In Your Tenant</span>
                 <div>
                     <div class="app-name">EAG <span class="live-now review">Coming Soon</span></div>
                     <div class="app-platform">Self-Hosted · Docker · Azure · on-prem</div>
@@ -480,10 +469,9 @@
             </span>
         </a>
 
-        <a data-runs="tenant" class="app-card loom" href="/loom/">
+        <a data-runs="selfhosted" class="app-card loom" href="/loom/">
             <div class="app-header">
                 <img class="app-icon" src="loom-icon.png" alt="Prava Loom icon">
-                <span class="runs tenant"><i></i>In Your Tenant</span>
                 <div>
                     <div class="app-name">Loom <span class="live-now review">Coming Soon</span></div>
                     <div class="app-platform">Self-Hosted · One container beside your gateway · air-gapped</div>
@@ -508,10 +496,9 @@
             </span>
         </a>
 
-        <a data-runs="phone" class="app-card boatnavi" href="/boatnavi/">
+        <a data-runs="ios" class="app-card boatnavi" href="/boatnavi/">
             <div class="app-header">
                 <img class="app-icon" src="boatnavi-icon.png" alt="BoatNavi icon">
-                <span class="runs phone"><i></i>On Your Phone</span>
                 <div>
                     <div class="app-name">BoatNavi <span class="live-now dev">In Development</span></div>
                     <div class="app-platform">iPhone · iPad · Works with no signal</div>
@@ -593,7 +580,7 @@
                 highlight(c.getAttribute('aria-pressed') === 'true' ? 'all' : c.dataset.runs);
             });
         });
-        // #phone / #mac / #tenant deep-links land with that group lit
+        // #ios / #mac / #selfhosted deep-links land with that group lit
         var h = location.hash.replace('#', '');
         if (chips.some(function (c) { return c.dataset.runs === h; })) highlight(h);
     })();
