@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BoatNavi — Water Under the Keel, Offline</title>
-    <meta name="description" content="Two apps in one. Navi: charted depth plus the tide, minus your draft and margin, coloured on the chart for the next 48 hours across San Francisco Bay and the Delta — offline. Boat: your instruments over Signal K or NMEA, batteries, tanks, the autopilot, and an anchor watch that wakes you.">
+    <meta name="description" content="Navi and Boat, one chart. Navi: charted depth plus the tide, minus your draft and margin, coloured on the chart for the next 48 hours across San Francisco Bay and the Delta — offline. Boat: your instruments over Signal K or NMEA, batteries, tanks, the autopilot, and an anchor watch that wakes you.">
     <meta name="keywords" content="chart, depth, tide, clearance, under-keel clearance, boating, sailing, Delta, SF Bay, anchor alarm, anchor watch, Signal K, NMEA 0183, autopilot, offline charts, boat systems, iPhone, iPad">
     <link rel="canonical" href="https://pravalabs.app/boatnavi/">
     <meta property="og:type" content="website">
@@ -103,10 +103,10 @@
             <div class="app-icon-container">
                 <img src="images/icon.png" alt="BoatNavi app icon" class="app-icon">
             </div>
-            <div class="hero-badge">⚓ Two apps in one · San Francisco Bay &amp; the Delta · iPhone and iPad · Works with no signal</div>
+            <div class="hero-badge">⚓ Navi and Boat, one chart · San Francisco Bay &amp; the Delta · iPhone and iPad · Works with no signal</div>
             <h1>Water under the keel, offline.<br><span class="highlight">Then everything else the boat knows.</span></h1>
             <p class="subtitle">
-                <strong>Navi</strong> answers one question at every point of the chart: how much water is under your keel, now and for the next 48 hours. <strong>Boat</strong> puts your instruments, your batteries and tanks, the autopilot and an anchor watch that actually wakes you on the same phone — and none of it needs a signal.
+                <strong>Navi</strong> answers one question at every point of the chart: how much water is under your keel, now and for the next 48 hours. <strong>Boat</strong> puts your instruments, your batteries and tanks, the autopilot and an anchor watch that actually wakes you on the same chart, one switch away — and none of it needs a signal.
             </p>
             <div class="formula" aria-label="Clearance formula">
                 <b>clearance</b><span class="op">=</span>charted depth<span class="op">+</span>water level<span class="op">−</span>your draft<span class="op">−</span>your margin
@@ -192,12 +192,12 @@
     <section class="how-it-works" id="anchor">
         <div class="how-it-works-inner">
             <h2>At Anchor</h2>
-            <p class="section-subtitle">Every anchor alarm is judged on three things: it keeps watching with the screen off, it wakes you, and it fails loud rather than silent. BoatNavi does all three — and one thing the others can't.</p>
+            <p class="section-subtitle">Every anchor alarm is judged on three things: it keeps watching with the screen off, it wakes you, and it fails loud rather than silent. BoatNavi does all three on the phone's own GPS — and one thing the others can't. Next: the watch on the boat's Signal K server, with the chain counter marking the drop.</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Drop</h3>
-                    <p>One large button as the anchor goes down. The swing circle comes from the rode, the depth and your boat's length; with a chain counter on Signal K the drop is marked the moment the chain reaches the bottom.</p>
+                    <p>One large button marks the anchor where the bow is now. The swing circle is the rode's reach along the bottom plus your boat's length plus GPS scatter, with the working shown; the depth comes from the boat's sounder when it is talking, else the chart plus the tide now — and the screen says which.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
@@ -206,8 +206,8 @@
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Two Ways to Watch</h3>
-                    <p>With a Signal K server aboard, the server watches at one fix a second from a fixed antenna, with no phone battery in the loop, and the phone is its face. Without one, the phone's own GPS keeps the watch in the background.</p>
+                    <h3>It Fails Loud</h3>
+                    <p>The watch checks its own health while armed: a battery under 15% and not charging, volume off, notifications refused, the boat's server gone quiet — each listed with its remedy. It survives a relaunch, and a relaunch with no fix is itself an alarm.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
@@ -241,17 +241,17 @@
                 <div class="feature-card">
                     <div class="feature-icon">🧭</div>
                     <h3>The Helm</h3>
-                    <p>The autopilot's remote, as a sheet over the chart: what the pilot is doing, the keys a Raymarine remote has, sized for a gloved thumb. A confirmation before the pilot takes the helm — never before it gives it back — and every reason a key can't work written next to it.</p>
+                    <p>Reading the pilot's mode, heading and rudder needs nothing switched on. Steering is behind a switch, off by default, with a sign-in to the boat's server: then the sheet over the chart has the keys a Raymarine remote has, sized for a gloved thumb, a confirmation before the pilot takes the helm — never before it gives it back — and every reason a key can't work written next to it.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔁</div>
                     <h3>Sounder Loop</h3>
-                    <p>Predicted depth beside the depth your transducer actually sees. Divergence says so loudly — the chart is wrong here — and every comparison is logged into a personal correction layer for your water.</p>
+                    <p>Once a sounder is on the bus: predicted depth beside the depth the transducer sees, divergence called out loudly — the chart is wrong here — and every comparison logged, the seed of a correction layer for your own water. Built and unit-tested; waiting on a boat that reports depth.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌤️</div>
                     <h3>Conditions</h3>
-                    <p>Tides for the next two days and the NOAA forecast for where you are, full screen, from the Tides and Weather chips on the chart.</p>
+                    <p>One Conditions chip on the chart. Tides: a 48-hour curve from the pack's own harmonics, offline, with the station's live gauge drawn over it when there is signal. Weather: the National Weather Service forecast for where you are, in knots — online only, and it says so.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📍</div>
@@ -316,7 +316,7 @@
                 <div><b>0.030 ft</b><span>RMS error of the tide engine against NOAA's own predictions across 10 Bay–Delta stations, over the full 18.6-year nodal cycle</span></div>
                 <div><b>31,253</b><span>Charted soundings across the seven regions, every region past its survey gate at 0.030–0.095 ft median error</span></div>
                 <div><b>17</b><span>Tide zones from the Golden Gate to Sacramento, each anchored to the CO-OPS station that governs it</span></div>
-                <div><b>243</b><span>Tests — 223 on the clearance, tide and hazard logic in about eight seconds, 20 through the UI on iPhone and iPad</span></div>
+                <div><b>330+</b><span>Tests on the clearance, tide, hazard and anchor logic — no simulator, seconds to run — and dozens more driven through the UI on iPhone and iPad</span></div>
             </div>
         </div>
     </section>
@@ -326,7 +326,7 @@
         <h2>A Planning Aid, Not a Navigation System</h2>
         <p>Public bathymetry outside dredged channels is old and Delta shoals move. The SFBOFS model is guidance, not measurement. Proximity alerts are advisory and are not a replacement for your boat's own depth alarm.</p>
         <p class="model">The right mental model: BoatNavi tells you which windows are <em>worth attempting</em>. The depth sounder tells you what is actually under the keel.</p>
-        <p>The instrument link is implemented and tested against captured sentences from real gateways; it has not yet been run against a boat, and the page will say so until it has.</p>
+        <p>Since 16 September 2026 the app has connected live to a partner boat's Signal K server — a Raspberry Pi aboard the sailboat <em>Drama</em>, reached over the internet — reading its GPS, house battery, charger, engine, tanks and cabin sensors. What has not yet met hardware is the NMEA 0183 gateway path and the depth-sounder loop, because depth is not on that server until its SeaTalk1 instruments are bridged. The page will say so until it has.</p>
     </section>
 
     <footer class="footer">
