@@ -330,7 +330,9 @@
 
 
         .app-card { transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.25s ease, filter 0.25s ease; }
-        .app-card.dim { opacity: 0.32; filter: saturate(0.4); }
+        .app-card.dim { opacity: 0.32; filter: saturate(0.4); order: 1; }   /* the highlighted group gathers at the front; nothing is hidden */
+        .runs-chip .n { font-weight: 500; color: var(--muted); margin-left: 2px; }
+        .runs-chip[aria-pressed="true"] .n { color: var(--text); }
         html:not(.js) .runs-chips { display: none; }
 
         footer {
@@ -569,10 +571,19 @@
         var cards = Array.prototype.slice.call(document.querySelectorAll('.app-card[data-runs]'));
         if (!chips.length) return;
 
+        chips.forEach(function (c) {
+            var n = c.dataset.runs === 'all' ? cards.length : cards.filter(function (k) { return k.dataset.runs === c.dataset.runs; }).length;
+            var b = document.createElement('span'); b.className = 'n'; b.textContent = n; c.appendChild(b);
+        });
+
         function highlight(runs) {
             chips.forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.runs === runs ? 'true' : 'false'); });
             cards.forEach(function (k) { k.classList.toggle('dim', runs !== 'all' && k.dataset.runs !== runs); });
             if (history.replaceState) history.replaceState(null, '', runs === 'all' ? location.pathname : '#' + runs);
+            if (runs !== 'all') {
+                var grid = document.querySelector('.products .apps'), top = grid.getBoundingClientRect().top;
+                if (top < 0 || top > window.innerHeight * 0.6) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
         chips.forEach(function (c) {
             c.addEventListener('click', function () {
