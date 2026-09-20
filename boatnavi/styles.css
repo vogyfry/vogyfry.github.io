@@ -1,10 +1,10 @@
-/* Prava Toolport Website — Apple-inspired dark design with Toolport cyan */
+/* BoatNavi website — the shared product sheet, in the consumer-app teal */
 
 :root {
-    --brand: #00b8ff;
-    --brand-dark: #0090cc;
-    --brand-light: rgba(0, 184, 255, 0.12);
-    --brand-glow: rgba(0, 184, 255, 0.25);
+    --brand: #00d4aa;
+    --brand-dark: #00a884;
+    --brand-light: rgba(0, 212, 170, 0.12);
+    --brand-glow: rgba(0, 212, 170, 0.25);
     --text-primary: #f5f5f7;
     --text-secondary: #a1a1a6;
     --text-tertiary: #86868b;
@@ -13,7 +13,7 @@
     --bg-surface: #111111;
     --border-color: rgba(255, 255, 255, 0.08);
     --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-    --card-shadow-hover: 0 8px 32px rgba(0, 184, 255, 0.15);
+    --card-shadow-hover: 0 8px 32px rgba(0, 212, 170, 0.15);
     --radius: 20px;
     --radius-sm: 12px;
     --max-width: 1080px;
@@ -101,7 +101,7 @@ body {
 .hero {
     padding: 160px 24px 100px;
     text-align: center;
-    background: radial-gradient(ellipse at 50% 0%, rgba(0, 184, 255, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 170, 0.08) 0%, transparent 60%);
 }
 
 .hero-inner {
@@ -117,7 +117,7 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 26px;
-    box-shadow: 0 8px 40px rgba(0, 184, 255, 0.3);
+    box-shadow: 0 8px 40px rgba(0, 212, 170, 0.3);
     object-fit: cover;
 }
 
@@ -133,7 +133,7 @@ body {
     font-weight: 600;
     margin-bottom: 24px;
     letter-spacing: 0.3px;
-    border: 1px solid rgba(0, 184, 255, 0.2);
+    border: 1px solid rgba(0, 212, 170, 0.2);
 }
 
 .hero h1 {
@@ -212,7 +212,7 @@ body {
 
 .loop-step {
     background: var(--bg-surface);
-    border: 1px solid rgba(0, 184, 255, 0.25);
+    border: 1px solid rgba(0, 212, 170, 0.25);
     border-radius: var(--radius-sm);
     padding: 14px 20px;
     text-align: left;
@@ -280,7 +280,7 @@ body {
 
 .feature-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(0, 184, 255, 0.3);
+    border-color: rgba(0, 212, 170, 0.3);
     box-shadow: var(--card-shadow-hover);
 }
 
@@ -483,13 +483,13 @@ body {
 
 .plan-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(0, 184, 255, 0.3);
+    border-color: rgba(0, 212, 170, 0.3);
     box-shadow: var(--card-shadow-hover);
 }
 
 .plan-card.featured {
-    border-color: rgba(0, 184, 255, 0.45);
-    background: linear-gradient(180deg, rgba(0, 184, 255, 0.06) 0%, var(--bg-surface) 60%);
+    border-color: rgba(0, 212, 170, 0.45);
+    background: linear-gradient(180deg, rgba(0, 212, 170, 0.06) 0%, var(--bg-surface) 60%);
 }
 
 .plan-name {
@@ -598,7 +598,7 @@ body {
     text-transform: uppercase;
     color: var(--brand);
     background: var(--brand-light);
-    border: 1px solid rgba(0, 184, 255, 0.25);
+    border: 1px solid rgba(0, 212, 170, 0.25);
     padding: 3px 10px;
     border-radius: 100px;
     margin-bottom: 14px;
@@ -714,7 +714,7 @@ body {
     letter-spacing: 0.04em;
     padding: 6px 14px;
     border-radius: 20px;
-    border: 1px solid rgba(0, 184, 255, 0.25);
+    border: 1px solid rgba(0, 212, 170, 0.25);
     color: var(--brand);
     background: var(--brand-light);
 }
@@ -884,7 +884,7 @@ body {
 .legal-page a {
     color: var(--brand);
     text-decoration: none;
-    border-bottom: 1px solid rgba(0, 184, 255, 0.35);
+    border-bottom: 1px solid rgba(0, 212, 170, 0.35);
     transition: border-color 0.2s;
 }
 
@@ -903,7 +903,7 @@ body {
 .steps-list a {
     color: var(--brand);
     text-decoration: none;
-    border-bottom: 1px solid rgba(0, 184, 255, 0.35);
+    border-bottom: 1px solid rgba(0, 212, 170, 0.35);
     transition: border-color 0.2s;
 }
 
@@ -1086,3 +1086,100 @@ body {
 }
 .stripe-btn:hover { transform: scale(1.03); background: #5851e6; }
 .stripe-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* Mobile menu, carried over from the EAG sheet: this sheet simply hid .nav-links
+   below 1000px, which left phones with no navigation at all. Checkbox-and-label
+   disclosure, so it works with zero JavaScript on a static site. */
+.nav-toggle,
+.nav-burger {
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .nav-inner {
+        position: relative;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    /* The checkbox is the control (focusable, keyboard-operable); the label is
+       its visible hamburger. Both sit at 44px so the tap target is real. */
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .nav-burger span {
+        display: block;
+        height: 2px;
+        background: var(--text-primary);
+        border-radius: 2px;
+        transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .nav-burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 22px;
+        height: 44px;
+        margin-left: auto;
+    }
+
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-toggle:focus-visible ~ .nav-burger {
+        outline: 2px solid var(--brand);
+        outline-offset: 4px;
+        border-radius: 3px;
+    }
+
+    .nav-toggle:checked ~ .nav-links li:last-child {
+        border-bottom: 0;
+    }
+
+    .nav-toggle:checked ~ .nav-links li {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-toggle:checked ~ .nav-links a {
+        font-size: 15px;
+    }
+
+    .nav-toggle:checked ~ .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 4px 20px 12px;
+    }
+}
