@@ -12,6 +12,7 @@
     <meta property="og:image" content="https://pravalabs.app/prava-icon.png">
     <meta name="google-site-verification" content="9ntrzlBV0ug0sb9g9UqAEFRzsvicMnS-Vz7NmSuMeZA" />
     <link rel="canonical" href="https://pravalabs.app/">
+    <script>document.documentElement.classList.add("js")</script>
     <link rel="icon" type="image/png" sizes="256x256" href="prava-icon-256.png">
     <link rel="apple-touch-icon" href="prava-icon-180.png">
     <script type="application/ld+json">
@@ -79,11 +80,12 @@
             --text: #f5f5f7;
             --muted: #86868b;
             --accent-ts: #00d4aa;
-            --accent-mavee: #7c5cfc;
-            --accent-pravida: #1a8cff;
+            --accent-mavee: #00d4aa;
+            --accent-pravida: #00d4aa;
             --accent-toolport: #00b8ff;
-            --accent-eag: #3a92ff;
-            --accent-loom: #3a92ff;
+            --accent-eag: #a78bfa;
+            --accent-loom: #a78bfa;
+            --accent-boatnavi: #00d4aa;
         }
 
         html { scroll-behavior: smooth; }
@@ -160,6 +162,7 @@
         .app-card.toolport:hover { border-color: var(--accent-toolport); }
         .app-card.eag:hover { border-color: var(--accent-eag); }
         .app-card.loom:hover { border-color: var(--accent-loom); }
+        .app-card.boatnavi:hover { border-color: var(--accent-boatnavi); }
 
         .app-header { display: flex; align-items: center; gap: 16px; }
 
@@ -200,11 +203,12 @@
         }
 
         .app-card.ts .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-ts); }
-        .app-card.mavee .tag { border-color: rgba(124,92,252,0.3); color: var(--accent-mavee); }
-        .app-card.pravida .tag { border-color: rgba(26,140,255,0.3); color: var(--accent-pravida); }
+        .app-card.mavee .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-mavee); }
+        .app-card.pravida .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-pravida); }
         .app-card.toolport .tag { border-color: rgba(0,184,255,0.3); color: var(--accent-toolport); }
-        .app-card.eag .tag { border-color: rgba(58,146,255,0.3); color: var(--accent-eag); }
-        .app-card.loom .tag { border-color: rgba(58,146,255,0.3); color: var(--accent-loom); }
+        .app-card.eag .tag { border-color: rgba(167,139,250,0.3); color: var(--accent-eag); }
+        .app-card.loom .tag { border-color: rgba(167,139,250,0.3); color: var(--accent-loom); }
+        .app-card.boatnavi .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-boatnavi); }
 
         .app-cta {
             display: inline-flex;
@@ -221,6 +225,7 @@
         .app-card.toolport .app-cta { color: var(--accent-toolport); }
         .app-card.eag .app-cta { color: var(--accent-eag); }
         .app-card.loom .app-cta { color: var(--accent-loom); }
+        .app-card.boatnavi .app-cta { color: var(--accent-boatnavi); }
 
         .app-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
         .app-card:hover .app-cta svg { transform: translateX(4px); }
@@ -299,15 +304,41 @@
         }
         .labs-header p.sub { color: var(--muted); font-size: 1rem; }
 
-        .apps.main { padding-bottom: 72px; }
+        /* One grid, live products first. Where a product runs is a chip on the
+           card and a highlight control above the grid — the same three colours the
+           icons' core dots use, so chip, tile and dot agree. */
+        .products { max-width: 800px; margin: 0 auto; padding: 0 24px 72px; }
+        .products .apps { padding: 0; max-width: none; }
 
-        .apps.labs .app-card {
-            padding: 28px 26px;
-            background: #0b0b0b;
+        .runs-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+        .runs-chip {
+            appearance: none; cursor: pointer;
+            background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+            border-radius: 999px; padding: 9px 14px;
+            font: 600 0.82rem/1 inherit; font-family: inherit; letter-spacing: 0.01em;
+            display: inline-flex; align-items: center; gap: 8px;
+            transition: color 0.15s, border-color 0.15s;
         }
-        .apps.labs .app-icon { width: 56px; height: 56px; border-radius: 13px; }
-        .apps.labs .app-name { font-size: 1.2rem; }
-        .apps.labs .app-desc { font-size: 0.9rem; }
+        .runs-chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--runs-c); }
+        .runs-chip:hover { color: var(--text); }
+        .runs-chip[aria-pressed="true"] { color: var(--text); border-color: var(--runs-c); box-shadow: inset 0 0 0 1px var(--runs-c); }
+        .runs-chip:focus-visible { outline: 2px solid var(--runs-c); outline-offset: 2px; }
+        .runs-chip.all    { --runs-c: var(--muted); }
+        .runs-chip.phone,  .runs.phone  { --runs-c: var(--accent-ts); }
+        .runs-chip.mac,    .runs.mac    { --runs-c: var(--accent-toolport); }
+        .runs-chip.tenant, .runs.tenant { --runs-c: var(--accent-eag); }
+
+        .runs {
+            order: 3; margin-left: auto; align-self: flex-start;
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap;
+            color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 4px 9px;
+        }
+        .runs i { width: 7px; height: 7px; border-radius: 50%; background: var(--runs-c); }
+
+        .app-card { transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.25s ease, filter 0.25s ease; }
+        .app-card.dim { opacity: 0.32; filter: saturate(0.4); }
+        html:not(.js) .runs-chips { display: none; }
 
         footer {
             text-align: center;
@@ -323,6 +354,9 @@
         @media (max-width: 480px) {
             .hero { padding-top: 96px; }
             .apps { padding: 0 16px 60px; }
+            .products { padding: 0 16px 56px; }
+            .products .apps { padding: 0; }
+            .runs { display: none; }   /* the chip row above the grid carries the grouping on narrow screens */
             .app-card { padding: 28px 24px; }
         }
     </style>
@@ -335,12 +369,25 @@
         <p>An independent software studio building local-first, private-by-design apps — from group investing to on-device AI for developers. Your data stays on your device. Always.</p>
     </section>
 
-    <div class="apps main">
+    <!-- One grid, live products first. The chips above it highlight a group
+         rather than filter it: pick "In Your Tenant" and the rest dim, so a visitor
+         sees where a product sits without losing sight of the others. Without
+         JavaScript the chips are hidden and the grid is simply the grid. -->
+    <section class="products" id="products">
+        <div class="runs-chips" role="group" aria-label="Highlight products by where they run">
+            <button class="runs-chip all"    data-runs="all"    aria-pressed="true">All Products</button>
+            <button class="runs-chip phone"  data-runs="phone"  aria-pressed="false"><i></i>On Your Phone</button>
+            <button class="runs-chip mac"    data-runs="mac"    aria-pressed="false"><i></i>On Your Mac</button>
+            <button class="runs-chip tenant" data-runs="tenant" aria-pressed="false"><i></i>In Your Tenant</button>
+        </div>
 
-        <div class="app-card ts">
+        <div class="apps">
+
+        <div data-runs="phone" class="app-card ts">
             <a class="card-link" href="/tradesocial/" aria-label="TradeSocial — learn more"></a>
             <div class="app-header">
                 <img class="app-icon" src="tradesocial-icon.png" alt="TradeSocial icon">
+                <span class="runs phone"><i></i>On Your Phone</span>
                 <div>
                     <div class="app-name">TradeSocial <span class="live-now"><span class="live-dot"></span>Live Now</span></div>
                     <div class="app-platform">iPhone · iPad · iOS 18+</div>
@@ -362,7 +409,7 @@
                     <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the App Store" width="135" height="45">
                 </a>
                 <a class="app-cta" href="/tradesocial/">
-                    Learn more
+                    Learn More
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M3 8h10M9 4l4 4-4 4"/>
                     </svg>
@@ -370,10 +417,11 @@
             </div>
         </div>
 
-        <div class="app-card toolport">
+        <div data-runs="mac" class="app-card toolport">
             <a class="card-link" href="/toolport/" aria-label="Prava Toolport — learn more"></a>
             <div class="app-header">
                 <img class="app-icon" src="toolport-icon.png" alt="Prava Toolport icon">
+                <span class="runs mac"><i></i>On Your Mac</span>
                 <div>
                     <div class="app-name">Toolport <span class="live-now"><span class="live-dot"></span>Live Now</span></div>
                     <div class="app-platform">Mac · Windows coming soon</div>
@@ -395,7 +443,7 @@
                     <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the Mac App Store" width="135" height="45">
                 </a>
                 <a class="app-cta" href="/toolport/">
-                    Learn more
+                    Learn More
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M3 8h10M9 4l4 4-4 4"/>
                     </svg>
@@ -403,9 +451,10 @@
             </div>
         </div>
 
-        <a class="app-card eag" href="/eag/">
+        <a data-runs="tenant" class="app-card eag" href="/eag/">
             <div class="app-header">
                 <img class="app-icon" src="eag-icon.png" alt="Enterprise Agent Gateway icon">
+                <span class="runs tenant"><i></i>In Your Tenant</span>
                 <div>
                     <div class="app-name">EAG <span class="live-now review">Coming Soon</span></div>
                     <div class="app-platform">Self-Hosted · Docker · Azure · on-prem</div>
@@ -424,16 +473,17 @@
                 <span class="tag">Air-Gap Ready</span>
             </div>
             <span class="app-cta">
-                Learn more
+                Learn More
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 8h10M9 4l4 4-4 4"/>
                 </svg>
             </span>
         </a>
 
-        <a class="app-card loom" href="/loom/">
+        <a data-runs="tenant" class="app-card loom" href="/loom/">
             <div class="app-header">
                 <img class="app-icon" src="loom-icon.png" alt="Prava Loom icon">
+                <span class="runs tenant"><i></i>In Your Tenant</span>
                 <div>
                     <div class="app-name">Loom <span class="live-now review">Coming Soon</span></div>
                     <div class="app-platform">Self-Hosted · One container beside your gateway · air-gapped</div>
@@ -451,74 +501,42 @@
                 <span class="tag">Powers Prava EAG</span>
             </div>
             <span class="app-cta">
-                Learn more
+                Learn More
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 8h10M9 4l4 4-4 4"/>
                 </svg>
             </span>
         </a>
 
-    </div>
-
-    <section class="labs-header">
-        <p class="hero-eyebrow">Labs</p>
-        <h2>What we're building next.</h2>
-        <p class="sub">In active development at Prava Labs — coming when they're ready.</p>
+        <a data-runs="phone" class="app-card boatnavi" href="/boatnavi/">
+            <div class="app-header">
+                <img class="app-icon" src="boatnavi-icon.png" alt="BoatNavi icon">
+                <span class="runs phone"><i></i>On Your Phone</span>
+                <div>
+                    <div class="app-name">BoatNavi <span class="live-now dev">In Development</span></div>
+                    <div class="app-platform">iPhone · iPad · Works with no signal</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                Every chart app shows depth. BoatNavi shows the number you actually need — clearance, for your boat, at the time you'll be there. Drag a 48-hour tide scrubber and the whole chart recolours; ask “when can I go?” and the window finder answers. Offline-first for San Francisco Bay and the Delta, with a tide engine verified to 0.03 ft against NOAA.
+            </p>
+            <div class="app-tags">
+                <span class="tag">Clearance for Your Boat</span>
+                <span class="tag">Offline Chart Packs</span>
+                <span class="tag">48-Hour Tide Scrubber</span>
+                <span class="tag">Window Finder</span>
+                <span class="tag">NMEA over Wi‑Fi</span>
+                <span class="tag">SF Bay &amp; Delta</span>
+            </div>
+            <span class="app-cta">
+                Learn More
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
+        </div>
     </section>
-
-    <div class="apps labs">
-
-        <a class="app-card pravida" href="/pravida/">
-            <div class="app-header">
-                <img class="app-icon" src="pravida-icon.png" alt="Pravida icon">
-                <div>
-                    <div class="app-name">Pravida <span class="live-now dev">In Development</span></div>
-                    <div class="app-platform">iPhone · iPad · Mac · Apple Watch · iOS 26+</div>
-                </div>
-            </div>
-            <p class="app-desc">
-                Private, encrypted, yours. An invite-only network with E2E encrypted messaging, device-to-device mesh networking, and on-device AI — iMessage quality with Signal-level security.
-            </p>
-            <div class="app-tags">
-                <span class="tag">E2E Encryption</span>
-                <span class="tag">Mesh Networking</span>
-                <span class="tag">On-Device AI</span>
-                <span class="tag">Invite-Only</span>
-            </div>
-            <span class="app-cta">
-                Learn more
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
-            </span>
-        </a>
-
-        <a class="app-card mavee" href="/mavee/">
-            <div class="app-header">
-                <img class="app-icon" src="mavee-icon.png" alt="Mavee icon">
-                <div>
-                    <div class="app-name">Mavee <span class="live-now dev">In Development</span></div>
-                    <div class="app-platform">iPhone · iOS 26</div>
-                </div>
-            </div>
-            <p class="app-desc">
-                Your day, simplified. Mavee uses Apple Intelligence to connect your calendar, contacts, and reminders — surfacing patterns and insights so you spend less time organizing and more time living.
-            </p>
-            <div class="app-tags">
-                <span class="tag">Apple Intelligence</span>
-                <span class="tag">Calendar</span>
-                <span class="tag">Contacts</span>
-                <span class="tag">On-Device AI</span>
-            </div>
-            <span class="app-cta">
-                Learn more
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
-            </span>
-        </a>
-
-    </div>
 
     <section class="labs-header" id="about">
         <p class="hero-eyebrow">Why Prava</p>
@@ -558,6 +576,28 @@
         </p>
     </footer>
 
+    <script>
+    (function () {
+        var chips = Array.prototype.slice.call(document.querySelectorAll('.runs-chip'));
+        var cards = Array.prototype.slice.call(document.querySelectorAll('.app-card[data-runs]'));
+        if (!chips.length) return;
+
+        function highlight(runs) {
+            chips.forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.runs === runs ? 'true' : 'false'); });
+            cards.forEach(function (k) { k.classList.toggle('dim', runs !== 'all' && k.dataset.runs !== runs); });
+            if (history.replaceState) history.replaceState(null, '', runs === 'all' ? location.pathname : '#' + runs);
+        }
+        chips.forEach(function (c) {
+            c.addEventListener('click', function () {
+                // clicking the active chip clears the highlight
+                highlight(c.getAttribute('aria-pressed') === 'true' ? 'all' : c.dataset.runs);
+            });
+        });
+        // #phone / #mac / #tenant deep-links land with that group lit
+        var h = location.hash.replace('#', '');
+        if (chips.some(function (c) { return c.dataset.runs === h; })) highlight(h);
+    })();
+    </script>
 </body>
 </html>
 

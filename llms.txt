@@ -1,6 +1,6 @@
 # Prava Labs
 
-> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products span agent infrastructure (Toolport, EAG, Loom) and consumer iOS apps (TradeSocial, Mavee, Pravida).
+> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products are grouped by where they run: on your phone (TradeSocial, BoatNavi; Mavee and Pravida in labs), on your Mac (Toolport), and in your own tenant (EAG, Loom).
 
 ## Products
 
@@ -10,6 +10,7 @@
 - [Prava Loom](https://pravalabs.app/loom/) — coming soon: the self-writing, self-healing integration agent — authors, custodies and heals the connections AI agents need, inside your tenant
 - [Mavee](https://pravalabs.app/mavee/) — in development: Apple Intelligence day planner (iOS)
 - [Pravida](https://pravalabs.app/pravida/) — in development: E2E-encrypted, invite-only private network (iOS)
+- [BoatNavi](https://pravalabs.app/boatnavi/) — in development: clearance charts for your boat — charted depth plus tide, minus your draft and margin — offline-first for San Francisco Bay and the Delta (iOS, iPadOS)
 
 ## Company
 
