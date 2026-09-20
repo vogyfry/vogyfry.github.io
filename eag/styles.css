@@ -1,10 +1,10 @@
 /* Prava Toolport Website — Apple-inspired dark design with EAG blue */
 
 :root {
-    --brand: #3a92ff;
-    --brand-dark: #1f6fd4;
-    --brand-light: rgba(58, 146, 255, 0.12);
-    --brand-glow: rgba(58, 146, 255, 0.25);
+    --brand: #a78bfa;
+    --brand-dark: #7c5cfc;
+    --brand-light: rgba(167, 139, 250, 0.12);
+    --brand-glow: rgba(167, 139, 250, 0.25);
     --text-primary: #f5f5f7;
     --text-secondary: #a1a1a6;
     --text-tertiary: #86868b;
@@ -13,7 +13,7 @@
     --bg-surface: #111111;
     --border-color: rgba(255, 255, 255, 0.08);
     --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-    --card-shadow-hover: 0 8px 32px rgba(58, 146, 255, 0.15);
+    --card-shadow-hover: 0 8px 32px rgba(167, 139, 250, 0.15);
     --radius: 20px;
     --radius-sm: 12px;
     --max-width: 1080px;
@@ -27,12 +27,12 @@ a {
     /* A step lighter than --brand: the brand blue is tuned for fills and
        buttons, and against a pure-black page body links read soft at 6.7:1.
        --brand itself is left alone so buttons and accents don't shift. */
-    color: #62a9ff;
+    color: #bfa8ff;
     text-decoration: none;
     transition: color 0.15s;
 }
 a:hover {
-    color: #9ccbff;
+    color: #dccfff;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1px;
@@ -42,7 +42,7 @@ a:focus-visible {
     outline-offset: 2px;
     border-radius: 3px;
 }
-a:visited { color: #62a9ff; }
+a:visited { color: #bfa8ff; }
 
 
 *, *::before, *::after {
@@ -135,7 +135,7 @@ body {
 .hero {
     padding: 160px 24px 100px;
     text-align: center;
-    background: radial-gradient(ellipse at 50% 0%, rgba(58, 146, 255, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(167, 139, 250, 0.08) 0%, transparent 60%);
 }
 
 .hero-inner {
@@ -151,7 +151,7 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 26px;
-    box-shadow: 0 8px 40px rgba(58, 146, 255, 0.3);
+    box-shadow: 0 8px 40px rgba(167, 139, 250, 0.3);
     object-fit: cover;
 }
 
@@ -167,7 +167,7 @@ body {
     font-weight: 600;
     margin-bottom: 24px;
     letter-spacing: 0.3px;
-    border: 1px solid rgba(58, 146, 255, 0.2);
+    border: 1px solid rgba(167, 139, 250, 0.2);
 }
 
 .hero h1 {
@@ -247,7 +247,7 @@ body {
 
 .loop-step {
     background: var(--bg-surface);
-    border: 1px solid rgba(58, 146, 255, 0.25);
+    border: 1px solid rgba(167, 139, 250, 0.25);
     border-radius: var(--radius-sm);
     padding: 14px 20px;
     text-align: left;
@@ -331,7 +331,7 @@ body {
 
 .feature-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(58, 146, 255, 0.3);
+    border-color: rgba(167, 139, 250, 0.3);
     box-shadow: var(--card-shadow-hover);
 }
 
@@ -517,13 +517,13 @@ body {
 
 .plan-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(58, 146, 255, 0.3);
+    border-color: rgba(167, 139, 250, 0.3);
     box-shadow: var(--card-shadow-hover);
 }
 
 .plan-card.featured {
-    border-color: rgba(58, 146, 255, 0.45);
-    background: linear-gradient(180deg, rgba(58, 146, 255, 0.06) 0%, var(--bg-surface) 60%);
+    border-color: rgba(167, 139, 250, 0.45);
+    background: linear-gradient(180deg, rgba(167, 139, 250, 0.06) 0%, var(--bg-surface) 60%);
 }
 
 .plan-name {
@@ -632,7 +632,7 @@ body {
     text-transform: uppercase;
     color: var(--brand);
     background: var(--brand-light);
-    border: 1px solid rgba(58, 146, 255, 0.25);
+    border: 1px solid rgba(167, 139, 250, 0.25);
     padding: 3px 10px;
     border-radius: 100px;
     margin-bottom: 14px;
@@ -748,7 +748,7 @@ body {
     letter-spacing: 0.04em;
     padding: 6px 14px;
     border-radius: 20px;
-    border: 1px solid rgba(58, 146, 255, 0.25);
+    border: 1px solid rgba(167, 139, 250, 0.25);
     color: var(--brand);
     background: var(--brand-light);
 }
@@ -1118,14 +1118,14 @@ body {
   font-size: 8px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
 .dtile b { display: block; font-size: 13px; font-weight: 500; letter-spacing: -.01em; }
 .dtile i { display: block; font-style: normal; font-size: 11px; color: var(--text-tertiary); margin-top: 1px; }
-.dtile.own { background: linear-gradient(180deg, rgba(58,146,255,.16), rgba(58,146,255,.06));
-  border-color: rgba(58,146,255,.42); }
+.dtile.own { background: linear-gradient(180deg, rgba(167,139,250,.16), rgba(167,139,250,.06));
+  border-color: rgba(167,139,250,.42); }
 .dtile.own b { color: #cfe4ff; }
 
 /* the gateway column stays the deep brand field — it IS the product */
 .dgate { background: linear-gradient(168deg,#0e2f5e 0%,#0a1c38 46%,#07142a 100%);
-  border: 1px solid rgba(58,146,255,.34); border-radius: var(--radius); padding: 22px 18px;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 18px 60px rgba(58,146,255,.13); }
+  border: 1px solid rgba(167,139,250,.34); border-radius: var(--radius); padding: 22px 18px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 18px 60px rgba(167,139,250,.13); }
 .dgate-head { display: flex; align-items: center; gap: 11px; }
 .dgate-head img { width: 26px; height: 26px; border-radius: 7px; flex: 0 0 26px; }
 .dgate-head b { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
@@ -1133,7 +1133,7 @@ body {
 .dlayers { display: flex; flex-direction: column; gap: 7px; }
 .dlayer { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.09);
   border-radius: 10px; padding: 11px 13px; transition: background .2s, border-color .2s; }
-.dlayer:hover { background: rgba(58,146,255,.13); border-color: rgba(58,146,255,.4); }
+.dlayer:hover { background: rgba(167,139,250,.13); border-color: rgba(167,139,250,.4); }
 .dlayer b { display: block; font-size: 13px; font-weight: 600; color: #eaf2ff; letter-spacing: -.01em; }
 .dlayer i { display: block; font-style: normal; font-size: 11px; color: #8fb4e6; margin-top: 2px; line-height: 1.45; }
 .dlayer.proof { border-color: rgba(52,211,153,.3); background: var(--signal-dim); }
@@ -1141,7 +1141,7 @@ body {
 .dlayer.proof i { color: #7fd3b4; }
 
 .dchev { display: flex; align-items: center; justify-content: center;
-  color: rgba(58,146,255,.55); font-size: 20px; line-height: 1; }
+  color: rgba(167,139,250,.55); font-size: 20px; line-height: 1; }
 
 /* governance band */
 .dband { margin-top: 14px; background: var(--bg-secondary); border: 1px solid var(--border-color);
@@ -1254,7 +1254,7 @@ body {
 
 
 /* zones + boundary */
-.a-boundary { fill: rgba(58,146,255,.05); stroke: var(--brand); stroke-width: 2;
+.a-boundary { fill: rgba(167,139,250,.05); stroke: var(--brand); stroke-width: 2;
               stroke-dasharray: 8 6; opacity: 1; }
 .a-zone { fill: var(--brand); font: 600 11px/1 ui-sans-serif, -apple-system, sans-serif;
           letter-spacing: .09em; }
@@ -1266,7 +1266,7 @@ body {
    at .26 composites to roughly 4:1, which reads as a smudge rather than an
    edge. These are ~2.9:1 fill and ~7:1 edge. */
 .a-tile rect, .a-sys rect { fill: #272f3d; stroke: #616e85; stroke-width: 1.25; }
-.a-gate { fill: rgba(58,146,255,.10); stroke: var(--brand); stroke-width: 2; }
+.a-gate { fill: rgba(167,139,250,.10); stroke: var(--brand); stroke-width: 2; }
 .a-layer rect { fill: #253044; stroke: #5b6c8a; }
 .a-layer.proof rect { fill: rgba(52,211,153,.16); stroke: rgba(52,211,153,.6); }
 .a-eviq { fill: rgba(52,211,153,.10); stroke: rgba(52,211,153,.5); stroke-width: 1.5; }
@@ -1292,10 +1292,10 @@ body {
    reach, green = what is written down. */
 .a-pill rect { stroke-width: 1.25; }
 .a-pill text { font: 500 11.5px/1 ui-sans-serif, -apple-system, sans-serif; }
-.a-pill.ident rect { fill: rgba(58,146,255,.16);  stroke: #4f9dff; }
-.a-pill.ident text { fill: #bcd9ff; } .a-pill.ident circle { fill: #4f9dff; }
-.a-pill.scope rect { fill: rgba(167,139,250,.16); stroke: #a78bfa; }
-.a-pill.scope text { fill: #ddd2ff; } .a-pill.scope circle { fill: #a78bfa; }
+.a-pill.ident rect { fill: rgba(167,139,250,.16);  stroke: #b8a5ff; }
+.a-pill.ident text { fill: #bcd9ff; } .a-pill.ident circle { fill: #b8a5ff; }
+.a-pill.scope rect { fill: rgba(58,146,255,.16); stroke: #3a92ff; }
+.a-pill.scope text { fill: #9ccbff; } .a-pill.scope circle { fill: #3a92ff; }
 .a-pill.proof rect { fill: rgba(52,211,153,.16);  stroke: #34d399; }
 .a-pill.proof text { fill: #bff0dc; } .a-pill.proof circle { fill: #34d399; }
 .a-more { fill: var(--brand); font: 500 11px/1 ui-sans-serif, -apple-system, sans-serif; }
@@ -1325,9 +1325,9 @@ body {
 /* Control plane (Prava Loom). Drawn OUTSIDE the request path on purpose: it
    authors and heals connectors, it does not carry traffic. Violet rather than
    the data-plane blue so the two planes read as different things at a glance. */
-.a-ctrl rect { fill: rgba(167,139,250,.10); stroke: #a78bfa; stroke-width: 1.5; }
-.a-h.ctrl { fill: #ddd2ff; }
-.a-pill.ctrl rect { fill: rgba(167,139,250,.18); stroke: #a78bfa; }
-.a-pill.ctrl text { fill: #e4dbff; } .a-pill.ctrl circle { fill: #a78bfa; }
+.a-ctrl rect { fill: rgba(58,146,255,.10); stroke: #3a92ff; stroke-width: 1.5; }
+.a-h.ctrl { fill: #9ccbff; }
+.a-pill.ctrl rect { fill: rgba(58,146,255,.18); stroke: #3a92ff; }
+.a-pill.ctrl text { fill: #b3d5ff; } .a-pill.ctrl circle { fill: #3a92ff; }
 /* dashed: authoring is an out-of-band act, not a request */
-.a-flowc { stroke: #a78bfa; stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
+.a-flowc { stroke: #3a92ff; stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
