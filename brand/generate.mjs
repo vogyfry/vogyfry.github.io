@@ -141,8 +141,9 @@ for (const [id, entry] of entries) {
     "icon.svg": icon({ p, variant: "full" }),
     "icon-mono.svg": icon({ p, variant: "mono" }),
     "icon-light.svg": icon({ p, variant: "light" }),
-    "glyph.svg": bareGlyph(p, false),
-    "glyph-dark.svg": bareGlyph(p, true),
+    // Named for the ground they sit on, not the ink: on-dark is white ink, on-light is navy ink.
+    "glyph-on-dark.svg": bareGlyph(p, false),
+    "glyph-on-light.svg": bareGlyph(p, true),
     "appstore.svg": icon({ p, variant: "full", fullBleed: true }),
   };
   if (p.tint) files["icon-tint.svg"] = icon({ p, variant: "tint" });

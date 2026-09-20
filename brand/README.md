@@ -14,18 +14,24 @@ product; everything else — tiles, variants, every size — is produced by the 
 
   | Kind | Core | Products |
   |---|---|---|
-  | `app` — consumer app | teal `#00D4AA` | TradeSocial · BoatNavi · Waypoint · Mavee · Pravida |
-  | `tool` — developer tool | cyan `#00B8FF` | Toolport · SwiftMind |
-  | `enterprise` — enterprise platform | blue `#3A92FF` | EAG · Prava Loom |
+  | `app` — Consumer App | teal `#00D4AA` | TradeSocial · BoatNavi · Waypoint · Mavee · Pravida |
+  | `tool` — Developer Tool | cyan `#00B8FF` | Toolport · SwiftMind |
+  | `enterprise` — Enterprise Platform | violet `#A78BFA` | EAG · Prava Loom |
 
   A reader can tell what a product *is* before reading its name. Products are told
-  apart by their glyph, which is the part actually drawn for them. Violet is
-  unassigned and held for a fourth kind. The studio mark is the exception: it carries
-  the full spectrum gradient, and no kind.
-- **Icon rules:** deep-navy squircle, white line-work on a shared 256 grid
-  (stroke ≈ 17–20, round caps), one core dot per glyph. **Every product shares the same
-  navy tile** — a product that paints its own background stops reading as one of the
-  family, which is why Loom's violet tile was removed.
+  apart by their glyph, which is the part actually drawn for them. The three hues sit
+  29° and 58° apart, so no two kinds read as one colour; blue `#3A92FF` is unassigned
+  and held for a fourth kind. Violet was Loom's from the start and the enterprise kind
+  inherited it rather than the other way round. The studio mark is the exception: it
+  carries the full spectrum gradient, and no kind.
+- **Icon rules:** navy squircle, white line-work on a shared 256 grid (stroke ≈ 17–20,
+  round caps), one core dot per glyph. **The tile belongs to the kind, not the product** —
+  consumer apps sit on a teal-leaning navy, developer tools on a cyan navy, enterprise on
+  a violet navy — so tile and dot say the same thing. All three sit at the same brightness
+  (luminance ≈ 40–80 on the tile), which is the midpoint between the near-black tile the
+  family launched with and the vivid blue of EAG's original mark: bright enough to read
+  as a tile on a black page, dark enough that every dot still clears 4:1 on its own tile.
+  No product gets its own tile; Loom's violet one was removed for that reason.
 
 ## Generate
 
@@ -43,9 +49,12 @@ Per product, `dist/<id>/` contains:
 | `icon.svg` + `icon-{16…1024}.png` | squircle icon, transparent corners — web, favicons, docs |
 | `appstore.svg` / `appstore-1024.png` | full-bleed square, no rounding — App Store Connect (Apple applies the mask) |
 | `icon-mono.svg` | white core — one-colour contexts |
-| `icon-light.svg` | navy ink on light tile — light backgrounds |
+| `icon-light.svg` | the **light tile**: navy ink and the darker core on `#f2f6fd`. For placing the icon on a light background — it is not a light-mode app icon; the app icon is `icon.svg` in every mode |
 | `icon-tint.svg` | product-hue tinted tile (iOS 18 tinted mode reference) |
-| `glyph.svg` / `glyph-dark.svg` | bare glyph, no tile — lockups, headers |
+| `glyph-on-dark.svg` | bare glyph, no tile, **white ink** — for dark grounds: lockups, headers |
+| `glyph-on-light.svg` | bare glyph, no tile, **navy ink** — for light grounds |
+
+Variants are named for the ground they sit on, never for the colour of their ink.
 | `icon-macos.svg` / `macos-{16…1024}.png` | Mac apps — the tile inset on Apple's 824-in-1024 grid, since macOS applies no mask of its own. Opt in with `"macos": true` |
 
 ## Adding a new product
@@ -53,10 +62,19 @@ Per product, `dist/<id>/` contains:
 1. Add an entry to `tokens.json` — `name`, `glyph`, and its `kind`
    (`app` / `tool` / `enterprise`), which is where every colour comes from. Naming a
    `core` on the product itself overrides the kind, so do it only with a reason.
-2. Draw `glyphs/<id>.svg`: a 256-viewBox fragment, stroke `__INK__` at weight
-   17–20 with round caps, plus **exactly one** `<circle r="17" fill="__CORE__">` —
-   the core dot is the family signature, placed where the product's meaning lives.
-3. `node brand/generate.mjs <id>`.
+2. Draw `glyphs/<id>.svg`: a 256-viewBox fragment, white line-work with round caps,
+   plus **exactly one** core dot (`fill="__CORE__"`) placed where the product's meaning
+   lives. Draw it at whatever size reads well; the next step sizes it.
+3. `node brand/generate.mjs <id>`, then **measure, don't eyeball**. Every product is
+   held to the same three numbers on the rendered 1024 icon: the glyph's ink fills
+   **66%** of the tile (Apple's own glyphs sit at 62–70%), the line is **68 px**, the
+   dot is **60 px** radius, and the ink's bounding box is **centred on the tile to
+   within 2 px**. Set `glyphInset` for the fill, scale the glyph's stroke widths and
+   dot radius to hit the line and dot, and wrap the fragment in
+   `<g transform="translate(dx dy)" data-centre="1">` for the centring. Every existing
+   glyph carries that translate; it is the record of how far off-centre the hand
+   drawing was. SwiftMind sits at 70%: its pins are what the measurement sees, and
+   the body they surround is what the eye sees, so it needs the extra to *look* equal.
 
 Design intent per existing glyph: TradeSocial — rising line, core at the pivot ·
 Toolport — hub routing to servers, core at the junction · EAG — gateway chevrons,
