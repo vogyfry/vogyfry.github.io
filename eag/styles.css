@@ -1129,13 +1129,13 @@ body {
 .dgate-head { display: flex; align-items: center; gap: 11px; }
 .dgate-head img { width: 26px; height: 26px; border-radius: 7px; flex: 0 0 26px; }
 .dgate-head b { font-size: 15px; font-weight: 600; letter-spacing: -.01em; }
-.dgate-sub { font-size: 11px; color: #8fb4e6; margin: 4px 0 16px 37px; }
+.dgate-sub { font-size: 11px; color: #c9bdf5; margin: 4px 0 16px 37px; }
 .dlayers { display: flex; flex-direction: column; gap: 7px; }
 .dlayer { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.09);
   border-radius: 10px; padding: 11px 13px; transition: background .2s, border-color .2s; }
 .dlayer:hover { background: rgba(167,139,250,.13); border-color: rgba(167,139,250,.4); }
 .dlayer b { display: block; font-size: 13px; font-weight: 600; color: #eaf2ff; letter-spacing: -.01em; }
-.dlayer i { display: block; font-style: normal; font-size: 11px; color: #8fb4e6; margin-top: 2px; line-height: 1.45; }
+.dlayer i { display: block; font-style: normal; font-size: 11px; color: #c9bdf5; margin-top: 2px; line-height: 1.45; }
 .dlayer.proof { border-color: rgba(52,211,153,.3); background: var(--signal-dim); }
 .dlayer.proof b { color: #c7f5e2; }
 .dlayer.proof i { color: #7fd3b4; }
