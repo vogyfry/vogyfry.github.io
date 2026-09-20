@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoatNavi — Clearance Charts for Your Boat</title>
+    <meta name="description" content="Every chart app shows depth. BoatNavi shows clearance — for your boat, at the time you'll be there. Offline tide and chart data for San Francisco Bay and the Delta, a 48-hour scrubber, a track profile, and a window finder that answers “when can I go?”">
+    <meta name="keywords" content="boat navigation app, clearance, under-keel clearance, tide, charts, bathymetry, Sacramento Delta, San Francisco Bay, NOAA ENC, NMEA, offline charts, iPhone, iPad">
+    <link rel="canonical" href="https://pravalabs.app/boatnavi/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BoatNavi">
+    <meta property="og:title" content="BoatNavi — Clearance Charts for Your Boat">
+    <meta property="og:description" content="Every chart app shows depth. BoatNavi shows the number you actually need: clearance, for your boat, at the time you'll be there. Offline-first for the Bay and the Delta.">
+    <meta property="og:image" content="https://pravalabs.app/boatnavi/images/icon.png">
+    <meta property="og:url" content="https://pravalabs.app/boatnavi/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="BoatNavi — Clearance Charts for Your Boat">
+    <meta name="twitter:description" content="Every chart app shows depth. BoatNavi shows clearance — for your boat, at the time you'll be there.">
+    <meta name="twitter:image" content="https://pravalabs.app/boatnavi/images/icon.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/boatnavi/#app","name":"BoatNavi","applicationCategory":"NavigationApplication","operatingSystem":"iOS, iPadOS","url":"https://pravalabs.app/boatnavi/","description":"Clearance charts for your boat: charted depth plus predicted water level, minus your draft and margin, coloured on the chart for the time you will be there. Offline-first for San Francisco Bay and the Sacramento–San Joaquin Delta.","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/boatnavi/","url":"https://pravalabs.app/boatnavi/","name":"BoatNavi — Clearance Charts for Your Boat","isPartOf":{"@id":"https://pravalabs.app/boatnavi/#app"}}]}</script>
+    <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* The formula is the product. Set it like an instrument reading, not a code sample. */
+        .formula {
+            display: inline-block; margin: 22px auto 0;
+            font: 500 clamp(0.95rem, 2vw, 1.15rem)/1.6 ui-monospace, "SF Mono", Menlo, monospace;
+            color: var(--text-primary); background: var(--bg-surface);
+            border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+            padding: 14px 20px; letter-spacing: -0.01em;
+        }
+        .formula b { color: var(--brand); font-weight: 600; }
+        .formula .op { color: var(--text-tertiary); margin: 0 0.35em; }
+        .status-line { margin-top: 18px; color: var(--text-secondary); font-size: 0.95rem; }
+        .status-line .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #f4b860; margin-right: 8px; vertical-align: 1px; }
+
+        /* Offline table */
+        .signal { max-width: 720px; margin: 28px auto 0; border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; }
+        .signal table { width: 100%; border-collapse: collapse; }
+        .signal th, .signal td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border-color); vertical-align: top; font-size: 0.95rem; }
+        .signal tr:last-child td { border-bottom: 0; }
+        .signal th { color: var(--text-tertiary); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg-secondary); }
+        .signal td:first-child { color: var(--text-primary); font-weight: 500; width: 46%; }
+        .signal td:last-child { color: var(--text-secondary); }
+        .signal .no  { color: var(--brand); font-weight: 600; }
+        .signal .yes { color: #f4b860; font-weight: 600; }
+        .signal-note { max-width: 720px; margin: 16px auto 0; color: var(--text-tertiary); font-size: 0.9rem; line-height: 1.6; text-align: center; }
+
+        /* Verified numbers */
+        .proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 900px; margin: 28px auto 0; }
+        .proof div { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 20px; }
+        .proof b { display: block; font-size: 1.7rem; letter-spacing: -0.02em; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+        .proof span { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; display: block; margin-top: 6px; }
+
+        /* Safety */
+        .safety { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; text-align: center; }
+        .safety h2 { font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -0.03em; margin-bottom: 12px; }
+        .safety p { color: var(--text-secondary); line-height: 1.7; margin: 0 auto 14px; max-width: 62ch; }
+        .safety p.model { color: var(--text-primary); }
+        @media (max-width: 640px) { .signal th, .signal td { padding: 12px 14px; font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/boatnavi/" class="nav-brand">
+                <img src="images/favicon.png" alt="BoatNavi">
+                <span>BoatNavi</span>
+            </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#offline">Offline</a></li>
+                <li><a href="#safety">Safety</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="/">Prava Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="app-icon-container">
+                <img src="images/icon.png" alt="BoatNavi app icon" class="app-icon">
+            </div>
+            <div class="hero-badge">⚓ San Francisco Bay &amp; the Delta · iPhone and iPad · Works with no signal</div>
+            <h1>Every chart app shows depth.<br><span class="highlight">BoatNavi shows clearance.</span></h1>
+            <p class="subtitle">
+                Depth is the water. Water level is the tide. Neither is the number you need. BoatNavi does the arithmetic <strong>for your boat</strong>, colours the whole chart with the answer, and lets you drag the clock to see it change.
+            </p>
+            <div class="formula" aria-label="Clearance formula">
+                <b>clearance</b><span class="op">=</span>charted depth<span class="op">+</span>water level<span class="op">−</span>your draft<span class="op">−</span>your margin
+            </div>
+            <p class="status-line"><span class="dot"></span>In development — coming to the App Store when the calibration gate passes</p>
+            <div class="platform-tags">
+                <span class="platform-tag">iPhone</span>
+                <span class="platform-tag">iPad</span>
+                <span class="platform-tag">Offline Chart Packs</span>
+                <span class="platform-tag">On-Device Tide Engine</span>
+                <span class="platform-tag">GPS</span>
+                <span class="platform-tag">NMEA over Wi‑Fi</span>
+                <span class="platform-tag">Apple Pencil Routes</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="features-inner">
+            <h2>One Screen, One Question</h2>
+            <p class="section-subtitle">A chart where the water is coloured by clearance for your boat, and a scrubber under it. Drag the scrubber, the whole map recolours. Red means you go aground.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>The Chart</h3>
+                    <p>Clearance-coloured water with a 48-hour scrubber that snaps to high and low water. Tap anywhere for the depth, the water level, the clearance, the survey source and the survey year.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📉</div>
+                    <h3>Track Profile</h3>
+                    <p>Depth against distance along your route, with the water line at the scrubbed time. The controlling depth is called out explicitly, and any hazard within 150 ft of the track is named.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🕓</div>
+                    <h3>Window Finder</h3>
+                    <p><em>When can I go?</em> Sweeps the next 48 hours and returns the passable windows — evaluating the controlling point at your <strong>arrival</strong> there, not at departure.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚠️</div>
+                    <h3>Hazards</h3>
+                    <p>Wrecks, obstructions, rocks, pilings and foul ground from the ENC, in three classes. A hazard with a known depth reddens the water through the ordinary formula; one without is a hard exclusion the solver refuses to route through.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>Position</h3>
+                    <p>Your boat's NMEA gateway over its own Wi‑Fi, the phone's GNSS, or an external receiver. Always draws the accuracy circle, and degrades the headline number to a range when the fix can't support a single one.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔁</div>
+                    <h3>Sounder Loop</h3>
+                    <p>Predicted depth beside measured depth from your own transducer. Divergence says so loudly, and every comparison is logged into a personal correction layer for next time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Trips &amp; Marks</h3>
+                    <p>Record where you actually went with the depth you actually saw, reuse it as a known-good route, and drop labelled waypoints or private hazards from the cockpit.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3>Built for iPad Too</h3>
+                    <p>Chart and profile side by side on one scrubber, routes drawn with Apple Pencil, and keyboard shortcuts for the nav station.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="how-it-works-inner">
+            <h2>From Dock to Answer</h2>
+            <p class="section-subtitle">Set it up once. After that, the only input is your finger on the scrubber.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Tell It About Your Boat</h3>
+                    <p>Your draft and the margin you're comfortable with. That's the whole profile. Everything on the chart is computed for that boat, not a generic one.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Download Your Regions</h3>
+                    <p>Chart packs carry the soundings, the depth areas, the hazards, and the tide constituents for every station in the region. Fetch them at the dock, before you leave the last bar of signal behind.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Drag the Clock, Read the Colour</h3>
+                    <p>The scrubber runs 48 hours ahead. Every position on the chart recolours as the tide moves — green is water you can use, red is water you can't.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Ask When You Can Go</h3>
+                    <p>Draw the route, and the window finder tells you which departure times get you through the shallow bit with clearance to spare — timed for when you'd actually reach it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offline -->
+    <section class="privacy-section" id="offline">
+        <div class="privacy-inner">
+            <h2>Does it need a signal? No.</h2>
+            <p class="section-subtitle">Offline is the operating assumption, not a feature — there is no cell service in most of the Delta. Exactly one thing needs a network, and the app tells you when it's missing.</p>
+            <div class="signal">
+                <table>
+                    <thead><tr><th scope="col">What</th><th scope="col">Needs a Network?</th></tr></thead>
+                    <tbody>
+                        <tr><td>Charted depth</td><td><span class="no">No</span> — it's in the downloaded pack</td></tr>
+                        <tr><td>Tide prediction</td><td><span class="no">No</span> — computed on the device from harmonic constituents cached in the pack, indefinitely</td></tr>
+                        <tr><td>Your position</td><td><span class="no">No</span> — GPS is satellite, or your boat's NMEA gateway over the boat's own Wi‑Fi</td></tr>
+                        <tr><td>Clearance, track profile, window finder</td><td><span class="no">No</span> — all of it runs on the two above</td></tr>
+                        <tr><td>Live tide correction (observed level, SFBOFS model)</td><td><span class="yes">Yes</span> — and this is the only one</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="signal-note">When the live correction is missing, the chart falls back to the harmonic prediction and says so, with a persistent “predicted tide only — no live correction” chip. It never degrades silently.</p>
+        </div>
+    </section>
+
+    <!-- Proof -->
+    <section class="tech-section" id="engine">
+        <div class="tech-inner">
+            <h2>Measured, Not Promised</h2>
+            <p class="section-subtitle">The tide engine is checked against NOAA's own published predictions before anything else is built on it.</p>
+            <div class="proof">
+                <div><b>0.030 ft</b><span>RMS error against NOAA predictions across 10 Bay–Delta stations, verified across the full 18.6-year nodal cycle</span></div>
+                <div><b>154 · 85 · 97</b><span>Charted soundings, depth areas and hazards in the first real pack — the North Delta, from NOAA ENC</span></div>
+                <div><b>0.084 ft</b><span>Median error of that pack against its source at the acceptance gate</span></div>
+                <div><b>208</b><span>Unit tests on the clearance, tide and hazard logic — no simulator needed, about eight seconds to run</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety -->
+    <section class="safety" id="safety">
+        <h2>A Planning Aid, Not a Navigation System</h2>
+        <p>Public bathymetry outside dredged channels is old — some of it dates to 2004 — and Delta shoals move. The SFBOFS model is guidance, not measurement. Proximity alerts are advisory and are not a replacement for your boat's own depth alarm.</p>
+        <p class="model">The right mental model: BoatNavi tells you which windows are <em>worth attempting</em>. The depth sounder tells you what is actually under the keel.</p>
+        <p>Until the app ships, the bundled chart data is synthetic and is labelled <strong>SAMPLE — NOT FOR NAVIGATION</strong> everywhere it appears. The tide is real; the depths are invented.</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">BoatNavi</div>
+                    <p class="footer-description">Clearance charts for your boat, offline, for San Francisco Bay and the Sacramento–San Joaquin Delta. By Prava Labs.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#offline">Offline</a>
+                    <a href="#safety">Safety</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Help</h4>
+                    <a href="support.html">Support</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Prava Labs</h4>
+                    <a href="/">All Products</a>
+                    <a href="/tradesocial/">TradeSocial</a>
+                    <a href="/toolport/">Toolport</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Prava Labs, LLC</span>
+                <span>Made in California</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
