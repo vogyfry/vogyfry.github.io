@@ -4,15 +4,23 @@
 
 ## Products
 
-- [Toolport](https://pravalabs.app/toolport/) — live: the semantic MCP tool registry — one local broker between any AI agent and all your MCP servers
-- [TradeSocial](https://pravalabs.app/tradesocial/) — live: group paper trading with real market data (iOS)
-- [EAG — Enterprise Agent Gateway](https://pravalabs.app/eag/) — coming soon: governed MCP gateway with identity-scoped, audited tools for enterprise systems
-- [Prava Loom](https://pravalabs.app/loom/) — coming soon: the self-writing, self-healing integration agent — authors, custodies and heals the connections AI agents need, inside your tenant
-- [Mavee](https://pravalabs.app/mavee/) — in development: Apple Intelligence day planner (iOS)
-- [Pravida](https://pravalabs.app/pravida/) — in TestFlight: private, invite-only, end-to-end encrypted messenger that works over Wi‑Fi even without internet — no account, no phone number, no server of ours; on-device smart replies, summaries and translation (iPhone, iPad, Mac, Apple Watch)
-- [BoatNavi](https://pravalabs.app/boatnavi/) — in TestFlight: water under the keel, offline — clearance for your boat across San Francisco Bay and the Delta, plus the boat's own instruments over Signal K, NMEA 0183 or Raymarine SeaTalk1, batteries, tanks, autopilot, and an anchor watch (iOS, iPadOS)
+- [TradeSocial](https://pravalabs.app/tradesocial/) — live on the App Store: TradeSocial teaches investing by doing it, with nothing at risk. Start with $5,000 in virtual money and trade stocks, ETFs and crypto at real market prices, on your own for free. Form a group of up to eight friends, family or coworkers: everyone gets their own budget, the group grows it with milestone bonuses up to $15,000 per member, and you compare portfolios, talk trades in chat and climb the leaderboard together. 100% paper trading. iPhone and iPad.
+  - [Support](https://pravalabs.app/tradesocial/support.html) · [Privacy Policy](https://pravalabs.app/tradesocial/privacy.html) · [Terms of Service](https://pravalabs.app/tradesocial/terms.html)
+- [Prava Toolport](https://pravalabs.app/toolport/) — live on the Mac App Store: Prava Toolport sits between any AI agent and all your MCP servers, handing the agent only the few right tools per task — in any language. Plus built-in modules: savings receipts, policy gates, output condensing, web retrieval, semantic cache, and durable memory.
+  - [Support](https://pravalabs.app/toolport/support.html) · [Download](https://pravalabs.app/toolport/download.html) · [Privacy Policy](https://pravalabs.app/toolport/privacy.html) · [Terms of Service](https://pravalabs.app/toolport/terms.html)
+- [Enterprise Agent Gateway (EAG)](https://pravalabs.app/eag/) — coming soon: One governed MCP endpoint turning ServiceNow, Workday, Salesforce and SAP into natural-language tools for any AI agent. Every call runs as the real user, writes need human sign-off, outcomes are signed. Self-hosted.
+  - [Architecture](https://pravalabs.app/eag/architecture.html) · [Connectors](https://pravalabs.app/eag/connectors.html) · [Tool Catalog](https://pravalabs.app/eag/catalog.html) · [Documentation](https://pravalabs.app/eag/docs.html)
+- [Prava Loom](https://pravalabs.app/loom/) — coming soon: They sell you 108 connectors. Prava Loom is the in-tenant agent that builds your 109th — it authors the connection from a plain-language ask, custodies it with secrets by reference, and heals it for life. Humans approve every grant; the model never sees a secret.
+- [BoatNavi](https://pravalabs.app/boatnavi/) — in TestFlight: Navi and Boat, one chart. Navi: charted depth plus the tide, minus your draft and margin, coloured on the chart for the next 48 hours across San Francisco Bay and the Sacramento–San Joaquin Delta, South Bay to West Sacramento — offline. Boat: your instruments over Signal K, NMEA 0183 or Raymarine SeaTalk1, batteries, tanks, the autopilot, and an anchor watch that wakes you.
+  - [Support](https://pravalabs.app/boatnavi/support.html) · [Privacy Policy](https://pravalabs.app/boatnavi/privacy.html)
+- [Pravida](https://pravalabs.app/pravida/) — in TestFlight: Pravida is a private, invite-only, end-to-end encrypted messenger for the people you actually know. Create a chat, share a link or QR code, and talk — every message encrypted on your device with keys that never leave it, relayed through iCloud or sent directly between nearby devices over Wi‑Fi when there is no internet. No account, no phone number, no server of ours. Smart replies, summaries and translation run on the device. iPhone, iPad, Mac and Apple Watch.
+  - [Support](https://pravalabs.app/pravida/support.html) · [Privacy Policy](https://pravalabs.app/pravida/privacy.html) · [Terms of Service](https://pravalabs.app/pravida/terms.html)
+- [Mavee](https://pravalabs.app/mavee/) — in development: Mavee intelligently connects your calendar, contacts, and reminders to surface insights, patterns, and a unified timeline of your life. Built for iOS 26.
+  - [Privacy Policy](https://pravalabs.app/mavee/privacy.html) · [Terms of Service](https://pravalabs.app/mavee/terms.html)
 
 ## Company
 
 - [Home](https://pravalabs.app/)
-- Contact: support@pravalabs.app
+- [Full site text for language models](https://pravalabs.app/llms-full.txt)
+- Contact: support@pravalabs.app · Privacy: privacy@pravalabs.app
+- Prava Labs, LLC, California

@@ -25,17 +25,56 @@
           "name": "Prava Labs, LLC",
           "url": "https://pravalabs.app/",
           "email": "support@pravalabs.app",
+          "contactPoint": { "@type": "ContactPoint", "email": "support@pravalabs.app", "contactType": "customer support", "availableLanguage": "en" },
           "description": "Independent software studio building local-first, private-by-design apps and on-device AI tools.",
           "logo": "https://pravalabs.app/prava-icon.png"
         },
         {
           "@type": "WebSite",
+          "@id": "https://pravalabs.app/#website",
           "url": "https://pravalabs.app/",
           "name": "Prava Labs",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://pravalabs.app/#org" }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://pravalabs.app/#products",
+          "name": "Prava Labs products",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "url": "https://pravalabs.app/tradesocial/", "name": "TradeSocial" },
+            { "@type": "ListItem", "position": 2, "url": "https://pravalabs.app/toolport/", "name": "Prava Toolport" },
+            { "@type": "ListItem", "position": 3, "url": "https://pravalabs.app/eag/", "name": "Enterprise Agent Gateway" },
+            { "@type": "ListItem", "position": 4, "url": "https://pravalabs.app/loom/", "name": "Prava Loom" },
+            { "@type": "ListItem", "position": 5, "url": "https://pravalabs.app/boatnavi/", "name": "BoatNavi" },
+            { "@type": "ListItem", "position": 6, "url": "https://pravalabs.app/pravida/", "name": "Pravida" }
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/tradesocial/#app",
+          "name": "TradeSocial",
+          "operatingSystem": "iOS 18, iPadOS 18",
+          "applicationCategory": "EducationalApplication",
+          "url": "https://pravalabs.app/tradesocial/",
+          "installUrl": "https://apps.apple.com/app/id6759305119",
+          "description": "Learn to invest together: group paper trading with real market data and virtual money. Solo is free; groups of up to eight are Premium.",
+          "publisher": { "@id": "https://pravalabs.app/#org" },
+          "offers": [{ "@type": "Offer", "price": "0", "priceCurrency": "USD" }, { "@type": "Offer", "price": "7.99", "priceCurrency": "USD" }]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/boatnavi/#app",
+          "name": "BoatNavi",
+          "operatingSystem": "iOS, iPadOS",
+          "applicationCategory": "NavigationApplication",
+          "url": "https://pravalabs.app/boatnavi/",
+          "description": "Water under the keel, offline: clearance for your boat across San Francisco Bay and the Sacramento–San Joaquin Delta, plus the boat's own instruments and an anchor watch that wakes you.",
           "publisher": { "@id": "https://pravalabs.app/#org" }
         },
         {
           "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/toolport/#app",
           "name": "Prava Toolport",
           "operatingSystem": "macOS",
           "applicationCategory": "DeveloperApplication",
@@ -366,6 +405,17 @@
             .app-card { padding: 28px 24px; }
         }
     </style>
+    <!-- shared SEO block: canonical, robots, social cards, structured data -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#000000">
+    <meta name="author" content="Prava Labs, LLC">
+    <link rel="sitemap" type="application/xml" href="https://pravalabs.app/sitemap.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
+    <meta name="twitter:description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger), and EAG (the governed enterprise agent gateway).">
+    <meta name="twitter:image" content="https://pravalabs.app/prava-icon.png">
 </head>
 <body>
 
