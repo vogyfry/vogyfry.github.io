@@ -76,10 +76,17 @@ the brand says, and the edge comes from `AppIcon.icon`.
 1. Add an entry to `tokens.json` — `name`, `glyph`, and its `kind`
    (`app` / `tool` / `enterprise`), which is where every colour comes from. Naming a
    `core` on the product itself overrides the kind, so do it only with a reason.
-2. Draw `glyphs/<id>.svg`: a 256-viewBox fragment, white line-work with round caps,
+2. Draw `glyphs/stroked/<id>.svg`: a 256-viewBox fragment, white line-work with round caps,
    plus **exactly one** core dot (`fill="__CORE__"`) placed where the product's meaning
    lives. Draw it at whatever size reads well; the next step sizes it.
-3. `node brand/generate.mjs <id>`, then **measure, don't eyeball**. Every product is
+3. `python3 brand/tools/outline.py brand/glyphs/stroked/<id>.svg` writes `glyphs/<id>.svg`
+   with every stroke baked into filled outline geometry (`pip install shapely svgpathtools`
+   once). **Never hand-edit `glyphs/<id>.svg`**: macOS 26's live icon renderer draws
+   stroked circles as rounded squares and ignores round caps, so the file the generator
+   reads must contain fills only. The conversion is checked at 1024 px: every glyph came
+   out within 0.2% of its stroked ink. Toolport's outline was drawn by hand and has no
+   stroked source.
+4. `node brand/generate.mjs <id>`, then **measure, don't eyeball**. Every product is
    held to the same three numbers on the rendered 1024 icon: the glyph's ink fills
    **66%** of the tile (Apple's own glyphs sit at 62–70%), the line is **68 px**, the
    dot is **60 px** radius, and the ink's bounding box is **centred on the tile to
