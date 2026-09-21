@@ -3,34 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trade Social — Learn to Invest Together</title>
-    <meta name="description" content="Learn investing through collaborative group paper-trading. Practice with $5,000 virtual budget, real market data, and zero risk. Free for iOS.">
-    <meta name="keywords" content="trading education, stock market simulation, social investing, paper trading, finance learning, iOS app">
-    <meta property="og:title" content="Trade Social — Learn to Invest Together">
-    <meta property="og:description" content="Practice investing with friends using real market data and virtual money. 100% risk-free.">
+    <title>TradeSocial — Learn to Invest Together · Group Paper Trading with Real Market Data · iPhone &amp; iPad</title>
+    <meta name="description" content="TradeSocial teaches investing by doing it, with nothing at risk. Start with $5,000 in virtual money and trade stocks, ETFs and crypto at real market prices, on your own for free. Form a group of up to eight friends, family or coworkers: everyone gets their own budget, the group grows it with milestone bonuses up to $15,000 per member, and you compare portfolios, talk trades in chat and climb the leaderboard together. 100% paper trading. iPhone and iPad.">
+    <meta name="keywords" content="paper trading app, stock market simulator, learn to invest, investing for beginners, group investing, investment club app, social investing, virtual portfolio, stock simulator with real prices, practice trading, trading game, ETF, crypto paper trading, family investing, teach kids investing, finance students, leaderboard, iPhone, iPad, iOS 18">
+    <link rel="canonical" href="https://pravalabs.app/tradesocial/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="TradeSocial">
+    <meta property="og:title" content="TradeSocial — Learn to Invest Together · Group Paper Trading with Real Market Data">
+    <meta property="og:description" content="Trade stocks, ETFs and crypto at real prices with $5,000 in virtual money, solo for free or in a group of up to eight. 100% paper trading, nothing at risk. iPhone and iPad.">
     <meta property="og:image" content="https://pravalabs.app/tradesocial/images/icon.png">
     <meta property="og:url" content="https://pravalabs.app/tradesocial/">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="TradeSocial — Learn to Invest Together · Group Paper Trading with Real Market Data">
+    <meta name="twitter:description" content="Trade stocks, ETFs and crypto at real prices with $5,000 in virtual money, solo for free or in a group of up to eight. 100% paper trading, nothing at risk.">
+    <meta name="twitter:image" content="https://pravalabs.app/tradesocial/images/icon.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/tradesocial/#app","name":"TradeSocial","alternateName":"TradeSocial: Learn Investing","applicationCategory":"EducationalApplication","applicationSubCategory":"Finance","operatingSystem":"iOS 18, iPadOS 18","url":"https://pravalabs.app/tradesocial/","installUrl":"https://apps.apple.com/app/id6759305119","image":"https://pravalabs.app/tradesocial/images/icon.png","description":"A paper-trading app that teaches investing with real market data and virtual money. Trade stocks, ETFs and crypto with a $5,000 virtual portfolio on your own for free, or form a group of up to eight where everyone has their own budget, milestone bonuses grow it to $15,000 per member, and you compare portfolios, chat about trades and climb a leaderboard together. No real money is ever involved.","featureList":["$5,000 virtual portfolio at real market prices","Stocks, ETFs and crypto","Position detail with sparklines, daily change, total return and fundamentals","Activity feed and trade history","On-device sentiment analysis","Groups of up to eight with independent budgets","Group portfolio, chat with trade cards, leaderboard and analytics","Milestone bonuses of $2,500, $2,500 and $5,000 as a group grows","Sign in with Apple, Google or email","iPhone and iPad"],"offers":[{"@type":"Offer","name":"Solo","price":"0","priceCurrency":"USD","description":"Solo portfolio, free"},{"@type":"Offer","name":"Premium monthly","price":"7.99","priceCurrency":"USD","description":"Groups, monthly subscription"},{"@type":"Offer","name":"Premium annual","price":"79.99","priceCurrency":"USD","description":"Groups, annual subscription"}],"publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/tradesocial/","url":"https://pravalabs.app/tradesocial/","name":"TradeSocial — Learn to Invest Together · Group Paper Trading with Real Market Data","isPartOf":{"@id":"https://pravalabs.app/tradesocial/#app"}}]}</script>
     <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* The premise is the product. Set it like a reading, not a slogan. */
+        .formula {
+            display: inline-block; margin: 22px auto 0;
+            font: 500 clamp(0.95rem, 2vw, 1.15rem)/1.6 ui-monospace, "SF Mono", Menlo, monospace;
+            color: var(--text-primary); background: var(--bg-surface);
+            border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+            padding: 14px 20px; letter-spacing: -0.01em;
+        }
+        .formula b { color: var(--brand); font-weight: 600; }
+        .formula .op { color: var(--text-tertiary); margin: 0 0.45em; }
+        .status-line { margin-top: 18px; color: var(--text-secondary); font-size: 0.95rem; }
+        .status-line .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--brand); margin-right: 8px; vertical-align: 1px; }
+
+        /* Two halves, named once, up front */
+        .halves { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 40px auto 0; text-align: left; }
+        .half { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px; }
+        .half .k { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); font-weight: 600; margin-bottom: 8px; }
+        .half h3 { font-size: 1.25rem; letter-spacing: -0.02em; margin: 0 0 8px; }
+        .half p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+        @media (max-width: 720px) { .halves { grid-template-columns: 1fr; } }
+
+        /* Tables share one look: milestones, what is real, pricing */
+        .tbl { max-width: 760px; margin: 28px auto 0; border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; }
+        .tbl table { width: 100%; border-collapse: collapse; }
+        .tbl th, .tbl td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--border-color); vertical-align: top; font-size: 0.95rem; }
+        .tbl tr:last-child td { border-bottom: 0; }
+        .tbl th { color: var(--text-tertiary); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg-secondary); }
+        .tbl td:first-child { color: var(--text-primary); font-weight: 500; }
+        .tbl td:last-child { color: var(--text-secondary); }
+        .tbl td.num { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-primary); white-space: nowrap; }
+        .tbl .no  { color: var(--brand); font-weight: 600; }
+        .tbl .yes { color: #f4b860; font-weight: 600; }
+        .tbl-note { max-width: 760px; margin: 16px auto 0; color: var(--text-tertiary); font-size: 0.9rem; line-height: 1.6; text-align: center; }
+
+        /* The one line the competition cannot say */
+        .callout { max-width: 640px; margin: 28px auto 0; background: var(--brand-light); border: 1px solid rgba(0, 212, 170, 0.25); border-radius: var(--radius); padding: 20px 24px; text-align: center; }
+        .callout .q { font: 500 1.15rem/1.4 ui-monospace, "SF Mono", Menlo, monospace; color: var(--text-primary); }
+        .callout .why { color: var(--text-secondary); font-size: 0.92rem; margin-top: 8px; line-height: 1.55; }
+
+        /* Plain numbers */
+        .proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 900px; margin: 28px auto 0; }
+        .proof div { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 20px; }
+        .proof b { display: block; font-size: 1.7rem; letter-spacing: -0.02em; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+        .proof span { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; display: block; margin-top: 6px; }
+
+        .safety { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; text-align: center; }
+        .safety h2 { font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -0.03em; margin-bottom: 12px; }
+        .safety p { color: var(--text-secondary); line-height: 1.7; margin: 0 auto 14px; max-width: 62ch; }
+        .safety p.model { color: var(--text-primary); }
+        @media (max-width: 640px) { .tbl th, .tbl td { padding: 12px 14px; font-size: 0.9rem; } }
+    </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
-            <a href="./" class="nav-brand">
-                <img src="images/favicon.png" alt="Trade Social">
-                <span>Trade Social</span>
+            <a href="/tradesocial/" class="nav-brand">
+                <img src="images/favicon.png" alt="TradeSocial">
+                <span>TradeSocial</span>
             </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
             <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="privacy.html">Privacy</a></li>
-                <li><a href="terms.html">Terms</a></li>
+                <li><a href="#portfolio">Your Portfolio</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#groups">Groups</a></li>
+                <li><a href="#real">What Is Real</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#honest">What It Is Not</a></li>
                 <li><a href="support.html">Support</a></li>
-                            <li><a href="/">Prava Labs</a></li>
+                <li><a href="/">Prava Labs</a></li>
             </ul>
         </div>
     </nav>
@@ -41,247 +103,275 @@
             <div class="app-icon-container">
                 <img src="images/icon.png" alt="TradeSocial app icon" class="app-icon">
             </div>
-            <div class="hero-badge">📚 100% Educational Simulation</div>
-            <h1>Learn to Invest<br><span class="highlight">Together</span></h1>
+            <div class="hero-badge">📚 100% educational simulation · Real market prices · iPhone and iPad · Live on the App Store</div>
+            <h1>Learn to invest.<br><span class="highlight">Together, with nothing at risk.</span></h1>
             <p class="subtitle">
-                Form a group with friends or family, practice trading with real market data. Solo mode is free forever. Groups unlock with premium ($7.99/month or $79.99/year).
+                Start with $5,000 in virtual money and trade stocks, ETFs and crypto at the prices the market is actually showing, right now. Practice on your own for free. Then form a group with the people you'd rather learn with: <strong>everyone gets their own budget</strong>, the group grows it, and you compare, talk and compete along the way.
             </p>
-            <div class="live-now"><span class="live-dot"></span>Live Now on the App Store</div>
+            <div class="formula" aria-label="What you start with">
+                <b>$5,000</b> virtual<span class="op">·</span><b>real</b> prices<span class="op">·</span><b>$0</b> at risk
+            </div>
+            <p class="status-line"><span class="dot"></span>Live on the App Store. Solo is free; groups are Premium, $7.99 a month or $79.99 a year.</p>
             <a class="app-store-badge" href="https://apps.apple.com/app/id6759305119" target="_blank" rel="noopener" aria-label="Download TradeSocial on the App Store">
                 <img src="images/download-on-the-app-store.svg" alt="Download on the App Store" width="162" height="54">
             </a>
-        </div>
-    </section>
-
-    <!-- Screenshots -->
-    <section class="screenshots" id="screenshots">
-        <div class="screenshots-inner">
-            <h2>See It in Action</h2>
-            <p class="section-subtitle">Available on iPhone and iPad. Your trading group, wherever you are.</p>
-
-            <!-- Device Tabs -->
-            <div class="device-tabs">
-                <button class="device-tab active" onclick="switchDevice('iphone', this)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                    iPhone
-                </button>
-                <button class="device-tab" onclick="switchDevice('ipad', this)">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.5 0h-14C3.12 0 2 1.12 2 2.5v19C2 22.88 3.12 24 4.5 24h14c1.38 0 2.5-1.12 2.5-2.5v-19C21 1.12 19.88 0 18.5 0zM12 23c-.83 0-1.5-.67-1.5-1.5S11.17 20 12 20s1.5.67 1.5 1.5S12.83 23 12 23zM19 19H5V2h14v17z"/></svg>
-                    iPad
-                </button>
+            <div class="platform-tags">
+                <span class="platform-tag">iPhone</span>
+                <span class="platform-tag">iPad</span>
+                <span class="platform-tag">iOS 18+</span>
+                <span class="platform-tag">Stocks · ETFs · Crypto</span>
+                <span class="platform-tag">Real Market Data</span>
+                <span class="platform-tag">Solo Free</span>
+                <span class="platform-tag">Groups of 8</span>
+                <span class="platform-tag">Milestone Bonuses</span>
+                <span class="platform-tag">Leaderboard</span>
             </div>
 
-            <!-- iPhone Screenshots -->
-            <div id="screenshots-iphone" class="screenshot-grid">
-                <div class="screenshot-item">
-                    <img src="images/screenshot-portfolio.png" alt="Solo Portfolio showing $5,005 value with real sparklines" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Your Portfolio</div>
+            <div class="halves">
+                <div class="half">
+                    <div class="k">Solo</div>
+                    <h3>Practice on your own</h3>
+                    <p>A $5,000 portfolio that is yours alone, free forever. Buy and sell at live prices, watch your positions move with the market, and learn what a 3% day feels like before a real one costs you anything. It works offline too, with the last prices it saw.</p>
                 </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshot-group-portfolio.png" alt="Group Portfolio showing $15,008 with your and group positions" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Group Portfolio</div>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshot-trading.png" alt="Stock detail for MSFT showing chart, fundamentals and Buy button" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Trade with Real Data</div>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshot-groups.png" alt="YOLO Portfolio group with 3 members and Invite Members button" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Manage Your Group</div>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshot-activity.png" alt="Activity feed showing group chat and trade history" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Group Chat & Trades</div>
-                </div>
-                <div class="screenshot-item">
-                    <img src="images/screenshot-analytics.png" alt="Group Analytics showing top contributors and performance metrics" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Group Analytics</div>
-                </div>
-            </div>
-
-            <!-- iPad Screenshots -->
-            <div id="screenshots-ipad" class="screenshot-grid screenshot-grid-ipad" style="display:none;">
-                <div class="screenshot-item screenshot-item-ipad">
-                    <img src="images/ipad-screenshot-portfolio-solo.png" alt="iPad Solo Portfolio showing $5,001 value with position list" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Portfolio on iPad</div>
-                </div>
-                <div class="screenshot-item screenshot-item-ipad">
-                    <img src="images/ipad-screenshot-group-portfolio.png" alt="iPad Group Portfolio showing YOLO Portfolio with group positions" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Group Portfolio</div>
-                </div>
-                <div class="screenshot-item screenshot-item-ipad">
-                    <img src="images/ipad-screenshot-activity.png" alt="iPad Activity feed with group chat, trades, and members" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Group Chat & Activity</div>
-                </div>
-                <div class="screenshot-item screenshot-item-ipad">
-                    <img src="images/ipad-screenshot-trading.png" alt="iPad stock detail sheet showing Coca-Cola chart and fundamentals" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Stock Detail</div>
-                </div>
-                <div class="screenshot-item screenshot-item-ipad">
-                    <img src="images/ipad-screenshot-groups.png" alt="iPad Group management view with members list" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Group Management</div>
-                </div>
-                <div class="screenshot-item screenshot-item-ipad">
-                    <img src="images/ipad-screenshot-analytics.png" alt="iPad Group Analytics showing performance metrics and top contributors" onclick="openLightbox(this)">
-                    <div class="screenshot-caption">Group Analytics</div>
+                <div class="half">
+                    <div class="k">Group</div>
+                    <h3>Learn with people you know</h3>
+                    <p>Up to eight friends, family or coworkers, each with their own $5,000. See everyone's positions in one group portfolio, talk trades in the chat, and climb the leaderboard. Growing the group grows everyone's budget, up to $15,000 each.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features" id="features">
+    <!-- Your portfolio -->
+    <section class="features" id="portfolio">
         <div class="features-inner">
-            <h2>Everything You Need to Learn</h2>
-            <p class="section-subtitle">Built for collaborative education, not speculation.</p>
+            <h2>Your Portfolio</h2>
+            <p class="section-subtitle">The mechanics of a real brokerage app, with pretend money. If Apple drops 3% today, it drops in TradeSocial too.</p>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Risk-Free Paper Trading</h3>
-                    <p>Practice with $5,000 in virtual funds using real market data. Learn strategies without risking a single dollar.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Social Learning Groups</h3>
-                    <p>Form groups with family, friends, or coworkers. Everyone gets their own budget and learns together.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Milestone Bonuses</h3>
-                    <p>Grow your group, earn rewards. Hit 4 members for +$2,500, 6 for another +$2,500, and 8 (full group) for +$5,000 — up to $15,000 total per member.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Dual Portfolio System</h3>
-                    <p>Solo mode for personal practice, Group mode for collaborative learning. Switch anytime.</p>
-                </div>
-                <div class="feature-card">
                     <div class="feature-icon">📈</div>
-                    <h3>Real Market Data</h3>
-                    <p>Trade stocks, ETFs, and crypto with live prices. Experience authentic market dynamics in a safe environment.</p>
+                    <h3>Real Market Prices</h3>
+                    <p>Quotes come from a live market-data feed, cached and refreshed as you use the app. The number you buy at is the number the market is showing, not a stale close from last night.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>Group Chat & Activity</h3>
-                    <p>Discuss trades in real-time, see what your group is buying, and learn from each other's strategies.</p>
+                    <div class="feature-icon">🪙</div>
+                    <h3>Stocks, ETFs and Crypto</h3>
+                    <p>Search any listed stock or ETF, and crypto as USD pairs like BTC‑USD. Equities trade in shares, crypto in units, and every price is formatted the way a statement would show it.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔎</div>
+                    <h3>Position Detail</h3>
+                    <p>Every holding gets a sparkline, Today's change, Total Return including what you already sold, and the fundamentals behind the ticker. Sort your list by name, value, daily change or gain.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <h3>Buy and Sell</h3>
+                    <p>Pick a symbol, a quantity and a side; the trade fills instantly at the market price and lands in your history. No order types to learn before you have learned what a position is.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗞️</div>
+                    <h3>Activity Feed and Trade History</h3>
+                    <p>Everything you did, in order, with the price and the size. In a group, everyone's trades appear as cards in the same feed, so a strategy is visible while it is happening.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Sentiment, on the Device</h3>
+                    <p>A read on the mood around a ticker, computed by Apple's Natural Language framework on your phone. It is a talking point for the group chat, not a signal, and the app says so.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Notifications That Teach</h3>
+                    <p>A trade executed, a milestone bonus landed, a budget running low: each one a notification that opens the right screen. Solo trades stay quiet; nobody needs to be told what they just did.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✈️</div>
+                    <h3>Works Offline</h3>
+                    <p>Your solo portfolio opens without a connection, with the last prices it saw and your sparklines intact. Group trading waits for a connection and tells you so, rather than guessing.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
+    <!-- How it works -->
+    <section class="how-it-works" id="how">
         <div class="how-it-works-inner">
-            <h2>Get Started in Minutes</h2>
-            <p class="section-subtitle">No credit card required. No real money involved. Ever.</p>
+            <h2>How It Works</h2>
+            <p class="section-subtitle">No credit card, no brokerage account, no real money. Ever.</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Sign Up Free</h3>
-                    <p>Create an account with email, Apple, or Google. Get your $5,000 virtual budget instantly.</p>
+                    <h3>Sign In</h3>
+                    <p>With Apple, Google or an email address. Your $5,000 is waiting on the other side. Solo mode is free and stays free.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Start Trading</h3>
-                    <p>Buy and sell stocks, ETFs, and crypto with real market data. All trades are simulated — zero risk.</p>
+                    <h3>Trade</h3>
+                    <p>Search a symbol, buy some, watch it move. Sell when you think you should, and see whether you were right in Today's change and Total Return.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Form a Group</h3>
-                    <p>Invite friends and family. Everyone gets their own budget. Discuss trades, share strategies, learn together.</p>
+                    <p>Create a group and hand out the invite code, or join one. Each member gets their own $5,000; nobody can spend anyone else's. Up to eight people, up to six groups.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>Earn Milestones</h3>
-                    <p>As your group grows, unlock bonus virtual funds. More members = more learning capital for everyone.</p>
+                    <h3>Grow the Budget</h3>
+                    <p>Reach four members and everyone gets $2,500 more. Six, another $2,500. A full group of eight, $5,000 on top: $15,000 per member to learn with.</p>
                 </div>
+            </div>
+            <div class="callout">
+                <div class="q">“Eight people, eight budgets, one leaderboard.”</div>
+                <div class="why">No shared pool to raid, no single portfolio to argue over. Every member trades their own money and the group sees all of it, which is how an investment club learns from itself.</div>
             </div>
         </div>
     </section>
 
-    <!-- Download CTA -->
-    <section class="final-cta">
-        <div class="final-cta-inner">
-            <h2>Ready to learn investing together?</h2>
-            <p>Free to start — Solo mode is free forever, groups unlock with premium.</p>
-            <div class="live-now"><span class="live-dot"></span>Live Now on the App Store</div>
-            <a class="app-store-badge" href="https://apps.apple.com/app/id6759305119" target="_blank" rel="noopener" aria-label="Download TradeSocial on the App Store">
-                <img src="images/download-on-the-app-store.svg" alt="Download on the App Store" width="162" height="54">
-            </a>
+    <!-- Groups -->
+    <section class="features" id="groups">
+        <div class="features-inner">
+            <h2>Groups: An Investment Club in Your Pocket</h2>
+            <p class="section-subtitle">Family, friends, coworkers, a classroom. Everyone starts equal and the group finds out who was right.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👛</div>
+                    <h3>Independent Budgets</h3>
+                    <p>Every member has their own $5,000 and their own positions. One person's bad week is their own; the group's numbers are the sum of everyone's.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Group Portfolio</h3>
+                    <p>One screen with the whole group's holdings, yours and theirs, with each member's name on their positions. Switch between your groups and your solo portfolio in a tap.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Chat with Trade Cards</h3>
+                    <p>Talk in the group while you trade. Every buy and sell drops into the conversation as a card with the symbol, size and price, and the app posts when someone joins, leaves or is running low on cash.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Leaderboard and Analytics</h3>
+                    <p>Members ranked by return, win rate once they have sold something, and the top contributors by dollars traded and share of the group's volume. Bragging rights come with receipts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎟️</div>
+                    <h3>Invite Codes</h3>
+                    <p>A group is joined by code, so it stays the people you invited. Groups hold up to eight members, and you can belong to up to six at once.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>Owner Controls</h3>
+                    <p>The member who created the group can rename it and remove people. Anyone can leave, and the chat records it.</p>
+                </div>
+            </div>
+            <div class="tbl">
+                <table>
+                    <thead><tr><th scope="col">Milestone</th><th scope="col">Bonus to Every Member</th><th scope="col" style="text-align:right">Each Member Has</th></tr></thead>
+                    <tbody>
+                        <tr><td>Start</td><td>Your own $5,000</td><td class="num">$5,000</td></tr>
+                        <tr><td>4 members</td><td>+$2,500</td><td class="num">$7,500</td></tr>
+                        <tr><td>6 members</td><td>+$2,500</td><td class="num">$10,000</td></tr>
+                        <tr><td>8 members, a full group</td><td>+$5,000</td><td class="num">$15,000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="tbl-note">Bonuses are virtual money added to every member's budget when the group reaches the size. A full group has $120,000 in play between eight people.</p>
         </div>
     </section>
 
-    <!-- Disclaimer -->
-    <section class="disclaimer">
-        <div class="disclaimer-inner">
-            <h3>📚 100% Educational Simulation</h3>
-            <p>Trade Social is an educational platform only. All trading is virtual paper-trading with simulated funds. No real money or actual financial accounts are involved. Trade Social does not provide investment advice. Past simulation performance does not guarantee real-world results. Consult a licensed financial advisor before making real investment decisions.</p>
+    <!-- What is real -->
+    <section class="tech-section" id="real">
+        <div class="tech-inner">
+            <h2>What is real, and what is simulated</h2>
+            <p class="section-subtitle">The point of paper trading is that the prices are true and the consequences are not. Here is exactly where the line sits.</p>
+            <div class="tbl">
+                <table>
+                    <thead><tr><th scope="col">What</th><th scope="col">Real?</th></tr></thead>
+                    <tbody>
+                        <tr><td>Prices and daily moves</td><td><span class="no">Real</span> — live market data for stocks, ETFs and crypto</td></tr>
+                        <tr><td>Your money</td><td><span class="yes">Simulated</span> — $5,000 of virtual cash; nothing can be deposited, withdrawn or lost</td></tr>
+                        <tr><td>Fills</td><td><span class="yes">Simulated</span> — instant, at the market price, with no spread, commission, slippage or delay</td></tr>
+                        <tr><td>Your returns</td><td><span class="no">Real arithmetic</span> — computed from real prices on simulated positions, so the lesson is real even though the dollars are not</td></tr>
+                        <tr><td>The other people</td><td><span class="no">Real</span> — a group is the people you invited, trading in the same market at the same time</td></tr>
+                        <tr><td>Market impact</td><td><span class="yes">None</span> — your simulated trades do not touch real markets</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="proof">
+                <div><b>$5,000</b><span>Virtual cash every portfolio starts with, solo or in a group</span></div>
+                <div><b>$15,000</b><span>Per member in a full group of eight, after three milestone bonuses</span></div>
+                <div><b>8 × 6</b><span>Up to eight members in a group, and up to six groups per person</span></div>
+                <div><b>$0</b><span>Real money involved, at any point, for anyone</span></div>
+            </div>
         </div>
     </section>
 
-    <!-- Lightbox Modal -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <img id="lightbox-img" src="" alt="">
-    </div>
+    <!-- Pricing -->
+    <section class="privacy-section" id="pricing">
+        <div class="privacy-inner">
+            <h2>Solo Is Free. Groups Are Premium.</h2>
+            <p class="section-subtitle">Everything a single learner needs costs nothing. The subscription pays for the part that runs between people.</p>
+            <div class="tbl">
+                <table>
+                    <thead><tr><th scope="col">Free · Solo</th><th scope="col">Premium · Groups</th></tr></thead>
+                    <tbody>
+                        <tr><td>$5,000 virtual portfolio, real prices</td><td>Everything in Solo</td></tr>
+                        <tr><td>Stocks, ETFs and crypto</td><td>Create and join groups, up to 8 members, up to 6 groups</td></tr>
+                        <tr><td>Position detail, sparklines, sort and search</td><td>Group portfolio, chat with trade cards, activity feed</td></tr>
+                        <tr><td>Activity feed and trade history</td><td>Leaderboard, win rate, top contributors, group analytics</td></tr>
+                        <tr><td>On-device sentiment</td><td>Milestone bonuses to $15,000 per member</td></tr>
+                        <tr><td><span class="no">Free, forever</span></td><td><span class="no">$7.99 a month</span> or <span class="no">$79.99 a year</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="tbl-note">Billed through the App Store. It renews unless cancelled 24 hours before the period ends; cancel any time in your Apple ID subscriptions. Members of a group each need Premium; the group's data lives in the cloud so it can be shared.</p>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- What it is not -->
+    <section class="safety" id="honest">
+        <h2>What TradeSocial Is Not</h2>
+        <p>It is not a brokerage, a bank or a financial adviser, and it is not regulated as one. No real money is ever deposited, traded or withdrawn, and nothing in the app is investment advice. Simulated fills are cleaner than real ones: real trading has spreads, commissions, slippage and delays, and it has the emotional weight of money that is actually yours.</p>
+        <p class="model">The right mental model: TradeSocial teaches you what a position, a drawdown and a return feel like, at real prices, before you find out with real money.</p>
+        <p>It needs an account, because groups are people and people need to be told apart: sign in with Apple, Google or email, and delete the account from Settings whenever you like. Groups need a connection; the solo portfolio does not. Past simulation performance says nothing about real-world results. Talk to a licensed adviser before you invest real money.</p>
+    </section>
+
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand">
-                        <img src="images/favicon.png" alt="Trade Social">
-                        <span>Trade Social</span>
-                    </div>
-                    <p class="footer-description">Learn investing through collaborative group paper-trading. Practice with real market data and zero risk.</p>
+                    <div class="footer-brand">TradeSocial</div>
+                    <p class="footer-description">Learn to invest together: group paper trading with real market data, virtual money and nothing at risk, for iPhone and iPad. By Prava Labs. All trading is simulated.</p>
                 </div>
-                <div>
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="support.html">Support</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="#portfolio">Your Portfolio</a>
+                    <a href="#how">How It Works</a>
+                    <a href="#groups">Groups</a>
+                    <a href="#real">What Is Real</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#honest">What It Is Not</a>
                 </div>
-                <div>
-                    <h4>Contact</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
-                        <li><a href="mailto:privacy@pravalabs.app">privacy@pravalabs.app</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <h4>Help</h4>
+                    <a href="support.html">Support</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Prava Labs</h4>
+                    <a href="/">All Products</a>
+                    <a href="/boatnavi/">BoatNavi</a>
+                    <a href="/pravida/">Pravida</a>
+                    <a href="/toolport/">Toolport</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Prava Labs, LLC. All rights reserved. All trading is simulated.
+                <span>© 2026 Prava Labs, LLC</span>
+                <span>Made in California</span>
             </div>
         </div>
     </footer>
 
-    <script>
-        function openLightbox(img) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeLightbox();
-        });
-        function switchDevice(device, btn) {
-            document.getElementById('screenshots-iphone').style.display = device === 'iphone' ? 'flex' : 'none';
-            document.getElementById('screenshots-ipad').style.display = device === 'ipad' ? 'flex' : 'none';
-            document.querySelectorAll('.device-tab').forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-        }
-    </script>
 </body>
 </html>
-
