@@ -3,34 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pravida — Private, Encrypted, Yours</title>
-    <meta name="description" content="Pravida is a privacy-first, invite-only encrypted network for iOS. End-to-end encrypted messaging, mesh networking, and on-device AI. Coming soon.">
-    <meta name="keywords" content="encrypted messaging, private network, mesh networking, iOS app, end-to-end encryption, privacy, secure communication">
-    <meta property="og:title" content="Pravida — Private, Encrypted, Yours">
-    <meta property="og:description" content="An invite-only encrypted network with iMessage-quality messaging, mesh networking, and on-device AI. Coming soon to iOS.">
-    <meta property="og:image" content="images/og-image.png">
-    <meta property="og:url" content="https://pravalabs.app/pravida">
-    <meta name="twitter:card" content="summary_large_image">
+    <title>Pravida — Private, Encrypted, Offline Messenger · iPhone, iPad, Mac &amp; Apple Watch</title>
+    <meta name="description" content="Pravida is a private, invite-only, end-to-end encrypted messenger for the people you actually know. Create a chat, share a link or QR code, and talk — every message encrypted on your device with keys that never leave it, relayed through iCloud or sent directly between nearby devices over Wi‑Fi when there is no internet. No account, no phone number, no server of ours. Smart replies, summaries and translation run on the device. iPhone, iPad, Mac and Apple Watch.">
+    <meta name="keywords" content="encrypted messenger, private messenger, end-to-end encryption, E2EE, invite-only chat, private group chat, offline messaging, mesh messaging, Wi-Fi messaging without internet, peer-to-peer messaging, no phone number messenger, no account messenger, secure messaging, disappearing messages, view-once photos, safety numbers, screenshot alerts, on-device AI, Apple Intelligence, iCloud, CloudKit, iPhone, iPad, Mac, Apple Watch, iOS 26, macOS 26, watchOS 26">
+    <link rel="canonical" href="https://pravalabs.app/pravida/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Pravida">
+    <meta property="og:title" content="Pravida — Private, Encrypted, Offline Messenger · iPhone, iPad, Mac &amp; Apple Watch">
+    <meta property="og:description" content="Invite-only, end-to-end encrypted messaging that works over Wi‑Fi even without internet. No account, no phone number, no ads. iPhone, iPad, Mac and Apple Watch.">
+    <meta property="og:image" content="https://pravalabs.app/pravida/images/icon.png">
+    <meta property="og:url" content="https://pravalabs.app/pravida/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Pravida — Private, Encrypted, Offline Messenger · iPhone, iPad, Mac &amp; Apple Watch">
+    <meta name="twitter:description" content="Invite-only, end-to-end encrypted messaging that works over Wi‑Fi even without internet. No account, no phone number, no server of ours.">
+    <meta name="twitter:image" content="https://pravalabs.app/pravida/images/icon.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/pravida/#app","name":"Pravida","alternateName":"Pravida — Private. Encrypted. Offline.","applicationCategory":"CommunicationApplication","applicationSubCategory":"Messaging","operatingSystem":"iOS 26, iPadOS 26, macOS 26, watchOS 26","url":"https://pravalabs.app/pravida/","image":"https://pravalabs.app/pravida/images/icon.png","description":"A private, invite-only, end-to-end encrypted messenger for iPhone, iPad, Mac and Apple Watch. Create a chat, invite people with a link or a QR code, and talk. Every message is encrypted on the device with keys generated there, relayed through iCloud, or sent directly between nearby devices over Wi‑Fi when there is no internet. No account, no phone number, no server of ours. Smart replies, summaries and translation run on the device.","featureList":["Invite-only chats by link or QR code, with expiring invites","End-to-end encryption with AES-256-GCM and keys generated on the device","Direct device-to-device messaging over Wi‑Fi with no internet","iCloud relay when members are apart","Replies, reactions, forwarding, typing indicators, read receipts, link previews, search","Photos, videos, files, voice messages and view-once photos","Disappearing messages from 5 seconds to a week","Safety numbers, verification and identity-key change alerts","App Lock with Face ID or Touch ID","Screenshot alerts","On-device smart replies, summaries and translation with Apple Intelligence","Native apps for iPhone, iPad, Mac and Apple Watch"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/pravida/","url":"https://pravalabs.app/pravida/","name":"Pravida — Private, Encrypted, Offline Messenger · iPhone, iPad, Mac & Apple Watch","isPartOf":{"@id":"https://pravalabs.app/pravida/#app"}}]}</script>
     <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* The promise is the product. Set it like a reading, not a slogan. */
+        .formula {
+            display: inline-block; margin: 22px auto 0;
+            font: 500 clamp(0.95rem, 2vw, 1.15rem)/1.6 ui-monospace, "SF Mono", Menlo, monospace;
+            color: var(--text-primary); background: var(--bg-surface);
+            border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+            padding: 14px 20px; letter-spacing: -0.01em;
+        }
+        .formula b { color: var(--brand); font-weight: 600; }
+        .formula .op { color: var(--text-tertiary); margin: 0 0.45em; }
+        .status-line { margin-top: 18px; color: var(--text-secondary); font-size: 0.95rem; }
+        .status-line .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #f4b860; margin-right: 8px; vertical-align: 1px; }
+
+        /* Two halves, named once, up front */
+        .halves { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 40px auto 0; text-align: left; }
+        .half { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 24px; }
+        .half .k { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); font-weight: 600; margin-bottom: 8px; }
+        .half h3 { font-size: 1.25rem; letter-spacing: -0.02em; margin: 0 0 8px; }
+        .half p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+        @media (max-width: 720px) { .halves { grid-template-columns: 1fr; } }
+
+        /* Tables share one look: what leaves the device, what needs the internet */
+        .tbl { max-width: 760px; margin: 28px auto 0; border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; }
+        .tbl table { width: 100%; border-collapse: collapse; }
+        .tbl th, .tbl td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--border-color); vertical-align: top; font-size: 0.95rem; }
+        .tbl tr:last-child td { border-bottom: 0; }
+        .tbl th { color: var(--text-tertiary); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg-secondary); }
+        .tbl td:first-child { color: var(--text-primary); font-weight: 500; }
+        .tbl td:last-child { color: var(--text-secondary); }
+        .tbl .no  { color: var(--brand); font-weight: 600; }
+        .tbl .yes { color: #f4b860; font-weight: 600; }
+        .tbl-note { max-width: 760px; margin: 16px auto 0; color: var(--text-tertiary); font-size: 0.9rem; line-height: 1.6; text-align: center; }
+
+        /* The one line the competition cannot say */
+        .callout { max-width: 640px; margin: 28px auto 0; background: var(--brand-light); border: 1px solid rgba(0, 212, 170, 0.25); border-radius: var(--radius); padding: 20px 24px; text-align: center; }
+        .callout .q { font: 500 1.15rem/1.4 ui-monospace, "SF Mono", Menlo, monospace; color: var(--text-primary); }
+        .callout .why { color: var(--text-secondary); font-size: 0.92rem; margin-top: 8px; line-height: 1.55; }
+
+        /* Plain numbers */
+        .proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 900px; margin: 28px auto 0; }
+        .proof div { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 20px; }
+        .proof b { display: block; font-size: 1.7rem; letter-spacing: -0.02em; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+        .proof span { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; display: block; margin-top: 6px; }
+
+        .safety { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; text-align: center; }
+        .safety h2 { font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -0.03em; margin-bottom: 12px; }
+        .safety p { color: var(--text-secondary); line-height: 1.7; margin: 0 auto 14px; max-width: 62ch; }
+        .safety p.model { color: var(--text-primary); }
+        @media (max-width: 640px) { .tbl th, .tbl td { padding: 12px 14px; font-size: 0.9rem; } }
+    </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
-            <a href="./" class="nav-brand">
+            <a href="/pravida/" class="nav-brand">
                 <img src="images/favicon.png" alt="Pravida">
                 <span>Pravida</span>
             </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
             <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#privacy">Privacy</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms</a></li>
-                            <li><a href="/">Prava Labs</a></li>
+                <li><a href="#messaging">Messaging</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#encryption">Encryption</a></li>
+                <li><a href="#offline">Offline</a></li>
+                <li><a href="#devices">Devices</a></li>
+                <li><a href="#honest">What It Is Not</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="/">Prava Labs</a></li>
             </ul>
         </div>
     </nav>
@@ -39,187 +100,250 @@
     <section class="hero">
         <div class="hero-inner">
             <div class="app-icon-container">
-                <img src="images/favicon.png" alt="Pravida App Icon" class="app-icon">
+                <img src="images/icon.png" alt="Pravida app icon" class="app-icon">
             </div>
-            <div class="hero-badge">🔒 Invite-Only Encrypted Network</div>
-            <h1>Private, Encrypted,<br><span class="highlight">Yours</span></h1>
+            <div class="hero-badge">🔒 Invite-only · End-to-end encrypted · Works with no internet · iPhone, iPad, Mac &amp; Apple Watch</div>
+            <h1>Private. Encrypted. Offline.<br><span class="highlight">A messenger for the people you actually know.</span></h1>
             <p class="subtitle">
-                An invite-only network with iMessage-quality E2E encrypted messaging, device-to-device mesh networking, and on-device AI — all under your control.
+                Create a chat, invite people with a link or a QR code, and talk. Every message is encrypted on your device with keys that never leave it, relayed through iCloud when there is internet, and sent <strong>directly between nearby devices over Wi‑Fi</strong> when there is not. Nothing to sign up for, nothing to hand over.
             </p>
-            <span class="hero-cta">Coming Soon</span>
+            <div class="formula" aria-label="What Pravida asks of you">
+                <b>no</b> account<span class="op">·</span><b>no</b> phone number<span class="op">·</span><b>no</b> server of ours
+            </div>
+            <p class="status-line"><span class="dot"></span>In TestFlight, App Store to follow. Free, no in-app purchases.</p>
             <div class="platform-tags">
                 <span class="platform-tag">iPhone</span>
                 <span class="platform-tag">iPad</span>
                 <span class="platform-tag">Mac</span>
                 <span class="platform-tag">Apple Watch</span>
-                <span class="platform-tag">iOS 26+</span>
+                <span class="platform-tag">End-to-End Encrypted</span>
+                <span class="platform-tag">Invite-Only</span>
+                <span class="platform-tag">Wi‑Fi Mesh</span>
+                <span class="platform-tag">iCloud Relay</span>
+                <span class="platform-tag">On-Device Intelligence</span>
+            </div>
+
+            <div class="halves">
+                <div class="half">
+                    <div class="k">Private</div>
+                    <h3>Who can read it?</h3>
+                    <p>The people in the chat, and no one else. Every message, photo, file and voice note is encrypted on your device with AES‑256‑GCM before it goes anywhere. The keys are generated on the device and kept in its Keychain. Prava Labs runs no servers and holds no keys.</p>
+                </div>
+                <div class="half">
+                    <div class="k">Offline</div>
+                    <h3>Does it need the internet?</h3>
+                    <p>Not for the people near you. Members on the same Wi‑Fi network, or within peer‑to‑peer Wi‑Fi range, exchange messages directly between their devices: no cell service, no hotspot, no server. When the internet is back, iCloud carries the rest.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section class="features" id="features">
+    <!-- Messaging -->
+    <section class="features" id="messaging">
         <div class="features-inner">
-            <h2>Key Features</h2>
-            <p class="section-subtitle">Privacy is the default. Encryption is the foundation.</p>
+            <h2>Everything a Messenger Should Do</h2>
+            <p class="section-subtitle">Laid out like Messages, so nobody has to learn it. Encrypted underneath, so nobody has to think about it.</p>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
-                    <h3>End-to-End Encryption</h3>
-                    <p>All messages, calls, and files encrypted using AES-256-GCM with HKDF session keys via CryptoKit. Nobody reads your messages — not even us.</p>
-                </div>
-                <div class="feature-card">
                     <div class="feature-icon">🎟️</div>
-                    <h3>Invite-Only Networks</h3>
-                    <p>Create or join private networks via cryptographic invite links and QR codes. Your network, your rules, your people.</p>
+                    <h3>Invite-Only Chats</h3>
+                    <p>Nobody joins a chat without an invite from someone already in it. Share a link or show a QR code; invites expire on a schedule you choose, from an hour to 30 days. Owners and admins promote, demote, remove and block.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📡</div>
-                    <h3>Mesh Networking</h3>
-                    <p>Device-to-device communication via Bluetooth and WiFi when you're offline. No internet required — messages still get through.</p>
+                    <div class="feature-icon">💬</div>
+                    <h3>The Essentials</h3>
+                    <p>Replies, reactions with any emoji, forwarding, copy, typing indicators, delivery and read receipts, link previews, and keyword search across every chat with the match highlighted. Receipts and typing are each a switch you control.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📞</div>
-                    <h3>Encrypted Voice Calls</h3>
-                    <p>1:1 encrypted voice calls with native CallKit integration. Crystal clear audio, fully private.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3>On-Device AI</h3>
-                    <p>Smart replies, message summaries, and content moderation powered by Apple Intelligence. All processing stays on your device.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Trust Model</h3>
-                    <p>Tiered membership — Owner, Admin, Member, Guest — with granular permissions. You decide who sees what.</p>
+                    <div class="feature-icon">📎</div>
+                    <h3>Photos, Files and Voice</h3>
+                    <p>Photos, videos, documents and voice messages, each encrypted with its own key before it leaves the device. View‑once photos are gone after one look. Share into a chat from any other app.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💨</div>
                     <h3>Disappearing Messages</h3>
-                    <p>Signal-style configurable auto-delete timers with cross-device sync. Messages vanish when you want them to.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📸</div>
-                    <h3>Screenshot Protection</h3>
-                    <p>Detection and notification to the sender when content is screenshotted. Know when your privacy is at stake.</p>
+                    <p>From 5 seconds to a week. Expired messages are deleted on every member's device, and “delete for everyone” does what it says.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
-                    <h3>Identity Verification</h3>
-                    <p>Safety numbers display and QR code scanning for in-person verification. Confirm who you're really talking to.</p>
+                    <h3>Verify Who You Are Talking To</h3>
+                    <p>Every member has a safety number and a QR code. Compare them in person and mark the member verified. If a member's identity key ever changes, everyone in the chat is told before they send another word.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Message Search</h3>
-                    <p>Keyword search with result highlighting across all conversations. Find anything, instantly.</p>
+                    <div class="feature-icon">🔐</div>
+                    <h3>App Lock and Privacy Cover</h3>
+                    <p>Face ID, Touch ID or Optic ID before the app opens, and a cover over your chats in the app switcher. On iPhone and iPad; the Mac keeps its own lock.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📤</div>
-                    <h3>Share Extension</h3>
-                    <p>Share images, text, URLs, and video from any app directly into Pravida. Seamless integration with iOS.</p>
+                    <div class="feature-icon">📸</div>
+                    <h3>Screenshot Alerts</h3>
+                    <p>When someone screenshots a chat on iPhone or iPad, the other members are told. It is detection, not prevention: no platform can block a screenshot, and the page will not pretend otherwise.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💾</div>
                     <h3>Encrypted Backup</h3>
-                    <p>AES-GCM encrypted backup export and import. Your data is protected even in transit and at rest.</p>
+                    <p>Back up a chat's settings and member roster to a file encrypted with the chat's own key, and restore it on another device. Message history can be exported as encrypted metadata; the text itself stays where it was written.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
+    <!-- How it works -->
+    <section class="how-it-works" id="how">
         <div class="how-it-works-inner">
             <h2>How It Works</h2>
-            <p class="section-subtitle">Simple to use, impossible to compromise.</p>
+            <p class="section-subtitle">Four steps, and the first one is the whole sign-up.</p>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Create Your Network</h3>
-                    <p>Set up a private, invite-only network in seconds. You're the owner — you set the rules.</p>
+                    <h3>Open It</h3>
+                    <p>The app generates a cryptographic identity on your device the first time it runs. That is the account. Pick a name in Settings if you like; nothing is registered anywhere.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Invite Your People</h3>
-                    <p>Share cryptographic invite links or scan QR codes in person. Only the people you trust get in.</p>
+                    <h3>Invite</h3>
+                    <p>Create a chat and share an invite link, or show the QR code to someone standing next to you. The link is the key to the door, so hand it over the way you would a key: in person, or over a channel you trust. It expires when you say.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Communicate Freely</h3>
-                    <p>Message, call, and share files with end-to-end encryption. Even offline via mesh networking.</p>
+                    <h3>Talk</h3>
+                    <p>Messages go straight to nearby members over Wi‑Fi and through iCloud to everyone else, whichever is available, both at once. A member who is unreachable gets the message when they come back.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <h3>Stay in Control</h3>
-                    <p>Manage members, set permissions, enable disappearing messages, and verify identities. Your network, your way.</p>
+                    <h3>Verify</h3>
+                    <p>Compare safety numbers with a member in person and mark them verified. From then on, a changed key raises an alert and clears the badge until you have checked again.</p>
+                </div>
+            </div>
+            <div class="callout">
+                <div class="q">“Two phones, one Wi‑Fi, no internet. The message arrives.”</div>
+                <div class="why">Pravida's own line. Nearby members talk directly over Apple's peer‑to‑peer networking, encrypted twice: once by the session, once by the app. The relay is for the people who are not in the room.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Encryption -->
+    <section class="privacy-section" id="encryption">
+        <div class="privacy-inner">
+            <h2>What Leaves Your Device, and in What Form</h2>
+            <p class="section-subtitle">Encryption is not a mode you switch on. There is no unencrypted mode. This is exactly what each thing looks like once it has left your phone.</p>
+            <div class="tbl">
+                <table>
+                    <thead><tr><th scope="col">What</th><th scope="col">How It Travels</th></tr></thead>
+                    <tbody>
+                        <tr><td>Message text</td><td><span class="no">Ciphertext</span> — AES‑256‑GCM, under a key derived for the chat and the recipient</td></tr>
+                        <tr><td>Photos, videos, files, voice notes</td><td><span class="no">Ciphertext</span> — each attachment under its own AES‑256‑GCM key</td></tr>
+                        <tr><td>Reactions, receipts, deletions</td><td><span class="no">Ciphertext</span> — the same envelope as a message</td></tr>
+                        <tr><td>Your keys</td><td><span class="no">Never</span> — generated on the device, kept in its Keychain; there is no key server</td></tr>
+                        <tr><td>Your display name and an app-generated id</td><td><span class="yes">Readable</span> — so members can find you; there is no phone number, email or real name to leak</td></tr>
+                        <tr><td>Who messaged whom, and when</td><td><span class="yes">Readable by the relay</span> — iCloud needs sender, recipient, chat id and time to deliver a record. It never sees content</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="tbl-note">Everything is CryptoKit: Curve25519 identity keys, HKDF‑SHA256 key derivation, AES‑256‑GCM. Standard algorithms, no proprietary cryptography, nothing invented here.</p>
+            <div class="proof">
+                <div><b>0</b><span>Servers Prava Labs runs. The relay is your own iCloud; nearby messages never touch a server at all</span></div>
+                <div><b>AES‑256</b><span>GCM, on every message and every attachment, before it leaves the device</span></div>
+                <div><b>1 h – 30 d</b><span>How long an invite link lives, chosen when you make it</span></div>
+                <div><b>5 s – 7 d</b><span>Disappearing-message timers, deleted on every member's device</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offline -->
+    <section class="tech-section" id="offline">
+        <div class="tech-inner">
+            <h2>Does it need the internet? Only for the people who are not nearby.</h2>
+            <p class="section-subtitle">Both transports run at the same time. When a member's device is reachable over Wi‑Fi, the message goes there directly and wins; otherwise it goes through iCloud; if neither is available, it waits and goes when one is.</p>
+            <div class="tbl">
+                <table>
+                    <thead><tr><th scope="col">What</th><th scope="col">Needs the Internet?</th></tr></thead>
+                    <tbody>
+                        <tr><td>Messages to members nearby</td><td><span class="no">No</span> — direct over Wi‑Fi: the same network, or peer‑to‑peer Wi‑Fi between the devices</td></tr>
+                        <tr><td>Creating a chat, an invite, or scanning a QR code</td><td><span class="no">No</span> — it all happens on the device</td></tr>
+                        <tr><td>Smart replies, summaries, translation</td><td><span class="no">No</span> — Apple's on-device model; nothing is sent anywhere</td></tr>
+                        <tr><td>Reading what you already have</td><td><span class="no">No</span> — your chats live on your device, not in a cloud you fetch from</td></tr>
+                        <tr><td>Messages to members elsewhere</td><td><span class="yes">Yes</span> — relayed through iCloud, encrypted; an iCloud account signed in is all it takes</td></tr>
+                        <tr><td>Apple Watch</td><td><span class="yes">Yes</span> — the Watch talks to iCloud only; nearby-only messages reach it once they are relayed</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="tbl-note">Nearby means Wi‑Fi. Pravida does not use Bluetooth, and messages do not hop from device to device to reach a third; each member is reached directly or through iCloud.</p>
+        </div>
+    </section>
+
+    <!-- Devices -->
+    <section class="features" id="devices">
+        <div class="features-inner">
+            <h2>Every Apple Device, Laid Out Like Messages</h2>
+            <p class="section-subtitle">Native SwiftUI on each platform, following the Human Interface Guidelines rather than fighting them.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>iPhone</h3>
+                    <p>Messages, Mesh and Settings in three tabs. App Lock, the privacy cover, screenshot alerts and the QR scanner live here. Everything works with the screen off, including the notifications that let you reply inline.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>iPad and Mac</h3>
+                    <p>One Messages-style window: the chat list beside the chat. On the Mac it is a native, sandboxed app with keyboard shortcuts for Mesh and Settings, not a phone app stretched to fit.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⌚</div>
+                    <h3>Apple Watch</h3>
+                    <p>A standalone Watch app that shares your iPhone's identity, so members see one of you. Read, dictate, send a voice message or a tapback from your wrist, with an unread-count complication.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>On-Device Intelligence</h3>
+                    <p>On devices with Apple Intelligence, Pravida suggests replies, summarises what you missed and translates messages, entirely on the device. A sentiment check catches a message you might regret before it sends. One switch turns all of it off.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Privacy -->
-    <section class="privacy-section" id="privacy">
-        <div class="privacy-inner">
-            <h2>Privacy Is Not a Feature.<br>It's the Foundation.</h2>
-            <p class="section-subtitle">Pravida is built from the ground up to protect your data.</p>
-            <div class="privacy-badges">
-                <span class="privacy-badge"><span class="check">✓</span> E2E Encrypted by Default</span>
-                <span class="privacy-badge"><span class="check">✓</span> On-Device AI Only</span>
-                <span class="privacy-badge"><span class="check">✓</span> No Analytics</span>
-                <span class="privacy-badge"><span class="check">✓</span> No Tracking</span>
-                <span class="privacy-badge"><span class="check">✓</span> No Telemetry</span>
-                <span class="privacy-badge"><span class="check">✓</span> No Data Selling</span>
-            </div>
-        </div>
+    <!-- What it is not -->
+    <section class="safety" id="honest">
+        <h2>What Pravida Is Not</h2>
+        <p>It is not a Signal‑protocol messenger. Pravida uses Apple's CryptoKit with standard algorithms, and a message can only be read by the members it was encrypted for; but it does not yet have forward secrecy, so a key that leaks later would expose earlier messages under it. That work is on the roadmap, and this page will change when it lands.</p>
+        <p class="model">The right mental model: the invite link is the key to the chat. Anyone who holds it can join until it expires. Share it the way you would share a key.</p>
+        <p>It does not hide who you talk to from your own iCloud account: the relay sees ids and timestamps, never content. Screenshot alerts tell members a screenshot was taken; nothing can stop one. The Watch needs the iPhone app opened once and the same iCloud account. There are no voice or video calls, no message editing, and no Android or web clients in this build.</p>
     </section>
 
-    <!-- Tech Stack -->
-    <section class="tech-section">
-        <div class="tech-inner">
-            <h2>Built With</h2>
-            <div class="tech-grid">
-                <span class="tech-tag">Swift 6.2</span>
-                <span class="tech-tag">SwiftUI</span>
-                <span class="tech-tag">CryptoKit</span>
-                <span class="tech-tag">AES-256-GCM</span>
-                <span class="tech-tag">MultipeerConnectivity</span>
-                <span class="tech-tag">Apple Intelligence</span>
-                <span class="tech-tag">Core ML</span>
-                <span class="tech-tag">CallKit</span>
-                <span class="tech-tag">SwiftData</span>
-                <span class="tech-tag">Secure Enclave</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-brand">
-                        <img src="images/favicon.png" alt="Pravida">
-                        <span>Pravida</span>
-                    </div>
-                    <p class="footer-description">A privacy-first, invite-only encrypted network. iMessage-quality messaging with end-to-end encryption, mesh networking, and on-device AI.</p>
+                    <div class="footer-brand">Pravida</div>
+                    <p class="footer-description">A private, invite-only, end-to-end encrypted messenger for iPhone, iPad, Mac and Apple Watch that works over Wi‑Fi even without internet. By Prava Labs.</p>
                 </div>
-                <div>
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="#messaging">Messaging</a>
+                    <a href="#how">How It Works</a>
+                    <a href="#encryption">Encryption</a>
+                    <a href="#offline">Offline</a>
+                    <a href="#devices">Devices</a>
+                    <a href="#honest">What It Is Not</a>
                 </div>
-                <div>
-                    <h4>Contact</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
-                        <li><a href="mailto:privacy@pravalabs.app">privacy@pravalabs.app</a></li>
-                    </ul>
+                <div class="footer-links">
+                    <h4>Help</h4>
+                    <a href="support.html">Support</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Prava Labs</h4>
+                    <a href="/">All Products</a>
+                    <a href="/tradesocial/">TradeSocial</a>
+                    <a href="/boatnavi/">BoatNavi</a>
+                    <a href="/toolport/">Toolport</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2026 Prava Labs, LLC. All rights reserved.
+                <span>© 2026 Prava Labs, LLC</span>
+                <span>Made in California</span>
             </div>
         </div>
     </footer>
