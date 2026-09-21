@@ -1,0 +1,6 @@
+<!-- Prava Labs "Core P" — geometric P holding the core dot. __INK__ / __CORE__ are filled by generate.mjs -->
+<g fill="none" stroke-linecap="round">
+  <path d="M92 48 V212" stroke="__INK__" stroke-width="25"/>
+  <path d="M92 48 h48 a52 52 0 0 1 0 104 h-48" stroke="__INK__" stroke-width="25" stroke-linejoin="round"/>
+</g>
+<circle cx="140" cy="100" r="17" fill="__CORE__"/>
