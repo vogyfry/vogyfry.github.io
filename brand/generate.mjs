@@ -187,6 +187,22 @@ for (const [id, entry] of entries) {
     png(f, join(ldir, `${which}-1024.png`), 1024);
   }
 
+  // Menu bar template for Mac menu-bar apps ("menubar": true): the bare glyph in
+  // black on a transparent square, sized so the ink fills the canvas the way an
+  // SF Symbol fills its 18 pt box; the app marks it isTemplate and AppKit tints
+  // it for light, dark and coloured menu bars. Same mark as the Dock icon, so the
+  // two never look like two apps.
+  if (p.menubar) {
+    const c = coreDefs("#000000", "core");
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${G} ${G}">
+<defs>${c.def}</defs>
+${glyphMarkup(p.glyph, "#000000", c.fill, 1.0)}
+</svg>`;
+    const f = join(dir, "menubar-template.svg");
+    writeFileSync(f, svg);
+    for (const s of [18, 36, 54, 128]) png(f, join(dir, `menubar-template-${s}.png`), s);
+  }
+
   // Icon Composer file. The tile becomes the background fill (a gradient the
   // system lights), the ink and the dot become two glass layers. Xcode renders
   // every platform, appearance and size from this one file, and generates flat
