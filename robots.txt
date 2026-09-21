@@ -1,4 +1,32 @@
+# pravalabs.app — every page is public. Search engines and AI crawlers are welcome.
+# What we make: https://pravalabs.app/llms.txt (summary) and https://pravalabs.app/llms-full.txt (every page's substance)
+
 User-agent: *
 Allow: /
+Disallow: /toolport/thanks.html
+
+# AI assistants and their search crawlers — allowed explicitly, so a stricter default never locks them out
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: OAI-SearchBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: DuckAssistBot
+User-agent: Amazonbot
+User-agent: meta-externalagent
+User-agent: cohere-ai
+User-agent: MistralAI-User
+User-agent: YouBot
+User-agent: CCBot
+Allow: /
+Disallow: /toolport/thanks.html
 
 Sitemap: https://pravalabs.app/sitemap.xml
