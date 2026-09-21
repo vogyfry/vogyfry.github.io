@@ -57,6 +57,7 @@ Per product, `dist/<id>/` contains:
 Variants are named for the ground they sit on, never for the colour of their ink.
 | `icon-macos.svg` / `macos-{16…1024}.png` | Mac apps on macOS 15 and earlier — the tile inset on Apple's 824-in-1024 grid, since old macOS applies no mask of its own. Opt in with `"macos": true`. On macOS 26+ ship `AppIcon.icon` instead |
 | `AppIcon.icon/` | **The app icon for iOS, iPadOS, macOS and watchOS 26+.** An Icon Composer file: the tile as the background fill, the ink and the core dot as two glass layers. Xcode renders every platform, size and appearance (default, dark, clear, tinted) from it and generates flat PNGs for older OS versions. Add it to the app target and delete `AppIcon.appiconset`; with xcodegen declare it as `type: file`, `buildPhase: resources`, and exclude it from the folder scan |
+| `menubar-template.svg` / `menubar-template-{18,36,54,128}.png` | Mac menu-bar apps — the bare glyph in black on transparent, sized to fill its box like an SF Symbol; the app marks it `isTemplate` and AppKit tints it. Same mark as the Dock icon. Opt in with `"menubar": true` |
 | `layers/` | the same three layers as loose SVG + 1024 PNG (`tile`, `glyph`, `core`) for hand assembly in Icon Composer or any other layered format |
 
 ## Why layers
