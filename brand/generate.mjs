@@ -59,7 +59,7 @@ function glyphMarkup(file, ink, core, inset) {
   return `<g transform="translate(${off.toFixed(1)} ${off.toFixed(1)}) scale(${inset})">${raw}</g>`;
 }
 
-function icon({ p, variant, fullBleed = false, pad = 0, rim = false }) {
+function icon({ p, variant, fullBleed = false, pad = 0 }) {
   const inset = p.glyphInset ?? T.glyphInset;
   const defs = [];
   let bg, stroke, ink, core;
@@ -89,14 +89,7 @@ function icon({ p, variant, fullBleed = false, pad = 0, rim = false }) {
     else { const c = coreDefs(p.core, "core"); defs.push(c.def); core = c.fill; }
   }
 
-  // The Dock draws no edge of its own, so the macOS tile carries a top-lit rim
-  // (the lip Apple's glass icons have) in place of the faint inner stroke, which
-  // vanishes at Dock size against a grey that sits at the tile's own brightness.
-  if (rim) defs.push(`<linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0.2"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0.1"/></linearGradient>`);
-  const ring = fullBleed ? "" : rim ?
-    `<rect x="1.5" y="1.5" width="${G - 3}" height="${G - 3}" rx="${RX - 1.5}" fill="none" stroke="url(#rim)" stroke-width="3"/>` :
+  const ring = fullBleed ? "" :
     `<rect x="1.5" y="1.5" width="${G - 3}" height="${G - 3}" rx="${RX - 1.5}" fill="none" stroke="${stroke.hex}" stroke-opacity="${stroke.op}" stroke-width="3"/>`;
 
   const content = `${bg}${ring}\n${glyphMarkup(p.glyph, ink, core, inset)}`;
@@ -107,6 +100,34 @@ function icon({ p, variant, fullBleed = false, pad = 0, rim = false }) {
   const body = pad ? `<g transform="translate(${off} ${off}) scale(${pad})">${content}</g>` : content;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${G} ${G}">
+<defs>${defs.filter(Boolean).join("\n")}</defs>
+${body}
+</svg>`;
+}
+
+// Icon Composer layers. Apple's icons are layered: the system draws the glass
+// edge, highlights and shadow per layer, so a layered icon reads on any Dock
+// where a flat PNG's edge vanishes. Three layers per product, each full-canvas
+// on the 256 grid: the tile (opaque, full-bleed), the ink, and the core dot.
+function layer({ p, which }) {
+  const inset = p.glyphInset ?? T.glyphInset;
+  const defs = [];
+  let body;
+  if (which === "tile") {
+    defs.push(darkTileDef("bg", p.tile ?? T.tile.dark));
+    body = `<rect width="${G}" height="${G}" fill="url(#bg)"/>`;
+    if (p.parent) { defs.push(washDef("wash", T.spectrum)); body += `<rect width="${G}" height="${G}" fill="url(#wash)"/>`; }
+  } else {
+    const c = coreDefs(p.core, "core"); defs.push(c.def);
+    let raw = glyphMarkup(p.glyph, T.ink.dark, c.fill, inset);
+    // the dot is the one element filled with the core colour; ink is everything else
+    const dot = /<circle[^>]*fill="(?:url\(#core\)|#[0-9a-f]{6})"[^>]*\/>/i;
+    body = which === "core" ? raw.replace(/<(?:path|polyline|line|rect|polygon|ellipse)[^>]*\/>|<circle(?![^>]*fill="(?:url\(#core\)|#[0-9a-f]{6})")[^>]*\/>/gi, "")
+                            : raw.replace(dot, "");
+  }
+  // Icon Composer places an SVG at its intrinsic size on the 1024 canvas, so
+  // the layer declares 1024 px; the drawing stays on the 256 grid via viewBox.
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 ${G} ${G}">
 <defs>${defs.filter(Boolean).join("\n")}</defs>
 ${body}
 </svg>`;
@@ -154,9 +175,39 @@ for (const [id, entry] of entries) {
     "appstore.svg": icon({ p, variant: "full", fullBleed: true }),
   };
   if (p.tint) files["icon-tint.svg"] = icon({ p, variant: "tint" });
-  if (p.macos) files["icon-macos.svg"] = icon({ p, variant: "full", pad: 824 / 1024, rim: true });
+  if (p.macos) files["icon-macos.svg"] = icon({ p, variant: "full", pad: 824 / 1024 });
 
   for (const [name, svg] of Object.entries(files)) writeFileSync(join(dir, name), svg);
+
+  const ldir = join(dir, "layers");
+  mkdirSync(ldir, { recursive: true });
+  for (const which of ["tile", "glyph", "core"]) {
+    const f = join(ldir, `${which}.svg`);
+    writeFileSync(f, layer({ p, which }));
+    png(f, join(ldir, `${which}-1024.png`), 1024);
+  }
+
+  // Icon Composer file. The tile becomes the background fill (a gradient the
+  // system lights), the ink and the dot become two glass layers. Xcode renders
+  // every platform, appearance and size from this one file, and generates flat
+  // PNGs for OS versions before Liquid Glass. Drop dist/<id>/AppIcon.icon into
+  // the app target; it replaces the AppIcon asset catalog.
+  const srgb = (hex) => "extended-srgb:" + [1, 3, 5].map((i) => (parseInt(hex.slice(i, i + 2), 16) / 255).toFixed(5)).join(",") + ",1.00000";
+  const tile = p.tile ?? T.tile.dark;
+  const glassGroup = (name) => ({
+    name, layers: [{ "image-name": `${name}.svg`, name }],
+    shadow: { kind: "neutral", opacity: 0.5 }, translucency: { enabled: true, value: 0.5 },
+    specular: true, "blur-material": 0.5, lighting: "individual",
+  });
+  const iconJson = {
+    fill: { "linear-gradient": [srgb(tile[0]), srgb(tile[2])] },
+    groups: [glassGroup("core"), glassGroup("glyph")],
+    "supported-platforms": { circles: ["watchOS"], squares: "shared" },
+  };
+  const idir = join(dir, "AppIcon.icon");
+  mkdirSync(join(idir, "Assets"), { recursive: true });
+  writeFileSync(join(idir, "icon.json"), JSON.stringify(iconJson, null, 2) + "\n");
+  for (const which of ["glyph", "core"]) writeFileSync(join(idir, "Assets", `${which}.svg`), layer({ p, which }));
 
   for (const s of T.sizes) png(join(dir, "icon.svg"), join(dir, `icon-${s}.png`), s);
   png(join(dir, "appstore.svg"), join(dir, "appstore-1024.png"), 1024);
