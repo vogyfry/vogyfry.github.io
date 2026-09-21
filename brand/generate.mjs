@@ -59,7 +59,7 @@ function glyphMarkup(file, ink, core, inset) {
   return `<g transform="translate(${off.toFixed(1)} ${off.toFixed(1)}) scale(${inset})">${raw}</g>`;
 }
 
-function icon({ p, variant, fullBleed = false, pad = 0 }) {
+function icon({ p, variant, fullBleed = false, pad = 0, rim = false }) {
   const inset = p.glyphInset ?? T.glyphInset;
   const defs = [];
   let bg, stroke, ink, core;
@@ -89,7 +89,14 @@ function icon({ p, variant, fullBleed = false, pad = 0 }) {
     else { const c = coreDefs(p.core, "core"); defs.push(c.def); core = c.fill; }
   }
 
-  const ring = fullBleed ? "" :
+  // The Dock draws no edge of its own, so the macOS tile carries a top-lit rim
+  // (the lip Apple's glass icons have) in place of the faint inner stroke, which
+  // vanishes at Dock size against a grey that sits at the tile's own brightness.
+  if (rim) defs.push(`<linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.1"/></linearGradient>`);
+  const ring = fullBleed ? "" : rim ?
+    `<rect x="1.5" y="1.5" width="${G - 3}" height="${G - 3}" rx="${RX - 1.5}" fill="none" stroke="url(#rim)" stroke-width="3"/>` :
     `<rect x="1.5" y="1.5" width="${G - 3}" height="${G - 3}" rx="${RX - 1.5}" fill="none" stroke="${stroke.hex}" stroke-opacity="${stroke.op}" stroke-width="3"/>`;
 
   const content = `${bg}${ring}\n${glyphMarkup(p.glyph, ink, core, inset)}`;
@@ -147,7 +154,7 @@ for (const [id, entry] of entries) {
     "appstore.svg": icon({ p, variant: "full", fullBleed: true }),
   };
   if (p.tint) files["icon-tint.svg"] = icon({ p, variant: "tint" });
-  if (p.macos) files["icon-macos.svg"] = icon({ p, variant: "full", pad: 824 / 1024 });
+  if (p.macos) files["icon-macos.svg"] = icon({ p, variant: "full", pad: 824 / 1024, rim: true });
 
   for (const [name, svg] of Object.entries(files)) writeFileSync(join(dir, name), svg);
 
