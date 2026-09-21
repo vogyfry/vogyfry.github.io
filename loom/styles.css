@@ -85,7 +85,13 @@ body {
     justify-content: space-between;
 }
 
-.nav-brand {
+/* The product name stays white in every state: the global a:visited and a:hover
+   rules above are pseudo-classes, which outrank a bare class, so without these
+   the name turned violet once the page had been visited. */
+.nav-brand,
+.nav-brand:visited,
+.nav-brand:hover,
+.nav-brand:focus-visible {
     display: flex;
     align-items: center;
     gap: 10px;
