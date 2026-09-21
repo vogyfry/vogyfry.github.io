@@ -588,7 +588,7 @@
                 </svg>
             </span>
         </a>
-        <a data-runs="ios" class="app-card pravida" href="/pravida/">
+        <a data-runs="ios mac" class="app-card pravida" href="/pravida/">
             <div class="app-header">
                 <img class="app-icon" src="pravida-icon.png" alt="Pravida icon">
                 <div>
@@ -663,15 +663,18 @@
         var chips = Array.prototype.slice.call(document.querySelectorAll('.runs-chip'));
         var cards = Array.prototype.slice.call(document.querySelectorAll('.app-card[data-runs]'));
         if (!chips.length) return;
+        // data-runs may list several groups ("ios mac"): a product that ships on
+        // both iPhone and Mac lights up under either chip.
+        function runsIn(card, runs) { return card.dataset.runs.split(/\s+/).indexOf(runs) !== -1; }
 
         chips.forEach(function (c) {
-            var n = c.dataset.runs === 'all' ? cards.length : cards.filter(function (k) { return k.dataset.runs === c.dataset.runs; }).length;
+            var n = c.dataset.runs === 'all' ? cards.length : cards.filter(function (k) { return runsIn(k, c.dataset.runs); }).length;
             var b = document.createElement('span'); b.className = 'n'; b.textContent = n; c.appendChild(b);
         });
 
         function highlight(runs) {
             chips.forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.runs === runs ? 'true' : 'false'); });
-            cards.forEach(function (k) { k.classList.toggle('dim', runs !== 'all' && k.dataset.runs !== runs); });
+            cards.forEach(function (k) { k.classList.toggle('dim', runs !== 'all' && !runsIn(k, runs)); });
             if (history.replaceState) history.replaceState(null, '', runs === 'all' ? location.pathname : '#' + runs);
             if (runs !== 'all') {
                 var grid = document.querySelector('.products .apps'), top = grid.getBoundingClientRect().top;
