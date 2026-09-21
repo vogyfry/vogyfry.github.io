@@ -1,6 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 256 256">
 <defs></defs>
 <g transform="translate(29.7 29.7) scale(0.768)"><g transform="translate(0.33 0.65)" data-centre="1">
-
-<circle cx="128" cy="106" r="19.5" fill="#00d4aa"/></g></g>
+  
+  <circle cx="128" cy="106" r="19.5" fill="#00d4aa"/>
+</g></g>
 </svg>
