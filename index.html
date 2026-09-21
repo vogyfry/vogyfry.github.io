@@ -141,7 +141,7 @@
 
         .apps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
             gap: 20px;
             max-width: 800px;
             margin: 0 auto;
@@ -317,7 +317,9 @@
         /* One grid, live products first. Where a product runs is a chip on the
            card and a highlight control above the grid — the same three colours the
            icons' core dots use, so chip, tile and dot agree. */
-        .products { max-width: 800px; margin: 0 auto; padding: 0 24px 72px; }
+        /* The grid flows: four cards across on a wide display, three on a laptop,
+           two on a tablet, one on a phone. The chips stay with the grid's edge. */
+        .products { max-width: 1400px; margin: 0 auto; padding: 0 24px 72px; }
         .products .apps { padding: 0; max-width: none; }
 
         .runs-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
