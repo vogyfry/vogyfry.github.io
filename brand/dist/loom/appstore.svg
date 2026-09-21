@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
 <defs><radialGradient id="bg" cx="0.5" cy="-0.1" r="1.2">
-  <stop offset="0" stop-color="#6153b4"/><stop offset="0.48" stop-color="#584ea2"/>
-  <stop offset="1" stop-color="#5c539d"/></radialGradient></defs>
+  <stop offset="0" stop-color="#4c3caa"/><stop offset="0.48" stop-color="#2e2680"/>
+  <stop offset="1" stop-color="#1c1858"/></radialGradient></defs>
 <rect width="256" height="256" rx="0" fill="url(#bg)"/>
 <g transform="translate(-0.8 -0.8) scale(1.006)"><g fill="none" stroke="#ffffff" stroke-width="16.9" stroke-linecap="round" stroke-linejoin="round">
   <path d="M84 52 V204"/><path d="M172 52 V204"/>

@@ -28,14 +28,10 @@ product; everything else — tiles, variants, every size — is produced by the 
   round caps), one core dot per glyph. **The tile belongs to the kind, not the product** —
   consumer apps sit on a teal-leaning navy, developer tools on a cyan navy, enterprise on
   a violet navy — so tile and dot say the same thing. All three sit at the same brightness
-  (luminance ≈ 85–95 at the tile's edge, measured at 44 px on the Dock's `#3a3a3a`),
-  which is where the family moved in Sep 2026 after Pravida's Dock icon lost its bottom
-  half: the Dock grey sits at ≈ 58 and the old navy bottom stop rendered at ≈ 41, so the
-  tile's edge vanished and the icon read as smaller than its neighbours. The lift is the
-  old stops mixed 12–18% toward white, so each kind keeps its hue. The cost is the dot:
-  it clears ≈ 2.5–3.2:1 on the mid tile now, not 4:1, and stays legible because it is
-  the only saturated thing on the tile. White ink still clears 6:1. No product gets its
-  own tile; Loom's violet one was removed for that reason. Measure at Dock size, not 1024.
+  (luminance ≈ 40–80 on the tile), which is the midpoint between the near-black tile the
+  family launched with and the vivid blue of EAG's original mark: bright enough to read
+  as a tile on a black page, dark enough that every dot still clears 4:1 on its own tile.
+  No product gets its own tile; Loom's violet one was removed for that reason.
 
 ## Generate
 
@@ -59,7 +55,20 @@ Per product, `dist/<id>/` contains:
 | `glyph-on-light.svg` | bare glyph, no tile, **navy ink** — for light grounds |
 
 Variants are named for the ground they sit on, never for the colour of their ink.
-| `icon-macos.svg` / `macos-{16…1024}.png` | Mac apps — the tile inset on Apple's 824-in-1024 grid, since macOS applies no mask of its own, with a top-lit white rim in place of the inner stroke so the edge reads in the Dock. Opt in with `"macos": true` |
+| `icon-macos.svg` / `macos-{16…1024}.png` | Mac apps on macOS 15 and earlier — the tile inset on Apple's 824-in-1024 grid, since old macOS applies no mask of its own. Opt in with `"macos": true`. On macOS 26+ ship `AppIcon.icon` instead |
+| `AppIcon.icon/` | **The app icon for iOS, iPadOS, macOS and watchOS 26+.** An Icon Composer file: the tile as the background fill, the ink and the core dot as two glass layers. Xcode renders every platform, size and appearance (default, dark, clear, tinted) from it and generates flat PNGs for older OS versions. Add it to the app target and delete `AppIcon.appiconset`; with xcodegen declare it as `type: file`, `buildPhase: resources`, and exclude it from the folder scan |
+| `layers/` | the same three layers as loose SVG + 1024 PNG (`tile`, `glyph`, `core`) for hand assembly in Icon Composer or any other layered format |
+
+## Why layers
+
+Apple's icons are layered. The system draws a live glass edge, highlight and shadow on
+each layer, adapted to whatever sits behind the icon, which is why Xcode's tile reads
+on a dark Mac Dock and a frosted iPad Dock alike. A flat PNG gets none of that: its edge
+is only the tile's own colour, and every flat tile matches some Dock somewhere — the
+family navy vanished on the dark Mac Dock, and a lifted tile vanished on the iPad's
+(Sep 2026). The HIG's rules follow from this: one design on every platform, no baked
+highlights or rims, let the system handle the effects. So the tile colour stays what
+the brand says, and the edge comes from `AppIcon.icon`.
 
 ## Adding a new product
 
