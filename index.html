@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prava Labs — Local-First Apps &amp; On-Device AI Tools</title>
-    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), and EAG (the governed enterprise agent gateway).">
+    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger), and EAG (the governed enterprise agent gateway).">
     <meta property="og:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
     <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing, EAG for the enterprise.">
     <meta property="og:url" content="https://pravalabs.app/">
@@ -54,6 +54,17 @@
           "url": "https://pravalabs.app/eag/",
           "description": "A governed MCP gateway: one endpoint fronting enterprise systems with identity-scoped, audited, natural-language tools for AI agents.",
           "publisher": { "@id": "https://pravalabs.app/#org" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/pravida/#app",
+          "name": "Pravida",
+          "operatingSystem": "iOS 26, iPadOS 26, macOS 26, watchOS 26",
+          "applicationCategory": "CommunicationApplication",
+          "url": "https://pravalabs.app/pravida/",
+          "description": "A private, invite-only, end-to-end encrypted messenger for iPhone, iPad, Mac and Apple Watch that works over Wi‑Fi even without internet. No account, no phone number, no server of ours.",
+          "publisher": { "@id": "https://pravalabs.app/#org" },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
         },
         {
           "@type": "SoftwareApplication",
@@ -526,6 +537,33 @@
                 </svg>
             </span>
         </a>
+        <a data-runs="ios" class="app-card pravida" href="/pravida/">
+            <div class="app-header">
+                <img class="app-icon" src="pravida-icon.png" alt="Pravida icon">
+                <div>
+                    <div class="app-name">Pravida <span class="live-now beta">In TestFlight</span></div>
+                    <div class="app-platform">iPhone · iPad · Mac · Apple Watch · Works with no internet</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                Private, encrypted, offline. An invite-only messenger for the people you actually know: create a chat, share a link or a QR code, and talk. Every message is end-to-end encrypted with keys generated on your devices, relayed through iCloud, or sent directly between nearby devices over Wi‑Fi when there is no internet. No account, no phone number, no server of ours. Smart replies, summaries and translation run on the device.
+            </p>
+            <div class="app-tags">
+                <span class="tag">End-to-End Encrypted</span>
+                <span class="tag">Invite-Only</span>
+                <span class="tag">Works Without Internet</span>
+                <span class="tag">No Account · No Phone Number</span>
+                <span class="tag">Disappearing Messages</span>
+                <span class="tag">On-Device Intelligence</span>
+                <span class="tag">iPhone · iPad · Mac · Watch</span>
+            </div>
+            <span class="app-cta">
+                Learn More
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
         </div>
     </section>
 
@@ -559,11 +597,13 @@
             &nbsp;&middot;&nbsp; <a href="/toolport/">Toolport</a>
             &nbsp;&middot;&nbsp; <a href="/eag/">EAG</a>
             &nbsp;&middot;&nbsp; <a href="/loom/">Loom</a>
+            &nbsp;&middot;&nbsp; <a href="/boatnavi/">BoatNavi</a>
+            &nbsp;&middot;&nbsp; <a href="/pravida/">Pravida</a>
             &nbsp;&middot;&nbsp; <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
         </p>
         <p class="footer-legal-note" style="margin-top:6px; font-size:0.8em; opacity:0.7">
             Privacy, terms, and support for each product live on its own pages:
-            <a href="/tradesocial/privacy.html">TradeSocial</a> &middot; <a href="/toolport/privacy.html">Toolport</a>
+            <a href="/tradesocial/privacy.html">TradeSocial</a> &middot; <a href="/toolport/privacy.html">Toolport</a> &middot; <a href="/boatnavi/privacy.html">BoatNavi</a> &middot; <a href="/pravida/privacy.html">Pravida</a>
         </p>
     </footer>
 

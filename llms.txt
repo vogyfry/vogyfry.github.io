@@ -1,6 +1,6 @@
 # Prava Labs
 
-> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products are grouped by device: iPhone, iPad and Apple Watch (TradeSocial, BoatNavi; Mavee and Pravida in labs), Mac and PC (Toolport), and self-hosted in your own tenant (EAG, Loom).
+> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products are grouped by device: iPhone, iPad, Mac and Apple Watch (TradeSocial, BoatNavi, Pravida; Mavee in labs), Mac and PC (Toolport), and self-hosted in your own tenant (EAG, Loom).
 
 ## Products
 
@@ -9,7 +9,7 @@
 - [EAG — Enterprise Agent Gateway](https://pravalabs.app/eag/) — coming soon: governed MCP gateway with identity-scoped, audited tools for enterprise systems
 - [Prava Loom](https://pravalabs.app/loom/) — coming soon: the self-writing, self-healing integration agent — authors, custodies and heals the connections AI agents need, inside your tenant
 - [Mavee](https://pravalabs.app/mavee/) — in development: Apple Intelligence day planner (iOS)
-- [Pravida](https://pravalabs.app/pravida/) — in development: E2E-encrypted, invite-only private network (iOS)
+- [Pravida](https://pravalabs.app/pravida/) — in TestFlight: private, invite-only, end-to-end encrypted messenger that works over Wi‑Fi even without internet — no account, no phone number, no server of ours; on-device smart replies, summaries and translation (iPhone, iPad, Mac, Apple Watch)
 - [BoatNavi](https://pravalabs.app/boatnavi/) — in TestFlight: water under the keel, offline — clearance for your boat across San Francisco Bay and the Delta, plus the boat's own instruments over Signal K, NMEA 0183 or Raymarine SeaTalk1, batteries, tanks, autopilot, and an anchor watch (iOS, iPadOS)
 
 ## Company

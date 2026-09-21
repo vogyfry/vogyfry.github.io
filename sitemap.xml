@@ -11,9 +11,10 @@
   <url><loc>https://pravalabs.app/mavee/privacy.html</loc><priority>0.3</priority></url>
   <url><loc>https://pravalabs.app/mavee/terms.html</loc><priority>0.3</priority></url>
 
-  <url><loc>https://pravalabs.app/pravida/</loc><priority>0.8</priority></url>
-  <url><loc>https://pravalabs.app/pravida/privacy.html</loc><priority>0.3</priority></url>
-  <url><loc>https://pravalabs.app/pravida/terms.html</loc><priority>0.3</priority></url>
+  <url><loc>https://pravalabs.app/pravida/</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>
+  <url><loc>https://pravalabs.app/pravida/support.html</loc><lastmod>2026-09-21</lastmod><priority>0.5</priority></url>
+  <url><loc>https://pravalabs.app/pravida/privacy.html</loc><lastmod>2026-09-21</lastmod><priority>0.3</priority></url>
+  <url><loc>https://pravalabs.app/pravida/terms.html</loc><lastmod>2026-09-21</lastmod><priority>0.3</priority></url>
 
   <url><loc>https://pravalabs.app/eag/</loc><lastmod>2026-08-21</lastmod><priority>0.8</priority></url>
   <url><loc>https://pravalabs.app/eag/architecture.html</loc><lastmod>2026-08-21</lastmod><priority>0.7</priority></url>
