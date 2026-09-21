@@ -1,10 +1,10 @@
-/* Trade Social Website — Dark theme matching Prava Labs family */
+/* TradeSocial website — the consumer-app teal, like every product page */
 
 :root {
-    --brand-green: #00D851;
-    --brand-green-dark: #00B844;
-    --brand-green-dim: rgba(0, 216, 81, 0.1);
-    --brand-green-border: rgba(0, 216, 81, 0.25);
+    --brand-green: #00d4aa;
+    --brand-green-dark: #00a884;
+    --brand-green-dim: rgba(0, 212, 170, 0.1);
+    --brand-green-border: rgba(0, 212, 170, 0.25);
     --bg-primary: #0a0a0a;
     --bg-secondary: #141414;
     --bg-card: rgba(255, 255, 255, 0.06);
@@ -83,7 +83,7 @@ body {
 }
 .hero-cta:hover {
     transform: scale(1.03);
-    box-shadow: 0 4px 24px rgba(0, 216, 81, 0.35);
+    box-shadow: 0 4px 24px rgba(0, 212, 170, 0.35);
 }
 .hero-cta.coming-soon {
     background: rgba(255, 255, 255, 0.07);
@@ -109,7 +109,7 @@ body {
 .final-cta {
     padding: 90px 24px;
     text-align: center;
-    background: linear-gradient(180deg, var(--bg-primary), rgba(0, 216, 81, 0.06));
+    background: linear-gradient(180deg, var(--bg-primary), rgba(0, 212, 170, 0.06));
 }
 .final-cta-inner { max-width: 640px; margin: 0 auto; }
 .final-cta h2 { font-size: clamp(26px, 4vw, 38px); margin-bottom: 14px; color: var(--text-primary); }
@@ -129,13 +129,13 @@ body {
 .live-dot {
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--brand-green);
-    box-shadow: 0 0 0 0 rgba(0, 216, 81, 0.6);
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.6);
     animation: livePulse 2s infinite;
 }
 @keyframes livePulse {
-    0%   { box-shadow: 0 0 0 0 rgba(0, 216, 81, 0.5); }
-    70%  { box-shadow: 0 0 0 9px rgba(0, 216, 81, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 216, 81, 0); }
+    0%   { box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.5); }
+    70%  { box-shadow: 0 0 0 9px rgba(0, 212, 170, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 212, 170, 0); }
 }
 
 /* App Icon */
@@ -143,7 +143,7 @@ body {
 .app-icon {
     width: 120px; height: 120px; border-radius: 26px;
     display: block; margin: 0 auto;
-    box-shadow: 0 20px 60px rgba(0, 216, 81, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 212, 170, 0.2);
 }
 
 /* Screenshots */
