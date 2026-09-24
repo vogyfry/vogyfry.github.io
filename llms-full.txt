@@ -63,7 +63,7 @@ Download: Get Prava Toolport for Mac today — Windows coming soon. Free 3-day t
 ## Enterprise Agent Gateway (EAG) — coming soon
 URL: https://pravalabs.app/eag/
 
-One governed MCP endpoint turning ServiceNow, Workday, Salesforce and SAP into natural-language tools for any AI agent. Every call runs as the real user, writes need human sign-off, outcomes are signed. Self-hosted.
+One governed MCP endpoint turning ServiceNow, Workday, Salesforce and SAP into natural-language tools for any AI agent. Every call is scoped to the real user; policy rules and human approval gate writes where you set them; every configuration change is eval-tested and logged; every outcome is signed, and evidence packs verify offline. Self-hosted.
 
 
 ## Prava Loom — coming soon

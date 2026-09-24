@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prava EAG — The API Gateway for AI Agents</title>
-    <meta name="description" content="One governed MCP endpoint turning ServiceNow, Workday, Salesforce and SAP into natural-language tools for any AI agent. Every call runs as the real user, writes need human sign-off, outcomes are signed. Self-hosted.">
+    <meta name="description" content="One governed MCP endpoint turning ServiceNow, Workday, Salesforce and SAP into natural-language tools for any AI agent. Every call scoped to the real user, policy as data, every change tested before it lands, every outcome signed. Self-hosted.">
     <meta name="keywords" content="MCP, Model Context Protocol, AI agents, API gateway, enterprise service bus, agent gateway, ServiceNow, Workday, Salesforce, SAP, Entra SSO, OBO, Copilot Studio, Azure AI Foundry, governance, audit, self-hosted">
     <link rel="canonical" href="https://pravalabs.app/eag/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Prava EAG">
     <meta property="og:title" content="Prava EAG — The API Gateway for AI Agents">
-    <meta property="og:description" content="One governed endpoint between your AI agents and every enterprise system. Every call runs as the real user, writes stop for a human, and what happened is signed.">
+    <meta property="og:description" content="One governed endpoint between your AI agents and every enterprise system. Every call scoped to the real user, policy as data, changes tested before they land, and evidence an auditor can verify.">
     <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
     <meta property="og:url" content="https://pravalabs.app/eag/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Prava EAG — The API Gateway for AI Agents">
-    <meta name="twitter:description" content="One governed endpoint between your AI agents and every enterprise system. Every call runs as the real user, writes stop for a human, and what happened is signed.">
+    <meta name="twitter:description" content="One governed endpoint between your AI agents and every enterprise system. Every call scoped to the real user, policy as data, changes tested before they land, and evidence an auditor can verify.">
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://pravalabs.app/#org","name":"Prava Labs","url":"https://pravalabs.app/","logo":"https://pravalabs.app/prava-icon.png","email":"support@pravalabs.app"},{"@type":"SoftwareApplication","@id":"https://pravalabs.app/eag/#app","name":"Prava EAG","alternateName":"Prava Enterprise Agent Gateway","applicationCategory":"BusinessApplication","operatingSystem":"Self-hosted (Docker, Azure Container Apps, on-prem)","url":"https://pravalabs.app/eag/","description":"A governed MCP gateway: one endpoint fronting enterprise systems with identity-scoped, audited, natural-language tools for AI agents.","publisher":{"@id":"https://pravalabs.app/#org"}},{"@type":"WebPage","@id":"https://pravalabs.app/eag/","url":"https://pravalabs.app/eag/","name":"Prava EAG — The API Gateway for AI Agents","isPartOf":{"@id":"https://pravalabs.app/eag/#app"}}]}</script>
     <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
@@ -60,7 +60,7 @@
             <div class="app-icon-container">
                 <img src="images/icon.png" alt="Prava EAG icon" class="app-icon">
             </div>
-            <div class="hero-badge">🔐 One governed endpoint · Every call as the real user · Human-approved writes</div>
+            <div class="hero-badge">🔐 One governed endpoint · Every call scoped to the real user · Human approval where you want it</div>
             <h1>The API gateway for AI agents.<br><span class="highlight">Every system, in the language of agents.</span></h1>
             <p class="subtitle">
                 EAG puts one <strong>governed, natural-language front door</strong> on your entire backend estate — <strong>modern or legacy</strong> — so any AI agent can reach every system by intent, with every call identity-scoped to the real user and fully audited. Think enterprise service bus, but for the agent era.
@@ -72,10 +72,12 @@
                 <span class="platform-tag">Entra SSO · OIDC</span>
                 <span class="platform-tag">Per-User OBO</span>
                 <span class="platform-tag">Copilot Studio</span>
-                <span class="platform-tag">Amazon Bedrock</span>
                 <span class="platform-tag">Azure AI Foundry</span>
                 <span class="platform-tag">Any MCP Agent</span>
+                <span class="platform-tag">Policy as Data</span>
+                <span class="platform-tag">Eval-Gated Changes</span>
                 <span class="platform-tag">Signed Receipts</span>
+                <span class="platform-tag">Evidence Packs</span>
                 <span class="platform-tag">Agent Registry</span>
                 <span class="platform-tag">Language-Independent</span>
             </div>
@@ -126,9 +128,14 @@
                     <p>Read / write / privileged tiers with policy gates: writes routed to a human approver per system, privileged actions blocked by default or approval-gated. The agent can't do more than the caller's role allows.</p>
                 </div>
                 <div class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Policy as Data</h3>
+                    <p>Rules in a git-tracked file sit on top of each system's gating and only ever narrow it. Match on the tool, its tier, the system, the user or their group, the attested agent, the arguments themselves, or the time of day &mdash; then deny, route to a named approver, or allow with obligations such as logging the full arguments. Simulate any call before you save, and every decision records the rule that decided it.</p>
+                </div>
+                <div class="feature-card">
                     <div class="feature-icon">&#9995;</div>
-                    <h3>A Human Signs Off on Writes</h3>
-                    <p>A gated write parks instead of executing. The approver &mdash; a group, a named person, or the requester's own manager read live from your directory &mdash; decides in the console. Approval unlocks a <em>single-use grant</em> bound to the exact arguments, and the agent re-runs the identical call under the requester's own token: the write lands as them, never as EAG, which holds no credential that outlives a request. Change one argument and it is a new approval.</p>
+                    <h3>Human Approval Where You Want It</h3>
+                    <p>Set a system, a tool or a policy rule to require approval, and a write parks instead of executing. The approver &mdash; a group, a named person, or the requester's own manager read live from your directory &mdash; decides in the console. Approval unlocks a <em>single-use grant</em> bound to the exact arguments, and the agent re-runs the identical call under the requester's own token: the write lands as them, never as EAG, which holds no credential that outlives a request. Change one argument and it is a new approval.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">&#128274;</div>
@@ -143,7 +150,22 @@
                 <div class="feature-card">
                     <div class="feature-icon">🧾</div>
                     <h3>Audited End to End</h3>
-                    <p>Every call recorded — user, tool, system, outcome, latency. A ready-made compliance trail and seat-metering feed, exportable to your SIEM. The audit is the proof, not a vibe.</p>
+                    <p>Every call recorded — refusals and malformed calls included — with user, agent, tool, system, outcome, latency and the rule that decided. A ready-made compliance trail and seat-metering feed, streamed to your SIEM as NDJSON or CEF. The audit is the proof, not a vibe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔎</div>
+                    <h3>Evidence an Auditor Can Verify</h3>
+                    <p>Every decision is hash-chained and pinned to the exact configuration it ran under, so &ldquo;which rules were live when this happened?&rdquo; has an answer. Hand an auditor an evidence pack &mdash; decisions, approvals, receipts and configuration, under a signed Merkle root &mdash; and they verify it on their own laptop, offline, without trusting you or EAG.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧪</div>
+                    <h3>Every Change Tested First</h3>
+                    <p>Eval suites say what the gateway must do &mdash; this analyst never sees the write verb; a deal over $100k waits for the VP. Every configuration change runs them against a copy of the gateway first and is refused by name if it would break one. Derive a suite from production, fill one in from a spreadsheet, or write the YAML.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📜</div>
+                    <h3>A Change Log You Can Revert</h3>
+                    <p>Every configuration change &mdash; systems, users, agents, policy, eval suites &mdash; is recorded with who made it, why, from where, and the file before and after. Loosening anything needs a typed reason. Revert applies the inverse as a new, tested change, and edits made on disk are never blocked and never silent.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔌</div>
@@ -203,7 +225,7 @@
                 <div class="step">
                     <div class="step-number">4</div>
                     <h3>Point Your Agents at It</h3>
-                    <p>Register EAG as one MCP endpoint. Copilot Studio is verified end to end with a step-by-step runbook; Azure AI Foundry, Amazon Bedrock, Claude and any other MCP client connect the same standard way. That single entry now fronts your whole governed fleet.</p>
+                    <p>Register EAG as one MCP endpoint. Copilot Studio is verified end to end with a step-by-step runbook; Azure AI Foundry, Claude and any other MCP client connect the same standard way. That single entry now fronts your whole governed fleet.</p>
                 </div>
             </div>
         </div>
@@ -281,12 +303,17 @@
                     <tr>
                         <td class="col-label">Governance</td>
                         <td><span class="check-no">✗</span> Whatever the raw API allows</td>
-                        <td class="col-eag"><span class="check-yes">✓</span> Tier gates, human-approved writes, privileged blocked</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Tier gates, policy rules as data, human approval where you set it, privileged blocked</td>
                     </tr>
                     <tr>
                         <td class="col-label">Audit</td>
                         <td><span class="check-no">✗</span> None, or scattered per system</td>
-                        <td class="col-eag"><span class="check-yes">✓</span> Every call logged with identity + outcome, exportable</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Every call hash-chained with identity + outcome, signed, verifiable offline, streamed to your SIEM</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Configuration changes</td>
+                        <td><span class="check-no">✗</span> Edited live, no record of who or why</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Reasoned, diffed, eval-tested before they land, one click from revert</td>
                     </tr>
                     <tr>
                         <td class="col-label">Adding a backend</td>
@@ -306,7 +333,7 @@
                     <tr>
                         <td class="col-label">Agent reach</td>
                         <td><span class="check-no">✗</span> Tied to one agent platform</td>
-                        <td class="col-eag"><span class="check-yes">✓</span> Any MCP agent — Copilot Studio, Foundry, Bedrock, Claude</td>
+                        <td class="col-eag"><span class="check-yes">✓</span> Any MCP agent — Copilot Studio, Azure AI Foundry, Claude and more</td>
                     </tr>
                 </tbody>
             </table>

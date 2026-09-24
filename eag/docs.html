@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prava EAG Documentation — Build & Govern Your Agent's Backend Estate</title>
-    <meta name="description" content="Prava EAG user guide: connect backends, create tools and scopes, map tools to live data, govern by tier, manage users, and install licenses.">
+    <meta name="description" content="Prava EAG user guide: connect backends, create tools and scopes, map tools to live data, govern by tier and policy rules, gate changes with evals, hand auditors verifiable evidence, manage users, and install licenses.">
     <link rel="canonical" href="https://pravalabs.app/eag/docs.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Prava EAG">
     <meta property="og:title" content="Prava EAG Documentation — Build &amp; Govern Your Agent's Backend Estate">
-    <meta property="og:description" content="Connect backends, create tools and scopes, map tools to live data, govern by tier, manage users, and install licenses.">
+    <meta property="og:description" content="Connect backends, create tools and scopes, map tools to live data, govern by tier and policy rules, gate changes with evals, hand auditors verifiable evidence, manage users, and install licenses.">
     <meta property="og:url" content="https://pravalabs.app/eag/docs.html">
     <meta property="og:image" content="https://pravalabs.app/eag/images/icon.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Prava EAG Documentation">
-    <meta name="twitter:description" content="Connect backends, create tools and scopes, map tools to live data, govern by tier, manage users, and install licenses.">
+    <meta name="twitter:description" content="Connect backends, create tools and scopes, map tools to live data, govern by tier and policy rules, gate changes with evals, hand auditors verifiable evidence, manage users, and install licenses.">
     <meta name="twitter:image" content="https://pravalabs.app/eag/images/icon.png">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://pravalabs.app/eag/docs.html","url":"https://pravalabs.app/eag/docs.html","name":"Prava EAG Documentation","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https://pravalabs.app/eag/docs.html"}]}}</script>
     <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
@@ -86,8 +86,12 @@
             <a href="#tools-scopes">Tools &amp; scopes</a>
             <a href="#mappings">Map to live data</a>
             <a href="#govern">Govern by tier</a>
+            <a href="#policy">Write policy rules</a>
             <a href="#approvals">Approve a write</a>
             <a href="#receipts">Signed receipts</a>
+            <a href="#evals">Gate changes with evals</a>
+            <a href="#change-log">The Change Log</a>
+            <a href="#evidence">Evidence for auditors</a>
             <a href="#agents">The agent registry</a>
             <a href="#users">Users &amp; roles</a>
             <a href="#licensing">Licensing</a>
@@ -101,7 +105,7 @@
 
             <section id="concepts">
                 <h2>Core concepts</h2>
-                <p>Seven ideas run through the whole product:</p>
+                <p>Nine ideas run through the whole product:</p>
                 <ul>
                     <li><strong>System</strong> — a connected backend (ServiceNow, Workday, SAP, a Dataverse table, or anything that speaks MCP). One image fronts many systems; you turn them on and off. In MCP terms, a <em>remote</em> server is reached over HTTP (how agents reach EAG, and how EAG federates MCP backends); a <em>local</em> server is a process spoken to over stdio (EAG supports it for desktop development).</li>
                     <li><strong>Tool</strong> — a canonical, plain-language capability an agent calls by intent (e.g. <code>case.create</code>, <code>hr.timeoff.balance.get</code>). The catalog is stable; the backend behind a tool can change without the agent noticing.</li>
@@ -109,6 +113,8 @@
                     <li><strong>Mapping</strong> — how a tool actually runs on a live backend: which table answers it, whose rows, and how columns become fields. Mock systems serve samples with no mapping; a live system needs one.</li>
                     <li><strong>Tier &amp; gating</strong> — every tool is <em>read</em>, <em>write</em>, or <em>privileged</em>. Policy gates decide whether a write executes or parks for a human approver, and whether privileged actions are blocked outright.</li>
                     <li><strong>Agent</strong> — the application acting for the user, identified by the <code>azp</code> claim your identity provider puts in the token. A registered agent carries its own ceiling, which can only ever <em>narrow</em> what its user could already do.</li>
+                    <li><strong>Policy rule</strong> — an entry in a git-tracked policy file that narrows what gating allows: deny, require approval, or allow with obligations, matched on the tool, the caller, the agent, the arguments or the time.</li>
+                    <li><strong>Eval suite</strong> — a list of expectations about what the gateway must do. Every configuration change is tested against the suites that cover it before it is written.</li>
                     <li><strong>Receipt</strong> — a signed, tamper-evident record of an outcome, written to a database you own. Verifiable by anyone holding the public key.</li>
                 </ul>
                 <div class="callout"><strong>The golden rule:</strong> agents bind to the <em>canonical catalog</em>, never to a backend. That's what lets you swap or migrate backends in seconds without touching a single agent.</div>
@@ -257,9 +263,36 @@
             <section id="govern">
                 <h2>Govern by tier</h2>
                 <p>Open a system's row and set its <strong>gating</strong>: <em>write</em> = off / require-approval; <em>privileged</em> = block / require-approval / off. Loosening gating prompts for an audited reason — security sign-off is an event, not a checkbox.</p>
-                <p>Before you hand tools to agents, use <strong>Preview as…</strong> on the Users tab: pick a persona (or type any scope set) and see the exact tools that identity would be served — allowed, gated, or hidden — with the reason. Governance you can demonstrate, not assert. Everything runs through <strong>Live audit</strong>: user, tool, system, outcome, latency.</p>
+                <p>Before you hand tools to agents, use <strong>Preview as…</strong> on the Users tab: pick a persona (or type any scope set) and see the exact tools that identity would be served — allowed, gated, or hidden — with the reason. Governance you can demonstrate, not assert. Everything runs through <strong>Live Audit</strong>: user, tool, system, outcome, latency.</p>
             </section>
 
+
+            <section id="policy">
+                <h2>Write policy rules</h2>
+                <div class="step-pills"><span>Policy</span><span>→ edit the rules</span><span>→ Simulate…</span><span>→ Save</span></div>
+                <p>Gating sets the default for a whole system. <strong>Policy rules</strong> sit on top and only ever narrow it: a rule can refuse a call, send it to a named approver, or let it through with obligations attached &mdash; never allow something gating blocks. A rule matches on the tool (<code>crm.*</code> is the whole CRM domain), its tier, the system, the user or their group, the attested agent, the validated arguments, and a time window.</p>
+<pre><code>version: 1
+defaultEffect: allow
+rules:
+  - id: discount-ceiling
+    description: Deals revised above 100k need the sales VP.
+    when:
+      tool: crm.opportunity.update
+      args: { value: { gt: 100000 } }
+    effect: require_approval
+    approvers: user:vp.sales@contoso.com
+  - id: marketing-bot-no-erp
+    when: { agent: marketing-bot, tool: erp.* }
+    effect: deny
+    message: This agent may not touch ERP.</code></pre>
+
+                <h3>1 · Simulate before you save</h3>
+                <p><strong>Simulate…</strong> runs the whole decision for a call you describe &mdash; as a named user, optionally through a registered agent, at a time you choose &mdash; and shows the deciding rule, every rule that matched, and what would be recorded. Nothing executes and nothing parks.</p>
+
+                <h3>2 · Save</h3>
+                <p>The file is validated before a byte is written, its version is bumped, and the gateway reloads it at once. Removing or weakening a rule asks for a reason, which is recorded. Every decision records the rule that decided it, and the Policy tab shows each rule's hits over the last seven days.</p>
+                <div class="callout"><strong>An allow-list in one line:</strong> set <code>defaultEffect: deny</code> and only calls a rule explicitly lets through will run.</div>
+            </section>
 
             <section id="approvals">
                 <h2>Approve a write</h2>
@@ -294,6 +327,40 @@
                     <li><strong>Agent decisions</strong> — any connected agent may call <code>receipt.certify</code> to record the decision it just made: its intent, the tools it used, the conclusion it reached. The <em>content</em> is self-reported, but the gateway stamps the requester from the verified token, so the <strong>who</strong> is never self-reported. These score lower, and visibly so.</li>
                 </ul>
                 <p>Agents with the right scope can read the ledger back through the same catalog — <code>receipt.list</code> and <code>receipt.get</code> — so "show me what this agent did last week" is a tool call, not a support ticket.</p>
+            </section>
+
+            <section id="evals">
+                <h2>Gate changes with evals</h2>
+                <div class="step-pills"><span>Evals</span><span>→ New Suite, Import or Derive</span><span>→ Run</span><span>→ every change is checked</span></div>
+                <p>An <strong>eval suite</strong> is a list of expectations: <em>as this user, calling this tool with these arguments, expect this outcome, this decision, this approver</em>. Before any configuration change is written &mdash; a system's manifest, users, agents, custom tools or policy &mdash; the suites that cover it run against a copy of the gateway with the change applied, every backend in mock mode. A change that would break a case is refused, naming the case; an admin can override, and the override and its reason are recorded for good.</p>
+
+                <h3>Three ways to get a suite</h3>
+                <ul>
+                    <li><strong>Derive from production</strong> — turn what the gateway actually decided over a period into cases, so a later change cannot quietly alter it.</li>
+                    <li><strong>Import from a spreadsheet</strong> — <strong>Download Template</strong>, fill in one row per case in Excel, Sheets or Numbers, and import it. Every row is checked first, and any problem is listed by row and column with nothing saved. A good sheet is saved and run once, so you see straight away whether today's configuration passes.</li>
+                    <li><strong>Write it</strong> — <strong>New Suite…</strong> opens the suite as YAML, validated before it saves.</li>
+                </ul>
+                <p>A built-in conformance suite also checks every system whose manifest changes. Deleting a suite, or removing cases from one, asks for a reason &mdash; a removed case is a check the gate no longer makes.</p>
+            </section>
+
+            <section id="change-log">
+                <h2>The Change Log</h2>
+                <p>Every configuration change is a row: who made it, why, from where &mdash; the console, Prava Loom, the API, or a file edited on disk &mdash; the file before and after, and the eval run that gated it. Anything that loosens access needs a typed reason before it is written.</p>
+                <p><strong>Revert…</strong> applies the inverse as a new change, validated and tested like any other, so the history keeps both. Edits made outside the console &mdash; a <code>git pull</code>, a hand edit &mdash; are never blocked and never silent: they are recorded against the file watcher.</p>
+            </section>
+
+            <section id="evidence">
+                <h2>Evidence for auditors</h2>
+                <p>Every decision &mdash; a call, a refusal, an approval step, a simulation &mdash; is a row in an evidence store inside your deployment, chained by hash to the one before, so an edited or missing row is detectable. Each row records the exact configuration it ran under, so &ldquo;which rules were live when this happened?&rdquo; has an answer, and <strong>Replay</strong> re-runs a past decision against that configuration.</p>
+
+                <h3>History</h3>
+                <p>Below the live stream on <strong>Live Audit</strong>, History queries every decision by date, user, agent, tool, system, outcome or configuration, and exports exactly the query.</p>
+
+                <h3>Evidence packs</h3>
+                <p><strong>Build Evidence Pack</strong> zips the decisions in a window with their approvals, receipts, configuration snapshots, the changes and eval runs in that window, and a Merkle root over the decisions signed by the receipts service. The auditor runs one small script with Node &mdash; offline, with no access to your gateway &mdash; and it checks every file, every row, every proof and every signature against the public key.</p>
+
+                <h3>SIEM export</h3>
+                <p>The same decision chain streams to your SIEM &mdash; an HTTP collector such as Splunk HEC, UDP syslog, or a file &mdash; as NDJSON or CEF, with sequence numbers and hashes carried so the SIEM can check the chain too. It runs beside the request path and never slows a tool call.</p>
             </section>
 
             <section id="agents">
@@ -344,7 +411,7 @@
                 <p>EAG ships as one <strong>container image</strong>, config per customer. Run it on Docker, Azure Container Apps, App Service, on-prem, or fully air-gapped. Point it at your identity provider, mount a writable data volume, and connect your systems from the console. Your systems never leave your cloud.</p>
                 <pre><code>docker run -d -p 3000:3000 --env-file .env \
   -v eag-data:/app/data  your-registry/eag-gateway:latest</code></pre>
-                <p>Console at <code>/admin</code>, MCP endpoint at <code>/mcp</code>. Register that one endpoint in Copilot Studio, Azure AI Foundry, Amazon Bedrock, Claude, or any MCP client, and it fronts your whole governed fleet.</p>
+                <p>Console at <code>/admin</code>, MCP endpoint at <code>/mcp</code>. Register that one endpoint in Copilot Studio, Azure AI Foundry, Claude, or any MCP client, and it fronts your whole governed fleet.</p>
                 <h3>Large catalogs: the compact surface</h3>
                 <p>By default <code>/mcp</code> lists the caller's concrete tools, which is the right shape for most clients and the recommendation up to roughly eighty tools. For hosts whose context a large catalog would swamp, add <code>?tools=compact</code> to the endpoint URL and the same catalog is served as three meta-tools instead — <code>search_tools</code>, <code>get_tool_schema</code>, <code>invoke_tool</code> — so the agent discovers what it needs and loads only those schemas.</p>
                 <div class="callout"><strong>Compact changes the shape, never the rules.</strong> <code>invoke_tool</code> funnels through the same gateway path as a direct call, so every gate — scopes, tier policy, approval, rate limits — applies identically, and the audit trail records the real tool id rather than the wrapper. Search can never surface a tool the caller's identity hides. It is opt-in per client, by URL, so one agent can use it without affecting any other.</div>
