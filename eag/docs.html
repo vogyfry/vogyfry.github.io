@@ -19,7 +19,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://pravalabs.app/eag/docs.html","url":"https://pravalabs.app/eag/docs.html","name":"Prava EAG Documentation","isPartOf":{"@id":"https://pravalabs.app/eag/#app"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"EAG","item":"https://pravalabs.app/eag/"},{"@type":"ListItem","position":2,"name":"Docs","item":"https://pravalabs.app/eag/docs.html"}]}}</script>
     <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="stylesheet" href="styles.css?v=20260921">
+    <link rel="stylesheet" href="styles.css?v=f9ca5855">
     <style>
       .docs-wrap { max-width: var(--max-width); margin: 0 auto; padding: 40px 24px 80px; display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
       .docs-toc { position: sticky; top: 90px; align-self: start; font-size: 14px; }
@@ -116,28 +116,31 @@
 
             <section id="console">
                 <h2>The console</h2>
-                <p>Everything below is done from the admin console (served at <code>/admin</code>), no YAML editing required. Eleven tabs, in three groups:</p>
+                <p>Everything below is done from the admin console (served at <code>/admin</code>), no YAML editing required. Fourteen tabs, in three groups:</p>
                 <p><strong>Operate</strong> — what is happening now.</p>
                 <ul>
-                    <li><strong>Systems</strong> — the fleet: toggle systems on/off, expand a row for tools, gating, config, and Connect; the Operate card on top.</li>
+                    <li><strong>Systems</strong> — the fleet: toggle systems on/off, expand a row for tools, gating, config, and Connect; the Operate strip on top.</li>
                     <li><strong>Approvals</strong> — writes parked for a human decision; the tab badges the pending count.</li>
-                    <li><strong>Live audit</strong> — every call, streaming, with identity + outcome.</li>
+                    <li><strong>Live Audit</strong> — every call, streaming, with identity + outcome; below it the full <strong>History</strong> of decisions, and <strong>Evidence Packs</strong> an auditor can verify offline.</li>
                     <li><strong>Receipts</strong> — the signed ledger: integrity, recent receipts, verify any one, and the service switch.</li>
                 </ul>
                 <p><strong>Configure</strong> — set up once, revisit rarely.</p>
                 <ul>
-                    <li><strong>Tool catalog</strong> — the canonical contract; add custom tools here.</li>
+                    <li><strong>Tool Catalog</strong> — the canonical contract; add custom tools here.</li>
                     <li><strong>Mappings</strong> — bind a tool to a live table.</li>
-                    <li><strong>Agents</strong> — the agent registry: which applications may call, and the ceiling each one gets.</li>
-                    <li><strong>Users</strong> — console roles, tool-scope grants, IdP group mappings, and <strong>Preview as…</strong> ("what would this user see?").</li>
+                    <li><strong>Policy</strong> — rules as data: deny, require approval or add obligations, with a Simulate button to see what a rule would do first.</li>
+                    <li><strong>Evals</strong> — suites of expectations that gate every configuration change; derive one from production, write one in a spreadsheet, or edit the YAML.</li>
+                    <li><strong>Agent Registry</strong> — which applications may call, and the ceiling each one gets.</li>
+                    <li><strong>Users</strong> — console roles, tool-scope grants, IdP group mappings, and <strong>Preview As…</strong> ("what would this user see?").</li>
                     <li><strong>Onboarding</strong> — tell Prava Loom what you need, or author a manifest by hand.</li>
                 </ul>
                 <p><strong>Admin</strong> — the instance itself.</p>
                 <ul>
+                    <li><strong>Change Log</strong> — every configuration change: who, why, from where, the file before and after, and Revert.</li>
                     <li><strong>Licensing</strong> — install a key, see seats and the expiry countdown.</li>
                     <li><strong>Settings</strong> — change the identity provider after setup, with discovery and validation.</li>
                 </ul>
-                <p>Use the ☀/◐ button in the header to switch light/dark.</p>
+                <p>Use the ◐ button at the bottom of the sidebar to switch light/dark.</p>
                 <div class="callout"><strong>First boot:</strong> a fresh install with no identity provider configured starts in <em>setup mode</em> — the console and API refuse until you complete a one-time wizard at <code>/admin/setup</code>, unlocked by a token printed to the container logs. Pick your provider (Entra, Okta, Auth0, Keycloak, or any OIDC issuer), let it read the discovery document, and the wizard writes the config file for you.</div>
             </section>
 
@@ -309,7 +312,7 @@
                 <h3>The rule that makes this safe</h3>
                 <div class="callout"><strong>Effective access = user ∩ agent.</strong> An agent's scope list is a ceiling on what its user already has, never a grant of its own. An agent listed as <code>*</code> means "everything <em>its user</em> has", not "everything". Turning the registry on can therefore never widen anyone's access — only narrow it.</div>
 
-                <h3>What to do on the Agents tab</h3>
+                <h3>What to do on the Agent Registry tab</h3>
                 <ul>
                     <li><strong>Register an agent</strong> — give it a name and the <code>azp</code> from your IdP, then a scope ceiling. Audit records and receipts start naming it.</li>
                     <li><strong>Set the unregistered policy</strong> — <code>open</code> lets unknown callers through as before (the default, so enabling the registry changes nothing until you're ready), <code>restrict</code> lets reads flow but forces writes through approval, <code>deny</code> refuses them outright.</li>
