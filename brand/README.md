@@ -14,7 +14,7 @@ product; everything else — tiles, variants, every size — is produced by the 
 
   | Kind | Core | Products |
   |---|---|---|
-  | `app` — Consumer App | teal `#00D4AA` | TradeSocial · BoatNavi · Waypoint · Mavee · Pravida |
+  | `app` — Consumer App | teal `#00D4AA` | TradeSocial · BoatNavi · Waypoint · Mavee · Pravida · Timekeeper |
   | `tool` — Developer Tool | cyan `#00B8FF` | Toolport · SwiftMind |
   | `enterprise` — Enterprise Platform | violet `#A78BFA` | EAG · Prava Loom |
 
@@ -102,4 +102,4 @@ Toolport — hub routing to servers, core at the junction · EAG — gateway che
 core at the gate · Pravida — shield, core protected inside · Waypoint — the destination
 pin, core at the point you actually reach · BoatNavi — the vessel underway over water,
 core at the boat · SwiftMind — the chip, core inside it, because the model never leaves
-your silicon · Mavee — the day as one loop, core on what matters. · Loom — warp and weft, core where the threads cross, because the connection is woven, watched, and mended there.
+your silicon · Mavee — the day as one loop, core on what matters. · Loom — warp and weft, core where the threads cross, because the connection is woven, watched, and mended there · Timekeeper — the clock at ten past ten, its hands a check mark, core at the pivot: the day's time reviewed and approved, held where the hours turn.
