@@ -1,6 +1,6 @@
 # Prava Labs
 
-> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products are grouped by device: iPhone, iPad, Mac and Apple Watch (TradeSocial, BoatNavi, Pravida; Mavee in labs), Mac and PC (Toolport).
+> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products are grouped by device: iPhone, iPad, Mac and Apple Watch (TradeSocial, BoatNavi, Pravida; Mavee in labs), and Mac and PC (Toolport).
 
 ## Products
 

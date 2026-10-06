@@ -21,8 +21,8 @@ product; everything else — tiles, variants, every size — is produced by the 
   A reader can tell what a product *is* before reading its name. Products are told
   apart by their glyph, which is the part actually drawn for them. The three hues sit
   29° and 58° apart, so no two kinds read as one colour; blue `#3A92FF` is unassigned
-  and held for a fourth kind. The studio mark is the exception: it
-  carries the full spectrum gradient, and no kind.
+  and held for a fourth kind. The studio mark is the exception: it carries the full
+  spectrum gradient, and no kind.
 - **Icon rules:** navy squircle, white line-work on a shared 256 grid (stroke ≈ 17–20,
   round caps), one core dot per glyph. **The tile belongs to the kind, not the product** —
   consumer apps sit on a teal-leaning navy, developer tools on a cyan navy, enterprise on
