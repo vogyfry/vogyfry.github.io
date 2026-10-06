@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prava Labs — Local-First Apps &amp; On-Device AI Tools</title>
-    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger).">
+    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), and Pravida (the private, encrypted, offline messenger).">
     <meta property="og:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
-    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing.">
+    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing, Pravida for private messaging.">
     <meta property="og:url" content="https://pravalabs.app/">
     <meta property="og:site_name" content="Prava Labs">
     <meta property="og:image" content="https://pravalabs.app/prava-icon.png">
@@ -44,8 +44,8 @@
           "itemListElement": [
             { "@type": "ListItem", "position": 1, "url": "https://pravalabs.app/tradesocial/", "name": "TradeSocial" },
             { "@type": "ListItem", "position": 2, "url": "https://pravalabs.app/toolport/", "name": "Prava Toolport" },
-            { "@type": "ListItem", "position": 5, "url": "https://pravalabs.app/boatnavi/", "name": "BoatNavi" },
-            { "@type": "ListItem", "position": 6, "url": "https://pravalabs.app/pravida/", "name": "Pravida" }
+            { "@type": "ListItem", "position": 3, "url": "https://pravalabs.app/boatnavi/", "name": "BoatNavi" },
+            { "@type": "ListItem", "position": 4, "url": "https://pravalabs.app/pravida/", "name": "Pravida" }
           ]
         },
         {
@@ -80,16 +80,6 @@
           "description": "The semantic tool registry for AI agents — one local broker between any MCP-compatible agent and all your MCP servers.",
           "publisher": { "@id": "https://pravalabs.app/#org" },
           "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
-        },
-        {
-          "@type": "SoftwareApplication",
-          "@id": "https://pravalabs.app/pravida/#app",
-          "name": "Pravida",
-          "operatingSystem": "iOS 26, iPadOS 26, macOS 26, watchOS 26",
-          "applicationCategory": "CommunicationApplication",
-          "url": "https://pravalabs.app/pravida/",
-          "description": "A private, invite-only, end-to-end encrypted messenger for iPhone, iPad, Mac and Apple Watch that works over Wi‑Fi even without internet. No account, no phone number, no server of ours.",
-          "publisher": { "@id": "https://pravalabs.app/#org" }
         }
       ]
     }
@@ -288,10 +278,6 @@
             background: rgba(255,255,255,0.06);
             border-color: var(--border);
         }
-        .live-now.review {
-            background: rgba(58,146,255,0.12);
-            border-color: rgba(58,146,255,0.32);
-        }
         .live-dot {
             width: 6px; height: 6px; border-radius: 50%;
             background: var(--accent-ts);
@@ -380,7 +366,7 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
-    <meta name="twitter:description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger).">
+    <meta name="twitter:description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), and Pravida (the private, encrypted, offline messenger).">
     <meta name="twitter:image" content="https://pravalabs.app/prava-icon.png">
 </head>
 <body>
@@ -392,7 +378,7 @@
     </section>
 
     <!-- One grid, live products first. The chips above it highlight a group
-         rather than filter it: pick "In Your Tenant" and the rest dim, so a visitor
+         rather than filter it: pick "Mac &amp; PC" and the rest dim, so a visitor
          sees where a product sits without losing sight of the others. Without
          JavaScript the chips are hidden and the grid is simply the grid. -->
     <section class="products" id="products">
@@ -400,7 +386,6 @@
             <button class="runs-chip all"    data-runs="all"    aria-pressed="true">All Products</button>
             <button class="runs-chip phone"  data-runs="ios"        aria-pressed="false"><i></i>iPhone, iPad &amp; Watch</button>
             <button class="runs-chip mac"    data-runs="mac"        aria-pressed="false"><i></i>Mac &amp; PC</button>
-            <button class="runs-chip tenant" data-runs="selfhosted" aria-pressed="false"><i></i>Self-Hosted</button>
         </div>
 
         <div class="apps">
@@ -596,7 +581,7 @@
                 highlight(c.getAttribute('aria-pressed') === 'true' ? 'all' : c.dataset.runs);
             });
         });
-        // #ios / #mac / #selfhosted deep-links land with that group lit
+        // #ios / #mac deep-links land with that group lit
         var h = location.hash.replace('#', '');
         if (chips.some(function (c) { return c.dataset.runs === h; })) highlight(h);
     })();
