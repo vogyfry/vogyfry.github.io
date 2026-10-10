@@ -41,6 +41,9 @@ node brand/generate.mjs toolport   # one product
 
 PNG output needs `rsvg-convert` (`brew install librsvg`); without it you still get SVGs.
 
+`python3 brand/tools/sheet.py` then rebuilds `brand/sheet.html`, the whole family on one
+page (icons at Dock size, the kinds, palette, icon rules and variants), from the generated set.
+
 Per product, `dist/<id>/` contains:
 
 | File | Use |
