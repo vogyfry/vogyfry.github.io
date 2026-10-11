@@ -115,6 +115,36 @@ Support questions:
 Privacy: Pravida Privacy Policy. Your messages are end-to-end encrypted on your device and relayed through your own iCloud. No account, no phone number, no analytics, no tracking, no server of ours.
 Terms: Pravida Terms of Service. The terms governing use of the Pravida encrypted messenger for iPhone, iPad, Mac and Apple Watch.
 
+## EchoBridge — in TestFlight
+URL: https://pravalabs.app/echobridge/
+
+Understand them, then know what to say. EchoBridge is a live conversation translator for iPhone. Translation apps help you follow what is said, then leave you on your own; EchoBridge helps with both halves. You hear the other person in your own language, in your own Bluetooth headphones, as they speak. When they finish, three short replies appear in their language, each with its meaning in yours. Tap one and your iPhone says it aloud from its own speaker, so they hear it and your earbuds stay in.
+
+What it does:
+- Translates speech phrase by phrase as it is spoken, into any Bluetooth headphones (AirPods, Bose and others), with the original and the translation on screen
+- Suggests three replies after each turn, each a different intent (say yes, ask something, decline politely), twelve words or fewer, with the meaning in your language
+- Never speaks a suggestion until you tap it; touch and hold to edit a suggestion first
+- Hold to Talk: speak in your language and it says it in theirs; or type a reply and preview the translation
+- Two-way mode for conversations you are in; Listen only mode (text only or in earbuds) for following along
+- Any language pair the iPhone supports on device for speech and translation; Spanish ⇄ English is the default
+- Speech recognition, translation, voices and reply suggestions run on the iPhone; works offline once a language is downloaded
+- Audio is never recorded; transcripts are kept on the iPhone only if you turn on Keep transcripts
+- Requires iOS 26; suggested replies need an iPhone with Apple Intelligence (iPhone 15 Pro or later)
+- Ready for iPhone Duo in every pose: the phone layout edge to edge when closed; open flat, the transcript on one half and the replies, Start and Hold to Talk on the other, clear of the fold; half open like a laptop, the transcript on the upright half and the controls on the flat half nearest you; stood up like a tent, the conversation on the half facing you; any orientation
+
+Not a simultaneous interpreter: it translates phrase by phrase, a moment behind the speaker, and should not be relied on for medical, legal or emergency situations.
+
+Support questions:
+- Q: Which headphones work? A: Any Bluetooth headphones your iPhone can play music through. EchoBridge listens with the iPhone's own microphone, not the earbuds', so keep the phone out and pointed toward the person speaking. Headphones are optional.
+- Q: Why don't I see suggested replies? A: Suggestions appear in Two-way mode after the other person finishes speaking. They need an iPhone with Apple Intelligence turned on, a language Apple's model supports, and Suggest replies on in Settings › Replies.
+- Q: Why do my replies come out of the phone speaker? A: So the person you're talking to can hear them. Your earbuds stay connected, and EchoBridge goes back to listening when it's done.
+- Q: Does EchoBridge work offline? A: Yes, once each language's speech model and translation pack have been downloaded.
+- Q: Does EchoBridge work on iPhone Duo? A: Yes, in every pose. Closed, it is the phone layout edge to edge; open flat, the transcript takes one half and the replies and controls the other, clear of the fold; half open like a laptop, the transcript is on the upright half and the controls on the flat half nearest you; stood up like a tent, the conversation faces you on one half.
+- Q: Are my conversations saved? A: Not unless you turn on Keep transcripts in Settings › Privacy; then they are saved on the iPhone and can be deleted from History. Audio is never recorded.
+
+Privacy: EchoBridge Privacy Policy. Speech recognition, translation and reply suggestions run on your iPhone. Audio is never recorded, transcripts are not kept unless you choose, and nothing is sent to Prava Labs.
+Terms: EchoBridge Terms of Service: what the app does, why machine translation and suggested replies can be wrong, and your responsibility for what you say with it.
+
 ## Mavee — in development
 URL: https://pravalabs.app/mavee/
 

@@ -1,6 +1,6 @@
 # Prava Labs
 
-> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products are grouped by device: iPhone, iPad, Mac and Apple Watch (TradeSocial, BoatNavi, Pravida; Mavee in labs), and Mac and PC (Toolport).
+> Prava Labs, LLC is an independent software studio building local-first, private-by-design apps and on-device AI tools. Products are grouped by device: iPhone, iPad, Mac and Apple Watch (TradeSocial, BoatNavi, Pravida, EchoBridge; Mavee in development), and Mac and PC (Toolport).
 
 ## Products
 
@@ -12,6 +12,8 @@
   - [Support](https://pravalabs.app/boatnavi/support.html) · [Privacy Policy](https://pravalabs.app/boatnavi/privacy.html)
 - [Pravida](https://pravalabs.app/pravida/) — in TestFlight: Pravida is a private, invite-only, end-to-end encrypted messenger for the people you actually know. Create a chat, share a link or QR code, and talk — every message encrypted on your device with keys that never leave it, relayed through iCloud or sent directly between nearby devices over Wi‑Fi when there is no internet. No account, no phone number, no server of ours. Smart replies, summaries and translation run on the device. iPhone, iPad, Mac and Apple Watch.
   - [Support](https://pravalabs.app/pravida/support.html) · [Privacy Policy](https://pravalabs.app/pravida/privacy.html) · [Terms of Service](https://pravalabs.app/pravida/terms.html)
+- [EchoBridge](https://pravalabs.app/echobridge/) — in TestFlight: A live conversation translator for iPhone and iPhone Duo that helps with both halves of a conversation. Hear what is said in your language, in your own Bluetooth headphones, as it is spoken; then three short replies appear in the other person's language, each with its meaning in yours. Tap one and your iPhone says it aloud, or hold to talk or type and it translates you. Speech recognition, translation and reply suggestions run on the iPhone with Apple's frameworks; audio never recorded, transcripts kept only if you choose.
+  - [Support](https://pravalabs.app/echobridge/support.html) · [Privacy Policy](https://pravalabs.app/echobridge/privacy.html) · [Terms of Service](https://pravalabs.app/echobridge/terms.html)
 - [Mavee](https://pravalabs.app/mavee/) — in development: Mavee intelligently connects your calendar, contacts, and reminders to surface insights, patterns, and a unified timeline of your life. Built for iOS 26.
   - [Privacy Policy](https://pravalabs.app/mavee/privacy.html) · [Terms of Service](https://pravalabs.app/mavee/terms.html)
 
