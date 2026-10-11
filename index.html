@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prava Labs — Local-First Apps &amp; On-Device AI Tools</title>
-    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), and Pravida (the private, encrypted, offline messenger).">
+    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger), and EchoBridge (live conversation translation with suggested replies).">
     <meta property="og:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
-    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing, Pravida for private messaging.">
+    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing, Pravida for private messaging, EchoBridge for conversations in another language.">
     <meta property="og:url" content="https://pravalabs.app/">
     <meta property="og:site_name" content="Prava Labs">
     <meta property="og:image" content="https://pravalabs.app/prava-icon.png">
@@ -45,7 +45,8 @@
             { "@type": "ListItem", "position": 1, "url": "https://pravalabs.app/tradesocial/", "name": "TradeSocial" },
             { "@type": "ListItem", "position": 2, "url": "https://pravalabs.app/toolport/", "name": "Prava Toolport" },
             { "@type": "ListItem", "position": 3, "url": "https://pravalabs.app/boatnavi/", "name": "BoatNavi" },
-            { "@type": "ListItem", "position": 4, "url": "https://pravalabs.app/pravida/", "name": "Pravida" }
+            { "@type": "ListItem", "position": 4, "url": "https://pravalabs.app/pravida/", "name": "Pravida" },
+            { "@type": "ListItem", "position": 5, "url": "https://pravalabs.app/echobridge/", "name": "EchoBridge" }
           ]
         },
         {
@@ -80,6 +81,26 @@
           "description": "The semantic tool registry for AI agents — one local broker between any MCP-compatible agent and all your MCP servers.",
           "publisher": { "@id": "https://pravalabs.app/#org" },
           "offers": { "@type": "Offer", "price": "9.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/pravida/#app",
+          "name": "Pravida",
+          "operatingSystem": "iOS 26, iPadOS 26, macOS 26, watchOS 26",
+          "applicationCategory": "CommunicationApplication",
+          "url": "https://pravalabs.app/pravida/",
+          "description": "A private, invite-only, end-to-end encrypted messenger for iPhone, iPad, Mac and Apple Watch that works over Wi‑Fi even without internet. No account, no phone number, no server of ours.",
+          "publisher": { "@id": "https://pravalabs.app/#org" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/echobridge/#app",
+          "name": "EchoBridge",
+          "operatingSystem": "iOS 26",
+          "applicationCategory": "UtilitiesApplication",
+          "url": "https://pravalabs.app/echobridge/",
+          "description": "A live conversation translator for iPhone: hear what is said in your language, in your own headphones, as it is spoken, then tap one of three suggested replies and your iPhone says it in theirs. Speech, translation and suggestions run on device.",
+          "publisher": { "@id": "https://pravalabs.app/#org" }
         }
       ]
     }
@@ -98,6 +119,7 @@
             --accent-pravida: #00d4aa;
             --accent-toolport: #00b8ff;
             --accent-boatnavi: #00d4aa;
+            --accent-echobridge: #00d4aa;
         }
 
         html { scroll-behavior: smooth; }
@@ -173,6 +195,7 @@
         .app-card.pravida:hover { border-color: var(--accent-pravida); }
         .app-card.toolport:hover { border-color: var(--accent-toolport); }
         .app-card.boatnavi:hover { border-color: var(--accent-boatnavi); }
+        .app-card.echobridge:hover { border-color: var(--accent-echobridge); }
 
         .app-header { display: flex; align-items: center; gap: 16px; }
 
@@ -218,6 +241,7 @@
         .app-card.pravida .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-pravida); }
         .app-card.toolport .tag { border-color: rgba(0,184,255,0.3); color: var(--accent-toolport); }
         .app-card.boatnavi .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-boatnavi); }
+        .app-card.echobridge .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-echobridge); }
 
         .app-cta {
             display: inline-flex;
@@ -233,6 +257,7 @@
         .app-card.pravida .app-cta { color: var(--accent-pravida); }
         .app-card.toolport .app-cta { color: var(--accent-toolport); }
         .app-card.boatnavi .app-cta { color: var(--accent-boatnavi); }
+        .app-card.echobridge .app-cta { color: var(--accent-echobridge); }
 
         .app-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
         .app-card:hover .app-cta svg { transform: translateX(4px); }
@@ -366,7 +391,7 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
-    <meta name="twitter:description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), and Pravida (the private, encrypted, offline messenger).">
+    <meta name="twitter:description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger), and EchoBridge (live conversation translation with suggested replies).">
     <meta name="twitter:image" content="https://pravalabs.app/prava-icon.png">
 </head>
 <body>
@@ -511,6 +536,33 @@
                 </svg>
             </span>
         </a>
+        <a data-runs="ios" class="app-card echobridge" href="/echobridge/">
+            <div class="app-header">
+                <img class="app-icon" src="echobridge-icon.png" alt="EchoBridge icon">
+                <div>
+                    <div class="app-name">EchoBridge <span class="live-now beta">In TestFlight</span></div>
+                    <div class="app-platform">iPhone · iPhone Duo · Any Bluetooth headphones · On device</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                Understand them, then know what to say. Hear a conversation in your own language, in your own headphones, as it is spoken. When they finish, three short replies appear in their language with the meaning in yours: tap one and your iPhone says it, or hold to talk and it translates you. Speech, translation and suggestions run on the iPhone; nothing saved unless you choose.
+            </p>
+            <div class="app-tags">
+                <span class="tag">Suggested Replies</span>
+                <span class="tag">Live Translation</span>
+                <span class="tag">Any Bluetooth Headphones</span>
+                <span class="tag">Hold to Talk</span>
+                <span class="tag">Listen Only Mode</span>
+                <span class="tag">iPhone Duo Ready</span>
+                <span class="tag">On-Device</span>
+            </div>
+            <span class="app-cta">
+                Learn More
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
         </div>
     </section>
 
@@ -544,11 +596,12 @@
             &nbsp;&middot;&nbsp; <a href="/toolport/">Toolport</a>
             &nbsp;&middot;&nbsp; <a href="/boatnavi/">BoatNavi</a>
             &nbsp;&middot;&nbsp; <a href="/pravida/">Pravida</a>
+            &nbsp;&middot;&nbsp; <a href="/echobridge/">EchoBridge</a>
             &nbsp;&middot;&nbsp; <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
         </p>
         <p class="footer-legal-note" style="margin-top:6px; font-size:0.8em; opacity:0.7">
             Privacy, terms, and support for each product live on its own pages:
-            <a href="/tradesocial/privacy.html">TradeSocial</a> &middot; <a href="/toolport/privacy.html">Toolport</a> &middot; <a href="/boatnavi/privacy.html">BoatNavi</a> &middot; <a href="/pravida/privacy.html">Pravida</a>
+            <a href="/tradesocial/privacy.html">TradeSocial</a> &middot; <a href="/toolport/privacy.html">Toolport</a> &middot; <a href="/boatnavi/privacy.html">BoatNavi</a> &middot; <a href="/pravida/privacy.html">Pravida</a> &middot; <a href="/echobridge/privacy.html">EchoBridge</a>
         </p>
     </footer>
 

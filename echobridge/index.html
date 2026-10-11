@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoBridge — Live Conversation Translator with Suggested Replies · iPhone</title>
+    <meta name="description" content="EchoBridge translates the conversation around you as it is spoken, into your own headphones, then suggests three replies in the other person's language. Tap one and your iPhone says it. All on device.">
+    <meta name="keywords" content="conversation translator, live translation, real-time translation app, suggested replies, Spanish English translator, translate in headphones, AirPods translation, Bose translation, on-device translation, offline translator, travel translator iPhone">
+    <link rel="canonical" href="https://pravalabs.app/echobridge/">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#000000">
+    <meta name="author" content="Prava Labs, LLC">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="EchoBridge">
+    <meta property="og:title" content="EchoBridge — Understand Them. Then Know What to Say.">
+    <meta property="og:description" content="Hear the conversation in your language, in your own headphones, as it is spoken. Then tap one of three suggested replies and your iPhone says it in theirs.">
+    <meta property="og:image" content="https://pravalabs.app/echobridge/images/icon.png">
+    <meta property="og:url" content="https://pravalabs.app/echobridge/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="EchoBridge — Understand Them. Then Know What to Say.">
+    <meta name="twitter:description" content="Live conversation translation in your own headphones, plus three suggested replies in their language. All on device.">
+    <meta name="twitter:image" content="https://pravalabs.app/echobridge/images/icon.png">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "@id": "https://pravalabs.app/echobridge/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "EchoBridge", "item": "https://pravalabs.app/echobridge/"}]}, {"@type": "SoftwareApplication", "@id": "https://pravalabs.app/echobridge/#app", "name": "EchoBridge", "operatingSystem": "iOS 26", "applicationCategory": "UtilitiesApplication", "url": "https://pravalabs.app/echobridge/", "image": "https://pravalabs.app/echobridge/images/icon.png", "description": "A live conversation translator for iPhone: hear what is said in your language, in your own headphones, as it is spoken, then tap one of three suggested replies and your iPhone says it in theirs. Speech, translation and suggestions run on device.", "publisher": {"@id": "https://pravalabs.app/#org"}}, {"@type": "WebPage", "@id": "https://pravalabs.app/echobridge/", "url": "https://pravalabs.app/echobridge/", "name": "EchoBridge — Live Conversation Translator with Suggested Replies", "isPartOf": {"@id": "https://pravalabs.app/#website"}, "about": {"@id": "https://pravalabs.app/echobridge/#app"}, "dateModified": "2026-10-10", "inLanguage": "en", "publisher": {"@id": "https://pravalabs.app/#org"}}]}</script>
+    <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hero: the claim on the left, the app answering on the right. One idea: the reply is the product. */
+        .hero.split { text-align: left; padding-top: 140px; }
+        .split .hero-inner > div { min-width: 0; }
+        .split .hero-inner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 56px; align-items: center; }
+        .split .app-icon-container { margin-bottom: 24px; }
+        .split .app-icon { width: 88px; height: 88px; border-radius: 20px; }
+        .split h1 { font-size: clamp(38px, 5.4vw, 62px); text-wrap: balance; }
+        .split .subtitle { margin: 0; max-width: 34em; }
+        .split .platform-tags { justify-content: flex-start; }
+        .formula {
+            display: inline-block; margin: 26px 0 0;
+            font: 500 clamp(0.95rem, 2vw, 1.1rem)/1.6 ui-monospace, "SF Mono", Menlo, monospace;
+            color: var(--text-primary); background: var(--bg-surface);
+            border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+            padding: 12px 18px; letter-spacing: -0.01em;
+        }
+        .formula b { color: var(--brand); font-weight: 600; }
+        .formula .op { color: var(--text-tertiary); margin: 0 0.45em; }
+        .status-line { margin-top: 18px; color: var(--text-secondary); font-size: 0.95rem; }
+        .status-line .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #f4b860; margin-right: 8px; vertical-align: 1px; }
+
+        /* The phone: a faithful sketch of the Two-way screen, built in markup so it stays sharp. */
+        .phone {
+            width: min(100%, 340px); margin: 0 auto; aspect-ratio: 340 / 700;
+            border-radius: 52px; padding: 11px;
+            background: linear-gradient(160deg, #3a3d42, #16181b 40%, #2a2d31);
+            box-shadow: 0 40px 90px rgba(0, 212, 170, 0.14), 0 0 0 1px rgba(255, 255, 255, 0.06);
+        }
+        .screen {
+            height: 100%; border-radius: 42px; overflow: hidden; position: relative;
+            background: #000; display: flex; flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; text-align: left;
+        }
+        .island { width: 96px; height: 28px; border-radius: 20px; background: #000; margin: 10px auto 0; box-shadow: 0 0 0 1px #1c1c1e; flex: none; }
+        .navrow { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 8px; flex: none; }
+        .navrow .ico { width: 30px; height: 30px; border-radius: 50%; background: #1c1c1e; display: grid; place-items: center; }
+        .navrow svg { width: 15px; height: 15px; stroke: #e5e5ea; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .seg { display: flex; background: #1c1c1e; border-radius: 9px; padding: 2px; font-size: 11.5px; font-weight: 600; }
+        .seg span { padding: 5px 10px; border-radius: 7px; color: #8e8e93; }
+        .seg span.on { background: #3a3a3c; color: #fff; }
+        .statusbar { display: flex; align-items: center; gap: 8px; padding: 8px 16px 6px; border-bottom: 1px solid #1c1c1e; flex: none; }
+        .statusbar .live { width: 8px; height: 8px; border-radius: 50%; background: #30d158; box-shadow: 0 0 0 0 rgba(48, 209, 88, 0.6); animation: live 1.8s infinite; flex: none; }
+        @keyframes live { 70% { box-shadow: 0 0 0 7px rgba(48, 209, 88, 0); } 100% { box-shadow: 0 0 0 0 rgba(48, 209, 88, 0); } }
+        .statusbar .st { font-size: 12px; font-weight: 600; color: #fff; }
+        .statusbar .pair { margin-left: auto; font-size: 10.5px; color: #8e8e93; white-space: nowrap; }
+        .statusbar .swap { width: 22px; height: 22px; border-radius: 50%; background: #2c2c2e; color: #e5e5ea; font-size: 11px; display: grid; place-items: center; flex: none; }
+        .convo { flex: 1; padding: 12px 12px 0; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+        .chunk { background: #1c1c1e; border-radius: 13px; padding: 9px 11px; }
+        .chunk .src { font-size: 11.5px; color: #8e8e93; line-height: 1.35; }
+        .chunk .tgt { font-size: 14.5px; font-weight: 600; color: #fff; line-height: 1.3; margin-top: 3px; display: flex; gap: 6px; align-items: baseline; justify-content: space-between; }
+        .chunk .tgt svg { width: 11px; height: 11px; flex: none; fill: #636366; }
+        .volatile { font-size: 12px; color: #8e8e93; font-style: italic; padding: 2px 4px; }
+        .sugs { display: flex; gap: 7px; padding: 10px 12px 0; overflow: hidden; flex: none; }
+        .sug { flex: none; width: 150px; border-radius: 14px; padding: 8px 10px; background: rgba(255, 255, 255, 0.09); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12); }
+        .sug b { display: block; font-size: 12px; color: #fff; line-height: 1.3; }
+        .sug i { display: block; font-style: normal; font-size: 10.5px; color: #98989d; margin-top: 2px; line-height: 1.3; }
+        .sug.tapped { box-shadow: inset 0 0 0 1.5px var(--brand); background: rgba(0, 212, 170, 0.14); }
+        .ctrls { display: grid; grid-template-columns: 1fr 1.4fr; gap: 8px; padding: 10px 12px 8px; flex: none; }
+        .ctrls span { display: flex; align-items: center; justify-content: center; gap: 6px; border-radius: 99px; padding: 11px 0; font-size: 12.5px; font-weight: 600; color: #fff; }
+        .ctrls svg { width: 13px; height: 13px; fill: currentColor; }
+        .ctrls .stop { background: #ff453a; }
+        .ctrls .talk { background: rgba(255, 255, 255, 0.1); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14); }
+        .tool { text-align: center; font-size: 11.5px; color: var(--brand); padding: 4px 0 18px; flex: none; }
+        .phone-note { text-align: center; color: var(--text-tertiary); font-size: 0.85rem; margin-top: 14px; }
+
+        @media (max-width: 900px) {
+            .split .hero-inner { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+            .hero.split { text-align: center; padding-top: 120px; }
+            .split .subtitle { margin: 0 auto; }
+            .split .platform-tags { justify-content: center; }
+        }
+        @media (prefers-reduced-motion: reduce) { .statusbar .live { animation: none; } }
+
+        /* Two halves, named once, up front */
+        .halves { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 900px; margin: 0 auto; text-align: left; }
+        .half { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 26px; }
+        .half .k { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand); font-weight: 600; margin-bottom: 8px; }
+        .half h3 { font-size: 1.25rem; letter-spacing: -0.02em; margin: 0 0 8px; }
+        .half p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+        .half .n { font-size: 0.85rem; color: var(--text-tertiary); margin-top: 12px; }
+        .half.dim .k { color: var(--text-tertiary); }
+        .halves.three { grid-template-columns: 1fr 1fr 1fr; max-width: 1080px; }
+        @media (max-width: 900px) { .halves.three { grid-template-columns: 1fr; } }
+        @media (max-width: 720px) { .halves { grid-template-columns: 1fr; } }
+
+        /* One exchange, set out at reading size: what they said, and the three ways back */
+        .exchange { max-width: 900px; margin: 0 auto 48px; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 20px; align-items: center; text-align: left; }
+        .said { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 22px 24px; }
+        .said .who { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); font-weight: 600; }
+        .said .es { font-size: 1.05rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.45; }
+        .said .en { font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-top: 6px; line-height: 1.35; letter-spacing: -0.01em; }
+        .ways { display: grid; gap: 10px; }
+        .way { display: grid; grid-template-columns: 112px 1fr; gap: 14px; align-items: center; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 14px 18px; }
+        .way .intent { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand); font-weight: 600; }
+        .way b { display: block; font-size: 1.05rem; color: var(--text-primary); font-weight: 600; }
+        .way i { display: block; font-style: normal; color: var(--text-secondary); font-size: 0.9rem; margin-top: 2px; }
+        .exchange-note { grid-column: 1 / -1; color: var(--text-tertiary); font-size: 0.9rem; text-align: center; margin-top: 4px; }
+        @media (max-width: 760px) { .exchange { grid-template-columns: 1fr; } .way { grid-template-columns: 1fr; gap: 4px; } }
+
+        /* Tables share one look */
+        .tbl { max-width: 760px; margin: 0 auto; border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; text-align: left; }
+        .tbl table { width: 100%; border-collapse: collapse; }
+        .tbl th, .tbl td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--border-color); vertical-align: top; font-size: 0.95rem; }
+        .tbl tr:last-child td { border-bottom: 0; }
+        .tbl th { color: var(--text-tertiary); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg-secondary); }
+        .tbl td:first-child { color: var(--text-primary); font-weight: 500; width: 34%; }
+        .tbl td:last-child { color: var(--text-secondary); }
+        .tbl .no  { color: var(--brand); font-weight: 600; }
+        .tbl .yes { color: #f4b860; font-weight: 600; }
+        .tbl-note { max-width: 760px; margin: 16px auto 0; color: var(--text-tertiary); font-size: 0.9rem; line-height: 1.6; text-align: center; }
+        @media (max-width: 640px) { .tbl th, .tbl td { padding: 12px 14px; font-size: 0.9rem; } .tbl td:first-child { width: auto; } }
+
+        /* Plain numbers */
+        .proof { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; max-width: 900px; margin: 28px auto 0; text-align: left; }
+        .proof div { background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 20px; }
+        .proof b { display: block; font-size: 1.7rem; letter-spacing: -0.02em; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+        .proof span { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; display: block; margin-top: 6px; }
+
+        .safety { max-width: 760px; margin: 0 auto; padding: 100px 24px 80px; text-align: center; }
+        .safety h2 { font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -0.03em; margin-bottom: 12px; }
+        .safety p { color: var(--text-secondary); line-height: 1.7; margin: 0 auto 14px; max-width: 62ch; }
+        .safety p.model { color: var(--text-primary); }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/echobridge/" class="nav-brand">
+                <img src="images/favicon.png" alt="EchoBridge">
+                <span>EchoBridge</span>
+            </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+            <ul class="nav-links">
+                <li><a href="#replies">Replies</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#modes">Modes</a></li>
+                <li><a href="#duo">iPhone Duo</a></li>
+                <li><a href="#private">On Device</a></li>
+                <li><a href="#needs">What You Need</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="/">Prava Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero split">
+        <div class="hero-inner">
+            <div>
+                <div class="app-icon-container">
+                    <img src="images/icon.png" alt="EchoBridge app icon" class="app-icon">
+                </div>
+                <div class="hero-badge">Live Conversation Translator · iPhone &amp; iPhone Duo · On Device</div>
+                <h1>Understand them.<br><span class="highlight">Then know what&nbsp;to&nbsp;say.</span></h1>
+                <p class="subtitle">
+                    Translation apps help you follow what is said, then leave you on your own. EchoBridge helps with both halves: you hear them in your language, in your own headphones, as they speak. Then three replies appear in theirs. <strong>Tap one and your iPhone says it.</strong>
+                </p>
+                <div class="formula" aria-label="What EchoBridge does">
+                    <b>hear</b> it<span class="op">·</span><b>read</b> it<span class="op">·</span><b>answer</b> it
+                </div>
+                <p class="status-line"><span class="dot"></span>In TestFlight, App Store to follow.</p>
+                <div class="platform-tags">
+                    <span class="platform-tag">Suggested Replies</span>
+                    <span class="platform-tag">Any Bluetooth Headphones</span>
+                    <span class="platform-tag">Hold to Talk</span>
+                    <span class="platform-tag">Listen Only Mode</span>
+                    <span class="platform-tag">iPhone Duo Ready</span>
+                    <span class="platform-tag">On-Device</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="phone" role="img" aria-label="EchoBridge in Two-way mode: a waiter's Spanish translated into English, with three suggested Spanish replies and the Hold to Talk button">
+                    <div class="screen">
+                        <div class="island"></div>
+                        <div class="navrow">
+                            <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg></span>
+                            <span class="seg"><span class="on">Two-way</span><span>Listen only</span></span>
+                            <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span>
+                        </div>
+                        <div class="statusbar"><span class="live"></span><span class="st">Hearing speech</span><span class="pair">Spanish → English</span><span class="swap">⇄</span></div>
+                        <div class="convo">
+                            <div class="chunk">
+                                <p class="src">Buenas, ¿ya saben qué van a pedir?</p>
+                                <p class="tgt">Hi, do you know what you'd like to order? <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg></p>
+                            </div>
+                            <div class="chunk">
+                                <p class="src">El especial de hoy es ajiaco.</p>
+                                <p class="tgt">Today's special is ajiaco. <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg></p>
+                            </div>
+                            <p class="volatile">viene con arroz y aguacate…</p>
+                        </div>
+                        <div class="sugs">
+                            <div class="sug tapped"><b>Sí, un ajiaco, por favor.</b><i>Yes, an ajiaco, please.</i></div>
+                            <div class="sug"><b>¿Qué trae el ajiaco?</b><i>What comes in the ajiaco?</i></div>
+                            <div class="sug"><b>Todavía no, un momentico.</b><i>Not yet, just a moment.</i></div>
+                        </div>
+                        <div class="ctrls">
+                            <span class="stop"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>Stop</span>
+                            <span class="talk"><svg viewBox="0 0 24 24"><path d="M3 10h2v4H3zm4-4h2v12H7zm4-3h2v18h-2zm4 5h2v8h-2zm4 2h2v4h-2z"/></svg>Hold to Talk</span>
+                        </div>
+                        <div class="tool">⌨︎ Type a reply</div>
+                    </div>
+                </div>
+                <p class="phone-note">A café in Medellín. Grey italic is still being heard.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The other half -->
+    <section class="features" id="other-half">
+        <div class="features-inner">
+            <h2>Understanding is only half a conversation.</h2>
+            <p class="section-subtitle">The other half is answering, and that is where most translators stop. EchoBridge is built for both.</p>
+            <div class="halves">
+                <div class="half">
+                    <div class="k">Understand</div>
+                    <h3>Hear It as It's Said</h3>
+                    <p>EchoBridge doesn't wait for the end of a sentence. It translates in short phrases as they settle and speaks each one into your headphones: AirPods, Bose, or any other Bluetooth pair. The original and the translation stay on screen, so you can read along when it's noisy.</p>
+                </div>
+                <div class="half">
+                    <div class="k">Respond</div>
+                    <h3>Know What to Say Back</h3>
+                    <p>When they finish, three short replies appear in their language, each with its meaning in yours: one to say yes, one to ask something, one to decline politely. Tap one and your iPhone speaks it from its own speaker, so they hear it and your earbuds stay in.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Replies -->
+    <section class="how-it-works" id="replies">
+        <div class="how-it-works-inner">
+            <h2>Three Ways to Answer</h2>
+            <p class="section-subtitle">A suggestion is a starting point, not a script. Nothing is said until you choose it.</p>
+
+            <div class="exchange">
+                <div class="said">
+                    <div class="who">They Said</div>
+                    <p class="es">Buenas, ¿ya saben qué van a pedir? El especial de hoy es ajiaco.</p>
+                    <p class="en">Hi, do you know what you'd like to order? Today's special is ajiaco.</p>
+                </div>
+                <div class="ways">
+                    <div class="way"><span class="intent">Say Yes</span><div><b>Sí, un ajiaco, por favor.</b><i>Yes, an ajiaco, please.</i></div></div>
+                    <div class="way"><span class="intent">Ask</span><div><b>¿Qué trae el ajiaco?</b><i>What comes in the ajiaco?</i></div></div>
+                    <div class="way"><span class="intent">Not Yet</span><div><b>Todavía no, un momentico.</b><i>Not yet, just a moment.</i></div></div>
+                </div>
+                <p class="exchange-note">Replies are written for the conversation so far, in polite, everyday spoken language, and kept to twelve words or fewer so they are easy to say or to tap.</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Tap a Suggestion</h3>
+                    <p>Three replies, each a different intent, with the meaning in your language underneath. They follow the last few exchanges, not just the last sentence. Tap one and your iPhone says it.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3>Edit Before Speaking</h3>
+                    <p>Touch and hold a suggestion to change a word first: a dish, a time, a name. The meaning stays beside it, so you know what you're about to say.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎙️</div>
+                    <h3>Hold to Talk</h3>
+                    <p>Rather say it yourself? Hold the button and speak in your language. Let go, and EchoBridge translates it and says it out loud in theirs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⌨️</div>
+                    <h3>Type a Reply</h3>
+                    <p>For the quiet moments. Type in your language, preview the translation, adjust it if you like, then tap Speak.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔈</div>
+                    <h3>Spoken Where They Can Hear It</h3>
+                    <p>Your replies come from the iPhone's own speaker, toward the person you're talking to. Your earbuds stay connected, and EchoBridge goes back to listening as soon as it's done.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✋</div>
+                    <h3>Never Without You</h3>
+                    <p>EchoBridge never speaks a suggestion on its own. If you'd rather just listen, turn suggestions off in Settings and nothing appears.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="features" id="how">
+        <div class="features-inner">
+            <h2>How It Works</h2>
+            <p class="section-subtitle">Four steps, and the first one you do once.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Languages</h3>
+                    <p>Pick the language they speak and the one you speak. Spanish and English to start; the Languages screen lists every pair your iPhone can handle on device.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Tap Start</h3>
+                    <p>Headphones in, or not. iOS shows its microphone indicator whenever EchoBridge is listening, and Stop ends it.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Hear Them</h3>
+                    <p>Short phrases arrive in your language as they're spoken, in your ears and on screen, with the original underneath.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Answer</h3>
+                    <p>Tap a suggested reply, hold to talk, or type. Your iPhone says it in their language, then goes back to listening.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modes -->
+    <section class="how-it-works" id="modes">
+        <div class="how-it-works-inner">
+            <h2>Two Ways to Use It</h2>
+            <p class="section-subtitle">Switch at the top of the screen, any time.</p>
+            <div class="halves">
+                <div class="half">
+                    <div class="k">Two-way</div>
+                    <h3>For a Conversation You're In</h3>
+                    <p>Ordering, asking the way, checking in, chatting with a neighbour. Translations in your ears, suggested replies, Hold to Talk and typed replies. Swap the languages with one tap when the roles change.</p>
+                </div>
+                <div class="half">
+                    <div class="k">Listen only</div>
+                    <h3>For Following Along</h3>
+                    <p>A tour, a meeting, an announcement, the family at the next table. No suggestions and nothing spoken back. Choose <strong>Text only</strong> to read silently, or <strong>In earbuds</strong> to hear it. A thin line marks a pause that may be a new speaker.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- iPhone Duo -->
+    <section class="features" id="duo">
+        <div class="features-inner">
+            <h2>Ready for iPhone Duo</h2>
+            <p class="section-subtitle">Built on the iOS 27.1 SDK, so it fills the Duo's displays edge to edge and lays itself out for however the phone is held: closed, open, set down like a laptop or stood up like a tent. Every orientation.</p>
+            <div class="halves three">
+                <div class="half">
+                    <div class="k">Closed</div>
+                    <h3>A Phone, Edge to Edge</h3>
+                    <p>On the outer display EchoBridge is the phone layout: transcript above, suggested replies and the Start and Hold to Talk buttons at your thumb, with History, Settings and Type a reply in a bar along the edge.</p>
+                </div>
+                <div class="half">
+                    <div class="k">Open</div>
+                    <h3>Transcript Beside Replies</h3>
+                    <p>Open it flat and the conversation gets a side of its own: what they said on one half, your replies, Start and Hold to Talk on the other, with nothing sitting on the fold.</p>
+                </div>
+                <div class="half">
+                    <div class="k">Laptop &amp; Tent</div>
+                    <h3>Half Open on the Table</h3>
+                    <p>Set it half open like a laptop and the transcript takes the upright half while your replies and buttons rest on the flat half nearest you. Stand it up like a tent and the conversation faces you on one half while it keeps listening.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- On device -->
+    <section class="privacy-section" id="private">
+        <div class="privacy-inner">
+            <h2>Everything Happens on Your iPhone</h2>
+            <p class="section-subtitle">EchoBridge uses Apple's on-device speech recognition, translation and language model. There is no EchoBridge server to send anything to.</p>
+            <div class="tbl">
+                <table>
+                    <thead><tr><th scope="col">What</th><th scope="col">Where It Happens</th></tr></thead>
+                    <tbody>
+                        <tr><td>Hearing what's said</td><td><span class="no">On your iPhone</span> — Apple's on-device speech recognition</td></tr>
+                        <tr><td>Translating it</td><td><span class="no">On your iPhone</span> — Apple Translation, with language packs that download once</td></tr>
+                        <tr><td>Suggesting replies</td><td><span class="no">On your iPhone</span> — Apple's on-device model, on iPhones with Apple Intelligence</td></tr>
+                        <tr><td>Speaking for you</td><td><span class="no">On your iPhone</span> — the voices installed on it</td></tr>
+                        <tr><td>The audio itself</td><td><span class="no">Never recorded</span> — listened to as it arrives, then gone</td></tr>
+                        <tr><td>Transcripts</td><td><span class="no">Not kept</span> — unless you turn on <strong>Keep transcripts</strong>; then only on this iPhone, and deletable at any time</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="proof">
+                <div><b>0</b><span>Recordings. Audio is heard as it arrives, then gone</span></div>
+                <div><b>0</b><span>Servers of ours. Nothing you say is sent to Prava Labs</span></div>
+                <div><b>3</b><span>Replies after each turn, each a different intent</span></div>
+                <div><b>Off</b><span>Saved transcripts, until you choose to keep them</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What you need -->
+    <section class="tech-section" id="needs">
+        <div class="tech-inner">
+            <h2>What You Need</h2>
+            <p class="section-subtitle">An iPhone, and ideally a pair of headphones you already own.</p>
+            <div class="tbl">
+                <table>
+                    <thead><tr><th scope="col">Item</th><th scope="col">Requirement</th></tr></thead>
+                    <tbody>
+                        <tr><td>iPhone</td><td>iOS 26 or later. Ready for iPhone Duo, closed or open</td></tr>
+                        <tr><td>Headphones</td><td>Optional. Any Bluetooth headphones: AirPods, Bose, Sony and the rest. Without them, read along on screen</td></tr>
+                        <tr><td>Suggested replies</td><td>An iPhone with Apple Intelligence turned on (iPhone 15 Pro or later), in a language Apple's model supports. Without it, everything else works and suggestions are simply absent</td></tr>
+                        <tr><td>Languages</td><td>Any pair your iPhone supports on device for both speech and translation. Spanish ⇄ English is the default and the pair it's tuned for</td></tr>
+                        <tr><td>Internet</td><td><span class="no">Once</span> — to download a language's speech model and translation pack. After that, no</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="tbl-note">For a more natural voice, download an Enhanced or Premium voice in iOS Settings › Accessibility › Spoken Content › Voices, then pick it in EchoBridge's Settings › Voices.</p>
+        </div>
+    </section>
+
+    <!-- What it is not -->
+    <section class="safety" id="honest">
+        <h2>What EchoBridge Is Not</h2>
+        <p>It is not a simultaneous interpreter. It translates phrase by phrase, so you hear each phrase a moment after it's said. When someone talks faster than the voice can keep up, older audio is skipped and the text stays on screen.</p>
+        <p class="model">Use it to get through a conversation, not to sign something. For medical, legal or emergency situations, find a human interpreter.</p>
+        <p>It can't separate two people talking at once, and its suggestions are only as good as what it heard. It runs on iPhone, including iPhone Duo, only for now: there is no iPad, Mac or Apple Watch app in this version.</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">EchoBridge</div>
+                    <p class="footer-description">A live conversation translator for iPhone that helps with both halves: hear them in your language, then tap a reply and your iPhone says it in theirs. By Prava Labs.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <a href="#replies">Replies</a>
+                    <a href="#how">How It Works</a>
+                    <a href="#modes">Modes</a>
+                    <a href="#duo">iPhone Duo</a>
+                    <a href="#private">On Device</a>
+                    <a href="#needs">What You Need</a>
+                    <a href="#honest">What It Is Not</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Help</h4>
+                    <a href="support.html">Support</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Prava Labs</h4>
+                    <a href="/">All Products</a>
+                    <a href="/tradesocial/">TradeSocial</a>
+                    <a href="/toolport/">Toolport</a>
+                    <a href="/pravida/">Pravida</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Prava Labs, LLC</span>
+                <span>Made in California</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
