@@ -192,11 +192,19 @@ for (const [id, entry] of entries) {
   // SF Symbol fills its 18 pt box; the app marks it isTemplate and AppKit tints
   // it for light, dark and coloured menu bars. Same mark as the Dock icon, so the
   // two never look like two apps.
+  // A Dock glyph's line-work (stroke ≈ 17 on the 256 grid ≈ 1.2 pt at 18 pt) reads thin and
+  // small beside the system's menu bar extras (≈ 1.8 pt strokes, ink ≈ 16 pt): the menu bar
+  // variant therefore uses the heavier outline `glyphs/<id>.menubar.svg` when it exists
+  // (written by `tools/outline.py --stroke-scale <menubarStroke>` from the same stroked
+  // drawing — one source, never a second drawing) and a fuller inset (`menubarInset`, > 1
+  // enlarges: the Dock glyph keeps air for its tile, the menu bar box has none to spare).
   if (p.menubar) {
     const c = coreDefs("#000000", "core");
+    const heavy = p.glyph.replace(/\.svg$/, ".menubar.svg");
+    const glyph = existsSync(join(ROOT, "glyphs", heavy)) ? heavy : p.glyph;
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${G} ${G}">
 <defs>${c.def}</defs>
-${glyphMarkup(p.glyph, "#000000", c.fill, 1.0)}
+${glyphMarkup(glyph, "#000000", c.fill, p.menubarInset ?? 1.0)}
 </svg>`;
     const f = join(dir, "menubar-template.svg");
     writeFileSync(f, svg);
