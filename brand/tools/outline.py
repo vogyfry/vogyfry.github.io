@@ -4,13 +4,19 @@ circles as rounded squares and ignores round caps. Strokes become shapely buffer
 unioned per glyph, emitted as one evenodd path. The core dot is untouched.
 
 Usage: python3 brand/tools/outline.py brand/glyphs/stroked/<id>.svg [...]
+       python3 brand/tools/outline.py --stroke-scale 1.5 brand/glyphs/stroked/<id>.svg
 Reads the stroked drawing, writes brand/glyphs/<id>.svg; then run generate.mjs.
+With --stroke-scale S (S != 1) every stroke is S times heavier and the result is written to
+brand/glyphs/<id>.menubar.svg — the menu-bar variant generate.mjs picks up for `"menubar": true`
+products (same drawing, heavier line: the menu bar's 18 pt box has no tile to pad it and the
+system's extras run ≈ 1.8 pt strokes; the Dock glyph's ≈ 1.2 pt read thin and small there).
 Needs: pip install shapely svgpathtools"""
 import re, sys, math, xml.etree.ElementTree as ET
 from svgpathtools import parse_path
 from shapely.geometry import LineString, LinearRing, Point, Polygon
 from shapely.ops import unary_union
 STEP=0.35  # sampling spacing on the 256 grid (≈1.4 px at 1024)
+SCALE=1.0  # --stroke-scale: multiplies every stroke-width (menu-bar variant)
 def sample(d):
     path=parse_path(d); pts=[]
     for seg in path:
@@ -30,7 +36,7 @@ def geom_for(el, inh):
     tag=el.tag.split('}')[-1]
     a={**inh, **el.attrib}
     if a.get("stroke")!="__INK__": return None
-    w=float(a.get("stroke-width","1")); cap=a.get("stroke-linecap","butt"); join=a.get("stroke-linejoin","miter")
+    w=float(a.get("stroke-width","1"))*SCALE; cap=a.get("stroke-linecap","butt"); join=a.get("stroke-linejoin","miter")
     cs={"round":"round","butt":"flat","square":"square"}[cap]; js={"round":"round","miter":"mitre","bevel":"bevel"}[join]
     if tag=="path":
         pts,closed=sample(a["d"])
@@ -70,7 +76,11 @@ def convert(path):
     note="<!-- Filled outlines only (no strokes): macOS 26's live icon renderer draws stroked circles as rounded squares and ignores round caps, so every stroke is baked into its outline geometry (brand/tools/outline.py). The stroked drawing lives in glyphs/stroked/; edit it there, then `python3 brand/tools/outline.py brand/glyphs/stroked/<id>.svg` writes this file. -->"
     new=f"{comment}\n{note}\n{wrap_open}\n  {ink}\n  {core}\n</g>\n"
     out=path.replace("/stroked/","/") if "/stroked/" in path else path
+    if SCALE!=1.0: out=out[:-4]+".menubar.svg"
     open(out,"w").write(new)
     return out, len(geoms), len(polys), len(d)
-for f in sys.argv[1:]:
+args=sys.argv[1:]
+if "--stroke-scale" in args:
+    i=args.index("--stroke-scale"); SCALE=float(args[i+1]); del args[i:i+2]
+for f in args:
     print(f, convert(f))
