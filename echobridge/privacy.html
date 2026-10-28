@@ -23,7 +23,7 @@
     <meta name="twitter:title" content="Privacy Policy — EchoBridge">
     <meta name="twitter:description" content="Speech recognition, translation and reply suggestions run on your iPhone. Audio is never recorded, and nothing is sent to Prava Labs.">
     <meta name="twitter:image" content="https://pravalabs.app/echobridge/images/icon.png">
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "@id": "https://pravalabs.app/echobridge/privacy.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "EchoBridge", "item": "https://pravalabs.app/echobridge/"}, {"@type": "ListItem", "position": 3, "name": "Privacy Policy", "item": "https://pravalabs.app/echobridge/privacy.html"}]}, {"@type": "WebPage", "@id": "https://pravalabs.app/echobridge/privacy.html", "url": "https://pravalabs.app/echobridge/privacy.html", "name": "Privacy Policy — EchoBridge", "isPartOf": {"@id": "https://pravalabs.app/#website"}, "dateModified": "2026-10-10", "inLanguage": "en", "publisher": {"@id": "https://pravalabs.app/#org"}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "@id": "https://pravalabs.app/echobridge/privacy.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "EchoBridge", "item": "https://pravalabs.app/echobridge/"}, {"@type": "ListItem", "position": 3, "name": "Privacy Policy", "item": "https://pravalabs.app/echobridge/privacy.html"}]}, {"@type": "WebPage", "@id": "https://pravalabs.app/echobridge/privacy.html", "url": "https://pravalabs.app/echobridge/privacy.html", "name": "Privacy Policy — EchoBridge", "isPartOf": {"@id": "https://pravalabs.app/#website"}, "dateModified": "2026-10-27", "inLanguage": "en", "publisher": {"@id": "https://pravalabs.app/#org"}}]}</script>
 </head>
 <body>
 
@@ -44,10 +44,10 @@
 
     <main class="legal-page">
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: October 10, 2026</p>
+        <p class="last-updated">Last updated: October 27, 2026</p>
 
         <div class="highlight-box">
-            <p>EchoBridge is built on a simple principle: <strong>a conversation belongs to the people having it</strong>. Speech recognition, translation and reply suggestions run on your iPhone. The audio is never recorded, transcripts are not kept unless you choose to keep them, and nothing you say or hear is sent to Prava Labs. There is no account, no analytics and no advertising.</p>
+            <p>EchoBridge is built on a simple principle: <strong>a conversation belongs to the people having it</strong>. Speech recognition, translation and reply suggestions run on your iPhone. The audio is never recorded, transcripts are not kept unless you choose to keep them, and nothing you say or hear is sent to Prava Labs. There is no account, no analytics, no advertising and no server of our own.</p>
         </div>
 
         <h2>1. What We Don't Collect</h2>
@@ -80,10 +80,11 @@
         <p><strong>Keep transcripts</strong> is off by default. If you turn it on, each conversation is saved as text when you stop listening, in the app's own storage on your iPhone, protected by iOS data protection while the phone is locked. Saved transcripts never leave the device unless you share one yourself from <strong>History</strong>. You can delete a single conversation or every one of them from History at any time, and deleting the app deletes them too.</p>
 
         <h2>6. Diagnostics Log</h2>
-        <p>Settings › Diagnostics has an optional log of timings and events, used to troubleshoot problems. It is off by default, stays on your iPhone, and can include transcript text. It only reaches us if you choose <strong>Share Diagnostics Log</strong> and send it, for example to support. <strong>Clear</strong> deletes it.</p>
+        <p>Settings › Diagnostics has an optional log of timings and events, used to troubleshoot problems. In the builds you download from TestFlight or the App Store it is off unless you turn it on. When on, it is written to the app's own storage on your iPhone and can include transcript text. It only reaches us if you choose <strong>Share Diagnostics Log</strong> and send it, for example to support. <strong>Clear</strong> deletes it, and turning it off stops it.</p>
 
-        <h2>7. Third-Party Services</h2>
-        <p>EchoBridge does not integrate with any third-party analytics, advertising, crash reporting, or tracking services. There are no SDKs, no beacons and no pixel tracking. If a future version offers an optional cloud service, for example richer reply suggestions, it will be off unless you turn it on, and this policy will say exactly what it sends before that version ships.</p>
+        <h2>7. Third-Party Services and the Suggestion Server</h2>
+        <p>EchoBridge does not integrate with any third-party analytics, advertising, crash reporting, or tracking services. There are no SDKs, no beacons and no pixel tracking.</p>
+        <p>The app can be built with the address of a suggestion server, so that reply suggestions come from a larger model than the one on your iPhone. <strong>The builds you download from TestFlight and the App Store have no such address, and send nothing.</strong> There is no setting in the app to add one. If a future build includes one, each request for suggestions would send that server the text of the last few things said in the conversation, in both languages, and the two language names, and nothing else; this policy will say so, and name the server, before that build ships.</p>
 
         <h2>8. TestFlight Beta</h2>
         <p>If you test EchoBridge through Apple's TestFlight, Apple may share with us the information TestFlight collects: the email address or name you were invited with, crash reports, device model and OS version, and any feedback or screenshots you choose to send. We use this only to fix and improve EchoBridge, and do not share it with anyone else. Apple's collection is governed by Apple's TestFlight terms and privacy policy.</p>

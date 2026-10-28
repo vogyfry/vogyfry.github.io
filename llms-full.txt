@@ -125,7 +125,7 @@ What it does:
 - Suggests three replies after each turn, each a different intent (say yes, ask something, decline politely), twelve words or fewer, with the meaning in your language
 - Never speaks a suggestion until you tap it; touch and hold to edit a suggestion first
 - Hold to Talk: speak in your language and it says it in theirs; or type a reply and preview the translation
-- Two-way mode for conversations you are in; Listen only mode (text only or in earbuds) for following along
+- Two-way mode for conversations you are in; Listen only mode (text only or in earbuds) for following along, with suggested replies but no Hold to Talk
 - Any language pair the iPhone supports on device for speech and translation; Spanish ⇄ English is the default
 - Speech recognition, translation, voices and reply suggestions run on the iPhone; works offline once a language is downloaded
 - Audio is never recorded; transcripts are kept on the iPhone only if you turn on Keep transcripts
@@ -136,7 +136,7 @@ Not a simultaneous interpreter: it translates phrase by phrase, a moment behind 
 
 Support questions:
 - Q: Which headphones work? A: Any Bluetooth headphones your iPhone can play music through. EchoBridge listens with the iPhone's own microphone, not the earbuds', so keep the phone out and pointed toward the person speaking. Headphones are optional.
-- Q: Why don't I see suggested replies? A: Suggestions appear in Two-way mode after the other person finishes speaking. They need an iPhone with Apple Intelligence turned on, a language Apple's model supports, and Suggest replies on in Settings › Replies.
+- Q: Why don't I see suggested replies? A: Suggestions appear after the other person finishes speaking, in both modes. They need an iPhone with Apple Intelligence turned on, a language Apple's model supports, and Suggest replies on in Settings › Replies.
 - Q: Why do my replies come out of the phone speaker? A: So the person you're talking to can hear them. Your earbuds stay connected, and EchoBridge goes back to listening when it's done.
 - Q: Does EchoBridge work offline? A: Yes, once each language's speech model and translation pack have been downloaded.
 - Q: Does EchoBridge work on iPhone Duo? A: Yes, in every pose. Closed, it is the phone layout edge to edge; open flat, the transcript takes one half and the replies and controls the other, clear of the fold; half open like a laptop, the transcript is on the upright half and the controls on the flat half nearest you; stood up like a tent, the conversation faces you on one half.
