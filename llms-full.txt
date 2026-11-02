@@ -145,11 +145,28 @@ Support questions:
 Privacy: EchoBridge Privacy Policy. Speech recognition, translation and reply suggestions run on your iPhone. Audio is never recorded, transcripts are not kept unless you choose, and nothing is sent to Prava Labs.
 Terms: EchoBridge Terms of Service: what the app does, why machine translation and suggested replies can be wrong, and your responsibility for what you say with it.
 
-## Mavee — in development
+## Mavee — in TestFlight
 URL: https://pravalabs.app/mavee/
 
-Mavee intelligently connects your calendar, contacts, and reminders to surface insights, patterns, and a unified timeline of your life. Built for iOS 26.
+Your day, simplified. Mavee brings your calendar, mail, contacts, reminders, tasks, files and health together on the device and answers three questions: what needs me today, what does my day look like, and where is that thing. It reads Apple Calendar, Reminders, Contacts and Health on the device, and optionally Microsoft 365 (Outlook Mail, Calendar, Contacts, OneDrive, To Do), Google (Gmail, Calendar, Contacts, Drive) and Spotify over the providers' own APIs. Everything is stored and processed on the device; there is no Mavee server and no Mavee account.
 
-Privacy: Mavee Privacy Policy. Learn how we protect your data with on-device AI processing and zero cloud data collection.
-Terms: Mavee Terms of Service: the terms governing use of the Mavee day-planning app for iPhone, from Prava Labs, LLC.
+What it does:
+- Today: an attention feed computed on the device, no language model involved. Scheduling conflicts across every calendar with the colliding calendars named; signals such as a bill or invoice due, a flight or hotel email with no matching calendar entry, a document you edited before a related meeting, a birthday within the week, a short night before a heavy day, mail worth attention; each signal has Remind Me, Later and Dismiss. Also what is next, a health strip (sleep, steps, workout), open to-dos extracted from mail and events, and today's weather in the header.
+- My Day: your calendars in one hour-by-hour grid, overlapping events side by side, open time suggested, conflicts ringed, and the recent mail and documents that relate to each meeting gathered under it. Swipe between days.
+- Search: instant results across mail, calendar, files, contacts, tasks and health as you type; ask a question and get an answer built only from your own data, with the items it used; pin a search as a Topic and see what is new.
+- Sources: Apple Calendar (all calendars, including shared), Reminders, Contacts, Health; Microsoft 365; Google; Spotify recently played. Several accounts per provider.
+- Privacy: no analytics, no telemetry, no cloud sync. The on-device Apple Intelligence model answers questions and extracts to-dos; a built-in activity log lists every time it ran. Data can be erased in Settings; events older than a year are pruned automatically.
+- Also on Mac, with the same screens. Siri: "Summarize my day with Mavee", "Search Mavee for …".
+- Requires iOS 26 / macOS 26. The answer card and to-do extraction need a device with Apple Intelligence; everything else works without it.
+
+Support questions:
+- Q: Why is Today empty? A: Nothing has been connected or synced yet. Grant Calendar, Reminders, Contacts and Health in Settings › Connected Accounts, or connect a Microsoft, Google or Spotify account; pull down on Today to refresh.
+- Q: Why don't I get an answer when I ask a question? A: Answers need a device with Apple Intelligence turned on; otherwise Search still shows the matching items. Plain lookups never run the model; questions do.
+- Q: Where does my health data go? A: Nowhere. Steps, sleep and workouts are read from Apple Health on the device for the health strip and the fatigue signal, and are never uploaded.
+- Q: Why does Mavee ask for my location? A: Only for the weather line in the Today header. It is used while the app is open and never stored.
+- Q: How do I delete my data? A: Settings › Privacy › Erase Stored Data removes everything Mavee has read; Factory Reset also disconnects accounts and returns to onboarding. Uninstalling the app removes it all.
+- Q: Can I try it without connecting anything? A: Yes. Choose Use Demo Data at the end of onboarding, or Settings › Demo, for a synthetic week.
+
+Privacy: Mavee Privacy Policy. Everything stays on your device: calendar, mail, contacts, reminders, health and what the app derives from them. No servers, no analytics, no tracking.
+Terms: Mavee Terms of Service: what the app does, that it reads your data only on your device, and the limits of its reminders and answers.
 
