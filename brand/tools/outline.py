@@ -50,12 +50,16 @@ def geom_for(el, inh):
     if tag=="line":
         return LineString([(float(a["x1"]),float(a["y1"])),(float(a["x2"]),float(a["y2"]))]).buffer(w/2, cap_style=cs, join_style=js, quad_segs=32)
     return None
-def walk(el, inh, out):
+def walk(el, inh, out, state=None):
     tag=el.tag.split('}')[-1]
     inh2={**inh, **{k:v for k,v in el.attrib.items() if k in ("stroke","stroke-width","stroke-linecap","stroke-linejoin","fill")}}
+    # data-state="<name>" on a stroke or a group: that ink belongs to an app state (PrintRelay's
+    # signal arcs show only while a printer is shared). It is outlined into its own path, so the
+    # generator can leave it out of the idle menu-bar template. Inherited by children.
+    state=el.attrib.get("data-state", state)
     g=geom_for(el, inh)
-    if g is not None: out.append(g)
-    for c in el: walk(c, inh2, out)
+    if g is not None: out.append((state, g))
+    for c in el: walk(c, inh2, out, state)
 def ring_d(coords):
     return "M"+" L".join(f"{x:.2f} {y:.2f}" for x,y in coords[:-1])+" Z"
 def poly_d(p):
@@ -66,10 +70,17 @@ def convert(path):
     body=src.replace(comment,"",1).strip()
     root=ET.fromstring("<svg xmlns='http://www.w3.org/2000/svg'>"+body+"</svg>")
     geoms=[]; walk(root,{},geoms)
-    union=unary_union(geoms).simplify(0.04)
-    polys=[union] if union.geom_type=="Polygon" else list(union.geoms)
-    d=" ".join(poly_d(p) for p in polys)
-    ink=f'<path fill="__INK__" fill-rule="evenodd" d="{d}"/>'
+    states=[]
+    for st in dict.fromkeys(s for s,_ in geoms):          # one path per state, base ink first
+        if st is not None: states.append(st)
+    inks=[]; polys=[]
+    for st in [None]+states:
+        union=unary_union([g for s_,g in geoms if s_==st]).simplify(0.04)
+        ps=[union] if union.geom_type=="Polygon" else list(union.geoms); polys+=ps
+        d=" ".join(poly_d(p) for p in ps)
+        attr=f' data-state="{st}"' if st else ""
+        inks.append(f'<path{attr} fill="__INK__" fill-rule="evenodd" d="{d}"/>')
+    ink="\n  ".join(inks); d=ink
     core=re.search(r'<circle[^>]*fill="__CORE__"[^>]*/>',body).group(0)
     m=re.match(r'(<g transform="[^"]*" data-centre="1">)',body)
     wrap_open=m.group(1) if m else '<g data-centre="1">'

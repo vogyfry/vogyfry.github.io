@@ -1,0 +1,56 @@
+{
+  "fill": {
+    "linear-gradient": [
+      "extended-srgb:0.12157,0.43529,0.65882,1.00000",
+      "extended-srgb:0.03922,0.14118,0.28235,1.00000"
+    ]
+  },
+  "groups": [
+    {
+      "name": "core",
+      "layers": [
+        {
+          "image-name": "core.svg",
+          "name": "core"
+        }
+      ],
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.5
+      },
+      "translucency": {
+        "enabled": true,
+        "value": 0.5
+      },
+      "specular": true,
+      "blur-material": 0.5,
+      "lighting": "individual"
+    },
+    {
+      "name": "glyph",
+      "layers": [
+        {
+          "image-name": "glyph.svg",
+          "name": "glyph"
+        }
+      ],
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.5
+      },
+      "translucency": {
+        "enabled": true,
+        "value": 0.5
+      },
+      "specular": true,
+      "blur-material": 0.5,
+      "lighting": "individual"
+    }
+  ],
+  "supported-platforms": {
+    "circles": [
+      "watchOS"
+    ],
+    "squares": "shared"
+  }
+}
