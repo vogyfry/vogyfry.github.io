@@ -1,0 +1,8 @@
+<!-- PrintRelay — the printer and its page, found over the air: two signal arcs off the page's corner, core on the page where the document arrives. The core dot, not the ink box, is centred on the tile (translate 0 38 puts the dot on the grid centre, the printer centred under it); the arcs are a badge off the page's corner and must not pull the printer off-centre. Arcs are spaced 36 apart so they still separate under the menu bar's 1.5x stroke; they carry data-state="sharing", so the menu bar also gets an idle template without them. -->
+<g transform="translate(0 38)" data-centre="1"><rect x="44" y="122" width="168" height="62" rx="16" fill="none" stroke="__INK__" stroke-width="20.3" stroke-linejoin="round"/>
+<path d="M88 122 V58 H168 V122" fill="none" stroke="__INK__" stroke-width="20.3" stroke-linecap="round" stroke-linejoin="round"/>
+<g data-state="sharing" fill="none" stroke="__INK__" stroke-width="20.3" stroke-linecap="round">
+  <path d="M168 38 A20 20 0 0 1 188 58"/>
+  <path d="M168 2 A56 56 0 0 1 224 58"/>
+</g>
+<circle cx="128" cy="90" r="17.9" fill="__CORE__"/></g>

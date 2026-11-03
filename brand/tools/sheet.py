@@ -29,9 +29,10 @@ INTENT = {
     "echobridge": "Two speech bubbles in conversation, core inside the reply that reaches you.",
     "toolport": "A hub routing to servers, core at the junction.",
     "swiftmind": "The chip, core inside it, because the model never leaves your silicon.",
+    "printrelay": "The printer and its page, found over the air; core on the page where the document arrives.",
 }
 ORDER = {"app": ["tradesocial", "boatnavi", "waypoint", "pravida", "mavee", "timekeeper", "echobridge"],
-         "tool": ["toolport", "swiftmind"]}
+         "tool": ["toolport", "swiftmind", "printrelay"]}
 assert set(ORDER["app"] + ORDER["tool"] + ["prava"]) == set(T["products"]), "tokens.json has products the sheet doesn't list"
 
 

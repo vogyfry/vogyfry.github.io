@@ -49,15 +49,36 @@ const washDef = (id, [teal, cyan, , violet]) => `<radialGradient id="${id}" cx="
   <stop offset="0.62" stop-color="${violet}" stop-opacity="0.16"/>
   <stop offset="0.78" stop-color="${violet}" stop-opacity="0"/></radialGradient>`;
 
-function glyphMarkup(file, ink, core, inset) {
-  const raw = readFileSync(join(ROOT, "glyphs", file), "utf8")
-    .replace(/<!--[\s\S]*?-->/g, "")
-    .replaceAll("__INK__", ink)
-    .replaceAll("__CORE__", core)
-    .trim();
-  const off = (G * (1 - inset)) / 2;
-  return `<g transform="translate(${off.toFixed(1)} ${off.toFixed(1)}) scale(${inset})">${raw}</g>`;
+const readGlyph = (file) => readFileSync(join(ROOT, "glyphs", file), "utf8").replace(/<!--[\s\S]*?-->/g, "").trim();
+
+// Elements that belong to an app state (`data-state="<name>"` in the stroked drawing, kept by
+// outline.py): drawn in the icon and in the full menu-bar template, left out of the idle one.
+const STATED = /<(?:path|circle|rect|polygon|polyline|line|ellipse)\b[^>]*\sdata-state="[^"]*"[^>]*\/>\s*/gi;
+
+// Bounding box of a glyph's ink on the 256 grid. The outline files hold only absolute M/L
+// coordinates plus the core circle, inside the data-centre translate, so no path engine is needed.
+function inkBBox(raw) {
+  const tr = raw.match(/<g transform="translate\((-?[\d.]+) (-?[\d.]+)\)" data-centre="1">/);
+  const [tx, ty] = tr ? [+tr[1], +tr[2]] : [0, 0];
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  const take = (x, y) => { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); };
+  for (const m of raw.matchAll(/\sd="([^"]*)"/g)) {
+    const n = m[1].match(/-?[\d.]+/g).map(Number);
+    for (let i = 0; i + 1 < n.length; i += 2) take(n[i], n[i + 1]);
+  }
+  for (const m of raw.matchAll(/<circle\b[^>]*\bcx="([\d.]+)"[^>]*\bcy="([\d.]+)"[^>]*\br="([\d.]+)"/g)) {
+    const [cx, cy, r] = [+m[1], +m[2], +m[3]]; take(cx - r, cy - r); take(cx + r, cy + r);
+  }
+  return { x0: x0 + tx, y0: y0 + ty, x1: x1 + tx, y1: y1 + ty };
 }
+
+function glyphMarkupRaw(raw, ink, core, inset, shift = [0, 0]) {
+  raw = raw.replaceAll("__INK__", ink).replaceAll("__CORE__", core);
+  const off = (G * (1 - inset)) / 2;
+  const inner = shift[0] || shift[1] ? `<g transform="translate(${shift[0].toFixed(2)} ${shift[1].toFixed(2)})">${raw}</g>` : raw;
+  return `<g transform="translate(${off.toFixed(1)} ${off.toFixed(1)}) scale(${inset})">${inner}</g>`;
+}
+const glyphMarkup = (file, ink, core, inset) => glyphMarkupRaw(readGlyph(file), ink, core, inset);
 
 function icon({ p, variant, fullBleed = false, pad = 0 }) {
   const inset = p.glyphInset ?? T.glyphInset;
@@ -198,17 +219,31 @@ for (const [id, entry] of entries) {
   // (written by `tools/outline.py --stroke-scale <menubarStroke>` from the same stroked
   // drawing — one source, never a second drawing) and a fuller inset (`menubarInset`, > 1
   // enlarges: the Dock glyph keeps air for its tile, the menu bar box has none to spare).
+  // The menu bar has no tile, so the template is centred on its ink, not on the glyph's grid:
+  // a Dock glyph may sit off the grid centre on purpose (PrintRelay centres its dot on the
+  // tile), and that offset must not carry into the 18 pt box. The centre is taken from the
+  // *idle* ink — everything without a data-state — so a state's extra ink (PrintRelay's arcs)
+  // appears beside a printer that does not move. Products with stated ink get a second
+  // template, `menubar-template-idle`, without it; the app swaps the two.
   if (p.menubar) {
     const c = coreDefs("#000000", "core");
     const heavy = p.glyph.replace(/\.svg$/, ".menubar.svg");
     const glyph = existsSync(join(ROOT, "glyphs", heavy)) ? heavy : p.glyph;
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${G} ${G}">
+    const full = readGlyph(glyph);
+    const idle = full.replace(STATED, "");
+    const bb = inkBBox(idle);
+    const shift = [G / 2 - (bb.x0 + bb.x1) / 2, G / 2 - (bb.y0 + bb.y1) / 2];
+    const variants = { "menubar-template": full };
+    if (idle !== full) variants["menubar-template-idle"] = idle;
+    for (const [name, raw] of Object.entries(variants)) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${G} ${G}">
 <defs>${c.def}</defs>
-${glyphMarkup(glyph, "#000000", c.fill, p.menubarInset ?? 1.0)}
+${glyphMarkupRaw(raw, "#000000", c.fill, p.menubarInset ?? 1.0, shift)}
 </svg>`;
-    const f = join(dir, "menubar-template.svg");
-    writeFileSync(f, svg);
-    for (const s of [18, 36, 54, 128]) png(f, join(dir, `menubar-template-${s}.png`), s);
+      const f = join(dir, `${name}.svg`);
+      writeFileSync(f, svg);
+      for (const s of [18, 36, 54, 128]) png(f, join(dir, `${name}-${s}.png`), s);
+    }
   }
 
   // Icon Composer file. The tile becomes the background fill (a gradient the
