@@ -1,8 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 256 256">
 <defs></defs>
-<g transform="translate(20.9 20.9) scale(0.837)"><g transform="translate(0 38)" data-centre="1">
+<g transform="translate(20.9 20.9) scale(0.837)"><g data-centre="1">
+  
+  <circle cx="178.51" cy="101.66" r="11.69" fill="#30d158"/>
   
   
-  <circle cx="128" cy="90" r="17.9" fill="#00b8ff"/>
 </g></g>
 </svg>
