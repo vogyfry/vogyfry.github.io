@@ -59,8 +59,8 @@ Per product, `dist/<id>/` contains:
 Variants are named for the ground they sit on, never for the colour of their ink.
 | `icon-macos.svg` / `macos-{16…1024}.png` | Mac apps on macOS 15 and earlier — the tile inset on Apple's 824-in-1024 grid, since old macOS applies no mask of its own. Opt in with `"macos": true`. On macOS 26+ ship `AppIcon.icon` instead |
 | `AppIcon.icon/` | **The app icon for iOS, iPadOS, macOS and watchOS 26+.** An Icon Composer file: the tile as the background fill, the ink and the core dot as two glass layers. Xcode renders every platform, size and appearance (default, dark, clear, tinted) from it and generates flat PNGs for older OS versions. Add it to the app target and delete `AppIcon.appiconset`; with xcodegen declare it as `type: file`, `buildPhase: resources`, and exclude it from the folder scan |
-| `menubar-template.svg` / `menubar-template-{18,36,54,128}.png` | Mac menu-bar apps — the bare glyph in black on transparent, built for the menu bar's 22 pt working area: the same stroked drawing as the Dock icon, outlined with `tools/outline.py --stroke-scale <menubarStroke>` (default 1.5 → ≈ 1.8 pt strokes at 18 pt, the weight of the system's extras) and drawn at `menubarInset` (1.15 → ink fills ≈ 16 of the 18 pt box; the Dock glyph keeps air for its tile, the menu bar has none to spare). The app ships 18/36/54 as a 1x/2x/3x template imageset and marks it `isTemplate`; AppKit tints it. Opt in with `"menubar": true`; the heavier outline lives in `glyphs/<id>.menubar.svg` and is regenerated from `glyphs/stroked/<id>.svg`, never drawn by hand. The template is centred on its **ink**, not on the glyph's grid: the menu bar has no tile, so a glyph that sits off the grid centre on purpose (PrintRelay) still fills its 18 pt box evenly |
-| `menubar-template-idle.svg` / `-{18,36,54,128}.png` | Only for a glyph with **stated ink**: strokes marked `data-state="<name>"` in the stroked drawing belong to an app state (PrintRelay's signal arcs show while a printer is shared). The idle template leaves them out; the full template has them; both are centred on the idle ink, so the drawing does not move when the state flips. The app swaps the two images |
+| `menubar-template.svg` / `menubar-template-{18,36,54,128}.png` | Mac menu-bar apps — the bare glyph in black on transparent, built for the menu bar's 22 pt working area: the same stroked drawing as the Dock icon, outlined with `tools/outline.py --stroke-scale <menubarStroke>` (default 1.5 → ≈ 1.8 pt strokes at 18 pt, the weight of the system's extras) and drawn at `menubarInset` (1.15 → ink fills ≈ 16 of the 18 pt box; the Dock glyph keeps air for its tile, the menu bar has none to spare). The app ships 18/36/54 as a 1x/2x/3x template imageset and marks it `isTemplate`; AppKit tints it. Opt in with `"menubar": true`; the heavier outline lives in `glyphs/<id>.menubar.svg` and is regenerated from `glyphs/stroked/<id>.svg`, never drawn by hand. The template is centred on its **ink**, not on the glyph's grid: the menu bar has no tile, so a glyph that sits off the grid centre on purpose still fills its 18 pt box evenly |
+| `menubar-template-idle.svg` / `-{18,36,54,128}.png` | Only for a glyph with **stated ink**: strokes marked `data-state="<name>"` in the stroked drawing belong to an app state (no current product has any). The idle template leaves them out; the full template has them; both are centred on the idle ink, so the drawing does not move when the state flips. The app swaps the two images |
 | `layers/` | the same three layers as loose SVG + 1024 PNG (`tile`, `glyph`, `core`) for hand assembly in Icon Composer or any other layered format |
 
 ## Why layers
@@ -85,14 +85,14 @@ the brand says, and the edge comes from `AppIcon.icon`.
    that should appear only in one app state carry `data-state="<name>"`; the icon shows them
    always, the menu bar gets a template with and without them. For a menu-bar app, check the
    drawing at the menu bar's weight first: strokes there are 1.5× heavier, so two arcs closer
-   than about 36 units fuse into one (PrintRelay's are 36 apart for that reason).
+   than about 36 units fuse into one.
 3. `python3 brand/tools/outline.py brand/glyphs/stroked/<id>.svg` writes `glyphs/<id>.svg`
    with every stroke baked into filled outline geometry (`pip install shapely svgpathtools`
    once). **Never hand-edit `glyphs/<id>.svg`**: macOS 26's live icon renderer draws
    stroked circles as rounded squares and ignores round caps, so the file the generator
    reads must contain fills only. The conversion is checked at 1024 px: every glyph came
    out within 0.2% of its stroked ink. Toolport's outline was drawn by hand and has no
-   stroked source.
+   stroked source; PrintRelay's is traced from the SF Symbol "printer" and has none either.
 4. `node brand/generate.mjs <id>`, then **measure, don't eyeball**. Every product is
    held to the same three numbers on the rendered 1024 icon: the glyph's ink fills
    **66%** of the tile (Apple's own glyphs sit at 62–70%), the line is **68 px**, the
@@ -103,12 +103,12 @@ the brand says, and the edge comes from `AppIcon.icon`.
    glyph carries that translate; it is the record of how far off-centre the hand
    drawing was. SwiftMind sits at 70%: its pins are what the measurement sees, and
    the body they surround is what the eye sees, so it needs the extra to *look* equal.
-   PrintRelay centres its **dot** on the tile, not its ink box: the signal arcs are a badge
-   off the page's corner, and centring the box would push the printer 20 px left and 94 px
-   up; its translate puts the dot on the grid centre and the printer centred under it.
+   PrintRelay keeps its dot at **39 px**: the dot is the printer's status light, and the
+   space between the printer's top and its paper tray only fits a dot that size. At 60 px
+   it comes within 3 px of the tray at 1024 and merges into it at 32 px (Nov 2026).
 
 Design intent per existing glyph: TradeSocial — rising line, core at the pivot ·
 Toolport — hub routing to servers, core at the junction · Pravida — shield, core protected inside · Waypoint — the destination
 pin, core at the point you actually reach · BoatNavi — the vessel underway over water,
 core at the boat · SwiftMind — the chip, core inside it, because the model never leaves
-your silicon · Mavee — the day as one loop, core on what matters. · Timekeeper — the clock at ten past ten, its hands a check mark, core at the pivot: the day's time reviewed and approved, held where the hours turn. · EchoBridge — two speech bubbles in conversation, core inside the reply that reaches you: what they said, in your own language. · PrintRelay — the printer and its page, found over the air: two signal arcs off the page's corner (shown in the menu bar only while a printer is shared), core on the page where the document arrives.
+your silicon · Mavee — the day as one loop, core on what matters. · Timekeeper — the clock at ten past ten, its hands a check mark, core at the pivot: the day's time reviewed and approved, held where the hours turn. · EchoBridge — two speech bubbles in conversation, core inside the reply that reaches you: what they said, in your own language. · PrintRelay — the system printer, traced from the SF Symbol so the Dock icon and the menu bar (which uses the symbol itself) show the same printer, core as its status light.
