@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mavee — Your Day, Simplified · What Needs You Today, On Your Device</title>
-    <meta name="description" content="Mavee brings your calendar, mail, contacts, tasks, files and health together on your iPhone and shows what needs you today: calendars that collide, a bill due, a flight with no calendar entry, the document to re-read before a meeting. Nothing leaves the device.">
+    <meta name="description" content="Mavee brings your calendar, mail, contacts, tasks, files and health together on your iPhone, iPhone Duo, iPad and Mac and shows what needs you today: calendars that collide, a bill due, a flight with no calendar entry, the document to re-read before a meeting. Nothing leaves the device.">
     <meta name="keywords" content="day planner, personal assistant app, calendar conflicts, meeting prep, on-device AI, private productivity app, iPhone, Mac, Outlook, Gmail, Apple Health, Apple Intelligence">
     <link rel="canonical" href="https://pravalabs.app/mavee/">
     <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png">
@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="Mavee — See What Needs You Today">
     <meta name="twitter:description" content="Your calendar, mail, contacts, tasks, files and health, brought together on your device and read for the things worth your attention.">
     <meta name="twitter:image" content="https://pravalabs.app/mavee/images/logo.png">
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://pravalabs.app/#org", "name": "Prava Labs", "url": "https://pravalabs.app/", "logo": "https://pravalabs.app/prava-icon.png", "email": "support@pravalabs.app"}, {"@type": "SoftwareApplication", "@id": "https://pravalabs.app/mavee/#app", "name": "Mavee", "applicationCategory": "ProductivityApplication", "operatingSystem": "iOS 26, iPadOS 26, macOS 26", "url": "https://pravalabs.app/mavee/", "image": "https://pravalabs.app/mavee/images/logo.png", "description": "Your day, simplified: what needs your attention, your calendar with meeting prep, and search across your mail, calendar, files and health, computed on the device from Apple, Microsoft 365 and Google accounts. In TestFlight.", "publisher": {"@id": "https://pravalabs.app/#org"}}, {"@type": "BreadcrumbList", "@id": "https://pravalabs.app/mavee/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "Mavee", "item": "https://pravalabs.app/mavee/"}]}, {"@type": "WebPage", "@id": "https://pravalabs.app/mavee/", "url": "https://pravalabs.app/mavee/", "name": "Mavee — Your Day, Simplified", "description": "Your calendar, mail, contacts, tasks, files and health, brought together on your device and read for the things worth your attention.", "isPartOf": {"@id": "https://pravalabs.app/#website"}, "dateModified": "2026-11-02", "inLanguage": "en", "publisher": {"@id": "https://pravalabs.app/#org"}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://pravalabs.app/#org", "name": "Prava Labs", "url": "https://pravalabs.app/", "logo": "https://pravalabs.app/prava-icon.png", "email": "support@pravalabs.app"}, {"@type": "SoftwareApplication", "@id": "https://pravalabs.app/mavee/#app", "name": "Mavee", "applicationCategory": "ProductivityApplication", "operatingSystem": "iOS 26, iPadOS 26, macOS 26", "url": "https://pravalabs.app/mavee/", "image": "https://pravalabs.app/mavee/images/logo.png", "description": "Your day, simplified: what needs your attention, your calendar with meeting prep, and search across your mail, calendar, files and health, computed on the device from Apple, Microsoft 365 and Google accounts. In TestFlight.", "publisher": {"@id": "https://pravalabs.app/#org"}}, {"@type": "BreadcrumbList", "@id": "https://pravalabs.app/mavee/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "Mavee", "item": "https://pravalabs.app/mavee/"}]}, {"@type": "WebPage", "@id": "https://pravalabs.app/mavee/", "url": "https://pravalabs.app/mavee/", "name": "Mavee — Your Day, Simplified", "description": "Your calendar, mail, contacts, tasks, files and health, brought together on your device and read for the things worth your attention.", "isPartOf": {"@id": "https://pravalabs.app/#website"}, "dateModified": "2026-11-06", "inLanguage": "en", "publisher": {"@id": "https://pravalabs.app/#org"}}]}</script>
     <style>
         /* Hero: the claim on the left, Today answering on the right. */
         .hero.split { text-align: left; padding-top: 140px; }
@@ -172,10 +172,12 @@
             <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
             <ul class="nav-links">
                 <li><a href="#today">Today</a></li>
+                <li><a href="#headsup">Heads-Up</a></li>
                 <li><a href="#myday">My Day</a></li>
                 <li><a href="#search">Search</a></li>
                 <li><a href="#sources">Sources</a></li>
                 <li><a href="#private">On Device</a></li>
+                <li><a href="#duo">iPhone Duo</a></li>
                 <li><a href="#needs">What You Need</a></li>
                 <li><a href="support.html">Support</a></li>
                 <li><a href="/">Prava Labs</a></li>
@@ -190,10 +192,10 @@
                 <div class="app-icon-container">
                     <img src="images/logo.png" alt="Mavee app icon" class="app-icon">
                 </div>
-                <div class="hero-badge">Your Day, Simplified · iPhone, iPad &amp; Mac · On Device</div>
+                <div class="hero-badge">Your Day, Simplified · iPhone, iPhone Duo, iPad &amp; Mac · On Device</div>
                 <h1>Your life is in six apps.<br><span class="highlight">What needs you is in&nbsp;one.</span></h1>
                 <p class="subtitle">
-                    Mavee brings your calendar, mail, contacts, tasks, files and health together on your device and reads them for the things worth your attention: two meetings that collide, a bill due, a flight with no calendar entry, the document to re-read before a meeting. <strong>Then it lays out your day, and finds anything you ask for.</strong>
+                    Mavee brings your calendar, mail, contacts, tasks, files and health together on your device and reads them for the things worth your attention: two meetings that collide, a bill due, a flight with no calendar entry, the mail and files behind your next meeting. <strong>It taps you on the shoulder fifteen minutes before that meeting, lays out your day, and answers anything you ask.</strong>
                 </p>
                 <div class="formula" aria-label="What Mavee does">
                     <b>see</b> it<span class="op">·</span><b>plan</b> it<span class="op">·</span><b>find</b> it
@@ -201,8 +203,10 @@
                 <p class="status-line"><span class="dot"></span>In TestFlight, App Store to follow.</p>
                 <div class="platform-tags">
                     <span class="platform-tag">Apple · Microsoft 365 · Google</span>
+                    <span class="platform-tag">Heads-Up Before Meetings</span>
                     <span class="platform-tag">Meeting Prep</span>
                     <span class="platform-tag">Search &amp; Ask</span>
+                    <span class="platform-tag">iPhone Duo Ready</span>
                     <span class="platform-tag">No Account</span>
                     <span class="platform-tag">No Server</span>
                     <span class="platform-tag">On-Device</span>
@@ -230,6 +234,13 @@
                                 <div class="acts"><span class="go">Remind Me</span><span>Later</span><span>Dismiss</span></div>
                             </div>
                         </div>
+                        <div class="sect">Today in Context</div>
+                        <div class="cards">
+                            <div class="card">
+                                <div class="t">BEFORE YOUR NEXT MEETING · 10:30 AM</div>
+                                <div class="m">Cedar Health product review — 2 emails from Jordan Lee and "Cedar Health Review Notes" updated this week</div>
+                            </div>
+                        </div>
                         <div class="sect">Next Up</div>
                         <div class="cards">
                             <div class="next"><div class="bar"></div><div><div class="at">10:30 AM</div><div class="ti">Cedar Health product review</div></div><div class="in">in 40 min</div></div>
@@ -242,7 +253,7 @@
                         <div class="tabs"><span class="on">● Today</span><span>▦ My Day</span><span>⌕ Search</span></div>
                     </div>
                 </div>
-                <p class="phone-note">A Tuesday with a demo week loaded. Every card was found on the phone; no model involved.</p>
+                <p class="phone-note">A Tuesday with a demo week loaded. Every card was found on the phone; no model involved. On iPhone Duo, open the phone and these sit in two columns.</p>
             </div>
         </div>
     </section>
@@ -261,7 +272,7 @@
                 <div class="half">
                     <div class="k">A morning with Mavee</div>
                     <h3>Open Today. Read Three Cards.</h3>
-                    <p>The collision at 1 PM, named by calendar. The $420 due tomorrow, with a Remind Me button. The flight that still isn't on any calendar. Below them, what's next, last night's sleep, and the to-dos pulled from your mail.</p>
+                    <p>The collision at 1 PM, named by calendar. The $420 due tomorrow, with a Remind Me button. The flight that still isn't on any calendar. Then the three cards that are there every day: the mail and files behind your next meeting, your first open hour with the to-do that fits it, and the people you've been talking to this week. And a question you can tap, right under the greeting.</p>
                 </div>
             </div>
         </div>
@@ -271,7 +282,7 @@
     <section class="how-it-works" id="today">
         <div class="how-it-works-inner">
             <h2>Today: What Needs Me?</h2>
-            <p class="section-subtitle">An attention feed built from plain logic on your device. Every card is something Mavee noticed across two or more of your sources, with the one action that makes sense for it.</p>
+            <p class="section-subtitle">An attention feed built from plain logic on your device. The top cards are what Mavee noticed across two or more of your sources, with the one action that makes sense for it. Under them, three cards that have something to say on an ordinary Tuesday, not just a bad one.</p>
             <div class="exchange">
                 <div class="said">
                     <div class="who">Mavee Noticed</div>
@@ -314,8 +325,44 @@
                 <div class="feature-card">
                     <div class="feature-icon">🌙</div>
                     <h3>A Short Night Before a Heavy Day</h3>
-                    <p>Under six and a half hours of sleep and four or more events ahead: Mavee says pace yourself. Steps that dropped this week get a card too.</p>
+                    <p>Under six and a half hours of sleep with two or more events ahead, or under five and a half on any day: Mavee says pace yourself. Steps that dropped this week get a card; three days over eight thousand get a streak.</p>
                 </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗂️</div>
+                    <h3>Before Your Next Meeting</h3>
+                    <p>Every day, the next meeting with people in it, and the recent mail and documents that share its subject or its attendees. Nothing related? It says "you're clear."</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏳</div>
+                    <h3>Open Time, With a Suggestion</h3>
+                    <p>The first free block of forty-five minutes or more, paired with your top to-do: "Free 1:00–2:30 · good slot for the BrightBank invoice."</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>People This Week, and a Question to Tap</h3>
+                    <p>Who you've exchanged more with than last week, by count. And under the greeting, questions Mavee already knows it can answer from your data: "What am I forgetting?" "Who have I not replied to?" One tap, answer streaming.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heads-up -->
+    <section class="features" id="headsup">
+        <div class="features-inner">
+            <h2>A Heads-Up Fifteen Minutes Before</h2>
+            <p class="section-subtitle">The one thing a calendar app can't do. For each meeting today that has mail or documents behind it, Mavee sends a notification before it starts, with what to re-read in the notification itself.</p>
+            <div class="exchange">
+                <div class="said">
+                    <div class="who">10:15 AM · Notification</div>
+                    <p class="es">Cedar Health product review at 10:30</p>
+                    <p class="en">2 emails from Jordan Lee and Nina Ortiz and "Cedar Health Review Notes" was updated this week.</p>
+                </div>
+                <div class="ways">
+                    <div class="way"><span class="intent">Tap it</span><div><b>My Day opens on the meeting</b><i>Scrolled to the block, with its prep expanded: the two emails and the document, each one tap away.</i></div></div>
+                    <div class="way"><span class="intent">Only when it matters</span><div><b>Meetings with nothing behind them stay quiet</b><i>No material, no notification. One per meeting, re-planned every time Mavee updates.</i></div></div>
+                    <div class="way"><span class="intent">Day one</span><div><b>Asked once, at the end of setup</b><i>Say yes and the morning briefing and the heads-ups start the next day. Say no and everything else works.</i></div></div>
+                </div>
+                <p class="exchange-note">Planned on your phone from your own calendar and mail. Nothing leaves the device to decide it.</p>
             </div>
         </div>
     </section>
@@ -400,12 +447,12 @@
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Let It Update</h3>
-                    <p>Mavee updates when you open it, when you pull down, and in the background a few times a day. Edits and deletions in your accounts follow.</p>
+                    <p>The first pass reaches back two weeks so trends and "last week" questions have something to work with. After that Mavee updates when you open it, when you pull down, and in the background a few times a day.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
                     <h3>Read Today</h3>
-                    <p>Three cards, what's next, how you slept. Then My Day for the shape of it, and Search for everything else.</p>
+                    <p>Setup ends with one thing Mavee noticed — a conflict, a bill, the prep for your next meeting — before you ever see the feed. Then Today every morning, My Day for the shape of it, Search for everything else.</p>
                 </div>
             </div>
         </div>
@@ -423,6 +470,8 @@
                         <tr><td>Reading your accounts</td><td><span class="no">On your device</span> — fetched over each provider's own API, stored in Mavee's protected local database</td></tr>
                         <tr><td>Conflicts, signals, meeting prep</td><td><span class="no">On your device</span> — plain logic, no model involved</td></tr>
                         <tr><td>Answering a question</td><td><span class="no">On your device</span> — Apple's on-device model, shown only the items that match</td></tr>
+                        <tr><td>The "Your Day" summary at the top of Today</td><td><span class="no">On your device</span> — the same model, phrasing only what the cards already found; on by default where Apple Intelligence is available, one switch to turn off</td></tr>
+                        <tr><td>The heads-up before a meeting</td><td><span class="no">On your device</span> — a local notification planned from your own calendar and mail, no model involved</td></tr>
                         <tr><td>Pulling to-dos out of mail</td><td><span class="no">On your device</span> — the same model, paced in the background; every run listed under Settings › Privacy › AI Activity</td></tr>
                         <tr><td>Today's weather</td><td><span class="no">Apple WeatherKit</span> — your approximate location, used while the app is open, never stored</td></tr>
                         <tr><td>Analytics, telemetry, cloud sync</td><td><span class="no">None</span> — nothing is sent to Prava Labs, ever</td></tr>
@@ -431,9 +480,34 @@
             </div>
             <div class="proof">
                 <div><b>0</b><span>Servers of ours. There is nowhere for your data to go</span></div>
-                <div><b>0</b><span>Model calls to open Today or My Day. The attention feed is logic, not generation</span></div>
-                <div><b>2</b><span>Places the on-device model runs: answering a question, extracting to-dos</span></div>
+                <div><b>0</b><span>Model calls behind any card on Today or My Day. The feed is logic, not generation</span></div>
+                <div><b>3</b><span>Places the on-device model writes: answering a question, the optional Your Day summary, extracting to-dos</span></div>
                 <div><b>365</b><span>Days of history kept, then pruned on its own. Or erase everything in Settings, any time</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- iPhone Duo -->
+    <section class="features" id="duo">
+        <div class="features-inner">
+            <h2>Ready for iPhone Duo</h2>
+            <p class="section-subtitle">Built on the iOS 27.2 SDK, so it fills the Duo's displays edge to edge. Mavee lays itself out by how much room it has, not by which way the phone is turned, and opening the phone is just a resize.</p>
+            <div class="halves three">
+                <div class="half">
+                    <div class="k">Closed</div>
+                    <h3>A Phone, One Column</h3>
+                    <p>On the outer display Today is the phone layout, with the Today, My Day and Search tabs and the Settings button in a strip along the edge, where iOS puts them.</p>
+                </div>
+                <div class="half">
+                    <div class="k">Open</div>
+                    <h3>Two Columns, Nothing Stretched</h3>
+                    <p>Open it and Today splits: what needs you and today's context on one side, what's next, your health strip and your to-dos on the other. My Day's grid gets the width; Search keeps its field in view.</p>
+                </div>
+                <div class="half">
+                    <div class="k">Fold</div>
+                    <h3>Open, Close, Keep Reading</h3>
+                    <p>The layout follows the fold in place. Verified in Apple's iPhone Duo simulator, closed and open, with the same tests that run on iPhone and iPad.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -442,10 +516,10 @@
     <section class="features" id="needs">
         <div class="features-inner">
             <h2>What You Need</h2>
-            <p class="section-subtitle">Mavee is in TestFlight for iPhone and iPad, with the same screens on Mac.</p>
+            <p class="section-subtitle">Mavee is in TestFlight for iPhone, iPhone Duo and iPad, with the same screens on Mac.</p>
             <div class="halves three">
-                <div class="half"><div class="k">System</div><h3>iOS 26 or macOS 26</h3><p>Built for iOS 26's Liquid Glass and Apple's Foundation Models framework. iPad shows the same app; Mac runs it in a sidebar window with Settings in the usual place.</p></div>
-                <div class="half"><div class="k">For answers</div><h3>Apple Intelligence</h3><p>The answer card and to-do extraction use the on-device model, so they need a device with Apple Intelligence turned on. Without it, everything else works and Search still finds the items.</p></div>
+                <div class="half"><div class="k">System</div><h3>iOS 26 or macOS 26</h3><p>Built for iOS 26's Liquid Glass and Apple's Foundation Models framework. Ready for iPhone Duo, closed or open. iPad shows the same app; Mac runs it in a sidebar window with Settings in the usual place.</p></div>
+                <div class="half"><div class="k">For answers</div><h3>Apple Intelligence</h3><p>The answer card, the question chips, the Your Day summary and to-do extraction use the on-device model, so they need a device with Apple Intelligence turned on. Without it, every card, the heads-up and My Day work, and the chips become plain searches.</p></div>
                 <div class="half"><div class="k">Accounts</div><h3>Whatever You Already Use</h3><p>Nothing is required. Apple's own apps are enough to start; Microsoft 365, Google and Spotify are optional and can be added any time in Settings.</p></div>
             </div>
             <p class="section-subtitle" style="margin-top: 32px;">Questions? <a href="support.html" style="color: var(--brand);">Support</a> &middot; <a href="privacy.html" style="color: var(--brand);">Privacy Policy</a> &middot; <a href="terms.html" style="color: var(--brand);">Terms</a></p>
