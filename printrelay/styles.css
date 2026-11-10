@@ -1087,9 +1087,7 @@ body {
 .stripe-btn:hover { transform: scale(1.03); background: #5851e6; }
 .stripe-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-/* PrintRelay additions: TestFlight status line, screenshots, single plan */
-.status-line { margin-top: 18px; color: var(--text-secondary); font-size: 0.95rem; }
-.status-line .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #f4b860; margin-right: 8px; vertical-align: 1px; }
+/* PrintRelay additions: screenshots, single plan (the TestFlight pill is styled in index.html) */
 
 .screens { padding: 100px 24px; background: var(--bg-primary); }
 .screens-inner { max-width: var(--max-width); margin: 0 auto; text-align: center; }

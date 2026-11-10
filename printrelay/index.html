@@ -50,7 +50,7 @@
     }
   ]
 }</script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20261109">
     <style>
         /* Hero: the claim on the left, the iPhone answering on the right, as on the EchoBridge page. */
         .hero.split { text-align: left; padding-top: 140px; }
@@ -61,6 +61,10 @@
         .split h1 { font-size: clamp(38px, 5.4vw, 62px); text-wrap: balance; }
         .split .subtitle { margin: 0; max-width: 34em; }
         .split .platform-tags { justify-content: flex-start; }
+        /* TestFlight status as a pill, styled here so a cached stylesheet cannot leave it bare. */
+        .status-line { display: inline-flex; align-items: center; gap: 8px; margin: 22px 0 0; padding: 7px 14px; border-radius: 99px; border: 1px solid rgba(244, 184, 96, 0.35); background: rgba(244, 184, 96, 0.10); color: #f4d29a; font-size: 0.9rem; font-weight: 500; line-height: 1.2; }
+        .status-line .dot { width: 8px; height: 8px; border-radius: 50%; background: #f4b860; flex: none; margin: 0; }
+        .hero.split .status-line + .platform-tags { margin-top: 18px; }
 
         /* The phone: a faithful sketch of the iOS 26 Print sheet's printer list, built in markup so it stays sharp. */
         .phone {
