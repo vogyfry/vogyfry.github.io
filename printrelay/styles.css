@@ -1087,15 +1087,8 @@ body {
 .stripe-btn:hover { transform: scale(1.03); background: #5851e6; }
 .stripe-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-/* PrintRelay additions: screenshots, single plan (the TestFlight pill is styled in index.html) */
+/* PrintRelay additions (the TestFlight pill and the phone sketch are styled in index.html) */
 
-.screens { padding: 100px 24px; background: var(--bg-primary); }
-.screens-inner { max-width: var(--max-width); margin: 0 auto; text-align: center; }
-.screens-inner h2 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; color: var(--text-primary); }
-.screens-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 40px; margin-top: 48px; }
-.screen { margin: 0; flex: 0 1 auto; max-width: 100%; }
-.screen img { display: block; max-width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border-color); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 184, 255, 0.06); margin: 0 auto; }
-.screen figcaption { margin-top: 14px; color: var(--text-tertiary); font-size: 0.9rem; max-width: 34ch; margin-left: auto; margin-right: auto; }
 
 span.btn-cta { cursor: default; }
 .kicker { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand); background: var(--brand-light); border: 1px solid rgba(0, 184, 255, 0.3); border-radius: 99px; padding: 4px 12px; margin-bottom: 14px; }
@@ -1106,7 +1099,3 @@ span.btn-cta { cursor: default; }
 .highlight-box.example p { color: var(--text-secondary); line-height: 1.6; }
 .highlight-box.example strong { color: var(--text-primary); }
 
-@media (max-width: 768px) {
-    .screens { padding: 72px 16px; }
-    .screens-grid { gap: 32px; }
-}
