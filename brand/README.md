@@ -63,6 +63,22 @@ Variants are named for the ground they sit on, never for the colour of their ink
 | `menubar-template-idle.svg` / `-{18,36,54,128}.png` | Only for a glyph with **stated ink**: strokes marked `data-state="<name>"` in the stroked drawing belong to an app state (no current product has any). The idle template leaves them out; the full template has them; both are centred on the idle ink, so the drawing does not move when the state flips. The app swaps the two images |
 | `layers/` | the same three layers as loose SVG + 1024 PNG (`tile`, `glyph`, `core`) for hand assembly in Icon Composer or any other layered format |
 
+## Icons on the website
+
+The site shows each product the way its app looks on device, so its icons are rendered
+from `dist/<id>/AppIcon.icon` (the file every app ships), not taken from the flat
+`icon-*.png` set, whose ink is plain white with no glass. Render with Xcode's Icon
+Composer tool, then scale to the site's sizes (`<id>-icon.png` 256 for the home card;
+`<id>/images/icon.png` 512, `favicon.png` 256, `apple-touch-icon.png` 180):
+
+```bash
+"/Applications/Xcode.app/Contents/Applications/Icon Composer.app/Contents/Executables/ictool" \
+  brand/dist/<id>/AppIcon.icon --export-image --output-file <id>-1024.png \
+  --platform macOS --rendition Default --width 1024 --height 1024 --scale 1
+```
+
+Re-render whenever a product's glyph or `AppIcon.icon` changes.
+
 ## Why layers
 
 Apple's icons are layered. The system draws a live glass edge, highlight and shadow on
