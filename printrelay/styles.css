@@ -1100,6 +1100,9 @@ body {
 .screen figcaption { margin-top: 14px; color: var(--text-tertiary); font-size: 0.9rem; max-width: 34ch; margin-left: auto; margin-right: auto; }
 
 span.btn-cta { cursor: default; }
+.highlight-box.example { margin: 32px auto 0; max-width: 760px; text-align: left; }
+.highlight-box.example p { color: var(--text-secondary); line-height: 1.6; }
+.highlight-box.example strong { color: var(--text-primary); }
 
 @media (max-width: 768px) {
     .screens { padding: 72px 16px; }
