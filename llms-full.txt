@@ -176,3 +176,21 @@ Support questions:
 Privacy: Mavee Privacy Policy. Everything stays on your device: calendar, mail, contacts, reminders, health and what the app derives from them. No servers, no analytics, no tracking.
 Terms: Mavee Terms of Service: what the app does, that it reads your data only on your device, and the limits of its reminders and answers.
 
+## Prava PrintRelay — in TestFlight
+URL: https://pravalabs.app/printrelay/
+
+Prava PrintRelay is a Mac menu bar app (macOS 26 and later) that shares the printers set up on your Mac as AirPrint printers. USB printers, older network printers and printers that need a vendor driver show up in the normal Print sheet on iPhone and iPad, with the Mac's name under each one and nothing to install on the phone. Paper sizes, duplex and colour come from the real printer's driver. Shared printers also speak IPP Everywhere, so Android phones, Chromebooks, Windows PCs and other Macs can print to them. PDF printers: up to eight virtual printers (for example "Save as PDF", "Receipts", "Work"), each listed on the iPhone by name and saving what is printed to it as a PDF in its own folder on the Mac; after saving, each can do nothing, open the file in Preview or any other app that opens PDF, or run a Shortcut on it in the background (extract text, rename, file away, send to Notes). Optional password per printer, shared over TLS. Warns when macOS Printer Sharing duplicates a printer. Sandboxed Mac App Store app; print jobs stay on your local network; no account, no telemetry.
+
+Pricing: Prava PrintRelay Yearly, auto-renewable subscription, 19.99 USD per year with a 14-day free trial for new subscribers; Family Sharing; covers every Mac signed in with the same Apple Account.
+
+Support questions:
+- Q: What does Prava PrintRelay do? A: It makes the printers your Mac can print to show up as AirPrint printers on your iPhone, iPad and other devices on the same Wi-Fi, including USB printers, older network printers and printers that need a vendor driver. You print from the normal Share sheet.
+- Q: How do I set it up? A: Make sure the printer prints from the Mac. Open Prava PrintRelay from the menu bar, switch on the printer, and allow Local Network access when macOS asks. On the iPhone, tap Share, then Print, and pick the printer; your Mac's name is shown under it.
+- Q: How do PDF printers work? A: A PDF printer appears on the iPhone like any other printer but saves what you print as a PDF in a folder on your Mac. Add one in Settings > General with the + button under Save as PDF: give it a name, then choose its folder. Up to eight, each with its own folder and its own action after saving: nothing, open in Preview, open in another app that handles PDF, or run a Shortcut.
+- Q: How do I run a Shortcut on each saved PDF? A: Make a shortcut that accepts files as input, then in Settings > General select the PDF printer and set After saving to Run Shortcut. macOS asks once whether Prava PrintRelay may control Shortcuts; allow it and pick the shortcut. It runs in the background with the saved PDF as input; the menu's activity list and a notification say whether it ran. The PDF is always saved.
+- Q: My iPhone cannot see the printer. A: The Mac must be awake, logged in and running the app. Allow Prava PrintRelay under System Settings > Privacy & Security > Local Network. The iPhone and the Mac must be on the same network; guest Wi-Fi and some mesh systems block AirPrint discovery.
+- Q: Does it print while I am logged out? A: No. It runs in your user session, a limit of Mac App Store apps.
+- Q: How do the free trial and subscription work? A: Start the 14-day free trial in Settings > License. The subscription renews each year at 19.99 USD unless cancelled at least 24 hours before the trial or the year ends; manage or cancel it in your App Store account settings. If it ends, sharing pauses until you subscribe again.
+
+Privacy: Prava PrintRelay Privacy Policy. Print jobs stay on your local network; PDF printers write only into the folders you choose; Run Shortcut hands the saved file to the Shortcuts app on your Mac; nothing is sent to Prava Labs.
+Terms: Prava PrintRelay Terms of Use: the licence for the Mac app and the auto-renewable yearly subscription with a free trial through the Mac App Store.
