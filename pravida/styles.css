@@ -819,6 +819,17 @@ body {
     border-bottom-color: rgba(255, 255, 255, 0.6);
 }
 
+/* Optional product-specific notice above the copyright line (a required
+   disclosure, e.g. "All trading is simulated." or the payment line). */
+.footer-notice {
+    margin-bottom: 10px;
+}
+
+.footer-notice svg {
+    vertical-align: -1px;
+    margin-right: 5px;
+}
+
 /* Legal Pages */
 .legal-page {
     padding: 120px 24px 80px;
