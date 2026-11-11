@@ -45,7 +45,7 @@
 
     <div class="legal-page">
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last updated: November 9, 2026</p>
+        <p class="last-updated">Last updated: November 10, 2026</p>
 
         <div class="highlight-box">
             <p>Prava PrintRelay runs entirely on your Mac. <strong>Print jobs never leave your local network</strong>: the app receives them from your iPhone or iPad over your own Wi-Fi and hands them to the printer through macOS. Nothing is sent to Prava Labs.</p>
@@ -62,13 +62,13 @@
         </ul>
 
         <h2>2. How Printing Works</h2>
-        <p>The app advertises the printers you choose on your local network using Bonjour and accepts print jobs from devices on that network using the standard IPP protocol, the same way an AirPrint printer does. Each job is written to a temporary file inside the app's sandbox, handed to the macOS print system, and deleted. A job sent to one of the app's PDF printers is instead saved as a PDF in the folder you chose for that printer, and stays there, on your Mac. The app keeps a short list of recent events (for example "Printed Invoice.pdf") in memory only, for display in its menu; it is gone when the app quits.</p>
+        <p>The app advertises the printers you choose on your local network using Bonjour and accepts print jobs from devices on that network using the standard IPP protocol, the same way an AirPrint printer does. Each job is written to a temporary file inside the app's sandbox, handed to the macOS print system, and deleted. A job sent to one of the app's PDF printers is instead saved as a PDF in the folder you chose for that printer, and stays there, on your Mac. The app keeps a history of its last 100 events (for example "Printed Invoice.pdf on HP LaserJet") for display in its menu and in Settings &gt; Activity. It holds only job titles and printer and folder names, never what you printed, and you can clear it at any time with Clear History.</p>
 
         <h2>3. Local Network Access</h2>
         <p>macOS asks for permission to use the local network the first time you share a printer. The app uses that permission only to advertise printers and receive print jobs on your network. It makes no connections to the internet.</p>
 
         <h2>4. What Is Stored on Your Mac</h2>
-        <p>Your preferences are kept in the app's own settings on your Mac: which printers are shared, the port and identifier assigned to each, your PDF printers (their names, a bookmark to each chosen folder, and what happens after saving), and whether notifications are on. Printer passwords are kept in your Mac's keychain. None of this leaves your Mac.</p>
+        <p>Your preferences are kept in the app's own settings on your Mac: which printers are shared, the port and identifier assigned to each, your PDF printers (their names, a bookmark to each chosen folder, and what happens after saving), and whether notifications are on. The activity history is saved as a small file inside the app's sandbox container, so it is still there after a restart. Printer passwords are kept in your Mac's keychain. None of this leaves your Mac.</p>
 
         <h2>5. Mac App Store Sandbox, Folders and Shortcuts</h2>
         <p>Prava PrintRelay is fully sandboxed. It can write only into the folders you choose for its PDF printers in the standard macOS folder panel, and cannot read your other files. If you choose "Run Shortcut" for a PDF printer, macOS first asks your permission for the app to control Shortcuts; the app then asks the Shortcuts app on your Mac for the names of your shortcuts and runs the one you chose with the saved PDF as its input. What that shortcut does is up to you and runs under the Shortcuts app's own permissions. If you choose to open saved files in another app, the app hands each file to that app on your Mac. Nothing is sent to us.</p>
