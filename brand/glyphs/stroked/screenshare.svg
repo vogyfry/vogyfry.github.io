@@ -1,0 +1,5 @@
+<!-- ScreenShare — the screen you're reaching, you in front of it: your shoulders break its frame and your head sits on its picture; the core is you, on the other end of the screen -->
+<g transform="translate(0.00 -6.01)" data-centre="1"><g fill="none" stroke="__INK__" stroke-width="22.4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M64 172 H58 A30 30 0 0 1 28 142 V74 A30 30 0 0 1 58 44 H198 A30 30 0 0 1 228 74 V142 A30 30 0 0 1 198 172 H192"/>
+  <path d="M80 224 A48 48 0 0 1 176 224 Z"/>
+</g><circle cx="128" cy="130" r="19.8" fill="__CORE__"/></g>

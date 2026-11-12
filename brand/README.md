@@ -15,7 +15,7 @@ product; everything else — tiles, variants, every size — is produced by the 
   | Kind | Core | Products |
   |---|---|---|
   | `app` — Consumer App | teal `#00D4AA` | TradeSocial · BoatNavi · Waypoint · Mavee · Pravida · Timekeeper · EchoBridge |
-  | `tool` — Developer Tool | cyan `#00B8FF` | Toolport · SwiftMind · PrintRelay |
+  | `tool` — Developer Tool | cyan `#00B8FF` | Toolport · SwiftMind · PrintRelay · ScreenShare |
   | `enterprise` — Enterprise Platform | violet `#A78BFA` | — |
 
   A reader can tell what a product *is* before reading its name. Products are told
@@ -127,4 +127,4 @@ Design intent per existing glyph: TradeSocial — rising line, core at the pivot
 Toolport — hub routing to servers, core at the junction · Pravida — shield, core protected inside · Waypoint — the destination
 pin, core at the point you actually reach · BoatNavi — the vessel underway over water,
 core at the boat · SwiftMind — the chip, core inside it, because the model never leaves
-your silicon · Mavee — the day as one loop, core on what matters. · Timekeeper — the clock at ten past ten, its hands a check mark, core at the pivot: the day's time reviewed and approved, held where the hours turn. · EchoBridge — two speech bubbles in conversation, core inside the reply that reaches you: what they said, in your own language. · PrintRelay — the system printer, traced from the SF Symbol so the Dock icon and the menu bar (which uses the symbol itself) show the same printer, core as its status light.
+your silicon · Mavee — the day as one loop, core on what matters. · Timekeeper — the clock at ten past ten, its hands a check mark, core at the pivot: the day's time reviewed and approved, held where the hours turn. · EchoBridge — two speech bubbles in conversation, core inside the reply that reaches you: what they said, in your own language. · PrintRelay — the system printer, traced from the SF Symbol so the Dock icon and the menu bar (which uses the symbol itself) show the same printer, core as its status light. · ScreenShare — the screen you're reaching from your iPad, you in front of it, your shoulders breaking its frame: the core is your head, on the picture, because the person at the other end of the screen is you. It borrows the idea of Apple's Screen Sharing icon (a screen and a person), not its drawing; Apple's windows were left out, since at the family's line weight they crowd the head and read as a face.
