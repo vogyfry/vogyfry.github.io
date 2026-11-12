@@ -4,13 +4,19 @@
     python3 brand/tools/sheet.py --fragment OUT   # body-only page, for publishing as an Artifact
 
 Run it after `node brand/generate.mjs`; every icon, colour and number comes from the
-generated set, so the sheet cannot drift from what the apps ship. Adding a product
+generated set, so the sheet cannot drift from what the apps ship. App icons are shown the way
+the apps ship them: each product's `AppIcon.icon` rendered by Icon Composer's `ictool` (needs
+Xcode), glass edge and all. Without ictool the sheet falls back to the flat `icon.svg` and says so.
+The variants and the measured anatomy stay flat: those are flat files by design. Adding a product
 means adding it to INTENT and ORDER below (the assert fails until you do).
 """
 import base64
 import html
 import json
+import subprocess
 import sys
+import tempfile
+from functools import lru_cache
 from pathlib import Path
 
 BRAND = Path(__file__).resolve().parents[1]
@@ -41,15 +47,46 @@ def uri(pid, name="icon.svg"):
     return "data:image/svg+xml;base64," + base64.b64encode((BRAND / "dist" / pid / name).read_bytes()).decode()
 
 
+ICTOOL = Path("/Applications/Xcode.app/Contents/Applications/Icon Composer.app/Contents/Executables/ictool")
+
+
+@lru_cache(maxsize=None)
+def glass_uri(pid, px):
+    """The product's AppIcon.icon as the system draws it (iOS, default appearance), px square, as a PNG data URI."""
+    with tempfile.TemporaryDirectory() as tmp:
+        out = Path(tmp) / f"{pid}.png"
+        subprocess.run([str(ICTOOL), str(BRAND / "dist" / pid / "AppIcon.icon"), "--export-image", "--output-file", str(out),
+                        "--platform", "iOS", "--rendition", "Default", "--width", str(px), "--height", str(px), "--scale", "1"],
+                       check=True, capture_output=True)
+        # ictool writes 16-bit PNGs; 8-bit is indistinguishable on screen and about a third the size.
+        try:
+            from PIL import Image
+            Image.open(out).convert("RGBA").save(out, optimize=True)
+        except ImportError:
+            pass
+        return "data:image/png;base64," + base64.b64encode(out.read_bytes()).decode()
+
+
+GLASS = ICTOOL.exists()
+if not GLASS:
+    print("ictool not found (install Xcode): app icons fall back to the flat icon.svg", file=sys.stderr)
+
+
 def img(pid, name="icon.svg", cls="", alt=""):
     return f'<img class="{cls}" src="{uri(pid, name)}" alt="{html.escape(alt)}">'
+
+
+def app_icon(pid, px=224, cls="", alt=""):
+    """The app icon as it ships: the glass AppIcon.icon render, or the flat icon.svg without ictool."""
+    src = glass_uri(pid, px) if GLASS else uri(pid)
+    return f'<img class="{cls}" src="{src}" alt="{html.escape(alt)}">'
 
 
 def card(pid):
     p = T["products"][pid]
     return f"""
       <article class="card">
-        {img(pid, cls="tile", alt=p["name"] + " icon")}
+        {app_icon(pid, cls="tile", alt=p["name"] + " icon")}
         <div class="card-text">
           <h3>{html.escape(p["name"])}</h3>
           <p>{html.escape(INTENT[pid])}</p>
@@ -79,12 +116,13 @@ def kind_section(kid, heading, blurb):
 
 
 all_ids = ["prava"] + ORDER["app"] + ORDER["tool"]
-dock = "".join(f'<figure>{img(pid, alt=T["products"][pid]["name"])}<figcaption>{html.escape(T["products"][pid]["name"].replace("Prava ", "") if pid != "prava" else "Prava")}</figcaption></figure>' for pid in all_ids)
+dock = "".join(f'<figure>{app_icon(pid, 88, alt=T["products"][pid]["name"])}<figcaption>{html.escape(T["products"][pid]["name"].replace("Prava ", "") if pid != "prava" else "Prava")}</figcaption></figure>' for pid in all_ids)
 spectrum = T["spectrum"]
 spectrum_stops = "".join(f'<li><span style="background:{c}"></span><code>{c.upper()}</code></li>' for c in spectrum)
 
 VARIANTS = [
-    ("icon.svg", "App icon", "Every mode. The tile belongs to the kind."),
+    ("AppIcon.icon", "App icon", "What the apps ship. The system draws the glass edge."),
+    ("icon.svg", "Flat icon", "Web pages and docs. The tile belongs to the kind."),
     ("icon-light.svg", "Light tile", "For placing the icon on a light page."),
     ("icon-mono.svg", "Mono", "White core, for one-colour contexts."),
     ("icon-tint.svg", "Tinted", "iOS tinted-mode reference."),
@@ -92,7 +130,7 @@ VARIANTS = [
     ("glyph-on-light.svg", "Glyph on light", "Bare glyph, navy ink."),
 ]
 variants = "".join(
-    f'<figure class="variant {"on-light" if "light" in f else ""}">{img("echobridge", f, alt=label)}<figcaption><strong>{label}</strong><span>{note}</span></figcaption></figure>'
+    f'<figure class="variant {"on-light" if "light" in f else ""}">{app_icon("echobridge", alt=label) if f == "AppIcon.icon" else img("echobridge", f, alt=label)}<figcaption><strong>{label}</strong><span>{note}</span></figcaption></figure>'
     for f, label, note in VARIANTS
 )
 
@@ -192,7 +230,7 @@ code, .spec, .count, .eyebrow {{ font-family: var(--mono); }}
 @media (max-width: 760px) {{ .rules {{ grid-template-columns: 1fr; }} }}
 
 /* Variants */
-.variants {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr)); gap: 12px; }}
+.variants {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 136px), 1fr)); gap: 12px; }}
 .variant {{ margin: 0; background: #000; border: 1px solid var(--line); border-radius: 18px; padding: 18px 14px 14px; display: grid; justify-items: center; gap: 12px; }}
 .variant.on-light {{ background: #f2f6fd; }}
 .variant img {{ width: 88px; height: 88px; }}
@@ -209,7 +247,7 @@ footer code {{ font-size: 12px; }}
 
 <main class="wrap">
   <header class="mast">
-    {img("prava", alt="Prava Labs mark")}
+    {app_icon("prava", alt="Prava Labs mark")}
     <div>
       <p class="eyebrow">Prava Labs · Brand System</p>
       <h1>One glyph per product. Everything else is generated.</h1>

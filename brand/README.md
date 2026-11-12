@@ -42,7 +42,7 @@ node brand/generate.mjs toolport   # one product
 PNG output needs `rsvg-convert` (`brew install librsvg`); without it you still get SVGs.
 
 `python3 brand/tools/sheet.py` then rebuilds `brand/sheet.html`, the whole family on one
-page (icons at Dock size, the kinds, palette, icon rules and variants), from the generated set.
+page (icons at Dock size, the kinds, palette, icon rules and variants), from the generated set. App icons on the sheet are each product's `AppIcon.icon` rendered by Icon Composer's `ictool` (needs Xcode; Pillow, if installed, converts its 16-bit PNGs to 8-bit, about a third the size), so the sheet shows the glass edge the apps ship. The flat variants and the measured anatomy stay flat; without ictool the sheet falls back to the flat `icon.svg`.
 
 Per product, `dist/<id>/` contains:
 
