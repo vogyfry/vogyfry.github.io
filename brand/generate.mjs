@@ -176,7 +176,7 @@ const entries = Object.entries(T.products).filter(([id]) => !only || id === only
 if (!entries.length) { console.error(`No product "${only}" in tokens.json`); process.exit(1); }
 
 for (const [id, entry] of entries) {
-  // A product's dot colour is its *kind* — consumer app, developer tool,
+  // A product's dot colour is its *kind* — everyday app, developer tool,
   // enterprise platform — not a hue picked per product. Nine one-off hues had
   // drifted into four near-identical violets that told a reader nothing; the
   // kind does. A product may still override any single value by naming it.

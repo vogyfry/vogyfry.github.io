@@ -38,8 +38,8 @@ INTENT = {
     "printrelay": "The printer and its page, found over the air; core on the page where the document arrives.",
     "screenshare": "The screen you're reaching, you in front of it; core on your head, the person at the other end.",
 }
-ORDER = {"app": ["tradesocial", "boatnavi", "waypoint", "pravida", "mavee", "timekeeper", "echobridge"],
-         "tool": ["toolport", "swiftmind", "printrelay", "screenshare"]}
+ORDER = {"app": ["tradesocial", "boatnavi", "waypoint", "pravida", "mavee", "timekeeper", "echobridge", "printrelay", "screenshare"],
+         "tool": ["toolport", "swiftmind"]}
 assert set(ORDER["app"] + ORDER["tool"] + ["prava"]) == set(T["products"]), "tokens.json has products the sheet doesn't list"
 
 
@@ -265,8 +265,8 @@ footer code {{ font-size: 12px; }}
     <div class="dock">{dock}</div>
   </section>
 
-  {kind_section("app", "Consumer Apps", "Phone, tablet, watch and Mac apps for everyday life. A teal core on a teal-leaning navy tile.")}
-  {kind_section("tool", "Developer Tools", "Tools for people building with AI agents and models. A cyan core on a cyan navy tile.")}
+  {kind_section("app", "Everyday Apps", "For anyone with an iPhone, iPad, Watch or Mac, utilities included. A teal core on a teal-leaning navy tile.")}
+  {kind_section("tool", "Developer Tools", "For people who build software: AI agents, models and the tools around them. A cyan core on a cyan navy tile.")}
 
   <section aria-labelledby="pal-h">
     <div class="section-head">

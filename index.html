@@ -141,7 +141,7 @@
             --accent-mavee: #00d4aa;
             --accent-pravida: #00d4aa;
             --accent-toolport: #00b8ff;
-            --accent-printrelay: #00b8ff;
+            --accent-printrelay: #00d4aa;
             --accent-boatnavi: #00d4aa;
             --accent-echobridge: #00d4aa;
         }
@@ -260,7 +260,7 @@
         .app-card.mavee .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-mavee); }
         .app-card.pravida .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-pravida); }
         .app-card.toolport .tag { border-color: rgba(0,184,255,0.3); color: var(--accent-toolport); }
-        .app-card.printrelay .tag { border-color: rgba(0,184,255,0.3); color: var(--accent-printrelay); }
+        .app-card.printrelay .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-printrelay); }
         .app-card.boatnavi .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-boatnavi); }
         .app-card.echobridge .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-echobridge); }
 
@@ -370,13 +370,13 @@
             display: inline-flex; align-items: center; gap: 8px;
             transition: color 0.15s, border-color 0.15s;
         }
-        .runs-chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--runs-c); }
+        /* Device is a filter, not an identity: the chips stay neutral and show the device, so teal and cyan
+           keep the one meaning the brand gives them, who a product is for (brand/README.md, kinds). */
+        .runs-chip svg { width: 15px; height: 15px; flex: none; }
         .runs-chip:hover { color: var(--text); }
         .runs-chip[aria-pressed="true"] { color: var(--text); border-color: var(--runs-c); box-shadow: inset 0 0 0 1px var(--runs-c); }
         .runs-chip:focus-visible { outline: 2px solid var(--runs-c); outline-offset: 2px; }
-        .runs-chip.all    { --runs-c: var(--muted); }
-        .runs-chip.phone  { --runs-c: var(--accent-ts); }
-        .runs-chip.mac    { --runs-c: var(--accent-toolport); }
+        .runs-chip        { --runs-c: var(--text); }
 
 
         .app-card { transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.25s ease, filter 0.25s ease; }
@@ -431,8 +431,8 @@
     <section class="products" id="products">
         <div class="runs-chips" role="group" aria-label="Highlight products by device">
             <button class="runs-chip all"    data-runs="all"    aria-pressed="true">All Products</button>
-            <button class="runs-chip phone"  data-runs="ios"        aria-pressed="false"><i></i>iPhone, iPad &amp; Watch</button>
-            <button class="runs-chip mac"    data-runs="mac"        aria-pressed="false"><i></i>Mac &amp; PC</button>
+            <button class="runs-chip phone"  data-runs="ios"        aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="4.25" y="1.25" width="7.5" height="13.5" rx="2"/><path d="M7 12h2"/></svg>iPhone, iPad &amp; Watch</button>
+            <button class="runs-chip mac"    data-runs="mac"        aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.75" y="2.75" width="10.5" height="7.5" rx="1.25"/><path d="M1 13.25h14"/></svg>Mac &amp; PC</button>
         </div>
 
         <div class="apps">

@@ -14,10 +14,17 @@ product; everything else — tiles, variants, every size — is produced by the 
 
   | Kind | Core | Products |
   |---|---|---|
-  | `app` — Consumer App | teal `#00D4AA` | TradeSocial · BoatNavi · Waypoint · Mavee · Pravida · Timekeeper · EchoBridge |
-  | `tool` — Developer Tool | cyan `#00B8FF` | Toolport · SwiftMind · PrintRelay · ScreenShare |
+  | `app` — Everyday App | teal `#00D4AA` | TradeSocial · BoatNavi · Waypoint · Mavee · Pravida · Timekeeper · EchoBridge · PrintRelay · ScreenShare |
+  | `tool` — Developer Tool | cyan `#00B8FF` | Toolport · SwiftMind |
   | `enterprise` — Enterprise Platform | violet `#A78BFA` | — |
 
+  **The kind is who the product is for, never what it does or where it runs.** Everyday
+  apps are for anyone with an Apple device — a Mac utility like PrintRelay included; developer
+  tools are for people who build software. App Store categories (Utilities, Productivity …)
+  belong in each page's JSON-LD, not in a colour: per-category hues are how the family once
+  drifted into four near-identical violets. Devices are not a kind either — Mavee and Pravida
+  run on four platforms each — so the site's device filters stay neutral, not teal and cyan
+  (Nov 2026: PrintRelay and ScreenShare moved from `tool` to `app` on this rule).
   A reader can tell what a product *is* before reading its name. Products are told
   apart by their glyph, which is the part actually drawn for them. The three hues sit
   29° and 58° apart, so no two kinds read as one colour; blue `#3A92FF` is unassigned
@@ -25,7 +32,7 @@ product; everything else — tiles, variants, every size — is produced by the 
   spectrum gradient, and no kind.
 - **Icon rules:** navy squircle, white line-work on a shared 256 grid (stroke ≈ 17–20,
   round caps), one core dot per glyph. **The tile belongs to the kind, not the product** —
-  consumer apps sit on a teal-leaning navy, developer tools on a cyan navy, enterprise on
+  everyday apps sit on a teal-leaning navy, developer tools on a cyan navy, enterprise on
   a violet navy — so tile and dot say the same thing. All three sit at the same brightness
   (luminance ≈ 40–80 on the tile), which is the midpoint between the near-black tile the
   family launched with and the vivid blue of the original marks: bright enough to read
