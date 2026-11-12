@@ -272,6 +272,28 @@ ${glyphMarkupRaw(raw, "#000000", c.fill, p.menubarInset ?? 1.0, shift)}
   png(join(dir, "appstore.svg"), join(dir, "appstore-1024.png"), 1024);
   if (p.macos) for (const s of T.sizes) png(join(dir, "icon-macos.svg"), join(dir, `macos-${s}.png`), s);
 
+  // Classic asset catalog ("appiconset": true) for toolchains before Xcode 26, or wherever an
+  // AppIcon.icon can't be used. Every iPhone and iPad slot plus the App Store marketing icon,
+  // all rendered from the full-bleed appstore.svg: the system applies the mask, and the files
+  // carry no alpha channel (App Store Connect rejects one). Flat, so no glass edge — prefer
+  // AppIcon.icon on Xcode 26+; keep one or the other in the target, not both.
+  if (p.appiconset && RSVG) {
+    const slots = [
+      ["iphone", 20, [2, 3]], ["iphone", 29, [2, 3]], ["iphone", 40, [2, 3]], ["iphone", 60, [2, 3]],
+      ["ipad", 20, [1, 2]], ["ipad", 29, [1, 2]], ["ipad", 40, [1, 2]], ["ipad", 76, [1, 2]], ["ipad", 83.5, [2]],
+      ["ios-marketing", 1024, [1]],
+    ];
+    const adir = join(dir, "AppIcon.appiconset");
+    mkdirSync(adir, { recursive: true });
+    const images = [];
+    for (const [idiom, pt, scales] of slots) for (const sc of scales) {
+      const px = Math.round(pt * sc), filename = `icon-${px}.png`;
+      if (!images.some((i) => i.filename === filename)) png(join(dir, "appstore.svg"), join(adir, filename), px);
+      images.push({ filename, idiom, scale: `${sc}x`, size: `${pt}x${pt}` });
+    }
+    writeFileSync(join(adir, "Contents.json"), JSON.stringify({ images, info: { author: "xcode", version: 1 } }, null, 2) + "\n");
+  }
+
   console.log(`✓ ${id} → dist/${id} (${Object.keys(files).length} SVG, ${RSVG ? T.sizes.length + 1 : 0} PNG)`);
 }
 console.log("done");
