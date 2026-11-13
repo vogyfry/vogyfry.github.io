@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScreenShare — Your Mac on Your iPad, Nothing to Install</title>
+    <meta name="description" content="ScreenShare controls your Mac from your iPad through the Screen Sharing built into macOS. Nothing to install on the Mac. Several Macs at once, Magic Keyboard and trackpad, an optional SSH tunnel. iPad, 14-day free trial.">
+    <meta name="keywords" content="ScreenShare, Mac remote desktop iPad, Screen Sharing iPad, VNC iPad, control Mac from iPad, Mac mini iPad, remote Mac, Magic Keyboard, SSH tunnel">
+    <link rel="canonical" href="https://pravalabs.app/screenshare/">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#000000">
+    <meta name="author" content="Prava Labs, LLC">
+    <link rel="sitemap" type="application/xml" href="https://pravalabs.app/sitemap.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Prava Labs">
+    <meta property="og:title" content="ScreenShare — Your Mac on Your iPad, Nothing to Install">
+    <meta property="og:description" content="Control your Mac from your iPad through the Screen Sharing built into macOS. Several Macs at once, each in its own window. Nothing to install on the Mac.">
+    <meta property="og:image" content="https://pravalabs.app/screenshare/images/icon.png?v=20261113">
+    <meta property="og:url" content="https://pravalabs.app/screenshare/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ScreenShare — Your Mac on Your iPad, Nothing to Install">
+    <meta name="twitter:description" content="Control your Mac from your iPad through the Screen Sharing built into macOS. Several Macs at once, Magic Keyboard and trackpad, nothing to install on the Mac.">
+    <meta name="twitter:image" content="https://pravalabs.app/screenshare/images/icon.png?v=20261113">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [
+      {"@type": "BreadcrumbList", "@id": "https://pravalabs.app/screenshare/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "ScreenShare", "item": "https://pravalabs.app/screenshare/"}]},
+      {"@type": "SoftwareApplication", "@id": "https://pravalabs.app/screenshare/#app", "name": "ScreenShare", "operatingSystem": "iPadOS 18", "applicationCategory": "UtilitiesApplication", "url": "https://pravalabs.app/screenshare/", "image": "https://pravalabs.app/screenshare/images/icon.png", "description": "An iPad app that controls a Mac through the Screen Sharing service built into macOS, with nothing to install on the Mac: several Macs at once in separate windows, Magic Keyboard, trackpad and touch input, an optional SSH tunnel, and passwords kept in the Keychain.", "offers": [{"@type": "Offer", "name": "ScreenShare Yearly", "price": "14.99", "priceCurrency": "USD"}, {"@type": "Offer", "name": "ScreenShare Lifetime", "price": "39.99", "priceCurrency": "USD"}], "publisher": {"@id": "https://pravalabs.app/#org"}},
+      {"@type": "WebPage", "@id": "https://pravalabs.app/screenshare/", "url": "https://pravalabs.app/screenshare/", "name": "ScreenShare — Your Mac on Your iPad, Nothing to Install", "isPartOf": {"@id": "https://pravalabs.app/#website"}, "about": {"@id": "https://pravalabs.app/screenshare/#app"}, "dateModified": "2026-11-13", "inLanguage": "en", "publisher": {"@id": "https://pravalabs.app/#org"}}
+    ]}</script>
+    <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png?v=20261113">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20261113">
+    <link rel="stylesheet" href="styles.css?v=20261113">
+    <style>
+        /* Hero: the claim on the left, the app's main screen on the right (the EchoBridge standard). */
+        .hero.split { text-align: left; padding-top: 140px; }
+        .split .hero-inner > div { min-width: 0; }
+        .split .hero-inner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 56px; align-items: center; }
+        .split .app-icon-container { margin-bottom: 24px; }
+        .split .app-icon { width: 88px; height: 88px; border-radius: 20px; }
+        .split h1 { font-size: clamp(38px, 5.4vw, 62px); text-wrap: balance; }
+        .split .subtitle { margin: 0; max-width: 34em; }
+        .split .platform-tags { justify-content: flex-start; }
+        /* Status as a pill, styled here so a cached stylesheet cannot leave it bare. Amber = TestFlight; live uses var(--brand). */
+        .status-line { display: inline-flex; align-items: center; gap: 8px; margin: 22px 0 0; padding: 7px 14px; border-radius: 99px; border: 1px solid rgba(244, 184, 96, 0.35); background: rgba(244, 184, 96, 0.10); color: #f4d29a; font-size: 0.9rem; font-weight: 500; line-height: 1.2; }
+        .status-line .dot { width: 8px; height: 8px; border-radius: 50%; background: #f4b860; flex: none; margin: 0; }
+        .hero.split .status-line + .platform-tags { margin-top: 18px; }
+
+        /* The device: an iPad in landscape showing a ScreenShare session, drawn in markup. */
+        .device {
+            width: min(100%, 520px); margin: 0 auto; aspect-ratio: 4 / 3;
+            border-radius: 30px; padding: 12px;
+            background: linear-gradient(160deg, #3a3d42, #16181b 40%, #2a2d31);
+            box-shadow: 0 40px 90px rgba(0, 212, 170, 0.16), 0 0 0 1px rgba(255, 255, 255, 0.06);
+        }
+        .screen {
+            height: 100%; border-radius: 22px; overflow: hidden; position: relative;
+            background: #000; display: flex; flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; text-align: left;
+        }
+        .device-note { text-align: center; color: var(--text-tertiary); font-size: 0.85rem; margin-top: 14px; }
+        /* The session toolbar: Disconnect, the Mac's name, Control / Observe, Keyboard, View, More. */
+        .ss-bar { display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: #1c1c1e; border-bottom: 1px solid #2c2c2e; }
+        .ss-x { width: 22px; height: 22px; border-radius: 50%; background: #2c2c2e; color: #d1d1d6; font-size: 11px; display: grid; place-items: center; flex: none; }
+        .ss-title { flex: 1; text-align: center; line-height: 1.1; min-width: 0; }
+        .ss-title b { display: block; color: #f2f2f7; font-size: 11px; font-weight: 600; }
+        .ss-title span { color: #8e8e93; font-size: 9px; }
+        .ss-seg { display: flex; background: #2c2c2e; border-radius: 7px; padding: 2px; font-size: 9px; color: #d1d1d6; flex: none; }
+        .ss-seg span { padding: 3px 7px; border-radius: 5px; }
+        .ss-seg .on { background: #636366; color: #fff; }
+        .ss-icons { display: flex; gap: 7px; flex: none; }
+        .ss-icons i { width: 16px; height: 16px; border-radius: 5px; background: #2c2c2e; display: block; }
+        /* The Mac's desktop inside the session. */
+        .mac { flex: 1; position: relative; background: linear-gradient(135deg, #0b3d4f 0%, #145a64 45%, #2a2f6b 100%); }
+        .mac-menu { height: 14px; background: rgba(20, 20, 24, 0.55); display: flex; align-items: center; gap: 10px; padding: 0 10px; font-size: 7.5px; color: #e5e5ea; }
+        .mac-menu b { font-weight: 700; }
+        .mac-menu .r { margin-left: auto; }
+        .mac-win { position: absolute; left: 9%; top: 15%; width: 58%; height: 52%; border-radius: 8px; background: #1e1e1e; box-shadow: 0 10px 30px rgba(0,0,0,0.45); overflow: hidden; }
+        .mac-win .tl { display: flex; gap: 4px; padding: 6px 7px; background: #2a2a2a; }
+        .mac-win .tl i { width: 6px; height: 6px; border-radius: 50%; display: block; }
+        .mac-win .tl i:nth-child(1) { background: #ff5f57; } .mac-win .tl i:nth-child(2) { background: #febc2e; } .mac-win .tl i:nth-child(3) { background: #28c840; }
+        .mac-win .rows { padding: 8px 10px; display: grid; gap: 6px; }
+        .mac-win .rows span { height: 6px; border-radius: 3px; background: #3a3a3c; display: block; }
+        .mac-win .rows span:nth-child(2) { width: 80%; } .mac-win .rows span:nth-child(3) { width: 60%; background: rgba(0, 212, 170, 0.55); } .mac-win .rows span:nth-child(4) { width: 72%; }
+        .mac-win.two { left: 47%; top: 34%; width: 44%; height: 40%; }
+        .mac-dock { position: absolute; left: 50%; bottom: 7px; transform: translateX(-50%); display: flex; gap: 5px; padding: 4px 6px; border-radius: 9px; background: rgba(255, 255, 255, 0.18); }
+        .mac-dock i { width: 14px; height: 14px; border-radius: 4px; display: block; background: #8e8e93; }
+        .mac-dock i:nth-child(1) { background: #3b82f6; } .mac-dock i:nth-child(2) { background: #00d4aa; } .mac-dock i:nth-child(3) { background: #f59e0b; } .mac-dock i:nth-child(4) { background: #ef4444; } .mac-dock i:nth-child(5) { background: #a855f7; }
+        .mac-pointer { position: absolute; left: 62%; top: 58%; width: 0; height: 0; border-left: 6px solid #fff; border-top: 4px solid transparent; border-bottom: 9px solid transparent; transform: rotate(-20deg); filter: drop-shadow(0 1px 1px rgba(0,0,0,0.6)); }
+
+        /* Tables (What You Need), and the What It Is Not section, as on EchoBridge. */
+        .tbl { max-width: 760px; margin: 0 auto; border: 1px solid var(--border-color); border-radius: var(--radius); overflow: hidden; text-align: left; }
+        .tbl table { width: 100%; border-collapse: collapse; }
+        .tbl th, .tbl td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--border-color); vertical-align: top; font-size: 0.95rem; }
+        .tbl tr:last-child td { border-bottom: 0; }
+        .tbl th { color: var(--text-tertiary); font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; background: var(--bg-surface); }
+        .tbl td:first-child { color: var(--text-primary); font-weight: 500; width: 34%; }
+        .tbl td:last-child { color: var(--text-secondary); }
+        .tbl .no  { color: var(--brand); font-weight: 600; }
+        .tbl-note { max-width: 760px; margin: 16px auto 0; color: var(--text-tertiary); font-size: 0.9rem; line-height: 1.6; text-align: center; }
+        .safety { max-width: 760px; margin: 0 auto; padding: 100px 24px 80px; text-align: center; }
+        .safety h2 { font-size: clamp(1.5rem, 4vw, 2rem); letter-spacing: -0.03em; margin-bottom: 12px; }
+        .safety p { color: var(--text-secondary); line-height: 1.7; margin: 0 auto 14px; max-width: 62ch; }
+        /* Two plans side by side: the yearly subscription and the lifetime purchase. */
+        .plan-grid.pair { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 760px; margin: 56px auto 0; text-align: center; }
+
+        @media (max-width: 900px) {
+            .split .hero-inner { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+            .hero.split { text-align: center; padding-top: 120px; }
+            .split .subtitle { margin: 0 auto; }
+            .split .platform-tags { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/screenshare/" class="nav-brand">
+                <img src="images/favicon.png?v=20261113" alt="ScreenShare">
+                <span>ScreenShare</span>
+            </a>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span><span></span><span></span></label>
+            <ul class="nav-links">
+                <li><a href="#most-requested">Most Requested</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">Setup</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="/">Prava Labs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero split">
+        <div class="hero-inner">
+            <div>
+                <div class="app-icon-container">
+                    <img src="images/icon.png?v=20261113" alt="ScreenShare app icon" class="app-icon">
+                </div>
+                <div class="hero-badge">🖥️ Nothing to install on the Mac · Several Macs at once · Keyboard and trackpad</div>
+                <h1>Your Mac,<br><span class="highlight">on Your iPad.</span></h1>
+                <p class="subtitle">
+                    ScreenShare connects to the Screen Sharing that is already built into macOS, so there is nothing to install on the Mac. Sign in with your Mac user name and password, then use it with a Magic Keyboard and trackpad, a mouse or your fingers. We built it for our own iPad and Mac mini, because no other app did this well enough.
+                </p>
+                <p class="status-line"><span class="dot"></span>In TestFlight, App Store to follow</p>
+                <div class="platform-tags">
+                    <span class="platform-tag">iPad</span>
+                    <span class="platform-tag">iPadOS 18+</span>
+                </div>
+            </div>
+            <div>
+                <div class="device" role="img" aria-label="An iPad in landscape showing a ScreenShare session. The toolbar has the Disconnect button, the Mac's name with Controlling under it, the Control and Observe switch, and the Keyboard, View and More menus. Below it is the Mac's desktop with its menu bar, two windows, the Dock and the pointer.">
+                    <div class="screen">
+                        <div class="ss-bar">
+                            <span class="ss-x">✕</span>
+                            <span class="ss-title"><b>Mac mini</b><span>Controlling</span></span>
+                            <span class="ss-seg"><span class="on">Control</span><span>Observe</span></span>
+                            <span class="ss-icons"><i></i><i></i><i></i></span>
+                        </div>
+                        <div class="mac">
+                            <div class="mac-menu"><b></b><b>Finder</b><span>File</span><span>Edit</span><span>View</span><span>Go</span><span class="r">Fri 9:41</span></div>
+                            <div class="mac-win"><div class="tl"><i></i><i></i><i></i></div><div class="rows"><span></span><span></span><span></span><span></span></div></div>
+                            <div class="mac-win two"><div class="tl"><i></i><i></i><i></i></div><div class="rows"><span></span><span></span><span></span></div></div>
+                            <div class="mac-pointer"></div>
+                            <div class="mac-dock"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="device-note">A session: the Mac's own screen, with the iPad's toolbar above it.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features requested" id="most-requested">
+        <div class="features-inner">
+            <p class="kicker">Most requested</p>
+            <h2>The Things People Ask For, Built In</h2>
+            <p class="section-subtitle">What people want most from a Mac remote on the iPad: no software on the Mac, real keyboard shortcuts, more than one Mac, and a way to use it away from home.</p>
+            <div class="feature-grid four">
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Nothing to Install on the Mac</h3>
+                    <p>Turn on Screen Sharing in System Settings on the Mac and you are done. No helper app, no account, no server of ours in between.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🪟</div>
+                    <h3>Several Macs at Once</h3>
+                    <p>Each Mac opens in its own iPad window. A window you are not looking at stops asking for screen updates, and only the window in use shares the clipboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⌨️</div>
+                    <h3>Your Keyboard, Your Shortcuts</h3>
+                    <p>Command, Option and Control go to the Mac as Mac keys. The modifier bar sends the shortcuts iPadOS keeps for itself, such as Command-Tab.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Encrypt the Whole Session</h3>
+                    <p>Turn on Connect Through SSH for a connection and the screen, your typing and the clipboard all go through an SSH tunnel to the Mac's Remote Login.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-inner">
+            <h2>Made for the iPad, Matched to the Mac</h2>
+            <p class="section-subtitle">Screen Sharing.app on the Mac is the reference for what ScreenShare does; the controls follow iPadOS.</p>
+            <div class="feature-grid four">
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>Sign In as on the Mac</h3>
+                    <p>Use your Mac user name and password, or the VNC password if the Mac has one. Remember Password keeps it in the iPad's Keychain.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3>Find Macs Nearby</h3>
+                    <p>Network lists the Macs on your Wi-Fi that have Screen Sharing on. Connect to Server takes a host name or IP address, with a port if you need one.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖱️</div>
+                    <h3>Trackpad, Mouse or Touch</h3>
+                    <p>Hover, click, right-click and scroll with a trackpad or mouse. With touch, choose taps that click where you tap, or a finger that moves the pointer like a trackpad.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Fit, Zoom and Full Screen</h3>
+                    <p>Scale to Fit or Actual Size, pinch to zoom, and Enter Full Screen. A Mac with several displays shows them all, or one at a time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👀</div>
+                    <h3>Control or Observe</h3>
+                    <p>Switch to Observe to watch without moving anything on the Mac, then back to Control.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Shared Clipboard, When You Want It</h3>
+                    <p>Off unless you turn it on, for each connection. Copy on one side and paste on the other.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>Capture Screen</h3>
+                    <p>Save a picture of the Mac's screen to Files. The Accessibility menu opens Mission Control, App Windows or the desktop.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗂️</div>
+                    <h3>Your Macs, Organised</h3>
+                    <p>Groups, icon or list view, Search, Open Recent, and vnc:// links, which always ask before connecting and never carry a password.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <div class="how-it-works-inner">
+            <h2>Set Up in a Minute</h2>
+            <p class="section-subtitle">No app on the Mac, no account, no sign-up.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Turn On Screen Sharing</h3>
+                    <p>On the Mac, open System Settings › General › Sharing and turn on Screen Sharing.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Find the Mac</h3>
+                    <p>On the iPad, open Network and tap the Mac, or tap New Connection and type its name or address.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Sign In</h3>
+                    <p>Enter the Mac user name and password. Turn on Remember Password to skip this next time.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Add Another Mac</h3>
+                    <p>In a session, choose More › Open in New Window and pick another Mac. Disconnect closes the extra window.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="plans" id="pricing">
+        <div class="plans-inner">
+            <h2>Try It Free for 14 Days</h2>
+            <p class="section-subtitle">Every Mac you add, on every iPad signed in with your Apple Account. Pay by the year, or once.</p>
+            <div class="plan-grid pair">
+                <div class="plan-card featured">
+                    <div class="plan-name">ScreenShare Yearly</div>
+                    <div class="plan-price">$14.99 <span>/ year</span></div>
+                    <div class="plan-note">14 days free for new subscribers · Family Sharing</div>
+                    <ul class="plan-features">
+                        <li>Every feature, every Mac</li>
+                        <li>Several Macs at once</li>
+                        <li>Connect Through SSH</li>
+                        <li>Renews each year; cancel any time</li>
+                    </ul>
+                    <p class="card-footer"><span class="btn-cta secondary">App Store — coming soon</span></p>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-name">ScreenShare Lifetime</div>
+                    <div class="plan-price">$39.99 <span>once</span></div>
+                    <div class="plan-note">One purchase, no subscription · Family Sharing</div>
+                    <ul class="plan-features">
+                        <li>Everything in Yearly</li>
+                        <li>Pay once, use it for good</li>
+                        <li>Updates included</li>
+                        <li>Restore it on any of your iPads</li>
+                    </ul>
+                    <p class="card-footer"><span class="btn-cta secondary">App Store — coming soon</span></p>
+                </div>
+            </div>
+            <p class="plans-footnote">Prices shown in USD; the App Store shows the price in your country. You choose one: the yearly plan or the lifetime purchase. Yearly is an auto-renewable subscription: payment is charged to your Apple Account when the free trial ends, and it renews each year unless cancelled at least 24 hours before the end of the current period. Manage or cancel it in your App Store account settings. See the <a href="terms.html">Terms of Use</a>.</p>
+        </div>
+    </section>
+
+    <section class="privacy-section" id="privacy">
+        <div class="privacy-inner">
+            <h2>Between Your iPad and Your Mac</h2>
+            <p class="section-subtitle">ScreenShare talks only to the Macs you add. Prava Labs has no server, no account and no analytics: nothing you see or type reaches us.</p>
+            <div class="privacy-badges">
+                <span class="privacy-badge"><span class="check">✓</span> No Account</span>
+                <span class="privacy-badge"><span class="check">✓</span> No Telemetry</span>
+                <span class="privacy-badge"><span class="check">✓</span> Passwords in the Keychain</span>
+                <span class="privacy-badge"><span class="check">✓</span> Optional SSH Encryption</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section" id="needs">
+        <div class="tech-inner">
+            <h2>What You Need</h2>
+            <p class="section-subtitle">An iPad and a Mac you can sign in to.</p>
+            <div class="tbl">
+                <table>
+                    <thead><tr><th scope="col">Item</th><th scope="col">Requirement</th></tr></thead>
+                    <tbody>
+                        <tr><td>iPad</td><td>iPadOS 18 or later</td></tr>
+                        <tr><td>Mac</td><td>Screen Sharing turned on in System Settings › General › Sharing, and a user account you can sign in with</td></tr>
+                        <tr><td>Network</td><td>The same network as the Mac, or a route to it (VPN, or an address you can reach). Outside your local network, ScreenShare asks before connecting, unless the connection goes through SSH.</td></tr>
+                        <tr><td>Connect Through SSH (optional)</td><td>Remote Login turned on in the Mac's Sharing settings, and your password or the iPad's SSH key</td></tr>
+                        <tr><td>Keyboard and trackpad (optional)</td><td>Magic Keyboard, any Bluetooth keyboard, trackpad or mouse</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="tech-inner">
+            <h2>Built With</h2>
+            <div class="tech-grid">
+                <span class="tech-tag">SwiftUI</span>
+                <span class="tech-tag">UIKit</span>
+                <span class="tech-tag">Swift 6</span>
+                <span class="tech-tag">RoyalVNCKit</span>
+                <span class="tech-tag">SwiftNIO SSH</span>
+                <span class="tech-tag">CryptoKit</span>
+                <span class="tech-tag">Keychain</span>
+                <span class="tech-tag">Bonjour</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="safety" id="honest">
+        <h2>What ScreenShare Is Not</h2>
+        <p>ScreenShare is for Macs. It talks to the Screen Sharing built into macOS and does not connect to Windows PCs over Remote Desktop. It runs on iPad only, not on iPhone or the Mac.</p>
+        <p>Features that need a Mac on both ends, such as High Performance connections, file transfer and curtain mode, are not available on iPad. Screen Sharing encrypts your sign-in but not the screen, your typing or the clipboard; use Connect Through SSH or a VPN when that matters.</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="images/favicon.png?v=20261113" alt="">
+                        <span>ScreenShare</span>
+                    </div>
+                    <p class="footer-description">Control your Mac from your iPad through the Screen Sharing built into macOS. Nothing to install on the Mac; several Macs at once, each in its own window. By Prava Labs.</p>
+                </div>
+                <div>
+                    <h4>Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="support.html">Support</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                        <li><a href="mailto:support@pravalabs.app">support@pravalabs.app</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Prava Labs</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">All Products</a></li>
+                        <li><a href="/tradesocial/">TradeSocial</a></li>
+                        <li><a href="/toolport/">Toolport</a></li>
+                        <li><a href="/boatnavi/">BoatNavi</a></li>
+                        <li><a href="/pravida/">Pravida</a></li>
+                        <li><a href="/echobridge/">EchoBridge</a></li>
+                        <li><a href="/mavee/">Mavee</a></li>
+                        <li><a href="/printrelay/">PrintRelay</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Prava Labs, LLC &nbsp;&middot;&nbsp; Made in California
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

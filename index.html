@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prava Labs — Local-First Apps &amp; On-Device AI Tools</title>
-    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger), EchoBridge (live conversation translation with suggested replies), Mavee (what needs you today, from your calendar, mail and health, on device), and PrintRelay (AirPrint for every printer on your Mac).">
+    <meta name="description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger), EchoBridge (live conversation translation with suggested replies), Mavee (what needs you today, from your calendar, mail and health, on device), PrintRelay (AirPrint for every printer on your Mac), and ScreenShare (your Mac on your iPad through the Screen Sharing built into macOS).">
     <meta property="og:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
-    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing, Pravida for private messaging, EchoBridge for conversations in another language, Mavee for your day, PrintRelay for printing from your iPhone.">
+    <meta property="og:description" content="Independent software studio. Your data, your device, your tools: Toolport for AI agents, TradeSocial for group investing, Pravida for private messaging, EchoBridge for conversations in another language, Mavee for your day, PrintRelay for printing from your iPhone, ScreenShare for your Mac on your iPad.">
     <meta property="og:url" content="https://pravalabs.app/">
     <meta property="og:site_name" content="Prava Labs">
     <meta property="og:image" content="https://pravalabs.app/prava-icon.png">
@@ -48,7 +48,8 @@
             { "@type": "ListItem", "position": 4, "url": "https://pravalabs.app/pravida/", "name": "Pravida" },
             { "@type": "ListItem", "position": 5, "url": "https://pravalabs.app/echobridge/", "name": "EchoBridge" },
             { "@type": "ListItem", "position": 6, "url": "https://pravalabs.app/mavee/", "name": "Mavee" },
-            { "@type": "ListItem", "position": 7, "url": "https://pravalabs.app/printrelay/", "name": "Prava PrintRelay" }
+            { "@type": "ListItem", "position": 7, "url": "https://pravalabs.app/printrelay/", "name": "Prava PrintRelay" },
+            { "@type": "ListItem", "position": 8, "url": "https://pravalabs.app/screenshare/", "name": "ScreenShare" }
           ]
         },
         {
@@ -107,6 +108,17 @@
         },
         {
           "@type": "SoftwareApplication",
+          "@id": "https://pravalabs.app/screenshare/#app",
+          "name": "ScreenShare",
+          "operatingSystem": "iPadOS 18",
+          "applicationCategory": "UtilitiesApplication",
+          "url": "https://pravalabs.app/screenshare/",
+          "description": "An iPad app that controls a Mac through the Screen Sharing service built into macOS, with nothing to install on the Mac: several Macs at once in separate windows, Magic Keyboard, trackpad and touch input, and an optional SSH tunnel.",
+          "offers": { "@type": "Offer", "price": "14.99", "priceCurrency": "USD" },
+          "publisher": { "@id": "https://pravalabs.app/#org" }
+        },
+        {
+          "@type": "SoftwareApplication",
           "@id": "https://pravalabs.app/pravida/#app",
           "name": "Pravida",
           "operatingSystem": "iOS 26, iPadOS 26, macOS 26, watchOS 26",
@@ -142,6 +154,7 @@
             --accent-pravida: #00d4aa;
             --accent-toolport: #00b8ff;
             --accent-printrelay: #00d4aa;
+            --accent-screenshare: #00d4aa;
             --accent-boatnavi: #00d4aa;
             --accent-echobridge: #00d4aa;
         }
@@ -219,6 +232,7 @@
         .app-card.pravida:hover { border-color: var(--accent-pravida); }
         .app-card.toolport:hover { border-color: var(--accent-toolport); }
         .app-card.printrelay:hover { border-color: var(--accent-printrelay); }
+        .app-card.screenshare:hover { border-color: var(--accent-screenshare); }
         .app-card.boatnavi:hover { border-color: var(--accent-boatnavi); }
         .app-card.echobridge:hover { border-color: var(--accent-echobridge); }
 
@@ -261,6 +275,7 @@
         .app-card.pravida .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-pravida); }
         .app-card.toolport .tag { border-color: rgba(0,184,255,0.3); color: var(--accent-toolport); }
         .app-card.printrelay .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-printrelay); }
+        .app-card.screenshare .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-screenshare); }
         .app-card.boatnavi .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-boatnavi); }
         .app-card.echobridge .tag { border-color: rgba(0,212,170,0.3); color: var(--accent-echobridge); }
 
@@ -278,6 +293,7 @@
         .app-card.pravida .app-cta { color: var(--accent-pravida); }
         .app-card.toolport .app-cta { color: var(--accent-toolport); }
         .app-card.printrelay .app-cta { color: var(--accent-printrelay); }
+        .app-card.screenshare .app-cta { color: var(--accent-screenshare); }
         .app-card.boatnavi .app-cta { color: var(--accent-boatnavi); }
         .app-card.echobridge .app-cta { color: var(--accent-echobridge); }
 
@@ -413,7 +429,7 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Prava Labs — Local-First Apps &amp; On-Device AI Tools">
-    <meta name="twitter:description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger), EchoBridge (live conversation translation with suggested replies), and PrintRelay (AirPrint for every printer on your Mac).">
+    <meta name="twitter:description" content="Prava Labs builds local-first, private-by-design software: Toolport (the semantic MCP tool registry), TradeSocial (group paper trading), BoatNavi (water under the keel, offline), Pravida (the private, encrypted, offline messenger), EchoBridge (live conversation translation with suggested replies), PrintRelay (AirPrint for every printer on your Mac), and ScreenShare (your Mac on your iPad through the Screen Sharing built into macOS).">
     <meta name="twitter:image" content="https://pravalabs.app/prava-icon.png">
 </head>
 <body>
@@ -641,6 +657,32 @@
                 </svg>
             </span>
         </a>
+        <a data-runs="ios" class="app-card screenshare" href="/screenshare/">
+            <div class="app-header">
+                <img class="app-icon" src="screenshare-icon.png?v=20261113" alt="ScreenShare icon">
+                <div>
+                    <div class="app-name">ScreenShare <span class="live-now beta">In TestFlight</span></div>
+                    <div class="app-platform">iPad · iPadOS 18+</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                Your Mac on your iPad, through the Screen Sharing already built into macOS, with nothing to install on the Mac. Sign in with your Mac password and use a Magic Keyboard, trackpad, mouse or touch. Open several Macs at once, each in its own window, and encrypt the whole session through SSH when you are away from home.
+            </p>
+            <div class="app-tags">
+                <span class="tag">Nothing to Install on the Mac</span>
+                <span class="tag">Several Macs at Once</span>
+                <span class="tag">Magic Keyboard &amp; Trackpad</span>
+                <span class="tag">Connect Through SSH</span>
+                <span class="tag">Passwords in the Keychain</span>
+                <span class="tag">No Account · No Telemetry</span>
+            </div>
+            <span class="app-cta">
+                Learn More
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+            </span>
+        </a>
         </div>
     </section>
 
@@ -677,11 +719,12 @@
             &nbsp;&middot;&nbsp; <a href="/echobridge/">EchoBridge</a>
             &nbsp;&middot;&nbsp; <a href="/mavee/">Mavee</a>
             &nbsp;&middot;&nbsp; <a href="/printrelay/">PrintRelay</a>
+            &nbsp;&middot;&nbsp; <a href="/screenshare/">ScreenShare</a>
             &nbsp;&middot;&nbsp; <a href="mailto:support@pravalabs.app">support@pravalabs.app</a>
         </p>
         <p class="footer-legal-note" style="margin-top:6px; font-size:0.8em; opacity:0.7">
             Privacy, terms, and support for each product live on its own pages:
-            <a href="/tradesocial/privacy.html">TradeSocial</a> &middot; <a href="/toolport/privacy.html">Toolport</a> &middot; <a href="/boatnavi/privacy.html">BoatNavi</a> &middot; <a href="/pravida/privacy.html">Pravida</a> &middot; <a href="/echobridge/privacy.html">EchoBridge</a> &middot; <a href="/mavee/privacy.html">Mavee</a> &middot; <a href="/printrelay/privacy.html">PrintRelay</a>
+            <a href="/tradesocial/privacy.html">TradeSocial</a> &middot; <a href="/toolport/privacy.html">Toolport</a> &middot; <a href="/boatnavi/privacy.html">BoatNavi</a> &middot; <a href="/pravida/privacy.html">Pravida</a> &middot; <a href="/echobridge/privacy.html">EchoBridge</a> &middot; <a href="/mavee/privacy.html">Mavee</a> &middot; <a href="/printrelay/privacy.html">PrintRelay</a> &middot; <a href="/screenshare/privacy.html">ScreenShare</a>
         </p>
     </footer>
 
