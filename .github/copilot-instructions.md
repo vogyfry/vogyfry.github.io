@@ -23,7 +23,7 @@ This repo (`vogyfry.github.io`) is the **landing page** for all apps by Jim Vogl
 - The workflow uploads ONLY `./website/` as a GitHub Pages artifact
 - Source code in the repo is **never exposed** — only the `website/` folder is published
 - Custom domain is set via `website/CNAME` file containing the domain name
-- GitHub Pages is configured with `build_type: workflow` and HTTPS enforced
+- GitHub Pages is configured with `build_type: workflow`; HTTPS is enforced in Cloudflare, not GitHub (see Important Rules)
 
 ## Adding a New App Site
 
@@ -119,13 +119,12 @@ gh api repos/vogyfry/REPO_NAME/pages -X PUT --input - <<'EOF'
 EOF
 ```
 
-### 6. Enforce HTTPS
+### 6. HTTPS
 
-```bash
-gh api repos/vogyfry/REPO_NAME/pages -X PUT --input - <<'EOF'
-{"https_enforced": true, "build_type": "workflow", "source": {"branch": "main", "path": "/"}}
-EOF
-```
+A domain served through Cloudflare's proxy (pravalabs.app is) gets HTTPS from Cloudflare: turn on
+SSL/TLS > Edge Certificates > Always Use HTTPS for the domain. GitHub's `https_enforced` cannot be
+turned on behind the proxy (GitHub never gets a certificate), so leave it off. Check with
+`curl -sI http://DOMAIN/`: a 301 to `https://` means it works.
 
 ### 7. Remove environment branch restrictions (if deploy gets stuck)
 
@@ -165,7 +164,7 @@ Add a new task entry in `.vscode/tasks.json` for the new site.
 - **Never put app source code in this landing page repo** — each app has its own repo
 - **Only the `website/` folder is deployed** — nothing else in the repo is publicly accessible
 - **All app repos must be private** — the published Pages site will be public but source code stays private
-- **HTTPS must be enforced** on every custom domain
+- **HTTPS must be enforced** on every custom domain: in Cloudflare (Always Use HTTPS), not GitHub Pages; pravalabs.app has it since 2026-11-13
 - **One custom domain per repo** — GitHub Pages only supports one CNAME per repository
 
 ## Product Page Footer Standard
