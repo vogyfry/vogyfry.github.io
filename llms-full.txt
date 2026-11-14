@@ -199,28 +199,28 @@ Terms: Prava PrintRelay Terms of Use: the licence for the Mac app and the auto-r
 ## ScreenShare — in TestFlight
 URL: https://pravalabs.app/screenshare/
 
-ScreenShare is an iPad app (iPadOS 18 or later) that shows and controls a Mac through the Screen Sharing service built into macOS, so there is nothing to install on the Mac. It connects directly from the iPad to the Macs you add, over the VNC (RFB) protocol of Screen Sharing; Prava Labs has no server, account or analytics in between. It was built for our own iPad and Mac mini, because no other app did this well enough. It does not run on iPhone or the Mac and does not connect to Windows PCs.
+ScreenShare is an app for iPad, iPhone Duo and iPhone (iPadOS or iOS 18 or later) that shows and controls a Mac through the Screen Sharing service built into macOS, so there is nothing to install on the Mac. It connects directly from the device to the Macs you add, over the VNC (RFB) protocol of Screen Sharing; Prava Labs has no server, account or analytics in between. It was built for our own iPad and Mac mini, because no other app did this well enough. The iPad is its main device; open iPhone Duo and the Mac gets the iPad layout on the inner screen, and on iPhone it is there whenever you need it. It does not run on the Mac and does not connect to Windows PCs.
 
 What it does:
 - Nothing to install on the Mac: turn on System Settings > General > Sharing > Screen Sharing.
-- Sign in with the Mac user name and password, or the Mac's VNC password; Remember Password keeps it in the iPad's Keychain, optionally behind Face ID or Touch ID.
-- Several Macs at once, each in its own iPad window; a hidden window pauses screen updates, only the window in use shares the clipboard, and Disconnect closes an extra window.
-- Magic Keyboard, keyboard, trackpad and mouse input; Command, Option and Control go to the Mac as Mac keys, and a modifier bar sends shortcuts iPadOS keeps, such as Command-Tab.
+- Sign in with the Mac user name and password, or the Mac's VNC password; Remember Password keeps it in the device's Keychain, optionally behind Face ID or Touch ID.
+- Several Macs at once, each in its own window on iPad and iPhone Duo; a hidden window pauses screen updates, only the window in use shares the clipboard, and Disconnect closes an extra window.
+- Magic Keyboard, keyboard, trackpad and mouse input; Command, Option and Control go to the Mac as Mac keys, and a modifier bar sends shortcuts iPadOS and iOS keep, such as Command-Tab.
 - Touch: tap to click where you tap, or move the pointer like a trackpad; two-finger tap to right-click, two-finger drag to scroll, pinch to zoom.
 - Control or Observe; Scale to Fit or Actual Size; every display or one at a time; full screen; Capture Screen to Files; Mission Control, App Windows and Desktop from the Accessibility menu.
 - Network lists nearby Macs with Screen Sharing on (Bonjour); Connect to Server takes a host name or IP address.
-- Connect Through SSH encrypts the screen, typing and clipboard through the Mac's Remote Login, with a password or an SSH key made on the iPad.
+- Connect Through SSH encrypts the screen, typing and clipboard through the Mac's Remote Login, with a password or an SSH key made on the device.
 - Shared clipboard, off by default and set per connection.
 - Groups, icon or list view, Search, Open Recent; vnc:// links ask first and never carry a password.
 
-Pricing: 14-day free trial for new subscribers, then ScreenShare Yearly at 14.99 USD a year (auto-renewing, cancel at least 24 hours before renewal in App Store account settings), or ScreenShare Lifetime at 39.99 USD once. One or the other, not both. Family Sharing for both.
+Pricing: 14-day free trial for new subscribers, then ScreenShare Yearly at 14.99 USD a year (auto-renewing, cancel at least 24 hours before renewal in App Store account settings), or ScreenShare Lifetime at 39.99 USD once. One or the other, not both. Family Sharing for both, and one purchase covers iPad, iPhone Duo and iPhone on the same Apple Account.
 
 Support questions:
 - Q: Which user name and password do I use? A: The ones you log in to that Mac with, or its VNC password if one is set.
-- Q: The Mac doesn't appear under Network. A: Check Screen Sharing is on, the iPad is on the same network and Local Network access is allowed, or connect by name or IP address.
+- Q: The Mac doesn't appear under Network. A: Check Screen Sharing is on, the device is on the same network and Local Network access is allowed, or connect by name or IP address.
 - Q: Is my session encrypted? A: Screen Sharing encrypts the sign-in but not the screen, typing or clipboard; turn on Connect Through SSH (needs Remote Login on the Mac) or use a VPN.
-- Q: Can I use more than one Mac at once? A: Yes: More > Open in New Window in a session, or Open in New Window on a Mac in the list.
+- Q: Can I use more than one Mac at once? A: Yes, on iPad and iPhone Duo: More > Open in New Window in a session, or Open in New Window on a Mac in the list.
 - Q: Can I connect to a Windows PC? A: No; ScreenShare works with the Screen Sharing built into macOS.
 
-Privacy: ScreenShare Privacy Policy. ScreenShare connects your iPad directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs. Connections stay on the iPad and passwords in its Keychain, on this iPad only.
+Privacy: ScreenShare Privacy Policy. ScreenShare connects your iPad or iPhone directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs. Connections stay on the device and passwords in its Keychain, on that device only.
 Terms: ScreenShare Terms of Use: the licence for the app, the yearly auto-renewable subscription with its 14-day free trial, and the one-time lifetime purchase through the App Store.

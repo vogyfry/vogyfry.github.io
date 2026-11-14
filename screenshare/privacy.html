@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — ScreenShare</title>
-    <meta name="description" content="ScreenShare Privacy Policy. ScreenShare connects your iPad directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs.">
+    <meta name="description" content="ScreenShare Privacy Policy. ScreenShare connects your iPad or iPhone directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs.">
     <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png?v=20261113">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20261113">
     <link rel="canonical" href="https://pravalabs.app/screenshare/privacy.html">
@@ -16,15 +16,15 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="ScreenShare">
     <meta property="og:title" content="Privacy Policy — ScreenShare">
-    <meta property="og:description" content="ScreenShare Privacy Policy. ScreenShare connects your iPad directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs.">
+    <meta property="og:description" content="ScreenShare Privacy Policy. ScreenShare connects your iPad or iPhone directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs.">
     <meta property="og:url" content="https://pravalabs.app/screenshare/privacy.html">
     <meta property="og:image" content="https://pravalabs.app/screenshare/images/icon.png?v=20261113">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Privacy Policy — ScreenShare">
-    <meta name="twitter:description" content="ScreenShare Privacy Policy. ScreenShare connects your iPad directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs.">
+    <meta name="twitter:description" content="ScreenShare Privacy Policy. ScreenShare connects your iPad or iPhone directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs.">
     <meta name="twitter:image" content="https://pravalabs.app/screenshare/images/icon.png?v=20261113">
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "@id": "https://pravalabs.app/screenshare/privacy.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "ScreenShare", "item": "https://pravalabs.app/screenshare/"}, {"@type": "ListItem", "position": 3, "name": "Privacy Policy", "item": "https://pravalabs.app/screenshare/privacy.html"}]}, {"@type": "WebPage", "@id": "https://pravalabs.app/screenshare/privacy.html", "url": "https://pravalabs.app/screenshare/privacy.html", "name": "Privacy Policy — ScreenShare", "description": "ScreenShare Privacy Policy. ScreenShare connects your iPad directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs.", "isPartOf": {"@type": "WebSite", "name": "Prava Labs", "url": "https://pravalabs.app/"}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "@id": "https://pravalabs.app/screenshare/privacy.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "ScreenShare", "item": "https://pravalabs.app/screenshare/"}, {"@type": "ListItem", "position": 3, "name": "Privacy Policy", "item": "https://pravalabs.app/screenshare/privacy.html"}]}, {"@type": "WebPage", "@id": "https://pravalabs.app/screenshare/privacy.html", "url": "https://pravalabs.app/screenshare/privacy.html", "name": "Privacy Policy — ScreenShare", "description": "ScreenShare Privacy Policy. ScreenShare connects your iPad or iPhone directly to the Macs you add; nothing you see, type or copy is sent to Prava Labs.", "isPartOf": {"@type": "WebSite", "name": "Prava Labs", "url": "https://pravalabs.app/"}}]}</script>
 </head>
 <body>
 
@@ -48,7 +48,7 @@
         <p class="last-updated">Last updated: November 13, 2026</p>
 
         <div class="highlight-box">
-            <p>ScreenShare connects your iPad directly to the Macs you add. <strong>Nothing you see, type or copy in it is sent to Prava Labs</strong>: there is no account, no server of ours and no analytics, and your connections and passwords stay on your iPad.</p>
+            <p>ScreenShare connects your iPad or iPhone directly to the Macs you add. <strong>Nothing you see, type or copy in it is sent to Prava Labs</strong>: there is no account, no server of ours and no analytics, and your connections and passwords stay on your device.</p>
         </div>
 
         <h2>1. What We Don't Collect</h2>
@@ -62,22 +62,22 @@
         </ul>
 
         <h2>2. How ScreenShare Works</h2>
-        <p>ScreenShare connects from your iPad straight to each Mac you choose, using the VNC (RFB) protocol of the Screen Sharing service built into macOS, on port 5900 unless you set another. The Mac sends its screen; the iPad sends your keyboard, pointer and touch input. The connection goes only between your iPad and that Mac, or through the SSH tunnel described below; it never passes through Prava Labs.</p>
+        <p>ScreenShare connects from your iPad or iPhone straight to each Mac you choose, using the VNC (RFB) protocol of the Screen Sharing service built into macOS, on port 5900 unless you set another. The Mac sends its screen; your device sends your keyboard, pointer and touch input. The connection goes only between your device and that Mac, or through the SSH tunnel described below; it never passes through Prava Labs.</p>
 
         <h2>3. What Is and Isn't Encrypted</h2>
         <p>Screen Sharing encrypts your sign-in, but not the screen, what you type, or the clipboard. On your own network that is how Screen Sharing works between Macs too. When you connect to an address outside your local network, ScreenShare asks first.</p>
         <p>To encrypt everything, turn on Connect Through SSH for a connection (in Edit). ScreenShare then opens an SSH connection to the Mac's Remote Login and carries the whole session through it. You sign in to SSH with a password or with an SSH key that ScreenShare makes on your iPad: a P-256 key kept in the iPad's Secure Enclave where available, whose private key never leaves the iPad. The first time you connect, you confirm the Mac's SSH key; ScreenShare warns you if it ever changes. A VPN works too.</p>
 
         <h2>4. Local Network Access</h2>
-        <p>iPadOS asks whether ScreenShare may use your local network. ScreenShare uses it to find Macs that have Screen Sharing turned on (the Bonjour service <code>_rfb._tcp</code>), only while the Network screen is open, and to connect to Macs on your network. If you decline, you can still connect by name or address. You can change this in Settings &gt; Privacy &amp; Security &gt; Local Network on the iPad.</p>
+        <p>iPadOS or iOS asks whether ScreenShare may use your local network. ScreenShare uses it to find Macs that have Screen Sharing turned on (the Bonjour service <code>_rfb._tcp</code>), only while the Network screen is open, and to connect to Macs on your network. If you decline, you can still connect by name or address. You can change this in Settings &gt; Privacy &amp; Security &gt; Local Network on your iPad or iPhone.</p>
 
         <h2>5. Shared Clipboard</h2>
-        <p>The shared clipboard is off unless you turn it on, for each connection (and in Settings for new ones). When it is on, text you copy on the iPad is sent to the Mac, and text copied on the Mac replaces what you copied on the iPad. With several Macs open in separate windows, only the window you are using shares the clipboard. Clipboard text is not encrypted unless the connection goes through SSH.</p>
+        <p>The shared clipboard is off unless you turn it on, for each connection (and in Settings for new ones). When it is on, text you copy on your device is sent to the Mac, and text copied on the Mac replaces what you copied on your device. With several Macs open in separate windows, only the window you are using shares the clipboard. Clipboard text is not encrypted unless the connection goes through SSH.</p>
 
-        <h2>6. What Is Stored on Your iPad</h2>
+        <h2>6. What Is Stored on Your Device</h2>
         <ul>
-            <li><strong>Connections</strong>: the name, address, port, user name, groups and per-connection settings you choose, kept in the app's own storage on your iPad and protected by iPadOS data protection while the iPad is locked. They are part of your iPad's own backups like other app data, and are never sent to us.</li>
-            <li><strong>Passwords</strong>: only if you turn on Remember Password. They are kept in the iPad's Keychain, available only while the iPad is unlocked and only on this iPad (not synced to iCloud Keychain). You can require Face ID, Touch ID or your passcode before a saved password is used: Settings &gt; Privacy and Security in ScreenShare. Deleting a connection deletes its saved password.</li>
+            <li><strong>Connections</strong>: the name, address, port, user name, groups and per-connection settings you choose, kept in the app's own storage on your iPad or iPhone and protected by data protection while the device is locked. They are part of the device's own backups like other app data, and are never sent to us.</li>
+            <li><strong>Passwords</strong>: only if you turn on Remember Password. They are kept in the device's Keychain, available only while it is unlocked and only on that device (not synced to iCloud Keychain). You can require Face ID, Touch ID or your passcode before a saved password is used: Settings &gt; Privacy and Security in ScreenShare. Deleting a connection deletes its saved password.</li>
             <li><strong>SSH key and SSH passwords</strong>: in the Keychain and the Secure Enclave as described above.</li>
             <li><strong>Screen captures</strong>: saved only where you choose in Files.</li>
         </ul>
@@ -116,7 +116,7 @@
                         <img src="images/favicon.png?v=20261113" alt="">
                         <span>ScreenShare</span>
                     </div>
-                    <p class="footer-description">Control your Mac from your iPad through the Screen Sharing built into macOS. Nothing to install on the Mac; several Macs at once, each in its own window. By Prava Labs.</p>
+                    <p class="footer-description">Control your Mac from your iPad, iPhone Duo or iPhone through the Screen Sharing built into macOS. Nothing to install on the Mac; several Macs at once, each in its own window. By Prava Labs.</p>
                 </div>
                 <div>
                     <h4>Help</h4>
