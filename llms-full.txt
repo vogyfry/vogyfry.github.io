@@ -118,7 +118,7 @@ Terms: Pravida Terms of Service. The terms governing use of the Pravida encrypte
 ## EchoBridge — in TestFlight
 URL: https://pravalabs.app/echobridge/
 
-Translate live. Practice out loud. EchoBridge is a live conversation translator and a speaking practice partner for iPhone and iPad. Translate helps with both halves of a conversation in front of you: you hear the other person in your own language as they speak, then answer with a suggested reply, Hold to Talk or a typed reply, and your iPhone says it in their language. Practice, new in this version, lets you rehearse the same conversations out loud before you have them, with a partner that runs on the device.
+Translate live. Practice out loud. EchoBridge is a private AI conversation translator and a speaking practice partner for iPhone and iPad. All of its AI runs on the device: Apple's on-device speech recognition and Apple Translation hear and translate, and Apple Intelligence's on-device language model writes the suggested replies, plays the Practice partner and offers the tips. There is no cloud AI, no account and no server of Prava Labs. Translate helps with both halves of a conversation in front of you: you hear the other person in your own language as they speak, then answer with a suggested reply, Hold to Talk or a typed reply, and your iPhone says it in their language. Practice, new in this version, lets you rehearse the same conversations out loud before you have them, with a partner that runs on the device.
 
 What it does:
 - Translate: translates speech phrase by phrase as it is spoken, in your headphones or from the speaker, with the original and the translation on screen
