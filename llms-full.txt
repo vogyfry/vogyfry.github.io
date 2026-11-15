@@ -137,7 +137,7 @@ What it does:
 - Any language pair the device supports on device for speech and translation; Spanish ⇄ English is the default
 - Speech recognition, translation, voices, suggestions and Practice run on the device; works offline once a language is downloaded
 - Audio is never recorded. Translate conversations are kept on the device only, in History, left out of backups; turn off Keep This Conversation for a private one; delete any or all. Practice scenes are kept on the device too, in Practice History. Nothing is sent to Prava Labs; App Store privacy label "Data Not Collected"
-- Requires iOS 26 or iPadOS 26; suggested replies and Practice need Apple Intelligence (iPhone 15 Pro or later, or an iPad with an M-series chip or A17 Pro)
+- Requires iOS 26 or iPadOS 26; suggested replies and Practice need Apple Intelligence (iPhone 15 Pro or later, an iPad with M1 or later, or an iPad mini with A17 Pro or later)
 - iPad: the transcript and replies side by side. iPhone Duo in every pose: closed, the phone layout edge to edge; open flat, the transcript on one half and the replies and controls on the other, clear of the fold; half open like a laptop, the transcript upright and the controls on the flat half; stood up like a tent, the conversation faces you
 
 Not a simultaneous interpreter: it translates phrase by phrase, a moment behind the speaker, and should not be relied on for medical, legal or emergency situations. Practice is a partner, not a course: its tips won't catch every mistake.
