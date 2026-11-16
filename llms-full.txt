@@ -224,7 +224,7 @@ What it does:
 - Quality: adapt to network conditions (faster) or full quality (more detailed), remembered per connection.
 - Privacy and security: saved passwords can require Face ID or Touch ID; Hide Screen in App Switcher (on by default) covers the remote screen when you leave the app; the SSH key is made in the device's Secure Enclave, and Settings > SSH Key copies or shares its public key.
 
-Pricing: 14-day free trial for new subscribers, then ScreenShare Yearly at 14.99 USD a year (auto-renewing, cancel at least 24 hours before renewal in App Store account settings), or ScreenShare Lifetime at 39.99 USD once. One or the other, not both. Family Sharing for both, and one purchase covers iPad, iPhone Duo and iPhone on the same Apple Account.
+Pricing: 14-day free trial for new subscribers, then ScreenShare Yearly at 14.99 USD a year (auto-renewing, cancel at least 24 hours before renewal in App Store account settings), or ScreenShare Lifetime at 49.99 USD once. One or the other, not both. Family Sharing for both, and one purchase covers iPad, iPhone Duo and iPhone on the same Apple Account.
 
 Support questions:
 - Q: Which user name and password do I use? A: The ones you log in to that Mac with, or its VNC password if one is set.
