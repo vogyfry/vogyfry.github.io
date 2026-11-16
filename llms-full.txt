@@ -214,7 +214,7 @@ What it does:
 - Magic Keyboard, keyboard, trackpad and mouse input; Command, Option and Control go to the Mac as Mac keys, and a modifier bar sends shortcuts iPadOS and iOS keep, such as Command-Tab.
 - Touch: tap to click where you tap, or move the pointer like a trackpad; two-finger tap to right-click, two-finger drag to scroll, pinch to zoom.
 - Control or Observe; Scale to Fit or Actual Size; every display or one at a time; full screen; Capture Screen to Files; Mission Control, App Windows and Desktop from the Accessibility menu.
-- Network lists nearby Macs with Screen Sharing on (Bonjour); Connect to Server takes a host name or IP address.
+- Network lists nearby Macs with Screen Sharing on (Bonjour); Connect by Address takes a host name or IP address.
 - Connect Through SSH encrypts the screen, typing and clipboard through the Mac's Remote Login, with a password or an SSH key made on the device.
 - Shared clipboard, off by default and set per connection.
 - Groups, icon or list view, Search, Open Recent; vnc:// links ask first and never carry a password.
