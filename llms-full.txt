@@ -202,7 +202,7 @@ Support questions:
 Privacy: Prava PrintRelay Privacy Policy. Print jobs stay on your local network; PDF printers write only into the folders you choose; Run Shortcut hands the saved file to the Shortcuts app on your Mac; nothing is sent to Prava Labs.
 Terms: Prava PrintRelay Terms of Use: the licence for the Mac app and the auto-renewable yearly subscription with a free trial through the Mac App Store.
 
-## ScreenShare — in TestFlight
+## ScreenShare — live on the App Store
 URL: https://pravalabs.app/screenshare/
 
 ScreenShare is an app for iPad, iPhone Duo and iPhone (iPadOS or iOS 18 or later) that shows and controls a Mac through the Screen Sharing service built into macOS, so there is nothing to install on the Mac. The iPad app also runs on Mac computers with Apple silicon. It connects directly from the device to the Macs you add, over the VNC (RFB) protocol of Screen Sharing; Prava Labs has no server, account or analytics in between. It was built for our own iPad and Mac mini, because no other app did this well enough. The iPad is its main device; open iPhone Duo and the Mac gets the iPad layout on the inner screen, and on iPhone it is there whenever you need it. It does not run on the Mac and does not connect to Windows PCs.

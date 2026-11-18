@@ -24,12 +24,12 @@
     <meta name="twitter:image" content="https://pravalabs.app/screenshare/images/icon.png?v=20261113">
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [
       {"@type": "BreadcrumbList", "@id": "https://pravalabs.app/screenshare/#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Prava Labs", "item": "https://pravalabs.app/"}, {"@type": "ListItem", "position": 2, "name": "ScreenShare", "item": "https://pravalabs.app/screenshare/"}]},
-      {"@type": "SoftwareApplication", "@id": "https://pravalabs.app/screenshare/#app", "name": "ScreenShare", "operatingSystem": "iPadOS 18, iOS 18", "applicationCategory": "UtilitiesApplication", "url": "https://pravalabs.app/screenshare/", "image": "https://pravalabs.app/screenshare/images/icon.png", "description": "An app for iPad, iPhone Duo and iPhone that controls a Mac through the Screen Sharing service built into macOS, with nothing to install on the Mac: several Macs at once in separate windows, Magic Keyboard, trackpad and touch input, an optional SSH tunnel, and passwords kept in the Keychain.", "offers": [{"@type": "Offer", "name": "ScreenShare Yearly", "price": "14.99", "priceCurrency": "USD"}, {"@type": "Offer", "name": "ScreenShare Lifetime", "price": "49.99", "priceCurrency": "USD"}], "publisher": {"@id": "https://pravalabs.app/#org"}},
-      {"@type": "WebPage", "@id": "https://pravalabs.app/screenshare/", "url": "https://pravalabs.app/screenshare/", "name": "ScreenShare — Your Mac on iPad, iPhone Duo and iPhone", "isPartOf": {"@id": "https://pravalabs.app/#website"}, "about": {"@id": "https://pravalabs.app/screenshare/#app"}, "dateModified": "2026-11-13", "inLanguage": "en", "publisher": {"@id": "https://pravalabs.app/#org"}}
+      {"@type": "SoftwareApplication", "@id": "https://pravalabs.app/screenshare/#app", "name": "ScreenShare", "operatingSystem": "iPadOS 18, iOS 18", "applicationCategory": "UtilitiesApplication", "url": "https://pravalabs.app/screenshare/", "installUrl": "https://apps.apple.com/app/id6834552687", "image": "https://pravalabs.app/screenshare/images/icon.png", "description": "An app for iPad, iPhone Duo and iPhone that controls a Mac through the Screen Sharing service built into macOS, with nothing to install on the Mac: several Macs at once in separate windows, Magic Keyboard, trackpad and touch input, an optional SSH tunnel, and passwords kept in the Keychain.", "offers": [{"@type": "Offer", "name": "ScreenShare Yearly", "price": "14.99", "priceCurrency": "USD"}, {"@type": "Offer", "name": "ScreenShare Lifetime", "price": "49.99", "priceCurrency": "USD"}], "publisher": {"@id": "https://pravalabs.app/#org"}},
+      {"@type": "WebPage", "@id": "https://pravalabs.app/screenshare/", "url": "https://pravalabs.app/screenshare/", "name": "ScreenShare — Your Mac on iPad, iPhone Duo and iPhone", "isPartOf": {"@id": "https://pravalabs.app/#website"}, "about": {"@id": "https://pravalabs.app/screenshare/#app"}, "dateModified": "2026-11-18", "inLanguage": "en", "publisher": {"@id": "https://pravalabs.app/#org"}}
     ]}</script>
     <link rel="icon" type="image/png" sizes="256x256" href="images/favicon.png?v=20261113">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=20261113">
-    <link rel="stylesheet" href="styles.css?v=20261113">
+    <link rel="stylesheet" href="styles.css?v=20261118">
     <style>
         /* Hero: the claim on the left, the app's main screen on the right (the EchoBridge standard). */
         .hero.split { text-align: left; padding-top: 140px; }
@@ -40,10 +40,11 @@
         .split h1 { font-size: clamp(38px, 5.4vw, 62px); text-wrap: balance; }
         .split .subtitle { margin: 0; max-width: 34em; }
         .split .platform-tags { justify-content: flex-start; }
-        /* Status as a pill, styled here so a cached stylesheet cannot leave it bare. Amber = TestFlight; live uses var(--brand). */
-        .status-line { display: inline-flex; align-items: center; gap: 8px; margin: 22px 0 0; padding: 7px 14px; border-radius: 99px; border: 1px solid rgba(244, 184, 96, 0.35); background: rgba(244, 184, 96, 0.10); color: #f4d29a; font-size: 0.9rem; font-weight: 500; line-height: 1.2; }
-        .status-line .dot { width: 8px; height: 8px; border-radius: 50%; background: #f4b860; flex: none; margin: 0; }
+        /* Status as a pill, styled here so a cached stylesheet cannot leave it bare. Live: the brand teal (amber was TestFlight). */
+        .status-line { display: inline-flex; align-items: center; gap: 8px; margin: 22px 0 0; padding: 7px 14px; border-radius: 99px; border: 1px solid rgba(0, 212, 170, 0.35); background: rgba(0, 212, 170, 0.10); color: var(--text-primary); font-size: 0.9rem; font-weight: 500; line-height: 1.2; }
+        .status-line .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); flex: none; margin: 0; }
         .hero.split .status-line + .platform-tags { margin-top: 18px; }
+        .hero.split .app-store-badge + .platform-tags { margin-top: 22px; }
 
         /* The device: an iPad in landscape showing a ScreenShare session, drawn in markup. */
         .device {
@@ -145,7 +146,10 @@
                 <p class="subtitle">
                     ScreenShare connects to the Screen Sharing that is already built into macOS, so there is nothing to install on the Mac. Sign in with your Mac user name and password, then use it with a Magic Keyboard and trackpad, a mouse or your fingers. Open iPhone Duo and your Mac gets the iPad layout on its big inner screen; on iPhone it is there whenever you need it. We built it for our own iPad and Mac mini, because no other app did this well enough.
                 </p>
-                <p class="status-line"><span class="dot"></span>In TestFlight, App Store to follow</p>
+                <p class="status-line"><span class="dot"></span>Live on the App Store. 14 days free, then $14.99 a year or $49.99 once.</p>
+                <a class="app-store-badge" href="https://apps.apple.com/app/id6834552687" target="_blank" rel="noopener" aria-label="Download ScreenShare on the App Store">
+                    <img src="images/download-on-the-app-store.svg" alt="Download on the App Store" width="162" height="54">
+                </a>
                 <div class="platform-tags">
                     <span class="platform-tag">iPad</span>
                     <span class="platform-tag">iPhone Duo</span>
@@ -319,7 +323,7 @@
                         <li>Connect Through SSH</li>
                         <li>Renews each year; cancel any time</li>
                     </ul>
-                    <p class="card-footer"><span class="btn-cta secondary">App Store — coming soon</span></p>
+                    <p class="card-footer"><a class="btn-cta" href="https://apps.apple.com/app/id6834552687" target="_blank" rel="noopener">Get It on the App Store &rarr;</a></p>
                 </div>
                 <div class="plan-card">
                     <div class="plan-name">ScreenShare Lifetime</div>
@@ -331,7 +335,7 @@
                         <li>Updates included</li>
                         <li>Restore it on any of your iPads and iPhones</li>
                     </ul>
-                    <p class="card-footer"><span class="btn-cta secondary">App Store — coming soon</span></p>
+                    <p class="card-footer"><a class="btn-cta" href="https://apps.apple.com/app/id6834552687" target="_blank" rel="noopener">Get It on the App Store &rarr;</a></p>
                 </div>
             </div>
             <p class="plans-footnote">Prices shown in USD; the App Store shows the price in your country. You choose one: the yearly plan or the lifetime purchase. Yearly is an auto-renewable subscription: payment is charged to your Apple Account when the free trial ends, and it renews each year unless cancelled at least 24 hours before the end of the current period. Manage or cancel it in your App Store account settings. See the <a href="terms.html">Terms of Use</a>.</p>

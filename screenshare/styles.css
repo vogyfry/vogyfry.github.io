@@ -1207,3 +1207,7 @@ span.btn-cta { cursor: default; }
 .highlight-box.example p { color: var(--text-secondary); line-height: 1.6; }
 .highlight-box.example strong { color: var(--text-primary); }
 
+/* App Store badge (live), as on TradeSocial */
+.app-store-badge { display: inline-block; margin-top: 22px; transition: opacity 0.2s; }
+.app-store-badge:hover { opacity: 0.85; }
+.app-store-badge img { height: 54px; width: auto; display: block; }
