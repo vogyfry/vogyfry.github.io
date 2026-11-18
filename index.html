@@ -42,9 +42,9 @@
           "@id": "https://pravalabs.app/#products",
           "name": "Prava Labs products",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "url": "https://pravalabs.app/tradesocial/", "name": "TradeSocial" },
-            { "@type": "ListItem", "position": 2, "url": "https://pravalabs.app/toolport/", "name": "Prava Toolport" },
-            { "@type": "ListItem", "position": 3, "url": "https://pravalabs.app/screenshare/", "name": "ScreenShare" },
+            { "@type": "ListItem", "position": 1, "url": "https://pravalabs.app/screenshare/", "name": "ScreenShare" },
+            { "@type": "ListItem", "position": 2, "url": "https://pravalabs.app/tradesocial/", "name": "TradeSocial" },
+            { "@type": "ListItem", "position": 3, "url": "https://pravalabs.app/toolport/", "name": "Prava Toolport" },
             { "@type": "ListItem", "position": 4, "url": "https://pravalabs.app/boatnavi/", "name": "BoatNavi" },
             { "@type": "ListItem", "position": 5, "url": "https://pravalabs.app/pravida/", "name": "Pravida" },
             { "@type": "ListItem", "position": 6, "url": "https://pravalabs.app/echobridge/", "name": "EchoBridge" },
@@ -370,7 +370,7 @@
         }
         .labs-header p.sub { color: var(--muted); font-size: 1rem; }
 
-        /* One grid, live products first. Where a product runs is a chip on the
+        /* One grid: the newest live product first, then the other live products, then TestFlight. Where a product runs is a chip on the
            card and a highlight control above the grid — the same three colours the
            icons' core dots use, so chip, tile and dot agree. */
         /* The grid flows: four cards across on a wide display, three on a laptop,
@@ -441,7 +441,7 @@
         <p>An independent software studio building local-first, private-by-design apps — from group investing to on-device AI for developers. Your data stays on your device. Always.</p>
     </section>
 
-    <!-- One grid, live products first. The chips above it highlight a group
+    <!-- One grid: the newest live product first, then the other live products, then TestFlight. The chips above it highlight a group
          rather than filter it: pick "Mac &amp; PC" and the rest dim, so a visitor
          sees where a product sits without losing sight of the others. Without
          JavaScript the chips are hidden and the grid is simply the grid. -->
@@ -454,6 +454,38 @@
 
         <div class="apps">
 
+        <div data-runs="ios mac" class="app-card screenshare">
+            <a class="card-link" href="/screenshare/" aria-label="ScreenShare — learn more"></a>
+            <div class="app-header">
+                <img class="app-icon" src="screenshare-icon.png?v=20261113" alt="ScreenShare icon">
+                <div>
+                    <div class="app-name">ScreenShare <span class="live-now"><span class="live-dot"></span>Live Now</span></div>
+                    <div class="app-platform">iPad · iPhone Duo · iPhone · Mac</div>
+                </div>
+            </div>
+            <p class="app-desc">
+                Your Mac on your iPad, on the big inner screen of iPhone Duo, and on your iPhone whenever you need it, through the Screen Sharing already built into macOS, with nothing to install on the Mac. Sign in with your Mac password and use a Magic Keyboard, trackpad, mouse or touch. Open several Macs at once, each in its own window, and encrypt the whole session through SSH when you are away from home.
+            </p>
+            <div class="app-tags">
+                <span class="tag">Nothing to Install on the Mac</span>
+                <span class="tag">Several Macs at Once</span>
+                <span class="tag">Magic Keyboard &amp; Trackpad</span>
+                <span class="tag">Connect Through SSH</span>
+                <span class="tag">Passwords in the Keychain</span>
+                <span class="tag">No Account · No Telemetry</span>
+            </div>
+            <div class="app-footer">
+                <a class="store-badge-link" href="https://apps.apple.com/app/id6834552687" target="_blank" rel="noopener" aria-label="Download ScreenShare on the App Store">
+                    <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the App Store" width="135" height="45">
+                </a>
+                <a class="app-cta" href="/screenshare/">
+                    Learn More
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 8h10M9 4l4 4-4 4"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
         <div data-runs="ios" class="app-card ts">
             <a class="card-link" href="/tradesocial/" aria-label="TradeSocial — learn more"></a>
             <div class="app-header">
@@ -520,38 +552,6 @@
             </div>
         </div>
 
-        <div data-runs="ios mac" class="app-card screenshare">
-            <a class="card-link" href="/screenshare/" aria-label="ScreenShare — learn more"></a>
-            <div class="app-header">
-                <img class="app-icon" src="screenshare-icon.png?v=20261113" alt="ScreenShare icon">
-                <div>
-                    <div class="app-name">ScreenShare <span class="live-now"><span class="live-dot"></span>Live Now</span></div>
-                    <div class="app-platform">iPad · iPhone Duo · iPhone · Mac</div>
-                </div>
-            </div>
-            <p class="app-desc">
-                Your Mac on your iPad, on the big inner screen of iPhone Duo, and on your iPhone whenever you need it, through the Screen Sharing already built into macOS, with nothing to install on the Mac. Sign in with your Mac password and use a Magic Keyboard, trackpad, mouse or touch. Open several Macs at once, each in its own window, and encrypt the whole session through SSH when you are away from home.
-            </p>
-            <div class="app-tags">
-                <span class="tag">Nothing to Install on the Mac</span>
-                <span class="tag">Several Macs at Once</span>
-                <span class="tag">Magic Keyboard &amp; Trackpad</span>
-                <span class="tag">Connect Through SSH</span>
-                <span class="tag">Passwords in the Keychain</span>
-                <span class="tag">No Account · No Telemetry</span>
-            </div>
-            <div class="app-footer">
-                <a class="store-badge-link" href="https://apps.apple.com/app/id6834552687" target="_blank" rel="noopener" aria-label="Download ScreenShare on the App Store">
-                    <img class="store-badge" src="download-on-the-app-store.svg" alt="Download on the App Store" width="135" height="45">
-                </a>
-                <a class="app-cta" href="/screenshare/">
-                    Learn More
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 8h10M9 4l4 4-4 4"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
         <a data-runs="ios" class="app-card boatnavi" href="/boatnavi/">
             <div class="app-header">
                 <img class="app-icon" src="boatnavi-icon.png" alt="BoatNavi icon">
